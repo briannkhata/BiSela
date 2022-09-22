@@ -326,7 +326,9 @@ namespace Katswiri
             expenses.ShowDialog();
         }
 
-        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+     
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             ShowShopFom();
@@ -334,30 +336,13 @@ namespace Katswiri
 
         private void ShowShopFom()
         {
-            Shops shops = null;
-            if (shops == null || shops.IsDisposed)
+            Shop shop = null;
+            if (shop == null || shop.IsDisposed)
             {
-                shops = new Shops();
+                shop = new Forms.Shop();
             }
-            shops.Activate();
-            shops.ShowDialog();
-        }
-
-        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowSettingFom();
-        }
-
-        private void ShowSettingFom()
-        {
-            Forms.Shop settngs = null;
-            if (settngs == null || settngs.IsDisposed)
-            {
-                settngs = new Forms.Shop();
-            }
-            settngs.Activate();
-            settngs.ShowDialog();
+            shop.Activate();
+            shop.ShowDialog();
         }
 
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)

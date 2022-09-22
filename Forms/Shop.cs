@@ -109,29 +109,28 @@ namespace Katswiri.Forms
         {
             try
             {
-                if (formValid())
-                {
-                    shop.shop = NameTextEdit.Text?.ToString();
-                    shop.Address = AddressTextEdit.Text?.ToString();
-                    shop.Phone = PhoneTextEdit.Text?.ToString();
-                    shop.Email = EmailTextEdit.Text?.ToString();
-                    shop.Fee = Convert.ToDouble(TextEditAddress.Text);
-                    shop.Terms = termsTextEdit.Text.ToString();
+                //if (formValid())
+                //{
+                //    shop.sho = NameTextEdit.Text?.ToString();
+                //    shop.Address = AddressTextEdit.Text?.ToString();
+                //    shop.Phone = PhoneTextEdit.Text?.ToString();
+                //    shop.Email = EmailTextEdit.Text?.ToString();
+                //    shop.Fee = Convert.ToDouble(TextEditAddress.Text);
+                //    shop.Terms = termsTextEdit.Text.ToString();
 
-                    shop.
 
-                    using (db = new BEntities())
-                    {
-                        if (ShopId > 0)
-                            db.Entry(shop).State = EntityState.Modified;
-                        else
-                        {
-                            db.Shops.Add(shop);
-                        }
-                        db.SaveChanges();
-                        loadDetails();
-                    }
-                }
+                //    using (db = new BEntities())
+                //    {
+                //        if (ShopId > 0)
+                //            db.Entry(shop).State = EntityState.Modified;
+                //        else
+                //        {
+                //            db.Shops.Add(shop);
+                //        }
+                //        db.SaveChanges();
+                //        loadDetails();
+                //    }
+                //}
             }
             catch (Exception ex)
             {

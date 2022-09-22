@@ -30,7 +30,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControlUnits.DataSource = db.vwUnits.Where(x => x.Deleted == 0).ToList();
+                gridControlUnits.DataSource = db.vwUnits.ToList();
                 gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["UnitId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;

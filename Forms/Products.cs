@@ -58,7 +58,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                TaxTypeIdLookUpEdit.Properties.DataSource = db.vwt.ToList();
+                TaxTypeIdLookUpEdit.Properties.DataSource = db.vwTaxTypes.ToList();
                 TaxTypeIdLookUpEdit.Properties.ValueMember = "TaxTypeId";
                 TaxTypeIdLookUpEdit.Properties.DisplayMember = "TaxTypeName";
             }

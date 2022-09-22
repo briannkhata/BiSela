@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using Katswiri.Data;
+using Katswiri.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -197,7 +198,7 @@ namespace Katswiri.Forms
                         if (exists != null)
                         {
                             exists.Qty += 1;
-                            exists.TaxValue = (product.SellingPrice * (taxValue / 100));
+                            //exists.TaxValue = (product.SellingPrice * (taxValue / 100));
                             exists.TotalPrice = (exists.SellingPrice * exists.Qty) + cart.TaxValue;
                             db.Entry(exists).State = EntityState.Modified;
                             db.SaveChanges();
@@ -207,13 +208,13 @@ namespace Katswiri.Forms
                         if (exists == null)
                         {
                             cart.ProductId = product.ProductId;
-                            cart.SellingPrice = product.SellingPrice;
+                            //cart.SellingPrice = product.SellingPrice;
                             cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
                             cart.UserId = LoginInfo.UserId;
                             cart.DiscountAmount = 0;
                             cart.DiscountPercent = 0;
                             cart.Qty = 1;
-                            cart.TaxValue = (product.SellingPrice * (taxValue / 100));
+                            //cart.TaxValue = (product.SellingPrice * (taxValue / 100));
                             cart.TotalPrice = (cart.SellingPrice * cart.Qty) + cart.TaxValue;
                             db.Carts.Add(cart);
                             db.SaveChanges();
@@ -251,7 +252,7 @@ namespace Katswiri.Forms
                         cart.ProductId = row.ProductId;
                         cart.SellingPrice = row.SellingPrice;
                         cart.Qty = row.Qty;
-                        cart.TaxValue = (row.SellingPrice * (taxValue / 100));
+                        //cart.TaxValue = (row.SellingPrice * (taxValue / 100));
                         cart.TotalPrice = (row.SellingPrice * row.Qty) + row.TaxValue;
                         db.Entry(cart).State = EntityState.Modified;
                         db.SaveChanges();
@@ -405,9 +406,10 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditSaleType.Properties.DataSource = db.vwSaleTypes.ToList();
-                lookUpEditSaleType.Properties.ValueMember = "SaleTypeId";
-                lookUpEditSaleType.Properties.DisplayMember = "SaleTypeName";
+                Dictionary<int, string> saleType = Enum.GetValues(typeof(SaleType)).Cast<SaleType>().ToDictionary(x => (int)x, x => x.ToString());
+                lookUpEditSaleType.Properties.DataSource = saleType;
+                lookUpEditSaleType.Properties.ValueMember = "Value";
+                lookUpEditSaleType.Properties.DisplayMember = "Value";
             }
         }
 
@@ -538,8 +540,13 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
-                lookUpEditPaymentType.EditValue = db.vwPaymentTypes.ToList()[0].PaymentTypeId;
+                //lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
+                //lookUpEditPaymentType.EditValue = db.vwPaymentTypes.ToList()[0].PaymentTypeId;
+
+                Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(SaleType)).Cast<SaleType>().ToDictionary(x => (int)x, x => x.ToString());
+                lookUpEditSaleType.Properties.DataSource = taxTypesStatus;
+                lookUpEditSaleType.Properties.ValueMember = "Value";
+                lookUpEditSaleType.Properties.DisplayMember = "Value";
             }
         }
 

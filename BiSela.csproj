@@ -265,6 +265,9 @@
     <Compile Include="Data\vwUnit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwUser.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\TaxTypeStatus.cs" />
     <Compile Include="Enums\SaleType.cs" />
     <Compile Include="Enums\UserType.cs" />

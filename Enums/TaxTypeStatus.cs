@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Katswiri.Enums
 {
-    public enum TaxTpeStatus
+    public enum TaxTypesStatus
     {
         Inclusive,
         Exclusive,

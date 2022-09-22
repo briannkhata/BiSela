@@ -37,7 +37,6 @@ namespace Katswiri.Forms
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                loadRoles();
                 loadShops();
                 loadGender();
             }
@@ -211,15 +210,10 @@ namespace Katswiri.Forms
                     textEditGender.EditValue = user.Gender;
                     UserNameTextEdit.Text = user.UserName;
                     ShopIdLookUpEdit.EditValue = user.ShopId;
-                    RoleIdLookUpEdit.EditValue = user.RoleId;
                     PassWordTextEdit.Text = user.PassWord;
-                    AltEmailTextEdit.Text = user.AltEmail;
-                    AltPhoneTextEdit.Text = user.AltPhone;
-                    AltPhoneTextEdit.Text = user.AltPhone;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
-                    PhysicalAddressTextEdit.Text = user.PhysicalAddress;
-                    ContactAddressTextEdit.Text = user.ContactAddress;
+                    PhysicalAddressTextEdit.Text = user.Address;
                 }
             }
             btnSave.Caption = "Update";

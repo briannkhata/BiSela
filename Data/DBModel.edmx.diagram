@@ -18,7 +18,6 @@
         <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.OrderCat" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.Stock" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBank" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBrand" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
@@ -30,7 +29,6 @@
         <AssociationConnector Association="BModel.FK_Products_TaxTypes" />
         <EntityTypeShape EntityType="BModel.vwExpens" Width="1.5" PointX="15.375" PointY="15.75" />
         <EntityTypeShape EntityType="BModel.vwIncome" Width="1.5" PointX="17.375" PointY="0.75" />
-        <AssociationConnector Association="BModel.FK_Stocks_Products" />
         <EntityTypeShape EntityType="BModel.vwExpenseType" Width="1.5" PointX="0.75" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.vwIncomType" Width="1.5" PointX="2.75" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.vwPaymentType" Width="1.5" PointX="17.375" PointY="3.75" />
@@ -49,6 +47,9 @@
         <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="BModel.vwUnit" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="BModel.vwTaxType" Width="1.5" PointX="17.375" PointY="6.75" />
+        <EntityTypeShape EntityType="BModel.Stock" Width="1.5" PointX="3" PointY="20.5" />
+        <AssociationConnector Association="BModel.FK_Stocks_Products" />
+        <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="7.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
