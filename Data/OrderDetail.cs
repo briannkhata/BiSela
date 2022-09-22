@@ -25,5 +25,8 @@ namespace Katswiri.Data
         public Nullable<double> SellingPrice { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public string BatchNo { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

@@ -42,16 +42,12 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.BrandNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.brandsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.brandsDataSet3 = new Katswiri.brandsDataSet3();
-            this.BrandTagTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.BrandDescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForBrandName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForBrandTag = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForBrandDescription = new DevExpress.XtraLayout.LayoutControlItem();
-            this.brandsTableAdapter = new Katswiri.brandsDataSet3TableAdapters.BrandsTableAdapter();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -59,14 +55,11 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrandNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brandsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandsDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BrandTagTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandDescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandTag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -86,7 +79,7 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1050, 232);
+            this.ribbon.Size = new System.Drawing.Size(776, 232);
             // 
             // btnSave
             // 
@@ -138,14 +131,13 @@ namespace Katswiri.Forms
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.BrandNameTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.BrandTagTextEdit);
             this.dataLayoutControl1.Controls.Add(this.BrandDescriptionTextEdit);
             this.dataLayoutControl1.DataSource = this.brandsBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1050, 202);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(776, 202);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -155,29 +147,13 @@ namespace Katswiri.Forms
             this.BrandNameTextEdit.Location = new System.Drawing.Point(24, 69);
             this.BrandNameTextEdit.MenuManager = this.ribbon;
             this.BrandNameTextEdit.Name = "BrandNameTextEdit";
-            this.BrandNameTextEdit.Size = new System.Drawing.Size(499, 26);
+            this.BrandNameTextEdit.Size = new System.Drawing.Size(728, 26);
             this.BrandNameTextEdit.StyleController = this.dataLayoutControl1;
             this.BrandNameTextEdit.TabIndex = 4;
             // 
             // brandsBindingSource
             // 
             this.brandsBindingSource.DataMember = "Brands";
-            this.brandsBindingSource.DataSource = this.brandsDataSet3;
-            // 
-            // brandsDataSet3
-            // 
-            this.brandsDataSet3.DataSetName = "brandsDataSet3";
-            this.brandsDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // BrandTagTextEdit
-            // 
-            this.BrandTagTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.brandsBindingSource, "BrandTag", true));
-            this.BrandTagTextEdit.Location = new System.Drawing.Point(527, 69);
-            this.BrandTagTextEdit.MenuManager = this.ribbon;
-            this.BrandTagTextEdit.Name = "BrandTagTextEdit";
-            this.BrandTagTextEdit.Size = new System.Drawing.Size(499, 26);
-            this.BrandTagTextEdit.StyleController = this.dataLayoutControl1;
-            this.BrandTagTextEdit.TabIndex = 5;
             // 
             // BrandDescriptionTextEdit
             // 
@@ -185,7 +161,7 @@ namespace Katswiri.Forms
             this.BrandDescriptionTextEdit.Location = new System.Drawing.Point(24, 118);
             this.BrandDescriptionTextEdit.MenuManager = this.ribbon;
             this.BrandDescriptionTextEdit.Name = "BrandDescriptionTextEdit";
-            this.BrandDescriptionTextEdit.Size = new System.Drawing.Size(1002, 26);
+            this.BrandDescriptionTextEdit.Size = new System.Drawing.Size(728, 26);
             this.BrandDescriptionTextEdit.StyleController = this.dataLayoutControl1;
             this.BrandDescriptionTextEdit.TabIndex = 6;
             // 
@@ -196,7 +172,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1050, 202);
+            this.Root.Size = new System.Drawing.Size(776, 202);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -207,17 +183,16 @@ namespace Katswiri.Forms
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1030, 182);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(756, 182);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForBrandName,
-            this.ItemForBrandTag,
             this.ItemForBrandDescription});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1030, 182);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(756, 182);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForBrandName
@@ -225,34 +200,20 @@ namespace Katswiri.Forms
             this.ItemForBrandName.Control = this.BrandNameTextEdit;
             this.ItemForBrandName.Location = new System.Drawing.Point(0, 0);
             this.ItemForBrandName.Name = "ItemForBrandName";
-            this.ItemForBrandName.Size = new System.Drawing.Size(503, 49);
+            this.ItemForBrandName.Size = new System.Drawing.Size(732, 49);
             this.ItemForBrandName.Text = "Brand Name";
             this.ItemForBrandName.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForBrandName.TextSize = new System.Drawing.Size(107, 16);
-            // 
-            // ItemForBrandTag
-            // 
-            this.ItemForBrandTag.Control = this.BrandTagTextEdit;
-            this.ItemForBrandTag.Location = new System.Drawing.Point(503, 0);
-            this.ItemForBrandTag.Name = "ItemForBrandTag";
-            this.ItemForBrandTag.Size = new System.Drawing.Size(503, 49);
-            this.ItemForBrandTag.Text = "Brand Tag";
-            this.ItemForBrandTag.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForBrandTag.TextSize = new System.Drawing.Size(107, 16);
             // 
             // ItemForBrandDescription
             // 
             this.ItemForBrandDescription.Control = this.BrandDescriptionTextEdit;
             this.ItemForBrandDescription.Location = new System.Drawing.Point(0, 49);
             this.ItemForBrandDescription.Name = "ItemForBrandDescription";
-            this.ItemForBrandDescription.Size = new System.Drawing.Size(1006, 83);
+            this.ItemForBrandDescription.Size = new System.Drawing.Size(732, 83);
             this.ItemForBrandDescription.Text = "Brand Description";
             this.ItemForBrandDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForBrandDescription.TextSize = new System.Drawing.Size(107, 16);
-            // 
-            // brandsTableAdapter
-            // 
-            this.brandsTableAdapter.ClearBeforeFill = true;
             // 
             // gridControl1
             // 
@@ -261,7 +222,7 @@ namespace Katswiri.Forms
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1050, 239);
+            this.gridControl1.Size = new System.Drawing.Size(776, 239);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -278,7 +239,7 @@ namespace Katswiri.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1050, 679);
+            this.ClientSize = new System.Drawing.Size(776, 679);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
@@ -292,14 +253,11 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BrandNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brandsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandsDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BrandTagTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrandDescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandTag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForBrandDescription)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -320,16 +278,12 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private brandsDataSet3 brandsDataSet3;
         private System.Windows.Forms.BindingSource brandsBindingSource;
-        private brandsDataSet3TableAdapters.BrandsTableAdapter brandsTableAdapter;
         private DevExpress.XtraEditors.TextEdit BrandNameTextEdit;
-        private DevExpress.XtraEditors.TextEdit BrandTagTextEdit;
         private DevExpress.XtraEditors.TextEdit BrandDescriptionTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForBrandName;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForBrandTag;
         private DevExpress.XtraLayout.LayoutControlItem ItemForBrandDescription;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;

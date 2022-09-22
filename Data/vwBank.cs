@@ -14,9 +14,7 @@ namespace Katswiri.Data
     
     public partial class vwBank
     {
-        public string BankName { get; set; }
-        public string BankCode { get; set; }
         public int BankId { get; set; }
-        public int Deleted { get; set; }
+        public string BankName { get; set; }
     }
 }

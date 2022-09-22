@@ -16,6 +16,5 @@ namespace Katswiri.Data
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public int Deleted { get; set; }
     }
 }

@@ -42,7 +42,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.TaxTypeNameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.taxTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.taxTypesDataSet = new Katswiri.taxTypesDataSet();
             this.TaxTypeValueTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -50,7 +49,6 @@ namespace Katswiri.Forms
             this.ItemForTaxTypeValue = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForTaxTypeName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForTaxTypeStatus = new DevExpress.XtraLayout.LayoutControlItem();
-            this.taxTypesTableAdapter = new Katswiri.taxTypesDataSetTableAdapters.TaxTypesTableAdapter();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.TaxTypeStatusTextEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -59,7 +57,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeNameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taxTypesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxTypesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeValueTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -162,12 +159,10 @@ namespace Katswiri.Forms
             // taxTypesBindingSource
             // 
             this.taxTypesBindingSource.DataMember = "TaxTypes";
-            this.taxTypesBindingSource.DataSource = this.taxTypesDataSet;
             // 
             // taxTypesDataSet
             // 
-            this.taxTypesDataSet.DataSetName = "taxTypesDataSet";
-            this.taxTypesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // TaxTypeValueTextEdit
             // 
@@ -247,7 +242,6 @@ namespace Katswiri.Forms
             // 
             // taxTypesTableAdapter
             // 
-            this.taxTypesTableAdapter.ClearBeforeFill = true;
             // 
             // gridControl1
             // 
@@ -300,7 +294,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeNameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taxTypesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxTypesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeValueTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -326,9 +319,7 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private taxTypesDataSet taxTypesDataSet;
         private System.Windows.Forms.BindingSource taxTypesBindingSource;
-        private taxTypesDataSetTableAdapters.TaxTypesTableAdapter taxTypesTableAdapter;
         private DevExpress.XtraEditors.TextEdit TaxTypeNameTextEdit;
         private DevExpress.XtraEditors.TextEdit TaxTypeValueTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;

@@ -32,7 +32,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControlCategories.DataSource = db.vwCategories.ToList();
-                gridView2.Columns["Deleted"].Visible = false;
                 gridView2.Columns["CategoryId"].Visible = false;
                 gridView2.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -74,10 +73,10 @@ namespace Katswiri.Forms
                             db.Categories.Add(category);
                         }
                         db.SaveChanges();
-                        clearFields();
-                        loadCategories();
                     }
                     XtraMessageBox.Show("Category Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearFields();
+                    loadCategories();
                 }
             }
             catch (Exception ex)

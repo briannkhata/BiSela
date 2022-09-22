@@ -28,7 +28,7 @@ namespace Katswiri.Forms
 
         private void clearFields()
         {
-            BrandDescriptionTextEdit.Text = BrandNameTextEdit.Text = BrandTagTextEdit.Text = string.Empty;
+            BrandDescriptionTextEdit.Text = BrandNameTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             BrandId = 0;
@@ -39,7 +39,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwBrands.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["BrandId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -60,11 +59,7 @@ namespace Katswiri.Forms
                 result = false;
                 BrandDescriptionTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(BrandTagTextEdit.Text))
-            {
-                result = false;
-                BrandTagTextEdit.ErrorText = "Required";
-            }
+          
             return result;
         }
 
@@ -85,9 +80,9 @@ namespace Katswiri.Forms
                             db.Brands.Add(brand);
                         }
                         db.SaveChanges();
-                        clearFields();
-                        loadBrands();
                     }
+                    clearFields();
+                    loadBrands();
                     XtraMessageBox.Show("Tax Type Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -106,9 +101,10 @@ namespace Katswiri.Forms
                     brand.Deleted = 1;
                     db.Entry(brand).State = EntityState.Modified;
                     db.SaveChanges();
-                    clearFields();
-                    loadBrands();
+
                 }
+                clearFields();
+                loadBrands();
                 XtraMessageBox.Show("Record Deleted Successfully");
             }
         }

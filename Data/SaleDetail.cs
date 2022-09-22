@@ -14,7 +14,7 @@ namespace Katswiri.Data
     
     public partial class SaleDetail
     {
-        public int SaleDetailsId { get; set; }
+        public int Id { get; set; }
         public int SaleId { get; set; }
         public int ProductId { get; set; }
         public double SellingPrice { get; set; }
@@ -26,5 +26,8 @@ namespace Katswiri.Data
         public double TaxValue { get; set; }
         public int UserId { get; set; }
         public System.DateTime DateSold { get; set; }
+    
+        public virtual Product Product { get; set; }
+        public virtual Sale Sale { get; set; }
     }
 }

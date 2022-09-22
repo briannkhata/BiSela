@@ -16,8 +16,6 @@ namespace Katswiri.Data
     {
         public int BrandId { get; set; }
         public string BrandName { get; set; }
-        public int Deleted { get; set; }
         public string BrandDescription { get; set; }
-        public string BrandTag { get; set; }
     }
 }

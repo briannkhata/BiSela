@@ -195,11 +195,7 @@ namespace Katswiri
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "View Roles";
-            this.barButtonItem3.Id = 9;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+ 
             // 
             // barButtonItem4
             // 
@@ -219,11 +215,7 @@ namespace Katswiri
             // 
             // barButtonItem8
             // 
-            this.barButtonItem8.Caption = "Shops";
-            this.barButtonItem8.Id = 14;
-            this.barButtonItem8.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem8.ImageOptions.SvgImage")));
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+          
             // 
             // barButtonItem9
             // 

@@ -138,16 +138,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="brandsDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>brandsDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="companyDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>companyDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -369,21 +359,6 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="katswiriDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>katswiriDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="katswiriDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>katswiriDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="katswiriDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,21 +378,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="shopDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>shopDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="taxTypesDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="usersDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>usersDataSet.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\Banks.resx">
       <DependentUpon>Banks.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,67 +443,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="brandsDataSet3.xsc">
-      <DependentUpon>brandsDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="brandsDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>brandsDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="brandsDataSet3.xss">
-      <DependentUpon>brandsDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="companyDataSet.xsc">
-      <DependentUpon>companyDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="companyDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>companyDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="companyDataSet.xss">
-      <DependentUpon>companyDataSet.xsd</DependentUpon>
-    </None>
     <EntityDeploy Include="Data\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Data\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet.xsc">
-      <DependentUpon>katswiriDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>katswiriDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="katswiriDataSet.xss">
-      <DependentUpon>katswiriDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet1.xsc">
-      <DependentUpon>katswiriDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>katswiriDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="katswiriDataSet1.xss">
-      <DependentUpon>katswiriDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet2.xsc">
-      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="katswiriDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>katswiriDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="katswiriDataSet2.xss">
-      <DependentUpon>katswiriDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="productsDataSet.xsc">
@@ -566,39 +471,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="shopDataSet.xsc">
-      <DependentUpon>shopDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="shopDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>shopDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="shopDataSet.xss">
-      <DependentUpon>shopDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="taxTypesDataSet.xsc">
-      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="taxTypesDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>taxTypesDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="taxTypesDataSet.xss">
-      <DependentUpon>taxTypesDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="usersDataSet.xsc">
-      <DependentUpon>usersDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="usersDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>usersDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="usersDataSet.xss">
-      <DependentUpon>usersDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

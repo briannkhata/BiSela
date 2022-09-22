@@ -32,12 +32,10 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwUsers.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["UserId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                loadShops();
                 loadGender();
             }
         }
@@ -50,22 +48,11 @@ namespace Katswiri.Forms
             textEditGender.Properties.DisplayMember = "Value";
         }
 
-        public void loadShops()
-        {
-            using (db = new BEntities())
-            {
-                ShopIdLookUpEdit.Properties.DataSource = db.vwShops.ToList();
-                ShopIdLookUpEdit.Properties.ValueMember = "ShopId";
-                ShopIdLookUpEdit.Properties.DisplayMember = "ShopName";
-            }
-
-        }
+      
         private void clearFields()
         {
-            NameTextEdit.Text = EmailTextEdit.Text = AltEmailTextEdit.Text = PhoneTextEdit.Text = AltPhoneTextEdit.Text = PhysicalAddressTextEdit.Text = ContactAddressTextEdit.Text = string.Empty;
+            NameTextEdit.Text = EmailTextEdit.Text = PhoneTextEdit.Text = AddressTextEdit.Text = AddressTextEdit.Text = string.Empty;
             textEditGender.EditValue = null;
-            ShopIdLookUpEdit.EditValue = null;
-            RoleIdLookUpEdit.EditValue = null;
             UserNameTextEdit.Text = string.Empty;
             PassWordTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
@@ -92,36 +79,24 @@ namespace Katswiri.Forms
                 result = false;
                 UserNameTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(RoleIdLookUpEdit.Text))
-            {
-                result = false;
-                RoleIdLookUpEdit.ErrorText = "Required";
-            }
-            if (String.IsNullOrEmpty(ShopIdLookUpEdit.Text))
-            {
-                result = false;
-                ShopIdLookUpEdit.ErrorText = "Required";
-            }
+           
+          
             if (String.IsNullOrEmpty(textEditGender.Text))
             {
                 result = false;
                 textEditGender.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(ContactAddressTextEdit.Text))
+            if (String.IsNullOrEmpty(AddressTextEdit.Text))
             {
                 result = false;
-                ContactAddressTextEdit.ErrorText = "Required";
+                AddressTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(PhysicalAddressTextEdit.Text))
+            if (String.IsNullOrEmpty(AddressTextEdit.Text))
             {
                 result = false;
-                PhysicalAddressTextEdit.ErrorText = "Required";
+                AddressTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(AltPhoneTextEdit.Text))
-            {
-                result = false;
-                AltPhoneTextEdit.ErrorText = "Required";
-            }
+          
             if (String.IsNullOrEmpty(PhoneTextEdit.Text))
             {
                 result = false;
@@ -137,11 +112,7 @@ namespace Katswiri.Forms
                 result = false;
                 EmailTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(AltEmailTextEdit.Text))
-            {
-                result = false;
-                AltEmailTextEdit.ErrorText = "Required";
-            }
+            
             return result;
         }
 
@@ -154,11 +125,11 @@ namespace Katswiri.Forms
                     user.Name = NameTextEdit.Text;
                     user.Gender = textEditGender.EditValue.ToString();
                     user.UserName = UserNameTextEdit.Text;
-                    user.ShopId =Convert.ToInt32(ShopIdLookUpEdit.EditValue);
+                    //user.ShopId =Convert.ToInt32(ShopIdLookUpEdit.EditValue);
                     user.PassWord = PassWordTextEdit.Text;
                     user.Email = EmailTextEdit.Text;
                     user.Phone = PhoneTextEdit.Text;
-                    user.Address = PhysicalAddressTextEdit.Text;
+                    user.Address = AddressTextEdit.Text;
                     using (db = new BEntities())
                     {
                         if (UserId > 0)
@@ -209,11 +180,11 @@ namespace Katswiri.Forms
                     NameTextEdit.Text = user.Name;
                     textEditGender.EditValue = user.Gender;
                     UserNameTextEdit.Text = user.UserName;
-                    ShopIdLookUpEdit.EditValue = user.ShopId;
+                    //ShopIdLookUpEdit.EditValue = user.ShopId;
                     PassWordTextEdit.Text = user.PassWord;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
-                    PhysicalAddressTextEdit.Text = user.Address;
+                    AddressTextEdit.Text = user.Address;
                 }
             }
             btnSave.Caption = "Update";

@@ -313,7 +313,7 @@ namespace Katswiri.Forms
                     sale = new Sale()
                     {
                         DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
-                        SaleTypeId = (int)lookUpEditSaleType.EditValue,
+                        SaleType = (string)lookUpEditSaleType.EditValue,
                         PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
                         ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId,
                         SoldBy = LoginInfo.UserId,
@@ -325,7 +325,6 @@ namespace Katswiri.Forms
                         TotalTendered = Double.Parse(textEditTendered.Text),
                         DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
                         DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
-                        txnId = textEditTxnId.Text,
                     };
 
                     db.Sales.Add(sale);

@@ -14,6 +14,12 @@ namespace Katswiri.Data
     
     public partial class Sale
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Sale()
+        {
+            this.SaleDetails = new HashSet<SaleDetail>();
+        }
+    
         public int SaleId { get; set; }
         public double TotalTendered { get; set; }
         public double TotalBill { get; set; }
@@ -25,10 +31,12 @@ namespace Katswiri.Data
         public int ShopId { get; set; }
         public System.DateTime DateSold { get; set; }
         public double TotalChange { get; set; }
-        public int SaleTypeId { get; set; }
+        public string SaleType { get; set; }
         public int Deleted { get; set; }
-        public string txnId { get; set; }
         public double SubTotal { get; set; }
         public int PaymentTypeId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleDetail> SaleDetails { get; set; }
     }
 }

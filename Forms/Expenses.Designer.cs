@@ -42,7 +42,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.AmountTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.expensesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.katswiriDataSet2 = new Katswiri.katswiriDataSet2();
             this.ExpenseDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.ExpenseTypeId = new DevExpress.XtraEditors.LookUpEdit();
             this.PaymentTypeId = new DevExpress.XtraEditors.LookUpEdit();
@@ -53,7 +52,6 @@ namespace Katswiri.Forms
             this.ItemForAmount = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPaymentTypeId = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForExpenseDate = new DevExpress.XtraLayout.LayoutControlItem();
-            this.expensesTableAdapter = new Katswiri.katswiriDataSet2TableAdapters.ExpensesTableAdapter();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -61,7 +59,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expensesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.katswiriDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseTypeId.Properties)).BeginInit();
@@ -174,12 +171,9 @@ namespace Katswiri.Forms
             // expensesBindingSource
             // 
             this.expensesBindingSource.DataMember = "Expenses";
-            this.expensesBindingSource.DataSource = this.katswiriDataSet2;
             // 
             // katswiriDataSet2
             // 
-            this.katswiriDataSet2.DataSetName = "katswiriDataSet2";
-            this.katswiriDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ExpenseDateEdit
             // 
@@ -300,7 +294,6 @@ namespace Katswiri.Forms
             // 
             // expensesTableAdapter
             // 
-            this.expensesTableAdapter.ClearBeforeFill = true;
             // 
             // gridControl1
             // 
@@ -340,7 +333,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expensesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.katswiriDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseTypeId.Properties)).EndInit();
@@ -371,9 +363,7 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private katswiriDataSet2 katswiriDataSet2;
         private System.Windows.Forms.BindingSource expensesBindingSource;
-        private katswiriDataSet2TableAdapters.ExpensesTableAdapter expensesTableAdapter;
         private DevExpress.XtraEditors.TextEdit AmountTextEdit;
         private DevExpress.XtraEditors.DateEdit ExpenseDateEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;

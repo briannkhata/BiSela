@@ -27,7 +27,6 @@ namespace Katswiri
         Products productsForm = null;
         Login formLogin = null;
         BEntities db;
-
         User user;
 
         Categories categoriesForm = null;
@@ -297,7 +296,6 @@ namespace Katswiri
         }
 
       
-
         private void ShowPosFom()
         {
             Pos pos = null;
@@ -331,19 +329,19 @@ namespace Katswiri
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowShopFom();
+            //ShowShopFom();
         }
 
-        private void ShowShopFom()
-        {
-            Shop shop = null;
-            if (shop == null || shop.IsDisposed)
-            {
-                shop = new Forms.Shop();
-            }
-            shop.Activate();
-            shop.ShowDialog();
-        }
+        //private void ShowShopFom()
+        //{
+        //    Shop shop = null;
+        //    if (shop == null || shop.IsDisposed)
+        //    {
+        //        shop = new Shop();
+        //    }
+        //    shop.Activate();
+        //    shop.ShowDialog();
+        //}
 
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -378,24 +376,7 @@ namespace Katswiri
             brands.Activate();
             brands.ShowDialog();
         }
-
-        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowRoleFom();
-        }
-
-        private void ShowRoleFom()
-        {
-            Roles roles = null;
-            if (roles == null || roles.IsDisposed)
-            {
-                roles = new Roles();
-            }
-            roles.Activate();
-            roles.ShowDialog();
-        }
-
+       
         private void ShowUserFom()
         {
             Users users = null;

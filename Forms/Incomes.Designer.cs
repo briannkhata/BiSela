@@ -47,7 +47,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.AmountTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.incomesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.katswiriDataSet = new Katswiri.katswiriDataSet();
             this.IncomeDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.PaymentTypeId = new DevExpress.XtraEditors.LookUpEdit();
             this.IncomeTypeId = new DevExpress.XtraEditors.LookUpEdit();
@@ -68,7 +67,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.incomesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.katswiriDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PaymentTypeId.Properties)).BeginInit();
@@ -220,12 +218,10 @@ namespace Katswiri.Forms
             // incomesBindingSource
             // 
             this.incomesBindingSource.DataMember = "Incomes";
-            this.incomesBindingSource.DataSource = this.katswiriDataSet;
             // 
             // katswiriDataSet
             // 
-            this.katswiriDataSet.DataSetName = "katswiriDataSet";
-            this.katswiriDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+
             // 
             // IncomeDateEdit
             // 
@@ -390,7 +386,6 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.incomesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.katswiriDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PaymentTypeId.Properties)).EndInit();
@@ -424,7 +419,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private katswiriDataSet katswiriDataSet;
         private System.Windows.Forms.BindingSource incomesBindingSource;
         private DevExpress.XtraEditors.TextEdit AmountTextEdit;
         private DevExpress.XtraEditors.DateEdit IncomeDateEdit;
