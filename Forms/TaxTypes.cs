@@ -18,7 +18,7 @@ namespace Katswiri.Forms
     public partial class TaxTypes : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
-        TaxType taxType;
+        TaxType taxType = new TaxType();
         int TaxTypeId;
         public TaxTypes()
         {
@@ -73,7 +73,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwTaxTypes.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["TaxTypeId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -87,11 +86,12 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    taxType.TaxTypeName = TaxTypeNameTextEdit.Text;
-                    taxType.TaxTypeValue = Convert.ToDouble(TaxTypeValueTextEdit.Text);
-                    taxType.TaxTypeStatus = TaxTypeStatusTextEdit.Text;
+
                     using (db = new BEntities())
                     {
+                        taxType.TaxTypeName = TaxTypeNameTextEdit.Text;
+                        taxType.TaxTypeValue = Convert.ToDouble(TaxTypeValueTextEdit.Text);
+                        taxType.TaxTypeStatus = TaxTypeStatusTextEdit.Text;
                         if (TaxTypeId > 0)
                             db.Entry(taxType).State = EntityState.Modified;
                         else

@@ -49,9 +49,9 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwExpenses.ToList();
                 gridView1.OptionsBehavior.Editable = false;
-                gridView1.Columns["UserId"].Visible = false;
+                //gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["ExpenseId"].Visible = false;
-                gridView1.Columns["AddedBy"].Visible = false;
+                //gridView1.Columns["AddedBy"].Visible = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
 

@@ -379,18 +379,25 @@ namespace Katswiri
        
         private void ShowUserFom()
         {
-            Users users = null;
-            if (users == null || users.IsDisposed)
+            try
             {
-                users = new Users();
+                Users users = null;
+                if (users == null || users.IsDisposed)
+                {
+                    users = new Users();
+                }
+                users.Activate();
+                users.ShowDialog();
             }
-            users.Activate();
-            users.ShowDialog();
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you would like to exit Katswiri?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
+            if (XtraMessageBox.Show("Are you sure you would like to exit Biselu?", "Biselu", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
             }

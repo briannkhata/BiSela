@@ -55,7 +55,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwPaymentTypes.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["PaymentTypeId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;

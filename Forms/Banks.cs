@@ -35,12 +35,12 @@ namespace Katswiri.Forms
                 gridView1.Columns["BankId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
+                //gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             }
         }
         private void clearFields()
         {
-            textEditBank.Text = textEditCode.Text = string.Empty;
+            textEditBank.Text = string.Empty;
             btnDelete.Enabled = false;
         }
 
@@ -53,11 +53,6 @@ namespace Katswiri.Forms
                 textEditBank.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(textEditCode.Text))
-            {
-                result = false;
-                textEditCode.ErrorText = "Required";
-            }
             return result;
         }
 

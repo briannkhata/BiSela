@@ -41,8 +41,8 @@ namespace Katswiri.Forms
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.TaxTypeNameTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.taxTypesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TaxTypeValueTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.TaxTypeStatusTextEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -51,13 +51,12 @@ namespace Katswiri.Forms
             this.ItemForTaxTypeStatus = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.TaxTypeStatusTextEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeNameTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxTypesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeValueTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxTypeStatusTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -66,7 +65,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTaxTypeStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxTypeStatusTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -83,7 +81,7 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(719, 232);
+            this.ribbon.Size = new System.Drawing.Size(540, 232);
             // 
             // btnSave
             // 
@@ -137,37 +135,26 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.Controls.Add(this.TaxTypeNameTextEdit);
             this.dataLayoutControl1.Controls.Add(this.TaxTypeValueTextEdit);
             this.dataLayoutControl1.Controls.Add(this.TaxTypeStatusTextEdit);
-            this.dataLayoutControl1.DataSource = this.taxTypesBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(719, 198);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(540, 198);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // TaxTypeNameTextEdit
             // 
-            this.TaxTypeNameTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.taxTypesBindingSource, "TaxTypeName", true));
             this.TaxTypeNameTextEdit.Location = new System.Drawing.Point(24, 69);
             this.TaxTypeNameTextEdit.MenuManager = this.ribbon;
             this.TaxTypeNameTextEdit.Name = "TaxTypeNameTextEdit";
-            this.TaxTypeNameTextEdit.Size = new System.Drawing.Size(671, 26);
+            this.TaxTypeNameTextEdit.Size = new System.Drawing.Size(301, 26);
             this.TaxTypeNameTextEdit.StyleController = this.dataLayoutControl1;
             this.TaxTypeNameTextEdit.TabIndex = 4;
             // 
-            // taxTypesBindingSource
-            // 
-            this.taxTypesBindingSource.DataMember = "TaxTypes";
-            // 
-            // taxTypesDataSet
-            // 
-
-            // 
             // TaxTypeValueTextEdit
             // 
-            this.TaxTypeValueTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.taxTypesBindingSource, "TaxTypeValue", true));
-            this.TaxTypeValueTextEdit.Location = new System.Drawing.Point(294, 118);
+            this.TaxTypeValueTextEdit.Location = new System.Drawing.Point(329, 69);
             this.TaxTypeValueTextEdit.MenuManager = this.ribbon;
             this.TaxTypeValueTextEdit.Name = "TaxTypeValueTextEdit";
             this.TaxTypeValueTextEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -175,9 +162,21 @@ namespace Katswiri.Forms
             this.TaxTypeValueTextEdit.Properties.Mask.EditMask = "F";
             this.TaxTypeValueTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.TaxTypeValueTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.TaxTypeValueTextEdit.Size = new System.Drawing.Size(401, 26);
+            this.TaxTypeValueTextEdit.Size = new System.Drawing.Size(187, 26);
             this.TaxTypeValueTextEdit.StyleController = this.dataLayoutControl1;
             this.TaxTypeValueTextEdit.TabIndex = 5;
+            // 
+            // TaxTypeStatusTextEdit
+            // 
+            this.TaxTypeStatusTextEdit.Location = new System.Drawing.Point(24, 118);
+            this.TaxTypeStatusTextEdit.MenuManager = this.ribbon;
+            this.TaxTypeStatusTextEdit.Name = "TaxTypeStatusTextEdit";
+            this.TaxTypeStatusTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TaxTypeStatusTextEdit.Properties.NullText = "";
+            this.TaxTypeStatusTextEdit.Size = new System.Drawing.Size(492, 26);
+            this.TaxTypeStatusTextEdit.StyleController = this.dataLayoutControl1;
+            this.TaxTypeStatusTextEdit.TabIndex = 6;
             // 
             // Root
             // 
@@ -186,7 +185,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(719, 198);
+            this.Root.Size = new System.Drawing.Size(540, 198);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -197,51 +196,48 @@ namespace Katswiri.Forms
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(699, 178);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(520, 178);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForTaxTypeValue,
             this.ItemForTaxTypeName,
-            this.ItemForTaxTypeStatus});
+            this.ItemForTaxTypeStatus,
+            this.ItemForTaxTypeValue});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(699, 178);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(520, 178);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForTaxTypeValue
             // 
             this.ItemForTaxTypeValue.Control = this.TaxTypeValueTextEdit;
-            this.ItemForTaxTypeValue.Location = new System.Drawing.Point(270, 49);
+            this.ItemForTaxTypeValue.Location = new System.Drawing.Point(305, 0);
             this.ItemForTaxTypeValue.Name = "ItemForTaxTypeValue";
-            this.ItemForTaxTypeValue.Size = new System.Drawing.Size(405, 79);
-            this.ItemForTaxTypeValue.Text = "Tax Type Value";
+            this.ItemForTaxTypeValue.Size = new System.Drawing.Size(191, 49);
+            this.ItemForTaxTypeValue.Text = "Value";
             this.ItemForTaxTypeValue.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForTaxTypeValue.TextSize = new System.Drawing.Size(98, 16);
+            this.ItemForTaxTypeValue.TextSize = new System.Drawing.Size(58, 16);
             // 
             // ItemForTaxTypeName
             // 
             this.ItemForTaxTypeName.Control = this.TaxTypeNameTextEdit;
             this.ItemForTaxTypeName.Location = new System.Drawing.Point(0, 0);
             this.ItemForTaxTypeName.Name = "ItemForTaxTypeName";
-            this.ItemForTaxTypeName.Size = new System.Drawing.Size(675, 49);
-            this.ItemForTaxTypeName.Text = "Tax Type Name";
+            this.ItemForTaxTypeName.Size = new System.Drawing.Size(305, 49);
+            this.ItemForTaxTypeName.Text = "Tax Type";
             this.ItemForTaxTypeName.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForTaxTypeName.TextSize = new System.Drawing.Size(98, 16);
+            this.ItemForTaxTypeName.TextSize = new System.Drawing.Size(58, 16);
             // 
             // ItemForTaxTypeStatus
             // 
             this.ItemForTaxTypeStatus.Control = this.TaxTypeStatusTextEdit;
             this.ItemForTaxTypeStatus.Location = new System.Drawing.Point(0, 49);
             this.ItemForTaxTypeStatus.Name = "ItemForTaxTypeStatus";
-            this.ItemForTaxTypeStatus.Size = new System.Drawing.Size(270, 79);
-            this.ItemForTaxTypeStatus.Text = "Tax Type Status";
+            this.ItemForTaxTypeStatus.Size = new System.Drawing.Size(496, 79);
+            this.ItemForTaxTypeStatus.Text = "Status";
             this.ItemForTaxTypeStatus.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForTaxTypeStatus.TextSize = new System.Drawing.Size(98, 16);
-            // 
-            // taxTypesTableAdapter
-            // 
+            this.ItemForTaxTypeStatus.TextSize = new System.Drawing.Size(58, 16);
             // 
             // gridControl1
             // 
@@ -250,7 +246,7 @@ namespace Katswiri.Forms
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(719, 282);
+            this.gridControl1.Size = new System.Drawing.Size(540, 282);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -260,27 +256,14 @@ namespace Katswiri.Forms
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowFooter = true;
-            // 
-            // TaxTypeStatusTextEdit
-            // 
-            this.TaxTypeStatusTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.taxTypesBindingSource, "TaxTypeStatus", true));
-            this.TaxTypeStatusTextEdit.Location = new System.Drawing.Point(24, 118);
-            this.TaxTypeStatusTextEdit.MenuManager = this.ribbon;
-            this.TaxTypeStatusTextEdit.Name = "TaxTypeStatusTextEdit";
-            this.TaxTypeStatusTextEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TaxTypeStatusTextEdit.Properties.NullText = "";
-            this.TaxTypeStatusTextEdit.Size = new System.Drawing.Size(266, 26);
-            this.TaxTypeStatusTextEdit.StyleController = this.dataLayoutControl1;
-            this.TaxTypeStatusTextEdit.TabIndex = 6;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // TaxTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(719, 718);
+            this.ClientSize = new System.Drawing.Size(540, 718);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
@@ -293,8 +276,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeNameTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taxTypesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaxTypeValueTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TaxTypeStatusTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -303,7 +286,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ItemForTaxTypeStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TaxTypeStatusTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +301,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private System.Windows.Forms.BindingSource taxTypesBindingSource;
         private DevExpress.XtraEditors.TextEdit TaxTypeNameTextEdit;
         private DevExpress.XtraEditors.TextEdit TaxTypeValueTextEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
