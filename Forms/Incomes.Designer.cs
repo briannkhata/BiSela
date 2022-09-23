@@ -46,17 +46,12 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.AmountTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.incomesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.IncomeDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.PaymentTypeId = new DevExpress.XtraEditors.LookUpEdit();
             this.IncomeTypeId = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForAmount = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForPaymentTypeId = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIncomeTypeId = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForIncomeDate = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -66,18 +61,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incomesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PaymentTypeId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeTypeId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPaymentTypeId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeTypeId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +91,7 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3});
-            this.ribbon.Size = new System.Drawing.Size(1252, 232);
+            this.ribbon.Size = new System.Drawing.Size(643, 232);
             // 
             // btnSave
             // 
@@ -188,21 +177,17 @@ namespace Katswiri.Forms
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.AmountTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.IncomeDateEdit);
-            this.dataLayoutControl1.Controls.Add(this.PaymentTypeId);
             this.dataLayoutControl1.Controls.Add(this.IncomeTypeId);
-            this.dataLayoutControl1.DataSource = this.incomesBindingSource;
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1252, 260);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(643, 202);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // AmountTextEdit
             // 
-            this.AmountTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.incomesBindingSource, "Amount", true));
             this.AmountTextEdit.Location = new System.Drawing.Point(24, 69);
             this.AmountTextEdit.MenuManager = this.ribbon;
             this.AmountTextEdit.Name = "AmountTextEdit";
@@ -211,55 +196,14 @@ namespace Katswiri.Forms
             this.AmountTextEdit.Properties.Mask.EditMask = "F";
             this.AmountTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.AmountTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.AmountTextEdit.Size = new System.Drawing.Size(1204, 26);
+            this.AmountTextEdit.Size = new System.Drawing.Size(595, 26);
             this.AmountTextEdit.StyleController = this.dataLayoutControl1;
             this.AmountTextEdit.TabIndex = 0;
             // 
-            // incomesBindingSource
-            // 
-            this.incomesBindingSource.DataMember = "Incomes";
-            // 
-            // katswiriDataSet
-            // 
-
-            // 
-            // IncomeDateEdit
-            // 
-            this.IncomeDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.incomesBindingSource, "IncomeDate", true));
-            this.IncomeDateEdit.EditValue = null;
-            this.IncomeDateEdit.Location = new System.Drawing.Point(735, 118);
-            this.IncomeDateEdit.MenuManager = this.ribbon;
-            this.IncomeDateEdit.Name = "IncomeDateEdit";
-            this.IncomeDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IncomeDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IncomeDateEdit.Size = new System.Drawing.Size(493, 26);
-            this.IncomeDateEdit.StyleController = this.dataLayoutControl1;
-            this.IncomeDateEdit.TabIndex = 4;
-            // 
-            // PaymentTypeId
-            // 
-            this.PaymentTypeId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.incomesBindingSource, "PaymentTypeId", true));
-            this.PaymentTypeId.Location = new System.Drawing.Point(24, 118);
-            this.PaymentTypeId.MenuManager = this.ribbon;
-            this.PaymentTypeId.Name = "PaymentTypeId";
-            this.PaymentTypeId.Properties.Appearance.Options.UseTextOptions = true;
-            this.PaymentTypeId.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.PaymentTypeId.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.PaymentTypeId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PaymentTypeId.Properties.NullText = "";
-            this.PaymentTypeId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.PaymentTypeId.Size = new System.Drawing.Size(390, 28);
-            this.PaymentTypeId.StyleController = this.dataLayoutControl1;
-            this.PaymentTypeId.TabIndex = 2;
-            // 
             // IncomeTypeId
             // 
-            this.IncomeTypeId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.incomesBindingSource, "IncomeTypeId", true));
             this.IncomeTypeId.EditValue = false;
-            this.IncomeTypeId.Location = new System.Drawing.Point(418, 118);
+            this.IncomeTypeId.Location = new System.Drawing.Point(24, 118);
             this.IncomeTypeId.MenuManager = this.ribbon;
             this.IncomeTypeId.Name = "IncomeTypeId";
             this.IncomeTypeId.Properties.Appearance.Options.UseTextOptions = true;
@@ -270,7 +214,7 @@ namespace Katswiri.Forms
             this.IncomeTypeId.Properties.NullText = "";
             this.IncomeTypeId.Properties.PopupSizeable = false;
             this.IncomeTypeId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.IncomeTypeId.Size = new System.Drawing.Size(313, 28);
+            this.IncomeTypeId.Size = new System.Drawing.Size(595, 28);
             this.IncomeTypeId.StyleController = this.dataLayoutControl1;
             this.IncomeTypeId.TabIndex = 3;
             // 
@@ -281,7 +225,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1252, 260);
+            this.Root.Size = new System.Drawing.Size(643, 202);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -292,18 +236,16 @@ namespace Katswiri.Forms
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1232, 240);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(623, 182);
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.ItemForAmount,
-            this.ItemForPaymentTypeId,
-            this.ItemForIncomeTypeId,
-            this.ItemForIncomeDate});
+            this.ItemForIncomeTypeId});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1232, 240);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(623, 182);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForAmount
@@ -311,50 +253,30 @@ namespace Katswiri.Forms
             this.ItemForAmount.Control = this.AmountTextEdit;
             this.ItemForAmount.Location = new System.Drawing.Point(0, 0);
             this.ItemForAmount.Name = "ItemForAmount";
-            this.ItemForAmount.Size = new System.Drawing.Size(1208, 49);
+            this.ItemForAmount.Size = new System.Drawing.Size(599, 49);
             this.ItemForAmount.Text = "Amount";
             this.ItemForAmount.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForAmount.TextSize = new System.Drawing.Size(88, 16);
-            // 
-            // ItemForPaymentTypeId
-            // 
-            this.ItemForPaymentTypeId.Control = this.PaymentTypeId;
-            this.ItemForPaymentTypeId.Location = new System.Drawing.Point(0, 49);
-            this.ItemForPaymentTypeId.Name = "ItemForPaymentTypeId";
-            this.ItemForPaymentTypeId.Size = new System.Drawing.Size(394, 141);
-            this.ItemForPaymentTypeId.Text = "Payment Type";
-            this.ItemForPaymentTypeId.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForPaymentTypeId.TextSize = new System.Drawing.Size(88, 16);
+            this.ItemForAmount.TextSize = new System.Drawing.Size(79, 16);
             // 
             // ItemForIncomeTypeId
             // 
             this.ItemForIncomeTypeId.Control = this.IncomeTypeId;
-            this.ItemForIncomeTypeId.Location = new System.Drawing.Point(394, 49);
+            this.ItemForIncomeTypeId.Location = new System.Drawing.Point(0, 49);
             this.ItemForIncomeTypeId.Name = "ItemForIncomeTypeId";
-            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(317, 141);
+            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(599, 83);
             this.ItemForIncomeTypeId.Text = "Income Type";
             this.ItemForIncomeTypeId.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForIncomeTypeId.TextSize = new System.Drawing.Size(88, 16);
-            // 
-            // ItemForIncomeDate
-            // 
-            this.ItemForIncomeDate.Control = this.IncomeDateEdit;
-            this.ItemForIncomeDate.Location = new System.Drawing.Point(711, 49);
-            this.ItemForIncomeDate.Name = "ItemForIncomeDate";
-            this.ItemForIncomeDate.Size = new System.Drawing.Size(497, 141);
-            this.ItemForIncomeDate.Text = "Income Date";
-            this.ItemForIncomeDate.TextLocation = DevExpress.Utils.Locations.Top;
-            this.ItemForIncomeDate.TextSize = new System.Drawing.Size(88, 16);
+            this.ItemForIncomeTypeId.TextSize = new System.Drawing.Size(79, 16);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.gridControl1.Location = new System.Drawing.Point(0, 498);
+            this.gridControl1.Location = new System.Drawing.Point(0, 458);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1252, 307);
+            this.gridControl1.Size = new System.Drawing.Size(643, 424);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -369,7 +291,7 @@ namespace Katswiri.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1252, 805);
+            this.ClientSize = new System.Drawing.Size(643, 882);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
@@ -385,18 +307,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AmountTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.incomesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IncomeDateEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PaymentTypeId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IncomeTypeId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPaymentTypeId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeTypeId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -419,18 +335,13 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private System.Windows.Forms.BindingSource incomesBindingSource;
         private DevExpress.XtraEditors.TextEdit AmountTextEdit;
-        private DevExpress.XtraEditors.DateEdit IncomeDateEdit;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem ItemForAmount;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForPaymentTypeId;
         private DevExpress.XtraLayout.LayoutControlItem ItemForIncomeTypeId;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForIncomeDate;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.LookUpEdit PaymentTypeId;
         private DevExpress.XtraEditors.LookUpEdit IncomeTypeId;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;

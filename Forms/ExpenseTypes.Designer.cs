@@ -67,13 +67,13 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(791, 232);
+            this.ribbon.Size = new System.Drawing.Size(514, 232);
             // 
             // btnSave
             // 
             this.btnSave.Caption = "Save";
             this.btnSave.Id = 1;
-            this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
@@ -81,7 +81,7 @@ namespace Katswiri.Forms
             // 
             this.btnDelete.Caption = "Delete";
             this.btnDelete.Id = 2;
-            this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
             // 
@@ -110,7 +110,7 @@ namespace Katswiri.Forms
             this.layoutControl1.Location = new System.Drawing.Point(0, 232);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(791, 135);
+            this.layoutControl1.Size = new System.Drawing.Size(514, 135);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -119,7 +119,7 @@ namespace Katswiri.Forms
             this.textEditExpenseType.Location = new System.Drawing.Point(24, 77);
             this.textEditExpenseType.MenuManager = this.ribbon;
             this.textEditExpenseType.Name = "textEditExpenseType";
-            this.textEditExpenseType.Size = new System.Drawing.Size(743, 26);
+            this.textEditExpenseType.Size = new System.Drawing.Size(466, 26);
             this.textEditExpenseType.StyleController = this.layoutControl1;
             this.textEditExpenseType.TabIndex = 4;
             // 
@@ -130,7 +130,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(791, 135);
+            this.Root.Size = new System.Drawing.Size(514, 135);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -139,7 +139,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(771, 115);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(494, 115);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem1
@@ -148,7 +148,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1.Control = this.textEditExpenseType;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(747, 65);
+            this.layoutControlItem1.Size = new System.Drawing.Size(470, 65);
             this.layoutControlItem1.Text = "Expense Type";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(88, 16);
@@ -160,7 +160,7 @@ namespace Katswiri.Forms
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(791, 372);
+            this.gridControl1.Size = new System.Drawing.Size(514, 372);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -170,13 +170,13 @@ namespace Katswiri.Forms
             // 
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // ExpenseTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 745);
+            this.ClientSize = new System.Drawing.Size(514, 745);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.ribbon);

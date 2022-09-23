@@ -31,7 +31,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwExpenseTypes.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["ExpenseTypeId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -78,9 +77,10 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    expenseType.ExpenseTypeName = textEditExpenseType.Text;
                     using (db = new BEntities())
                     {
+                        expenseType.ExpenseTypeName = textEditExpenseType.Text;
+
                         if (ExpenseTypeId > 0)
                             db.Entry(expenseType).State = EntityState.Modified;
                         else

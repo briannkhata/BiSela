@@ -65,8 +65,7 @@ namespace Katswiri.Forms
                         TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
                         TotalChange = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         TotalTendered = Double.Parse(textBoxTendered.Text),
-                        DiscountAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountAmount),
-                        DiscountPercent = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.DiscountPercent),
+                        Discount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.Discount),
                     };
 
                     db.Sales.Add(sale);
@@ -84,8 +83,7 @@ namespace Katswiri.Forms
                             ShopId = (int)item.ShopId,
                             SoldPrice = (double)item.TotalPrice,
                             Qty = (double)item.Qty,
-                            DiscountAmount = (double)item.DiscountAmount,
-                            DiscountPercent = (double)item.DiscountPercent,
+                            Discount = (double)item.Discount,
                             TaxValue = (double)item.TaxValue,
                             UserId = (int)item.UserId,
                             DateSold = DateTime.Now

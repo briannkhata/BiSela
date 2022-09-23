@@ -12,15 +12,13 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Income
+    public partial class Account
     {
-        public int IncomeId { get; set; }
-        public int IncomeTypeId { get; set; }
-        public double Amount { get; set; }
-        public int UserId { get; set; }
+        public int AccountId { get; set; }
+        public double OpeningBalance { get; set; }
+        public double ClosingBalance { get; set; }
+        public System.DateTime ActivityDate { get; set; }
+        public int ShopId { get; set; }
         public int Deleted { get; set; }
-    
-        public virtual IncomeType IncomeType { get; set; }
-        public virtual User User { get; set; }
     }
 }

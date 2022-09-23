@@ -14,6 +14,12 @@ namespace Katswiri.Data
     
     public partial class Stock
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Stock()
+        {
+            this.Carts = new HashSet<Cart>();
+        }
+    
         public int StockId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> ShopId { get; set; }
@@ -24,6 +30,8 @@ namespace Katswiri.Data
         public Nullable<double> SellingPrice { get; set; }
         public string Comment { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
         public virtual Product Product { get; set; }
     }
 }

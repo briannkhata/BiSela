@@ -31,7 +31,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwIncomTypes.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["IncomeTypeId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -52,9 +51,10 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    incomeType.IncomeTypeName = textEditIncomeType.Text;
                     using (db = new BEntities())
                     {
+                        incomeType.IncomeTypeName = textEditIncomeType.Text;
+
                         if (IncomeTypeId > 0)
                             db.Entry(incomeType).State = EntityState.Modified;
                         else

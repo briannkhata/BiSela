@@ -31,12 +31,8 @@ namespace Katswiri.Forms
         private void clearFields()
         {
 
-            AmountTextEdit.Text = ExpenseDateEdit.Text  = string.Empty;
-            PaymentTypeId.EditValue = ExpenseTypeId.EditValue = null;
-            PaymentTypeId.EditValue = ExpenseTypeId.EditValue = "nulltext";
+            AmountTextEdit.Text = string.Empty;
             gridView1.OptionsView.ShowIndicator = false;
-            PaymentTypeId.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
-            PaymentTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
             ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
 
             btnDelete.Enabled = false;
@@ -51,7 +47,6 @@ namespace Katswiri.Forms
                 gridView1.OptionsBehavior.Editable = false;
                 //gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["ExpenseId"].Visible = false;
-                //gridView1.Columns["AddedBy"].Visible = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
 
@@ -74,17 +69,6 @@ namespace Katswiri.Forms
                 AmountTextEdit.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(ExpenseDateEdit.Text))
-            {
-                result = false;
-                ExpenseDateEdit.ErrorText = "Required";
-            }
-
-            if (String.IsNullOrEmpty(PaymentTypeId.Text))
-            {
-                result = false;
-                PaymentTypeId.ErrorText = "Required";
-            }
 
             if (String.IsNullOrEmpty(ExpenseTypeId.Text))
             {
@@ -100,12 +84,13 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    expense.Amount = Double.Parse(AmountTextEdit.Text);
-                    expense.ExpenseTypeId = Convert.ToInt16(ExpenseTypeId.EditValue);
-                    expense.ExpenseDate = Convert.ToDateTime(ExpenseDateEdit.Text.ToString());
-                    expense.UserId = 1;
                     using (db = new BEntities())
                     {
+
+                        expense.Amount = Double.Parse(AmountTextEdit.Text);
+                        expense.ExpenseTypeId = Convert.ToInt16(ExpenseTypeId.EditValue);
+                        expense.UserId = 1;
+
                         if (ExpenseId > 0)
                             db.Entry(expense).State = EntityState.Modified;
                         else
@@ -156,7 +141,6 @@ namespace Katswiri.Forms
                         expense = db.Expenses.Where(x => x.ExpenseId == ExpenseId).FirstOrDefault();
                         AmountTextEdit.Text = expense.Amount.ToString();
                         ExpenseTypeId.EditValue = expense.ExpenseTypeId;
-                        ExpenseDateEdit.Text = expense.ExpenseDate.ToString();
                     }
                 }
                 btnSave.Caption = "Update";
@@ -173,6 +157,11 @@ namespace Katswiri.Forms
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             clearFields();
             loadExpenses();
+        }
+
+        private void Expenses_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

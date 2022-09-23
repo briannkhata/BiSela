@@ -132,7 +132,7 @@ namespace Katswiri
             this.barButtonItem23,
             this.barButtonItem24});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 37;
+            this.ribbon.MaxItemId = 39;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -143,7 +143,7 @@ namespace Katswiri
             this.ribbonPage6});
             this.ribbon.QuickToolbarItemLinks.Add(this.logout);
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
-            this.ribbon.Size = new System.Drawing.Size(1466, 232);
+            this.ribbon.Size = new System.Drawing.Size(1432, 232);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // versionHi
@@ -195,7 +195,8 @@ namespace Katswiri
             // 
             // barButtonItem3
             // 
- 
+            this.barButtonItem3.Id = 37;
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barButtonItem4
             // 
@@ -215,7 +216,8 @@ namespace Katswiri
             // 
             // barButtonItem8
             // 
-          
+            this.barButtonItem8.Id = 38;
+            this.barButtonItem8.Name = "barButtonItem8";
             // 
             // barButtonItem9
             // 
@@ -536,14 +538,14 @@ namespace Katswiri
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 651);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1466, 36);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1432, 36);
             // 
             // Main
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1466, 687);
+            this.ClientSize = new System.Drawing.Size(1432, 687);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

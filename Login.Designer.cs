@@ -29,16 +29,17 @@ namespace Katswiri
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.simpleButtonLogin = new DevExpress.XtraEditors.SimpleButton();
             this.textEditUserName = new DevExpress.XtraEditors.TextEdit();
             this.textEditPassWord = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButtonLogin = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -47,15 +48,17 @@ namespace Katswiri
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
             this.pictureEdit1.Location = new System.Drawing.Point(33, 12);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pictureEdit1.Size = new System.Drawing.Size(195, 163);
             this.pictureEdit1.TabIndex = 0;
             // 
@@ -77,6 +80,16 @@ namespace Katswiri
             this.dataLayoutControl1.Size = new System.Drawing.Size(379, 169);
             this.dataLayoutControl1.TabIndex = 1;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // simpleButtonLogin
+            // 
+            this.simpleButtonLogin.Location = new System.Drawing.Point(200, 72);
+            this.simpleButtonLogin.Name = "simpleButtonLogin";
+            this.simpleButtonLogin.Size = new System.Drawing.Size(167, 42);
+            this.simpleButtonLogin.StyleController = this.dataLayoutControl1;
+            this.simpleButtonLogin.TabIndex = 7;
+            this.simpleButtonLogin.Text = "Login";
+            this.simpleButtonLogin.Click += new System.EventHandler(this.simpleButtonLogin_Click);
             // 
             // textEditUserName
             // 
@@ -129,6 +142,14 @@ namespace Katswiri
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(66, 16);
             // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(188, 89);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButtonLogin;
@@ -137,24 +158,6 @@ namespace Katswiri
             this.layoutControlItem5.Size = new System.Drawing.Size(171, 89);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
-            // 
-            // simpleButtonLogin
-            // 
-            this.simpleButtonLogin.Location = new System.Drawing.Point(200, 72);
-            this.simpleButtonLogin.Name = "simpleButtonLogin";
-            this.simpleButtonLogin.Size = new System.Drawing.Size(167, 42);
-            this.simpleButtonLogin.StyleController = this.dataLayoutControl1;
-            this.simpleButtonLogin.TabIndex = 7;
-            this.simpleButtonLogin.Text = "Login";
-            this.simpleButtonLogin.Click += new System.EventHandler(this.simpleButtonLogin_Click);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 60);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(188, 89);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
             // 
             // Login
             // 
@@ -176,8 +179,8 @@ namespace Katswiri
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }

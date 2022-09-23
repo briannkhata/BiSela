@@ -31,7 +31,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControlUnits.DataSource = db.vwUnits.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["UnitId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -41,7 +40,7 @@ namespace Katswiri.Forms
 
         public void clearFields()
         {
-            textEditUnit.Text = textEditSubUnit.Text = textEditSubUnitNameValue.Text = textEditUnitNameValue.Text = string.Empty;
+            textEditUnit.Text = textEditUnitValue.Text = textEditSubUnitValue.Text = textEditSubUnit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             UnitId = 0;
@@ -53,12 +52,13 @@ namespace Katswiri.Forms
             {
                 if(formValid())
                 {
-                    unit.UnitName = textEditUnit.Text;
-                    unit.SubUnit = textEditSubUnit.Text;
-                    unit.SubUnitValue = Convert.ToDouble(textEditSubUnitNameValue.Text);
-                    unit.UnitValue = Convert.ToDouble(textEditUnitNameValue.Text);
                     using (db = new BEntities())
                     {
+
+                        unit.UnitName = textEditUnit.Text;
+                        unit.UnitValue = Convert.ToDouble(textEditUnitValue.Text);
+                        unit.SubUnit = textEditSubUnit.Text;
+                        unit.SubUnitValue = Convert.ToDouble(textEditSubUnitValue.Text);
                         if (UnitId > 0)
                             db.Entry(unit).State = EntityState.Modified;
                         else
@@ -88,10 +88,10 @@ namespace Katswiri.Forms
                 result = false;
                 textEditUnit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(textEditSubUnit.Text))
+            if (String.IsNullOrEmpty(textEditUnitValue.Text))
             {
                 result = false;
-                textEditSubUnit.ErrorText = "Required";
+                textEditUnitValue.ErrorText = "Required";
             }
             return result;
         }
@@ -107,9 +107,9 @@ namespace Katswiri.Forms
                     UnitId = row.UnitId;
                     unit = db.Units.Where(x => x.UnitId == UnitId).FirstOrDefault();
                     textEditUnit.Text = unit.UnitName;
-                    textEditSubUnit.Text = unit.SubUnit;
-                    textEditSubUnitNameValue.Text = unit.SubUnitValue.ToString();
-                    textEditUnitNameValue.Text = unit.UnitValue.ToString();
+                    textEditUnitValue.Text = unit.SubUnit;
+                    textEditSubUnitValue.Text = unit.SubUnitValue.ToString();
+                    textEditSubUnit.Text = unit.UnitValue.ToString();
                 }
             }
             btnSave.Caption = "Update";

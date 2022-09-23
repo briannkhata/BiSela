@@ -15,14 +15,17 @@ namespace Katswiri.Data
     public partial class Cart
     {
         public int CartId { get; set; }
-        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> StockId { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<int> ShopId { get; set; }
-        public Nullable<double> DiscountPercent { get; set; }
-        public Nullable<double> DiscountAmount { get; set; }
+        public Nullable<double> Discount { get; set; }
         public Nullable<double> SellingPrice { get; set; }
         public Nullable<double> TotalPrice { get; set; }
         public Nullable<double> Qty { get; set; }
         public Nullable<double> TaxValue { get; set; }
+        public Nullable<int> ProductId { get; set; }
+    
+        public virtual Stock Stock { get; set; }
+        public virtual User User { get; set; }
     }
 }

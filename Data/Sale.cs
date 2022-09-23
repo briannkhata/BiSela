@@ -23,8 +23,7 @@ namespace Katswiri.Data
         public int SaleId { get; set; }
         public double TotalTendered { get; set; }
         public double TotalBill { get; set; }
-        public double DiscountPercent { get; set; }
-        public double DiscountAmount { get; set; }
+        public double Discount { get; set; }
         public double TaxAmount { get; set; }
         public Nullable<int> SoldTo { get; set; }
         public int SoldBy { get; set; }

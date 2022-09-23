@@ -17,9 +17,9 @@ namespace Katswiri.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Stocks = new HashSet<Stock>();
             this.OrderDetails = new HashSet<OrderDetail>();
             this.SaleDetails = new HashSet<SaleDetail>();
+            this.Stocks = new HashSet<Stock>();
         }
     
         public int ProductId { get; set; }
@@ -28,23 +28,22 @@ namespace Katswiri.Data
         public string BarCode { get; set; }
         public int UnitId { get; set; }
         public int CategoryId { get; set; }
-        public int Deleted { get; set; }
         public Nullable<int> BrandId { get; set; }
-        public Nullable<System.DateTime> LastUpdated { get; set; }
+        public Nullable<int> TaxTypeId { get; set; }
+        public Nullable<double> ReOrderLevel { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public Nullable<double> ReOrderLevel { get; set; }
-        public Nullable<int> TaxTypeId { get; set; }
+        public int Deleted { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
-        public virtual Unit Unit { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stock> Stocks { get; set; }
-        public virtual TaxType TaxType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual TaxType TaxType { get; set; }
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Stock> Stocks { get; set; }
     }
 }

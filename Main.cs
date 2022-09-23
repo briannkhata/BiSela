@@ -140,9 +140,9 @@ namespace Katswiri
 
         private void InitMainView()
         {
-            using (var db = new BEntities()) {
-                //usernameLabel.Caption = $"{Globals.User.UserName} (<b>{Globals.User.FirstName} {Globals.User.SurName}</b>)";
-                userNameDisplay.Caption = $"{LoginInfo.UserName} (<b>{ db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().Name }</b>)";
+            using (var db = new BEntities()) 
+            {
+                userNameDisplay.Caption = $"{LoginInfo.UserName} ({ db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().Name })";
             }
         }
 
@@ -157,10 +157,8 @@ namespace Katswiri
         {
             try
             {
-                //this.closeAllMdiChildren();
-                //Globals.User = null;
-                //Globals.AuthenticationHeader = null;
-                //usernameLabel.Caption = "";
+                this.closeAllMdiChildren();
+                userNameDisplay.Caption = "";
                 showLogin();
             }
             catch (Exception ex)

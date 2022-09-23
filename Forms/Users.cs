@@ -40,6 +40,14 @@ namespace Katswiri.Forms
             }
         }
 
+        private void loadtaxUserTypes()
+        {
+            Dictionary<int, string> userType = Enum.GetValues(typeof(UserType)).Cast<UserType>().ToDictionary(x => (int)x, x => x.ToString());
+            comboBoxEditUserType.Properties.DataSource = userType;
+            comboBoxEditUserType.Properties.ValueMember = "Value";
+            comboBoxEditUserType.Properties.DisplayMember = "Value";
+        }
+
         private void loadGender()
         {
             Dictionary<int, string> gender = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToDictionary(x => (int)x, x => x.ToString());

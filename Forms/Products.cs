@@ -28,7 +28,7 @@ namespace Katswiri.Forms
 
         private void clearFields()
         {
-            ProductNameTextEdit.Text = ProductCodeTextEdit.Text = BarCodeTextEdit.Text = SellingPriceTextEdit.Text = string.Empty;
+            ProductNameTextEdit.Text = ProductCodeTextEdit.Text = BarCodeTextEdit.Text = TextEditDescription.Text = string.Empty;
             CategoryIdLookUpEdit.EditValue = UnitIdLookUpEdit.EditValue = TaxTypeIdLookUpEdit.EditValue = null;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
@@ -40,9 +40,7 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControlProducts.DataSource = db.vwProducts.ToList();
-                gridView1.Columns["Deleted"].Visible = false;
                 gridView1.Columns["ProductId"].Visible = false;
-                gridView1.Columns["ShopName"].Visible = false;
                 gridView1.Columns["TaxTypeName"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
@@ -127,16 +125,22 @@ namespace Katswiri.Forms
                 result = false;
                 BarCodeTextEdit.ErrorText = "Required";
             }
-            if (Double.IsNaN(Convert.ToDouble(SellingPriceTextEdit.Text)))
+            if (Double.IsNaN(Convert.ToDouble(TextEditDescription.Text)))
             {
                 result = false;
-                SellingPriceTextEdit.ErrorText = "Required";
+                TextEditDescription.ErrorText = "Required";
             }
 
             if (String.IsNullOrEmpty(BrandLookUpEdit.Text))
             {
                 result = false;
                 BrandLookUpEdit.ErrorText = "Required";
+            }
+
+            if (String.IsNullOrEmpty(textEditOrderLevel.Text))
+            {
+                result = false;
+                textEditOrderLevel.ErrorText = "Required";
             }
             return result;
         }
@@ -154,7 +158,7 @@ namespace Katswiri.Forms
                     product.BrandId = Convert.ToInt32(BrandLookUpEdit.EditValue);
                     product.BarCode = BarCodeTextEdit.Text;
                     product.ProductCode = ProductCodeTextEdit.Text;
-                    //product.SellingPrice = Convert.ToDouble(SellingPriceTextEdit.Text);
+                    product.ReOrderLevel = double.Parse(textEditOrderLevel.Text);
                     using (db = new BEntities())
                     {
                         if (ProductId > 0)
@@ -209,11 +213,16 @@ namespace Katswiri.Forms
                     CategoryIdLookUpEdit.EditValue = product.CategoryId;
                     TaxTypeIdLookUpEdit.EditValue = product.TaxTypeId;
                     BrandLookUpEdit.EditValue = product.BrandId;
-                   // SellingPriceTextEdit.Text = product.SellingPrice.ToString();
+                    textEditOrderLevel.Text = product.ReOrderLevel.ToString();
                 }
             }
             btnSave.Caption = "Update";
             btnDelete.Enabled = true;
+        }
+
+        private void Products_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

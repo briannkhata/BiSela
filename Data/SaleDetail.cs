@@ -18,8 +18,7 @@ namespace Katswiri.Data
         public int SaleId { get; set; }
         public int ProductId { get; set; }
         public double SellingPrice { get; set; }
-        public double DiscountPercent { get; set; }
-        public double DiscountAmount { get; set; }
+        public double Discount { get; set; }
         public double SoldPrice { get; set; }
         public int ShopId { get; set; }
         public double Qty { get; set; }

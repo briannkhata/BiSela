@@ -33,16 +33,18 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.textEditMotto = new DevExpress.XtraEditors.TextEdit();
+            this.textEditCurrency = new DevExpress.XtraEditors.TextEdit();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.EmailTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PhoneTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.TextEditAddress = new DevExpress.XtraEditors.MemoEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -50,17 +52,17 @@ namespace Katswiri.Forms
             this.ItemForEmail = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForName = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForfee = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditCurrency = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditMotto = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.TextEditAddress = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditMotto.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCurrency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -68,11 +70,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForfee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCurrency.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditMotto.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEditAddress.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -87,7 +86,7 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(755, 232);
+            this.ribbon.Size = new System.Drawing.Size(509, 232);
             // 
             // btnSave
             // 
@@ -128,25 +127,43 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(755, 396);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(509, 396);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // textEditMotto
+            // 
+            this.textEditMotto.Location = new System.Drawing.Point(24, 216);
+            this.textEditMotto.MenuManager = this.ribbon;
+            this.textEditMotto.Name = "textEditMotto";
+            this.textEditMotto.Size = new System.Drawing.Size(461, 26);
+            this.textEditMotto.StyleController = this.dataLayoutControl1;
+            this.textEditMotto.TabIndex = 13;
+            // 
+            // textEditCurrency
+            // 
+            this.textEditCurrency.Location = new System.Drawing.Point(24, 167);
+            this.textEditCurrency.MenuManager = this.ribbon;
+            this.textEditCurrency.Name = "textEditCurrency";
+            this.textEditCurrency.Size = new System.Drawing.Size(461, 26);
+            this.textEditCurrency.StyleController = this.dataLayoutControl1;
+            this.textEditCurrency.TabIndex = 12;
             // 
             // NameTextEdit
             // 
             this.NameTextEdit.Location = new System.Drawing.Point(24, 69);
             this.NameTextEdit.MenuManager = this.ribbon;
             this.NameTextEdit.Name = "NameTextEdit";
-            this.NameTextEdit.Size = new System.Drawing.Size(707, 26);
+            this.NameTextEdit.Size = new System.Drawing.Size(461, 26);
             this.NameTextEdit.StyleController = this.dataLayoutControl1;
             this.NameTextEdit.TabIndex = 6;
             // 
             // EmailTextEdit
             // 
-            this.EmailTextEdit.Location = new System.Drawing.Point(379, 118);
+            this.EmailTextEdit.Location = new System.Drawing.Point(256, 118);
             this.EmailTextEdit.MenuManager = this.ribbon;
             this.EmailTextEdit.Name = "EmailTextEdit";
-            this.EmailTextEdit.Size = new System.Drawing.Size(352, 26);
+            this.EmailTextEdit.Size = new System.Drawing.Size(229, 26);
             this.EmailTextEdit.StyleController = this.dataLayoutControl1;
             this.EmailTextEdit.TabIndex = 7;
             // 
@@ -155,9 +172,18 @@ namespace Katswiri.Forms
             this.PhoneTextEdit.Location = new System.Drawing.Point(24, 118);
             this.PhoneTextEdit.MenuManager = this.ribbon;
             this.PhoneTextEdit.Name = "PhoneTextEdit";
-            this.PhoneTextEdit.Size = new System.Drawing.Size(351, 26);
+            this.PhoneTextEdit.Size = new System.Drawing.Size(228, 26);
             this.PhoneTextEdit.StyleController = this.dataLayoutControl1;
             this.PhoneTextEdit.TabIndex = 8;
+            // 
+            // TextEditAddress
+            // 
+            this.TextEditAddress.Location = new System.Drawing.Point(24, 265);
+            this.TextEditAddress.MenuManager = this.ribbon;
+            this.TextEditAddress.Name = "TextEditAddress";
+            this.TextEditAddress.Size = new System.Drawing.Size(461, 107);
+            this.TextEditAddress.StyleController = this.dataLayoutControl1;
+            this.TextEditAddress.TabIndex = 11;
             // 
             // Root
             // 
@@ -166,7 +192,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(755, 396);
+            this.Root.Size = new System.Drawing.Size(509, 396);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -177,7 +203,7 @@ namespace Katswiri.Forms
             this.layoutControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(735, 376);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(489, 376);
             // 
             // layoutControlGroup2
             // 
@@ -190,7 +216,7 @@ namespace Katswiri.Forms
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(735, 376);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(489, 376);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForPhone
@@ -198,7 +224,7 @@ namespace Katswiri.Forms
             this.ItemForPhone.Control = this.PhoneTextEdit;
             this.ItemForPhone.Location = new System.Drawing.Point(0, 49);
             this.ItemForPhone.Name = "ItemForPhone";
-            this.ItemForPhone.Size = new System.Drawing.Size(355, 49);
+            this.ItemForPhone.Size = new System.Drawing.Size(232, 49);
             this.ItemForPhone.Text = "Phone";
             this.ItemForPhone.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForPhone.TextSize = new System.Drawing.Size(53, 16);
@@ -206,9 +232,9 @@ namespace Katswiri.Forms
             // ItemForEmail
             // 
             this.ItemForEmail.Control = this.EmailTextEdit;
-            this.ItemForEmail.Location = new System.Drawing.Point(355, 49);
+            this.ItemForEmail.Location = new System.Drawing.Point(232, 49);
             this.ItemForEmail.Name = "ItemForEmail";
-            this.ItemForEmail.Size = new System.Drawing.Size(356, 49);
+            this.ItemForEmail.Size = new System.Drawing.Size(233, 49);
             this.ItemForEmail.Text = "Email";
             this.ItemForEmail.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForEmail.TextSize = new System.Drawing.Size(53, 16);
@@ -218,7 +244,7 @@ namespace Katswiri.Forms
             this.ItemForName.Control = this.NameTextEdit;
             this.ItemForName.Location = new System.Drawing.Point(0, 0);
             this.ItemForName.Name = "ItemForName";
-            this.ItemForName.Size = new System.Drawing.Size(711, 49);
+            this.ItemForName.Size = new System.Drawing.Size(465, 49);
             this.ItemForName.Text = "Name";
             this.ItemForName.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForName.TextSize = new System.Drawing.Size(53, 16);
@@ -228,64 +254,37 @@ namespace Katswiri.Forms
             this.ItemForfee.Control = this.TextEditAddress;
             this.ItemForfee.Location = new System.Drawing.Point(0, 196);
             this.ItemForfee.Name = "ItemForfee";
-            this.ItemForfee.Size = new System.Drawing.Size(711, 130);
+            this.ItemForfee.Size = new System.Drawing.Size(465, 130);
             this.ItemForfee.Text = "Address";
             this.ItemForfee.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForfee.TextSize = new System.Drawing.Size(53, 16);
-            // 
-            // textEditCurrency
-            // 
-            this.textEditCurrency.Location = new System.Drawing.Point(24, 167);
-            this.textEditCurrency.MenuManager = this.ribbon;
-            this.textEditCurrency.Name = "textEditCurrency";
-            this.textEditCurrency.Size = new System.Drawing.Size(707, 26);
-            this.textEditCurrency.StyleController = this.dataLayoutControl1;
-            this.textEditCurrency.TabIndex = 12;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEditCurrency;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 98);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(711, 49);
+            this.layoutControlItem1.Size = new System.Drawing.Size(465, 49);
             this.layoutControlItem1.Text = "Currency";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(53, 16);
-            // 
-            // textEditMotto
-            // 
-            this.textEditMotto.Location = new System.Drawing.Point(24, 216);
-            this.textEditMotto.MenuManager = this.ribbon;
-            this.textEditMotto.Name = "textEditMotto";
-            this.textEditMotto.Size = new System.Drawing.Size(707, 26);
-            this.textEditMotto.StyleController = this.dataLayoutControl1;
-            this.textEditMotto.TabIndex = 13;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEditMotto;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(711, 49);
+            this.layoutControlItem2.Size = new System.Drawing.Size(465, 49);
             this.layoutControlItem2.Text = "Motto";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(53, 16);
-            // 
-            // TextEditAddress
-            // 
-            this.TextEditAddress.Location = new System.Drawing.Point(24, 265);
-            this.TextEditAddress.MenuManager = this.ribbon;
-            this.TextEditAddress.Name = "TextEditAddress";
-            this.TextEditAddress.Size = new System.Drawing.Size(707, 107);
-            this.TextEditAddress.StyleController = this.dataLayoutControl1;
-            this.TextEditAddress.TabIndex = 11;
             // 
             // Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(755, 653);
+            this.ClientSize = new System.Drawing.Size(509, 641);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -296,9 +295,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEditMotto.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCurrency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EmailTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhoneTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TextEditAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -306,11 +308,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ItemForEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForfee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCurrency.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditMotto.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEditAddress.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
