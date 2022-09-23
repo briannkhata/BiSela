@@ -37,10 +37,11 @@ namespace Katswiri.Forms
                 gridView1.OptionsView.ShowIndicator = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
                 loadGender();
+                loadUserTypes();
             }
         }
 
-        private void loadtaxUserTypes()
+        private void loadUserTypes()
         {
             Dictionary<int, string> userType = Enum.GetValues(typeof(UserType)).Cast<UserType>().ToDictionary(x => (int)x, x => x.ToString());
             comboBoxEditUserType.Properties.DataSource = userType;
@@ -120,7 +121,13 @@ namespace Katswiri.Forms
                 result = false;
                 EmailTextEdit.ErrorText = "Required";
             }
-            
+
+            if (String.IsNullOrEmpty(comboBoxEditUserType.Text))
+            {
+                result = false;
+                comboBoxEditUserType.ErrorText = "Required";
+            }
+
             return result;
         }
 
@@ -133,7 +140,7 @@ namespace Katswiri.Forms
                     user.Name = NameTextEdit.Text;
                     user.Gender = textEditGender.EditValue.ToString();
                     user.UserName = UserNameTextEdit.Text;
-                    //user.ShopId =Convert.ToInt32(ShopIdLookUpEdit.EditValue);
+                    user.UserType = (string)comboBoxEditUserType.EditValue;
                     user.PassWord = PassWordTextEdit.Text;
                     user.Email = EmailTextEdit.Text;
                     user.Phone = PhoneTextEdit.Text;
@@ -188,7 +195,7 @@ namespace Katswiri.Forms
                     NameTextEdit.Text = user.Name;
                     textEditGender.EditValue = user.Gender;
                     UserNameTextEdit.Text = user.UserName;
-                    //ShopIdLookUpEdit.EditValue = user.ShopId;
+                    comboBoxEditUserType.EditValue = user.UserType;
                     PassWordTextEdit.Text = user.PassWord;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
@@ -198,7 +205,6 @@ namespace Katswiri.Forms
             btnSave.Caption = "Update";
             btnDelete.Enabled = true;
         }
-
        
     }
 }
