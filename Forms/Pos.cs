@@ -503,6 +503,9 @@ namespace Katswiri.Forms
 
         }
 
+        private void Pos_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
