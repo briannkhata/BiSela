@@ -219,6 +219,8 @@ warning 6002: The table/view 'bisela.dbo.OrderCats' does not have a primary key 
           <Property Name="Deleted" Type="int" />
           <Property Name="SubTotal" Type="float" />
           <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="Paid" Type="float" />
+          <Property Name="Balance" Type="float" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -1651,6 +1653,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SubTotal" Type="Double" />
           <Property Name="PaymentTypeId" Type="Int32" />
           <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Sales" FromRole="Sale" ToRole="SaleDetail" />
+          <Property Name="Paid" Type="Double" />
+          <Property Name="Balance" Type="Double" />
         </EntityType>
         <Association Name="FK_Cart_Products">
           <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
@@ -2136,6 +2140,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="BModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
                 <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />

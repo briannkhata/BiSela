@@ -197,7 +197,6 @@ namespace Katswiri.Forms
 
         private void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
         {
-           // lblChange.Text = string.Empty;
             try
             {
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
@@ -210,6 +209,8 @@ namespace Katswiri.Forms
                             DateSold = (DateTime)dateEditDateSold.EditValue,
                             SaleType = (string)lookUpEditSaleType.EditValue,
                             PaymentTypeId = (int?)lookUpEditPaymentType.EditValue,
+                            SoldBy = LoginInfo.UserId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
                         db.Sales.Add(sale);
                         db.SaveChanges();

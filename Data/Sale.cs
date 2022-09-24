@@ -34,6 +34,8 @@ namespace Katswiri.Data
         public Nullable<int> Deleted { get; set; }
         public Nullable<double> SubTotal { get; set; }
         public Nullable<int> PaymentTypeId { get; set; }
+        public Nullable<double> Paid { get; set; }
+        public Nullable<double> Balance { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
