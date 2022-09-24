@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using Katswiri.Enums;
 using System;
@@ -30,29 +31,32 @@ namespace Katswiri.Forms
             autoCompleteSearch();
             loadSaleTypes();
             loadPaymentTypes();
-
+            loadCustomers();
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
 
-            textEditTendered.Text = String.Format("{0:c}", textEditTendered.Text);
+            //textEditTendered.Text = String.Format("{0:c}", textEditTendered.Text);
             //textEditTendered.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             using (var db = new BEntities())
             {
+                this.Text = db.Shops.SingleOrDefault().ShopName;
                 lblCashier.Text = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().Name;
             }
 
         }
+
+
         public void clearGrid()
         {
             gridControl1.DataSource = null;
-            lblTotalBill.Text = "0.00";
+            //lblTotalBill.Text = "0.00";
         }
         public void resetCartUI()
         {
-            lblTotalBill.Text = "00.00";
+            //lblTotalBill.Text = "00.00";
             //lblChange.Text = "00.00";
-            textEditTendered.Text = "00.00";
+            //textEditTendered.Text = "00.00";
             clearmyCart();
             loadCart();
         }
@@ -64,10 +68,10 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
                 //gridView1.OptionsBehavior.Editable = false;
                 gridView1.Columns["UserId"].Visible = false;
-                gridView1.Columns["ShopId"].Visible = false;
+                //gridView1.Columns["ShopId"].Visible = false;
                 gridView1.Columns["ProductId"].Visible = false;
                 //gridView1.Columns["DiscountPercent"].Visible = false;
-                gridView1.Columns["DiscountAmount"].Visible = false;
+                gridView1.Columns["Discount"].Visible = false;
                 gridView1.Columns["CartId"].Visible = false;
 
                 //TotalPrice
@@ -95,9 +99,9 @@ namespace Katswiri.Forms
 
                 if (total != null)
                 {
-                    lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
+                    //lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
                     //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
-                    textEditTendered.Text = "0";
+                    //textEditTendered.Text = "0";
 
                 }
 
@@ -170,7 +174,7 @@ namespace Katswiri.Forms
             }
             //gridControl1.DataSource = null;
             loadCart();
-            lblTotalBill.Text = "0.00";
+            //lblTotalBill.Text = "0.00";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -181,7 +185,7 @@ namespace Katswiri.Forms
 
         private void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
         {
-            lblChange.Text = string.Empty;
+           // lblChange.Text = string.Empty;
             try
             {
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
@@ -308,7 +312,7 @@ namespace Katswiri.Forms
 
                     sale = new Sale()
                     {
-                        DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                        //DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
                         SaleType = (string)lookUpEditSaleType.EditValue,
                         PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
                         ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId,
@@ -317,8 +321,8 @@ namespace Katswiri.Forms
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TaxValue),
                         TotalBill = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice),
                         SubTotal = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.SellingPrice),
-                        TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
-                        TotalTendered = Double.Parse(textEditTendered.Text),
+                        //TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
+                        //TotalTendered = Double.Parse(textEditTendered.Text),
                         Discount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.Discount),
                     };
 
@@ -340,7 +344,7 @@ namespace Katswiri.Forms
                             Discount = (double)item.Discount,
                             TaxValue = (double)item.TaxValue,
                             UserId = (int)item.UserId,
-                            DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
+                            //DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
                         };
                         db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
@@ -395,6 +399,16 @@ namespace Katswiri.Forms
             loadCart();
         }
 
+        private void loadCustomers()
+        {
+            using (db = new BEntities())
+            {
+                lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
+                lookUpEditCustomer.Properties.ValueMember = "UserId";
+                lookUpEditCustomer.Properties.DisplayMember = "Name";
+            }
+        }
+
         private void loadSaleTypes()
         {
             using (db = new BEntities())
@@ -438,14 +452,14 @@ namespace Katswiri.Forms
 
         private void dispalyChange()
         {
-            if (textEditTendered.Text != string.Empty)
-            {
-                lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textEditTendered.Text.Trim()) - Convert.ToDouble(lblTotalBill.Text)).ToString(), 2);
-            }
-            else
-            {
-                lblChange.Text = string.Empty;
-            }
+            //if (textEditTendered.Text != string.Empty)
+            //{
+            //    lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textEditTendered.Text.Trim()) - Convert.ToDouble(lblTotalBill.Text)).ToString(), 2);
+            //}
+            //else
+            //{
+            //    lblChange.Text = string.Empty;
+            //}
         }
 
         private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
@@ -457,17 +471,15 @@ namespace Katswiri.Forms
 
         private void textEditTendered_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!isNumber(e.KeyChar, textEditTendered.Text))
+            //if (!isNumber(e.KeyChar, textEditTendered.Text))
                 e.Handled = true;
         }
-
-      
 
         private void lookUpEditPaymentType_EditValueChanged(object sender, EventArgs e)
         {
             if((int)lookUpEditPaymentType.EditValue != 1)
             {
-                textEditTxnId.Enabled = false;
+                //textEditTxnId.Enabled = false;
                 //textEditTxnId.Enabled = true;
             }
         }
@@ -475,8 +487,22 @@ namespace Katswiri.Forms
         private void textEditTendered_MouseEnter(object sender, EventArgs e)
         {
             //Process process = Process.Start(new ProcessStartInfo(((Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\osk.exe"))));
-            textEditTendered.Text = string.Empty;
+           // textEditTendered.Text = string.Empty;
 
         }
+
+        private void NewCustomer_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormCustomer formCustomer = null;
+            if (formCustomer == null || formCustomer.IsDisposed)
+            {
+                formCustomer = new FormCustomer();
+            }
+            formCustomer.ShowDialog();
+
+        }
+
+
     }
 }

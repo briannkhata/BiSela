@@ -5,7 +5,7 @@ using DevExpress.XtraLayout;
 
 namespace Katswiri.Forms
 {
-    partial class Shop
+    partial class FormShop
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormShop));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();

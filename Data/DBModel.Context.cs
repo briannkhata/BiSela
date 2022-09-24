@@ -39,7 +39,6 @@ namespace Katswiri.Data
         public virtual DbSet<vwExpenseType> vwExpenseTypes { get; set; }
         public virtual DbSet<vwPaymentType> vwPaymentTypes { get; set; }
         public virtual DbSet<vwShop> vwShops { get; set; }
-        public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<vwProduct> vwProducts { get; set; }
         public virtual DbSet<vwUnit> vwUnits { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
@@ -61,5 +60,6 @@ namespace Katswiri.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<Shop> Shops { get; set; }
     }
 }

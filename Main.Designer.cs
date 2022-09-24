@@ -80,7 +80,6 @@ namespace Katswiri
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup20 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -132,7 +131,7 @@ namespace Katswiri
             this.barButtonItem23,
             this.barButtonItem24});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 39;
+            this.ribbon.MaxItemId = 40;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -327,7 +326,7 @@ namespace Katswiri
             // 
             // barButtonItem21
             // 
-            this.barButtonItem21.Caption = "View Users";
+            this.barButtonItem21.Caption = "Users";
             this.barButtonItem21.Id = 31;
             this.barButtonItem21.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem21.ImageOptions.SvgImage")));
             this.barButtonItem21.Name = "barButtonItem21";
@@ -481,17 +480,11 @@ namespace Katswiri
             // ribbonPage5
             // 
             this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9,
             this.ribbonPageGroup17,
             this.ribbonPageGroup18,
             this.ribbonPageGroup19});
             this.ribbonPage5.Name = "ribbonPage5";
             this.ribbonPage5.Text = "Configurations";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem8);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             // 
             // ribbonPageGroup17
             // 
@@ -588,7 +581,6 @@ namespace Katswiri
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;

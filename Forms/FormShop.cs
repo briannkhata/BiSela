@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace Katswiri.Forms
 {
-    public partial class Shop : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class FormShop : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
         int ShopId;
-        Shop shop = new Shop();
-        public Shop()
+        Shop formShop = new Shop();
+        public FormShop()
         {
             InitializeComponent();
             loadDetails();
@@ -42,9 +42,7 @@ namespace Katswiri.Forms
                         TextEditAddress.Text = shops.Motto;
                         EmailTextEdit.Text = shops.Email;
                     }
-                }
-             
-               
+                }               
             } 
             catch(Exception ex)
             {
@@ -109,28 +107,30 @@ namespace Katswiri.Forms
         {
             try
             {
-                //if (formValid())
-                //{
-                //    shop.sho = NameTextEdit.Text?.ToString();
-                //    shop.Address = AddressTextEdit.Text?.ToString();
-                //    shop.Phone = PhoneTextEdit.Text?.ToString();
-                //    shop.Email = EmailTextEdit.Text?.ToString();
-                //    shop.Fee = Convert.ToDouble(TextEditAddress.Text);
-                //    shop.Terms = termsTextEdit.Text.ToString();
+                if (formValid())
+                {
+                    using (db = new BEntities())
+                    {
+                        formShop.ShopName = NameTextEdit.Text.ToString();
+                        formShop.Address = TextEditAddress.Text.ToString();
+                        formShop.Phone = PhoneTextEdit.Text.ToString();
+                        formShop.Email = EmailTextEdit.Text.ToString();
+                        formShop.Currency = textEditCurrency.Text.ToString();
+                        formShop.Motto = textEditMotto.Text.ToString();
 
+                        //if (ShopId > 0)
+                        //{
+                            db.Entry(formShop).State = EntityState.Modified;
+                            //else
+                            //{
+                            //    db.Shops.Add(formShop);
+                            //}
+                            db.SaveChanges();
+                        //}
+                    }
+                    loadDetails();
 
-                //    using (db = new BEntities())
-                //    {
-                //        if (ShopId > 0)
-                //            db.Entry(shop).State = EntityState.Modified;
-                //        else
-                //        {
-                //            db.Shops.Add(shop);
-                //        }
-                //        db.SaveChanges();
-                //        loadDetails();
-                //    }
-                //}
+                }
             }
             catch (Exception ex)
             {

@@ -229,7 +229,6 @@ warning 6002: The table/view 'bisela.dbo.OrderCats' does not have a primary key 
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar(max)" />
-          <Property Name="Logo" Type="varchar(max)" />
           <Property Name="Motto" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Stocks">
@@ -983,10 +982,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Shop" Relationship="BModel.FK_Users_Shops" FromRole="User" ToRole="Shop" />
           <NavigationProperty Name="Expenses" Relationship="BModel.FK_Expenses_Users" FromRole="User" ToRole="Expens" />
           <NavigationProperty Name="Incomes" Relationship="BModel.FK_Incomes_Users" FromRole="User" ToRole="Income" />
           <NavigationProperty Name="Carts" Relationship="BModel.FK_Cart_Users" FromRole="User" ToRole="Cart" />
+          <NavigationProperty Name="Shop" Relationship="BModel.FK_Users_Shops" FromRole="User" ToRole="Shop" />
         </EntityType>
         <EntityType Name="Menu">
           <Key>
@@ -1028,11 +1027,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwExpenseTypes" EntityType="BModel.vwExpenseType" />
           <EntitySet Name="vwPaymentTypes" EntityType="BModel.vwPaymentType" />
           <EntitySet Name="vwShops" EntityType="BModel.vwShop" />
-          <EntitySet Name="Shops" EntityType="BModel.Shop" />
-          <AssociationSet Name="FK_Users_Shops" Association="BModel.FK_Users_Shops">
-            <End Role="Shop" EntitySet="Shops" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <EntitySet Name="vwUnits" EntityType="BModel.vwUnit" />
           <EntitySet Name="Stocks" EntityType="BModel.Stock" />
@@ -1114,6 +1108,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Sale" EntitySet="Sales" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
+          <EntitySet Name="Shops" EntityType="BModel.Shop" />
+          <AssociationSet Name="FK_Users_Shops" Association="BModel.FK_Users_Shops">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1154,32 +1153,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Shop">
-          <Key>
-            <PropertyRef Name="ShopId" />
-          </Key>
-          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="BModel.FK_Users_Shops" FromRole="Shop" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Users_Shops">
-          <End Type="BModel.Shop" Role="Shop" Multiplicity="1" />
-          <End Type="BModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shop">
-              <PropertyRef Name="ShopId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="ShopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="vwProduct">
           <Key>
             <PropertyRef Name="ProductName" />
@@ -1671,6 +1644,31 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="BModel.FK_Users_Shops" FromRole="Shop" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Users_Shops">
+          <End Type="BModel.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="BModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1821,20 +1819,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Currency" ColumnName="Currency" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Shops">
-            <EntityTypeMapping TypeName="BModel.Shop">
-              <MappingFragment StoreEntitySet="Shop">
-                <ScalarProperty Name="Motto" ColumnName="Motto" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2115,6 +2099,19 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
                 <ScalarProperty Name="TotalTendered" ColumnName="TotalTendered" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="BModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

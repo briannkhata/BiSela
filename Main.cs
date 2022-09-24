@@ -327,19 +327,19 @@ namespace Katswiri
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            //ShowShopFom();
+            ShowFormShopFom();
         }
 
-        //private void ShowShopFom()
-        //{
-        //    Shop shop = null;
-        //    if (shop == null || shop.IsDisposed)
-        //    {
-        //        shop = new Shop();
-        //    }
-        //    shop.Activate();
-        //    shop.ShowDialog();
-        //}
+        private void ShowFormShopFom()
+        {
+            FormShop FormShop = null;
+            if (FormShop == null || FormShop.IsDisposed)
+            {
+                FormShop = new FormShop();
+            }
+            FormShop.Activate();
+            FormShop.ShowDialog();
+        }
 
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
         {

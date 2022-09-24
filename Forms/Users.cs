@@ -89,7 +89,6 @@ namespace Katswiri.Forms
                 UserNameTextEdit.ErrorText = "Required";
             }
            
-          
             if (String.IsNullOrEmpty(textEditGender.Text))
             {
                 result = false;
