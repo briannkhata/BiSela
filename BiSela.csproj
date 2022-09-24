@@ -257,6 +257,9 @@
     <Compile Include="Data\vwIncomType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwOrderUnfinished.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwPaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

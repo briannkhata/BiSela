@@ -165,6 +165,7 @@ namespace Katswiri.Forms
             this.textSearchProduct.Size = new System.Drawing.Size(398, 57);
             this.textSearchProduct.TabIndex = 0;
             this.textSearchProduct.WordWrap = false;
+            this.textSearchProduct.TextChanged += new System.EventHandler(this.textSearchProduct_TextChanged);
             this.textSearchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textSearchProduct_KeyDown);
             // 
             // panelControl1
@@ -293,7 +294,7 @@ namespace Katswiri.Forms
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(268, 50);
             this.button4.TabIndex = 10;
-            this.button4.Text = "DELETE";
+            this.button4.Text = "REMOVE";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -345,7 +346,7 @@ namespace Katswiri.Forms
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(175, 38);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Tax :";
+            this.label4.Text = "TAX :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -355,7 +356,7 @@ namespace Katswiri.Forms
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 38);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Discount :";
+            this.label2.Text = "DISCOUNT:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -365,7 +366,7 @@ namespace Katswiri.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 38);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Sub Total :";
+            this.label1.Text = "SUB TOTAL :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dateEditDateSold
@@ -415,7 +416,6 @@ namespace Katswiri.Forms
             this.Text = "Shop Name - Company";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pos_FormClosing);
-            this.Load += new System.EventHandler(this.Pos_Load);
             this.Shown += new System.EventHandler(this.Pos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();

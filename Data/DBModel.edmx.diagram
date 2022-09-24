@@ -57,6 +57,7 @@
         <AssociationConnector Association="BModel.FK_Cart_Products" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Sales" />
         <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BModel.vwOrderUnfinished" Width="1.5" PointX="3.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

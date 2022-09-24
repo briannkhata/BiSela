@@ -23,6 +23,7 @@ namespace Katswiri.Data
         public Nullable<double> Qty { get; set; }
         public Nullable<double> TaxValue { get; set; }
         public Nullable<int> ProductId { get; set; }
+        public Nullable<int> SaleId { get; set; }
     
         public virtual Product Product { get; set; }
     }

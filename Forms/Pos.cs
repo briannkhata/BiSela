@@ -66,6 +66,8 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwCarts.ToList();
+                gridControlOrders.DataSource = db.vwOrderUnfinisheds.ToList();
+
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
                 //gridView1.OptionsBehavior.Editable = false;
@@ -136,7 +138,9 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 AutoCompleteStringCollection autoText = new AutoCompleteStringCollection();
-                foreach (vwStock vwstock in db.vwStocks.OrderByDescending(x=>x.ExpiryDate) as List<vwStock>)
+                //foreach (vwStock vwstock in db.vwStocks.OrderByAscending(x=>x.ExpiryDate) as List<vwStock>)
+                foreach (vwStock vwstock in db.vwStocks.OrderBy(x=>x.ExpiryDate).ToList())
+
                 {
                     //autoText.Add(product.ProductName);
                     autoText.Add(vwstock.ProductCode);
@@ -194,13 +198,14 @@ namespace Katswiri.Forms
                 {
                     using (var db = new BEntities())
                     {
-
                         sale = new Sale()
                         {
                             Customer = (int?)lookUpEditCustomer.EditValue,
                             DateSold = (DateTime)dateEditDateSold.EditValue,
                         };
                         db.Sales.Add(sale);
+                        db.SaveChanges();
+                        int SaleId = sale.SaleId;
 
                         //var choice = db.Products.Where(p => p.ProductCode == textSearchProduct.Text | p.BarCode == textSearchProduct.Text).ToList();
                         //var choice = db.Products.Where(p => p.ProductName.Contains(textSearchProduct.Text)).ToList();
@@ -212,7 +217,6 @@ namespace Katswiri.Forms
 
                         if (taxStatus == "Inclusive")
                         {
-
                             if (exists != null)
                             {
                                 exists.Qty += 1;
@@ -222,6 +226,7 @@ namespace Katswiri.Forms
                             }
                             else
                             {
+                                cart.SaleId = SaleId;
                                 cart.ProductId = product.ProductId;
                                 cart.SellingPrice = UnitPrice;
                                 cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
@@ -400,6 +405,8 @@ namespace Katswiri.Forms
                 lookUpEditCustomer.Properties.DataSource = db.Users.ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
+                lookUpEditCustomer.Properties.NullText = "Customer";
+
             }
         }
 
@@ -411,6 +418,8 @@ namespace Katswiri.Forms
                 lookUpEditSaleType.Properties.DataSource = saleType;
                 lookUpEditSaleType.Properties.ValueMember = "Value";
                 lookUpEditSaleType.Properties.DisplayMember = "Value";
+                lookUpEditSaleType.Properties.NullText = "Sale Type";
+
             }
         }
 
@@ -421,6 +430,8 @@ namespace Katswiri.Forms
                 lookUpEditPaymentType.Properties.DataSource = db.vwPaymentTypes.ToList();
                 lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
                 lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
+                lookUpEditPaymentType.Properties.NullText = "Payment Type";
+
             }
         }
 
@@ -497,10 +508,6 @@ namespace Katswiri.Forms
 
         }
 
-        private void Pos_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -539,6 +546,9 @@ namespace Katswiri.Forms
             ShowPayFom();
         }
 
-       
+        private void textSearchProduct_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

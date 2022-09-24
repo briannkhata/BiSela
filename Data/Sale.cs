@@ -21,19 +21,19 @@ namespace Katswiri.Data
         }
     
         public int SaleId { get; set; }
-        public double Tendered { get; set; }
-        public double Bill { get; set; }
-        public double Discount { get; set; }
-        public double TaxAmount { get; set; }
+        public Nullable<double> Tendered { get; set; }
+        public Nullable<double> Bill { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public Nullable<double> TaxAmount { get; set; }
         public Nullable<int> Customer { get; set; }
-        public int SoldBy { get; set; }
-        public int ShopId { get; set; }
-        public System.DateTime DateSold { get; set; }
-        public double Change { get; set; }
+        public Nullable<int> SoldBy { get; set; }
+        public Nullable<int> ShopId { get; set; }
+        public Nullable<System.DateTime> DateSold { get; set; }
+        public Nullable<double> Change { get; set; }
         public string SaleType { get; set; }
-        public int Deleted { get; set; }
-        public double SubTotal { get; set; }
-        public int PaymentTypeId { get; set; }
+        public Nullable<int> Deleted { get; set; }
+        public Nullable<double> SubTotal { get; set; }
+        public Nullable<int> PaymentTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
