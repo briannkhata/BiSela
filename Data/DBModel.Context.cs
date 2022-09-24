@@ -54,12 +54,13 @@ namespace Katswiri.Data
         public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<vwIncomType> vwIncomTypes { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<vwCart> vwCarts { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
-        public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
+        public virtual DbSet<vwCart> vwCarts { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<vwStock> vwStocks { get; set; }
     }
 }

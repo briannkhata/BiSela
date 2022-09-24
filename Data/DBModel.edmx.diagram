@@ -39,14 +39,9 @@
         <AssociationConnector Association="BModel.FK_Incomes_IncomeTypes" />
         <AssociationConnector Association="BModel.FK_Incomes_Users" />
         <EntityTypeShape EntityType="BModel.vwIncomType" Width="1.5" PointX="0.75" PointY="14.75" />
-        <EntityTypeShape EntityType="BModel.Cart" Width="1.5" PointX="11.25" PointY="18.75" />
-        <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="3.375" PointY="13.75" />
-        <AssociationConnector Association="BModel.FK_Cart_Stocks" />
-        <AssociationConnector Association="BModel.FK_Cart_Users" />
         <EntityTypeShape EntityType="BModel.Account" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="BModel.Product" Width="1.5" PointX="16" PointY="10.125" />
         <EntityTypeShape EntityType="BModel.SaleDetail" Width="1.5" PointX="18.25" PointY="10.625" />
-        <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="16" PointY="16.5" />
         <AssociationConnector Association="BModel.FK_Products_Brands" />
         <AssociationConnector Association="BModel.FK_Products_Categories" />
         <AssociationConnector Association="BModel.FK_OrderDetails_Products" />
@@ -54,9 +49,14 @@
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
         <AssociationConnector Association="BModel.FK_Stocks_Products" />
-        <AssociationConnector Association="BModel.FK_SaleDetails_Sales" />
         <EntityTypeShape EntityType="BModel.Shop" Width="1.5" PointX="0.75" PointY="1.625" />
         <AssociationConnector Association="BModel.FK_Users_Shops" />
+        <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="BModel.Cart" Width="1.5" PointX="18.25" PointY="15.125" />
+        <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="13.375" PointY="16" />
+        <AssociationConnector Association="BModel.FK_Cart_Products" />
+        <AssociationConnector Association="BModel.FK_SaleDetails_Sales" />
+        <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="11.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,15 +12,17 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class vwCart
+    public partial class vwStock
     {
+        public string ProductCode { get; set; }
         public string ProductName { get; set; }
-        public string Description { get; set; }
+        public string BarCode { get; set; }
+        public int UnitId { get; set; }
+        public Nullable<int> ShopId { get; set; }
+        public Nullable<double> ShopQty { get; set; }
+        public Nullable<double> StoresQty { get; set; }
+        public Nullable<double> KitchenQty { get; set; }
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<double> SellingPrice { get; set; }
-        public Nullable<double> Qty { get; set; }
-        public Nullable<double> TotalPrice { get; set; }
-        public int CartId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<double> TaxValue { get; set; }
     }
 }

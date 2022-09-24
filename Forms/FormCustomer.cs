@@ -42,8 +42,7 @@ namespace Katswiri.Forms
                         db.SaveChanges();
 
                         //int UserId = user.UserId;
-                        Pos pos = new Pos();
-                        pos.lblCustomer.Text = textEditName.Text;
+                       
                     }
                     this.Close();
                     //XtraMessageBox.Show("IncomeType Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

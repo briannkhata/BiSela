@@ -60,11 +60,11 @@ namespace Katswiri.Forms
                         //SaleTypeId = (int)lookUpEditPayMode.EditValue,
                         ShopId = 1,
                         SoldBy = 1,
-                        SoldTo = 1,
+                        Customer = 1,
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
-                        TotalBill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
-                        TotalChange = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
-                        TotalTendered = Double.Parse(textBoxTendered.Text),
+                        Bill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
+                        Change = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
+                        Tendered = Double.Parse(textBoxTendered.Text),
                         Discount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.Discount),
                     };
 

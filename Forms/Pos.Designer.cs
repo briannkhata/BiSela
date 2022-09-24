@@ -41,7 +41,6 @@ namespace Katswiri.Forms
             this.gridControlOrders = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.lblCustomer = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -94,7 +93,6 @@ namespace Katswiri.Forms
             // 
             this.panelControl5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl5.Controls.Add(this.lookUpEditCustomer);
             this.panelControl5.Controls.Add(this.NewCustomer);
             this.panelControl5.Controls.Add(this.lblCashier);
             this.panelControl5.Controls.Add(this.label3);
@@ -107,16 +105,18 @@ namespace Katswiri.Forms
             // 
             // lookUpEditCustomer
             // 
-            this.lookUpEditCustomer.Location = new System.Drawing.Point(838, 13);
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(476, 97);
             this.lookUpEditCustomer.Name = "lookUpEditCustomer";
+            this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditCustomer.Properties.Appearance.Options.UseFont = true;
             this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCustomer.Size = new System.Drawing.Size(223, 30);
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(407, 34);
             this.lookUpEditCustomer.TabIndex = 29;
             // 
             // NewCustomer
             // 
-            this.NewCustomer.Location = new System.Drawing.Point(591, 7);
+            this.NewCustomer.Location = new System.Drawing.Point(810, 7);
             this.NewCustomer.Name = "NewCustomer";
             this.NewCustomer.Size = new System.Drawing.Size(231, 42);
             this.NewCustomer.TabIndex = 28;
@@ -170,7 +170,7 @@ namespace Katswiri.Forms
             this.panelControl1.Controls.Add(this.gridControlOrders);
             this.panelControl1.Location = new System.Drawing.Point(904, 116);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(622, 680);
+            this.panelControl1.Size = new System.Drawing.Size(622, 672);
             this.panelControl1.TabIndex = 3;
             // 
             // gridControlOrders
@@ -185,7 +185,7 @@ namespace Katswiri.Forms
             this.gridControlOrders.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
             this.gridControlOrders.MainView = this.gridView2;
             this.gridControlOrders.Name = "gridControlOrders";
-            this.gridControlOrders.Size = new System.Drawing.Size(618, 676);
+            this.gridControlOrders.Size = new System.Drawing.Size(618, 668);
             this.gridControlOrders.TabIndex = 0;
             this.gridControlOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -210,33 +210,25 @@ namespace Katswiri.Forms
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "List of Orders";
             // 
-            // lblCustomer
-            // 
-            this.lblCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomer.Location = new System.Drawing.Point(424, 81);
-            this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(400, 57);
-            this.lblCustomer.TabIndex = 5;
-            this.lblCustomer.Text = "label1";
-            this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // button1
             // 
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Location = new System.Drawing.Point(20, 738);
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(20, 729);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 50);
             this.button1.TabIndex = 6;
             this.button1.Text = "PAY";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Location = new System.Drawing.Point(223, 738);
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(223, 729);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 50);
             this.button2.TabIndex = 7;
@@ -247,12 +239,14 @@ namespace Katswiri.Forms
             // 
             this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button3.BackColor = System.Drawing.Color.LimeGreen;
-            this.button3.Location = new System.Drawing.Point(424, 738);
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(424, 729);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(186, 50);
             this.button3.TabIndex = 8;
             this.button3.Text = "NEW ORDER";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // gridControl1
             // 
@@ -290,20 +284,22 @@ namespace Katswiri.Forms
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button4.Location = new System.Drawing.Point(616, 738);
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(616, 729);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(268, 50);
             this.button4.TabIndex = 10;
             this.button4.Text = "DELETE";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // labelBill
             // 
             this.labelBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelBill.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBill.Location = new System.Drawing.Point(593, 567);
+            this.labelBill.Location = new System.Drawing.Point(579, 567);
             this.labelBill.Name = "labelBill";
-            this.labelBill.Size = new System.Drawing.Size(274, 150);
+            this.labelBill.Size = new System.Drawing.Size(305, 150);
             this.labelBill.TabIndex = 17;
             this.labelBill.Text = "00.00";
             this.labelBill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -377,6 +373,7 @@ namespace Katswiri.Forms
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1538, 808);
+            this.Controls.Add(this.lookUpEditCustomer);
             this.Controls.Add(this.labelBill);
             this.Controls.Add(this.labelTax);
             this.Controls.Add(this.labelDiscount);
@@ -388,7 +385,6 @@ namespace Katswiri.Forms
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.textSearchProduct);
@@ -435,7 +431,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.Button NewCustomer;
-        public System.Windows.Forms.Label lblCustomer;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;

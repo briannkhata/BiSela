@@ -65,13 +65,15 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
+                gridControl1.DataSource = db.vwCarts.ToList();
+                //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
+
                 //gridView1.OptionsBehavior.Editable = false;
-                gridView1.Columns["UserId"].Visible = false;
+                //gridView1.Columns["UserId"].Visible = false;
                 //gridView1.Columns["ShopId"].Visible = false;
                 gridView1.Columns["ProductId"].Visible = false;
                 //gridView1.Columns["DiscountPercent"].Visible = false;
-                gridView1.Columns["Discount"].Visible = false;
+                gridView1.Columns["TaxValue"].Visible = false;
                 gridView1.Columns["CartId"].Visible = false;
 
                 //TotalPrice
@@ -82,8 +84,8 @@ namespace Katswiri.Forms
                 gridView1.Columns.ColumnByFieldName("TotalPrice").OptionsColumn.ReadOnly = true;
                 gridView1.Columns.ColumnByFieldName("TotalPrice").OptionsColumn.AllowEdit = false;
 
-                gridView1.Columns.ColumnByFieldName("TaxValue").OptionsColumn.ReadOnly = false;
-                gridView1.Columns.ColumnByFieldName("TaxValue").OptionsColumn.AllowEdit = false;
+                //gridView1.Columns.ColumnByFieldName("TaxValue").OptionsColumn.ReadOnly = false;
+               // gridView1.Columns.ColumnByFieldName("TaxValue").OptionsColumn.AllowEdit = false;
                 gridView1.FocusedColumn = gridView1.Columns["Qty"];
                 gridView1.Appearance.FocusedRow.BackColor = Color.FromArgb(255, 255, 192);
 
@@ -134,10 +136,10 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 AutoCompleteStringCollection autoText = new AutoCompleteStringCollection();
-                foreach (Product product in db.Products.ToList() as List<Product>)
+                foreach (vwStock vwstock in db.vwStocks.OrderByDescending(x=>x.ExpiryDate) as List<vwStock>)
                 {
-                    autoText.Add(product.ProductName);
-                    //autoText.Add(product.ProductCode);
+                    //autoText.Add(product.ProductName);
+                    autoText.Add(vwstock.ProductCode);
                     //autoText.Add(product.BarCode);
                 }
                 textSearchProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -147,10 +149,10 @@ namespace Katswiri.Forms
         }
         private void Pos_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+            //if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
         }
         public void clearmyCart()
         {
@@ -194,34 +196,43 @@ namespace Katswiri.Forms
                     {
                         //var choice = db.Products.Where(p => p.ProductCode == textSearchProduct.Text | p.BarCode == textSearchProduct.Text).ToList();
                         //var choice = db.Products.Where(p => p.ProductName.Contains(textSearchProduct.Text)).ToList();
-                        var product = db.Products.Where(p => p.ProductName == textSearchProduct.Text.ToString()).FirstOrDefault();
+                        var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text.ToString()).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
                         var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeStatus;
                         var exists = db.Carts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
 
-                        if (exists != null)
-                        {
-                            exists.Qty += 1;
-                            //exists.TaxValue = (product.SellingPrice * (taxValue / 100));
-                            exists.TotalPrice = (exists.SellingPrice * exists.Qty) + cart.TaxValue;
-                            db.Entry(exists).State = EntityState.Modified;
-                            db.SaveChanges();
-                            clearGrid();
-                        }
+                        double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).SingleOrDefault().SellingPrice;
 
-                        if (exists == null)
+                        if (taxStatus == "Inclusive")
                         {
-                            cart.ProductId = product.ProductId;
-                            //cart.SellingPrice = product.SellingPrice;
-                            cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
-                            cart.UserId = LoginInfo.UserId;
-                            cart.Discount = 0;
-                            cart.Qty = 1;
-                            //cart.TaxValue = (product.SellingPrice * (taxValue / 100));
-                            cart.TotalPrice = (cart.SellingPrice * cart.Qty) + cart.TaxValue;
-                            db.Carts.Add(cart);
-                            db.SaveChanges();
-                            clearGrid();
+
+                            if (exists != null)
+                            {
+                                exists.Qty += 1;
+                                exists.TaxValue = (cart.SellingPrice * (taxValue / 100));
+                                exists.TotalPrice = (cart.SellingPrice * exists.Qty) + cart.TaxValue;
+                                db.Entry(exists).State = EntityState.Modified;
+                                db.SaveChanges();
+                                clearGrid();
+                            }
+                            else
+                            {
+                                cart.ProductId = product.ProductId;
+                                cart.SellingPrice = UnitPrice;
+                                cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
+                                cart.UserId = LoginInfo.UserId;
+                                cart.Discount = 0;
+                                cart.Qty = 1;
+                                cart.TaxValue = (UnitPrice * (taxValue / 100));
+                                cart.TotalPrice = (UnitPrice * cart.Qty) + cart.TaxValue;
+                                db.Carts.Add(cart);
+                                db.SaveChanges();
+                                clearGrid();
+                            }
+                        }
+                        else
+                        {
+
                         }
                         loadCart();
                     }
@@ -270,28 +281,6 @@ namespace Katswiri.Forms
         {
             refreshCart();
         }
-
-        private void simpleButtonDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwCart)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
-                {
-                    var cart = db.Carts.Find(row.CartId);
-                    db.Carts.Remove(cart);
-                    db.SaveChanges();
-                }
-                loadCart();
-
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void simpleButton16_Click(object sender, EventArgs e)
         {
             //SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
@@ -317,9 +306,9 @@ namespace Katswiri.Forms
                         PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
                         ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId,
                         SoldBy = LoginInfo.UserId,
-                        SoldTo = 1,
+                        Customer = 1,
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TaxValue),
-                        TotalBill = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice),
+                        Bill = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice),
                         SubTotal = (double)db.Carts.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.SellingPrice),
                         //TotalChange = Double.Parse(textEditTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         //TotalTendered = Double.Parse(textEditTendered.Text),
@@ -403,7 +392,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
+                lookUpEditCustomer.Properties.DataSource = db.Users.ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
             }
@@ -507,5 +496,44 @@ namespace Katswiri.Forms
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ShowPosFom();
+        }
+        private void ShowPosFom()
+        {
+            Pos pos = new Pos();
+            pos.Activate();
+            pos.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRows = gridView1.GetSelectedRows();
+                var row = ((vwCart)gridView1.GetRow(selectedRows[0]));
+                using (var db = new BEntities())
+                {
+                    var cart = db.Carts.Find(row.CartId);
+                    db.Carts.Remove(cart);
+                    db.SaveChanges();
+                }
+                loadCart();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowPayFom();
+        }
+
+       
     }
 }

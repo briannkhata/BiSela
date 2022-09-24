@@ -15,7 +15,6 @@ namespace Katswiri.Data
     public partial class Cart
     {
         public int CartId { get; set; }
-        public Nullable<int> StockId { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<int> ShopId { get; set; }
         public Nullable<double> Discount { get; set; }
@@ -25,7 +24,6 @@ namespace Katswiri.Data
         public Nullable<double> TaxValue { get; set; }
         public Nullable<int> ProductId { get; set; }
     
-        public virtual Stock Stock { get; set; }
-        public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

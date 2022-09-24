@@ -21,15 +21,15 @@ namespace Katswiri.Data
         }
     
         public int SaleId { get; set; }
-        public double TotalTendered { get; set; }
-        public double TotalBill { get; set; }
+        public double Tendered { get; set; }
+        public double Bill { get; set; }
         public double Discount { get; set; }
         public double TaxAmount { get; set; }
-        public Nullable<int> SoldTo { get; set; }
+        public Nullable<int> Customer { get; set; }
         public int SoldBy { get; set; }
         public int ShopId { get; set; }
         public System.DateTime DateSold { get; set; }
-        public double TotalChange { get; set; }
+        public double Change { get; set; }
         public string SaleType { get; set; }
         public int Deleted { get; set; }
         public double SubTotal { get; set; }

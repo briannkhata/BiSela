@@ -20,6 +20,7 @@ namespace Katswiri.Data
             this.OrderDetails = new HashSet<OrderDetail>();
             this.SaleDetails = new HashSet<SaleDetail>();
             this.Stocks = new HashSet<Stock>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int ProductId { get; set; }
@@ -45,5 +46,7 @@ namespace Katswiri.Data
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }
