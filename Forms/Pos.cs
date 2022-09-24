@@ -194,13 +194,20 @@ namespace Katswiri.Forms
                 {
                     using (var db = new BEntities())
                     {
+
+                        sale = new Sale()
+                        {
+                            Customer = (int?)lookUpEditCustomer.EditValue,
+                            DateSold = (DateTime)dateEditDateSold.EditValue,
+                        };
+                        db.Sales.Add(sale);
+
                         //var choice = db.Products.Where(p => p.ProductCode == textSearchProduct.Text | p.BarCode == textSearchProduct.Text).ToList();
                         //var choice = db.Products.Where(p => p.ProductName.Contains(textSearchProduct.Text)).ToList();
                         var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text.ToString()).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
                         var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeStatus;
                         var exists = db.Carts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
-
                         double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).SingleOrDefault().SellingPrice;
 
                         if (taxStatus == "Inclusive")
@@ -212,8 +219,6 @@ namespace Katswiri.Forms
                                 exists.TaxValue = (cart.SellingPrice * (taxValue / 100));
                                 exists.TotalPrice = (cart.SellingPrice * exists.Qty) + cart.TaxValue;
                                 db.Entry(exists).State = EntityState.Modified;
-                                db.SaveChanges();
-                                clearGrid();
                             }
                             else
                             {
@@ -226,14 +231,14 @@ namespace Katswiri.Forms
                                 cart.TaxValue = (UnitPrice * (taxValue / 100));
                                 cart.TotalPrice = (UnitPrice * cart.Qty) + cart.TaxValue;
                                 db.Carts.Add(cart);
-                                db.SaveChanges();
-                                clearGrid();
                             }
+                            db.SaveChanges();
                         }
                         else
                         {
 
                         }
+
                         loadCart();
                     }
                 }

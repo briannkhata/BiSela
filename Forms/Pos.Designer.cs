@@ -55,6 +55,7 @@ namespace Katswiri.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dateEditDateSold = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -68,11 +69,13 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lookUpEditPaymentType
             // 
-            this.lookUpEditPaymentType.Location = new System.Drawing.Point(1067, 13);
+            this.lookUpEditPaymentType.Location = new System.Drawing.Point(825, 13);
             this.lookUpEditPaymentType.Name = "lookUpEditPaymentType";
             this.lookUpEditPaymentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -82,7 +85,7 @@ namespace Katswiri.Forms
             // 
             // lookUpEditSaleType
             // 
-            this.lookUpEditSaleType.Location = new System.Drawing.Point(1296, 12);
+            this.lookUpEditSaleType.Location = new System.Drawing.Point(1056, 13);
             this.lookUpEditSaleType.Name = "lookUpEditSaleType";
             this.lookUpEditSaleType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -93,6 +96,7 @@ namespace Katswiri.Forms
             // 
             this.panelControl5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl5.Controls.Add(this.dateEditDateSold);
             this.panelControl5.Controls.Add(this.NewCustomer);
             this.panelControl5.Controls.Add(this.lblCashier);
             this.panelControl5.Controls.Add(this.label3);
@@ -116,7 +120,7 @@ namespace Katswiri.Forms
             // 
             // NewCustomer
             // 
-            this.NewCustomer.Location = new System.Drawing.Point(810, 7);
+            this.NewCustomer.Location = new System.Drawing.Point(524, 7);
             this.NewCustomer.Name = "NewCustomer";
             this.NewCustomer.Size = new System.Drawing.Size(231, 42);
             this.NewCustomer.TabIndex = 28;
@@ -364,6 +368,18 @@ namespace Katswiri.Forms
             this.label1.Text = "Sub Total :";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // dateEditDateSold
+            // 
+            this.dateEditDateSold.EditValue = null;
+            this.dateEditDateSold.Location = new System.Drawing.Point(1291, 12);
+            this.dateEditDateSold.Name = "dateEditDateSold";
+            this.dateEditDateSold.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDateSold.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDateSold.Size = new System.Drawing.Size(225, 30);
+            this.dateEditDateSold.TabIndex = 29;
+            // 
             // Pos
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -414,6 +430,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +464,6 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.DateEdit dateEditDateSold;
     }
 }
