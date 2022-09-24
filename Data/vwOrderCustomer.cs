@@ -12,12 +12,13 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class vwOrderUnfinished
+    public partial class vwOrderCustomer
     {
         public string Name { get; set; }
         public string Phone { get; set; }
         public Nullable<double> Bill { get; set; }
         public string PaymentTypeName { get; set; }
         public Nullable<double> Tendered { get; set; }
+        public Nullable<int> Customer { get; set; }
     }
 }

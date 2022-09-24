@@ -44,7 +44,12 @@ namespace Katswiri.Forms
                         //int UserId = user.UserId;
                        
                     }
+                    this.Dispose();
                     this.Close();
+                    
+                    Pos pos = new Pos();
+                    pos.Activate();
+                    pos.ShowDialog();
                     //XtraMessageBox.Show("IncomeType Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

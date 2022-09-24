@@ -32,6 +32,8 @@ namespace Katswiri.Forms
             loadSaleTypes();
             loadPaymentTypes();
             loadCustomers();
+            dateEditDateSold.DateTime = DateTime.Now;
+
             //clearmyCart();//clear my cart            
             //lblCompany.Text = db.Settings.FirstOrDefault().Name;
             //lblShop.Text = db.Shops.FirstOrDefault().ShopName;
@@ -65,8 +67,12 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwCarts.ToList();
-                gridControlOrders.DataSource = db.vwOrderUnfinisheds.ToList();
+                gridControl1.DataSource = db.vwCarts.Where(x => x .Customer == (int)lookUpEditCustomer.EditValue).ToList();
+
+                gridControlOrders.DataSource = db.vwOrderCustomers.Where(x=>x.Customer == (int)lookUpEditCustomer.EditValue).ToList();
+                gridView2.OptionsBehavior.Editable = false;
+                gridView2.Columns["Tendered"].Visible = false;
+                gridView2.Columns["Phone"].Visible = false;
 
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
@@ -202,13 +208,13 @@ namespace Katswiri.Forms
                         {
                             Customer = (int?)lookUpEditCustomer.EditValue,
                             DateSold = (DateTime)dateEditDateSold.EditValue,
+                            SaleType = (string)lookUpEditSaleType.EditValue,
+                            PaymentTypeId = (int?)lookUpEditPaymentType.EditValue,
                         };
                         db.Sales.Add(sale);
                         db.SaveChanges();
                         int SaleId = sale.SaleId;
 
-                        //var choice = db.Products.Where(p => p.ProductCode == textSearchProduct.Text | p.BarCode == textSearchProduct.Text).ToList();
-                        //var choice = db.Products.Where(p => p.ProductName.Contains(textSearchProduct.Text)).ToList();
                         var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text.ToString()).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
                         var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeStatus;
@@ -231,6 +237,7 @@ namespace Katswiri.Forms
                                 cart.SellingPrice = UnitPrice;
                                 cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
                                 cart.UserId = LoginInfo.UserId;
+                                cart.Customer = (int?)lookUpEditCustomer.EditValue;
                                 cart.Discount = 0;
                                 cart.Qty = 1;
                                 cart.TaxValue = (UnitPrice * (taxValue / 100));
@@ -405,6 +412,7 @@ namespace Katswiri.Forms
                 lookUpEditCustomer.Properties.DataSource = db.Users.ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
+                lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
                 lookUpEditCustomer.Properties.NullText = "Customer";
 
             }
@@ -418,6 +426,7 @@ namespace Katswiri.Forms
                 lookUpEditSaleType.Properties.DataSource = saleType;
                 lookUpEditSaleType.Properties.ValueMember = "Value";
                 lookUpEditSaleType.Properties.DisplayMember = "Value";
+                lookUpEditSaleType.EditValue = SaleType.Sale;
                 lookUpEditSaleType.Properties.NullText = "Sale Type";
 
             }
@@ -430,8 +439,8 @@ namespace Katswiri.Forms
                 lookUpEditPaymentType.Properties.DataSource = db.vwPaymentTypes.ToList();
                 lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
                 lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
+                lookUpEditPaymentType.EditValue = db.PaymentTypes.Where(x => x.PaymentTypeName == "Cash").Single().PaymentTypeName;
                 lookUpEditPaymentType.Properties.NullText = "Payment Type";
-
             }
         }
 
@@ -448,10 +457,10 @@ namespace Katswiri.Forms
                 //lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
                 //lookUpEditPaymentType.EditValue = db.vwPaymentTypes.ToList()[0].PaymentTypeId;
 
-                Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(SaleType)).Cast<SaleType>().ToDictionary(x => (int)x, x => x.ToString());
-                lookUpEditSaleType.Properties.DataSource = taxTypesStatus;
-                lookUpEditSaleType.Properties.ValueMember = "Value";
-                lookUpEditSaleType.Properties.DisplayMember = "Value";
+                //Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(SaleType)).Cast<SaleType>().ToDictionary(x => (int)x, x => x.ToString());
+                //lookUpEditSaleType.Properties.DataSource = taxTypesStatus;
+                //lookUpEditSaleType.Properties.ValueMember = "Value";
+                //lookUpEditSaleType.Properties.DisplayMember = "Value";
             }
         }
 
@@ -480,14 +489,14 @@ namespace Katswiri.Forms
                 e.Handled = true;
         }
 
-        private void lookUpEditPaymentType_EditValueChanged(object sender, EventArgs e)
-        {
-            if((int)lookUpEditPaymentType.EditValue != 1)
-            {
-                //textEditTxnId.Enabled = false;
-                //textEditTxnId.Enabled = true;
-            }
-        }
+        //private void lookUpEditPaymentType_EditValueChanged(object sender, EventArgs e)
+        //{
+        //    if((int)lookUpEditPaymentType.EditValue != 1)
+        //    {
+        //        //textEditTxnId.Enabled = false;
+        //        //textEditTxnId.Enabled = true;
+        //    }
+        //}
 
         private void textEditTendered_MouseEnter(object sender, EventArgs e)
         {
@@ -550,5 +559,24 @@ namespace Katswiri.Forms
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowFormOrders();
+        }
+
+        private void ShowFormOrders()
+        {
+            FormOrders formOrders = null;
+            if (formOrders == null || formOrders.IsDisposed)
+            {
+                formOrders = new FormOrders();
+            }
+            formOrders.Activate();
+            formOrders.ShowDialog();
+        }
+
+
     }
 }

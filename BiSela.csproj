@@ -257,7 +257,7 @@
     <Compile Include="Data\vwIncomType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwOrderUnfinished.cs">
+    <Compile Include="Data\vwOrderCustomer.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwPaymentType.cs">
@@ -308,6 +308,12 @@
     </Compile>
     <Compile Include="Forms\FormCustomer.Designer.cs">
       <DependentUpon>FormCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOrders.Designer.cs">
+      <DependentUpon>FormOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginInfo.cs" />
     <Compile Include="Forms\Pay.cs">
@@ -424,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomer.resx">
       <DependentUpon>FormCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOrders.resx">
+      <DependentUpon>FormOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pay.resx">
       <DependentUpon>Pay.cs</DependentUpon>

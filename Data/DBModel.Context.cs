@@ -62,6 +62,6 @@ namespace Katswiri.Data
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<vwStock> vwStocks { get; set; }
-        public virtual DbSet<vwOrderUnfinished> vwOrderUnfinisheds { get; set; }
+        public virtual DbSet<vwOrderCustomer> vwOrderCustomers { get; set; }
     }
 }
