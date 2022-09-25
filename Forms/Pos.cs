@@ -67,22 +67,24 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwCarts.Where(x => x .Customer == (int)lookUpEditCustomer.EditValue).ToList();
+                gridControl1.DataSource = db.vwCarts.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).ToList();
 
-                gridControlOrders.DataSource = db.vwOrderCustomers.Where(x=>x.Customer == (int)lookUpEditCustomer.EditValue).ToList();
+                gridControlOrders.DataSource = db.Sales.Where(x=>x.Customer == (int?)lookUpEditCustomer.EditValue).ToList();
                 gridView2.OptionsBehavior.Editable = false;
                 gridView2.Columns["Tendered"].Visible = false;
-                gridView2.Columns["Phone"].Visible = false;
+                //gridView2.Columns["Phone"].Visible = false;
 
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
                 //gridView1.OptionsBehavior.Editable = false;
                 //gridView1.Columns["UserId"].Visible = false;
-                //gridView1.Columns["ShopId"].Visible = false;
+                gridView1.Columns["Discount"].Visible = false;
                 gridView1.Columns["ProductId"].Visible = false;
-                //gridView1.Columns["DiscountPercent"].Visible = false;
+                gridView1.Columns["Customer"].Visible = false;
                 gridView1.Columns["TaxValue"].Visible = false;
                 gridView1.Columns["CartId"].Visible = false;
+                gridView1.Columns["Description"].Visible = false;
+
 
                 //TotalPrice
                 //colModelPrice.DisplayFormat.FormatType = Utils.FormatType.Numeric;
@@ -103,15 +105,18 @@ namespace Katswiri.Forms
 
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
 
-                var total = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TotalPrice);
-                var tax = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.TaxValue);
-                var sp = db.Carts?.Where(x => x.UserId == LoginInfo.UserId).Sum(x => x.SellingPrice);
+                var total = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TotalPrice);
+                var tax = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TaxValue);
+                var subTotal = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.SellingPrice);
+                var discount = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.Discount);
+
 
                 if (total != null)
                 {
-                    //lblTotalBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
-                    //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
-                    //textEditTendered.Text = "0";
+                    labelBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", total, 2);
+                    labelTax.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", tax, 2);
+                    labelDiscount.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", discount, 2);
+                    labelSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", subTotal, 2);
 
                 }
 
@@ -120,24 +125,6 @@ namespace Katswiri.Forms
                 //    lblSubTotal.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", sp, 2);
                 //}
             }
-        }
-        public bool isNumber(char ch, string text)
-        {
-            bool res = true;
-            char decimalChar = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
-
-            //check if it´s a decimal separator and if doesn´t already have one in the text string
-            if (ch == decimalChar && text.IndexOf(decimalChar) != -1)
-            {
-                res = false;
-                return res;
-            }
-
-            //check if it´s a digit, decimal separator and backspace
-            if (!Char.IsDigit(ch) && ch != decimalChar && ch != (char)Keys.Back)
-                res = false;
-
-            return res;
         }
         private void autoCompleteSearch()
         {
@@ -148,22 +135,14 @@ namespace Katswiri.Forms
                 foreach (vwStock vwstock in db.vwStocks.OrderBy(x=>x.ExpiryDate).ToList())
 
                 {
-                    //autoText.Add(product.ProductName);
                     autoText.Add(vwstock.ProductCode);
-                    //autoText.Add(product.BarCode);
                 }
                 textSearchProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 textSearchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 textSearchProduct.AutoCompleteCustomSource = autoText;
             }
         }
-        private void Pos_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //if (XtraMessageBox.Show("Are you sure you would like to cancel POS UI?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
-            //{
-            //    e.Cancel = true;
-            //}
-        }
+
         public void clearmyCart()
         {
             using (var db = new BEntities())
@@ -181,12 +160,9 @@ namespace Katswiri.Forms
         {
             if (XtraMessageBox.Show("Are you sure you would like to clear this ORDER?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
             {
-                //db.Database.ExecuteSqlCommand("TRUNCATE TABLE Carts");
                 clearmyCart();
             }
-            //gridControl1.DataSource = null;
             loadCart();
-            //lblTotalBill.Text = "0.00";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -195,7 +171,7 @@ namespace Katswiri.Forms
             textSearchProduct.Text += button.Text;
         }
 
-        private void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
+        public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -207,8 +183,7 @@ namespace Katswiri.Forms
                         {
                             Customer = (int?)lookUpEditCustomer.EditValue,
                             DateSold = (DateTime)dateEditDateSold.EditValue,
-                            SaleType = (string)lookUpEditSaleType.EditValue,
-                            PaymentTypeId = (int?)lookUpEditPaymentType.EditValue,
+                            SaleType = lookUpEditSaleType.EditValue.ToString(),
                             SoldBy = LoginInfo.UserId,
                             ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
@@ -216,11 +191,11 @@ namespace Katswiri.Forms
                         db.SaveChanges();
                         int SaleId = sale.SaleId;
 
-                        var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text.ToString()).FirstOrDefault();
+                        var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
                         var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeStatus;
                         var exists = db.Carts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
-                        double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).SingleOrDefault().SellingPrice;
+                        double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
 
                         if (taxStatus == "Inclusive")
                         {
@@ -246,20 +221,33 @@ namespace Katswiri.Forms
                                 db.Carts.Add(cart);
                             }
                             db.SaveChanges();
+
+                            var total = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TotalPrice);
+                            var tax = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TaxValue);
+                            var subTotal = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.SellingPrice);
+                            var discount = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.Discount);
+
+                            var sale2 = db.Sales.Where(x => x.SaleId == sale.SaleId).FirstOrDefault();
+                            sale2.Bill = total;
+                            sale2.Balance = total;
+                            sale2.SubTotal = subTotal;
+                            sale2.TaxAmount = tax;
+                            db.Entry(sale2).State = EntityState.Modified;
+                            db.SaveChanges();
                         }
                         else
                         {
 
                         }
 
-                        loadCart();
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            loadCart();
             textSearchProduct.Text = string.Empty;
         }
       
@@ -275,16 +263,24 @@ namespace Katswiri.Forms
                     {
                         var taxTypeId = db.Products.Where(x => x.ProductId == row.ProductId).SingleOrDefault().TaxTypeId;
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == taxTypeId).SingleOrDefault().TaxTypeValue;
-                        //var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product1.TaxTypeId).SingleOrDefault().TaxTypeStatus;
-                        cart.CartId = row.CartId;
-                        cart.Discount = 0;
-                        cart.ProductId = row.ProductId;
-                        cart.SellingPrice = row.SellingPrice;
-                        cart.Qty = row.Qty;
-                        //cart.TaxValue = (row.SellingPrice * (taxValue / 100));
-                        cart.TotalPrice = (row.SellingPrice * row.Qty) + row.TaxValue;
-                        db.Entry(cart).State = EntityState.Modified;
-                        db.SaveChanges();
+                        var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == taxTypeId).SingleOrDefault().TaxTypeStatus;
+
+                        if (taxStatus == "Inclusive")
+                        {
+                            cart.CartId = row.CartId;
+                            cart.Discount = row.Discount;
+                            cart.ProductId = row.ProductId;
+                            cart.SellingPrice = row.SellingPrice - row.Discount;
+                            cart.Qty = row.Qty;
+                            cart.TaxValue = (cart.SellingPrice * (taxValue / 100));
+                            cart.TotalPrice = (cart.SellingPrice * row.Qty) + row.TaxValue;
+                            db.Entry(cart).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+
+                        }
                     }
                     loadCart();
                 }
@@ -321,7 +317,7 @@ namespace Katswiri.Forms
                     {
                         //DateSold = DateTime.Parse(dateTimePickerSaleDate.Text),
                         SaleType = (string)lookUpEditSaleType.EditValue,
-                        PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
+                        //PaymentTypeId = (int)lookUpEditPaymentType.EditValue,
                         ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId,
                         SoldBy = LoginInfo.UserId,
                         Customer = 1,
@@ -437,11 +433,11 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditPaymentType.Properties.DataSource = db.vwPaymentTypes.ToList();
-                lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
-                lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
-                lookUpEditPaymentType.EditValue = db.PaymentTypes.Where(x => x.PaymentTypeName == "Cash").Single().PaymentTypeName;
-                lookUpEditPaymentType.Properties.NullText = "Payment Type";
+                //lookUpEditPaymentType.Properties.DataSource = db.vwPaymentTypes.ToList();
+                //lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
+                //lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
+                //lookUpEditPaymentType.EditValue = db.PaymentTypes.Where(x => x.PaymentTypeName == "Cash").Single().PaymentTypeName;
+                //lookUpEditPaymentType.Properties.NullText = "Payment Type";
             }
         }
 

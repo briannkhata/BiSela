@@ -33,6 +33,8 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwUsers.ToList();
                 gridView1.Columns["UserId"].Visible = false;
+                gridView1.Columns["UserType"].Visible = false;
+                gridView1.Columns["ShopId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
@@ -63,7 +65,7 @@ namespace Katswiri.Forms
             NameTextEdit.Text = EmailTextEdit.Text = PhoneTextEdit.Text = AddressTextEdit.Text = AddressTextEdit.Text = string.Empty;
             textEditGender.EditValue = null;
             UserNameTextEdit.Text = string.Empty;
-            PassWordTextEdit.Text = string.Empty;
+            //PassWordTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             UserId = 0;
@@ -78,11 +80,11 @@ namespace Katswiri.Forms
         private bool formValid()
         {
             var result = true;
-            if (String.IsNullOrEmpty(PassWordTextEdit.Text))
-            {
-                result = false;
-                PassWordTextEdit.ErrorText = "Required";
-            }
+            //if (String.IsNullOrEmpty(PassWordTextEdit.Text))
+            //{
+            //    result = false;
+            //    PassWordTextEdit.ErrorText = "Required";
+            //}
             if (String.IsNullOrEmpty(UserNameTextEdit.Text))
             {
                 result = false;
@@ -140,7 +142,7 @@ namespace Katswiri.Forms
                     user.Gender = textEditGender.EditValue.ToString();
                     user.UserName = UserNameTextEdit.Text;
                     user.UserType = (string)comboBoxEditUserType.EditValue;
-                    user.PassWord = PassWordTextEdit.Text;
+                    user.PassWord = UserNameTextEdit.Text;
                     user.Email = EmailTextEdit.Text;
                     user.Phone = PhoneTextEdit.Text;
                     user.Address = AddressTextEdit.Text;
@@ -195,7 +197,7 @@ namespace Katswiri.Forms
                     textEditGender.EditValue = user.Gender;
                     UserNameTextEdit.Text = user.UserName;
                     comboBoxEditUserType.EditValue = user.UserType;
-                    PassWordTextEdit.Text = user.PassWord;
+                    //PassWordTextEdit.Text = user.PassWord;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
                     AddressTextEdit.Text = user.Address;

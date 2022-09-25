@@ -53,11 +53,10 @@
         <AssociationConnector Association="BModel.FK_Users_Shops" />
         <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="0.75" PointY="11.75" />
         <EntityTypeShape EntityType="BModel.Cart" Width="1.5" PointX="18.25" PointY="15.125" />
-        <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="13.375" PointY="16" />
         <AssociationConnector Association="BModel.FK_Cart_Products" />
-        <AssociationConnector Association="BModel.FK_SaleDetails_Sales" />
         <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="BModel.vwOrderCustomer" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="13.375" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

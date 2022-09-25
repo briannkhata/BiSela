@@ -29,7 +29,6 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.dateEditDateSold = new DevExpress.XtraEditors.DateEdit();
@@ -57,7 +56,6 @@ namespace Katswiri.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -73,15 +71,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lookUpEditPaymentType
-            // 
-            this.lookUpEditPaymentType.Location = new System.Drawing.Point(825, 13);
-            this.lookUpEditPaymentType.Name = "lookUpEditPaymentType";
-            this.lookUpEditPaymentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditPaymentType.Size = new System.Drawing.Size(223, 30);
-            this.lookUpEditPaymentType.TabIndex = 13;
             // 
             // lookUpEditSaleType
             // 
@@ -100,7 +89,6 @@ namespace Katswiri.Forms
             this.panelControl5.Controls.Add(this.NewCustomer);
             this.panelControl5.Controls.Add(this.lblCashier);
             this.panelControl5.Controls.Add(this.label3);
-            this.panelControl5.Controls.Add(this.lookUpEditPaymentType);
             this.panelControl5.Controls.Add(this.lookUpEditSaleType);
             this.panelControl5.Location = new System.Drawing.Point(2, 1);
             this.panelControl5.Name = "panelControl5";
@@ -123,7 +111,7 @@ namespace Katswiri.Forms
             // 
             this.NewCustomer.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.NewCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewCustomer.Location = new System.Drawing.Point(524, 7);
+            this.NewCustomer.Location = new System.Drawing.Point(651, 7);
             this.NewCustomer.Name = "NewCustomer";
             this.NewCustomer.Size = new System.Drawing.Size(231, 42);
             this.NewCustomer.TabIndex = 28;
@@ -234,7 +222,7 @@ namespace Katswiri.Forms
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(223, 729);
+            this.button2.Location = new System.Drawing.Point(415, 729);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 50);
             this.button2.TabIndex = 7;
@@ -246,7 +234,7 @@ namespace Katswiri.Forms
             this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button3.BackColor = System.Drawing.Color.LimeGreen;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(424, 729);
+            this.button3.Location = new System.Drawing.Point(223, 729);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(186, 50);
             this.button3.TabIndex = 8;
@@ -275,6 +263,7 @@ namespace Katswiri.Forms
             this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowFooter = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // panelControl3
@@ -313,9 +302,9 @@ namespace Katswiri.Forms
             // labelTax
             // 
             this.labelTax.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTax.Location = new System.Drawing.Point(244, 669);
+            this.labelTax.Location = new System.Drawing.Point(244, 670);
             this.labelTax.Name = "labelTax";
-            this.labelTax.Size = new System.Drawing.Size(346, 38);
+            this.labelTax.Size = new System.Drawing.Size(329, 38);
             this.labelTax.TabIndex = 16;
             this.labelTax.Text = "00.00";
             this.labelTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -325,7 +314,7 @@ namespace Katswiri.Forms
             this.labelDiscount.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDiscount.Location = new System.Drawing.Point(244, 622);
             this.labelDiscount.Name = "labelDiscount";
-            this.labelDiscount.Size = new System.Drawing.Size(346, 38);
+            this.labelDiscount.Size = new System.Drawing.Size(317, 38);
             this.labelDiscount.TabIndex = 15;
             this.labelDiscount.Text = "00.00";
             this.labelDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -335,7 +324,7 @@ namespace Katswiri.Forms
             this.labelSubTotal.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubTotal.Location = new System.Drawing.Point(244, 573);
             this.labelSubTotal.Name = "labelSubTotal";
-            this.labelSubTotal.Size = new System.Drawing.Size(346, 38);
+            this.labelSubTotal.Size = new System.Drawing.Size(317, 38);
             this.labelSubTotal.TabIndex = 14;
             this.labelSubTotal.Text = "00.00";
             this.labelSubTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -427,9 +416,7 @@ namespace Katswiri.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop Name - Company";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pos_FormClosing);
             this.Shown += new System.EventHandler(this.Pos_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
@@ -451,7 +438,6 @@ namespace Katswiri.Forms
 
         #endregion
         private DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblCashier;
