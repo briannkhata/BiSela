@@ -58,7 +58,6 @@ namespace Katswiri
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.userNameDisplay = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem26 = new DevExpress.XtraBars.BarButtonItem();
@@ -71,7 +70,6 @@ namespace Katswiri
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup21 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -127,7 +125,6 @@ namespace Katswiri
             this.barButtonItem21,
             this.barButtonItem20,
             this.userNameDisplay,
-            this.barButtonItem23,
             this.barButtonItem24,
             this.barButtonItem25,
             this.barButtonItem26});
@@ -349,30 +346,23 @@ namespace Katswiri
             this.userNameDisplay.Name = "userNameDisplay";
             this.userNameDisplay.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
-            // barButtonItem23
-            // 
-            this.barButtonItem23.Caption = "Orders";
-            this.barButtonItem23.Id = 35;
-            this.barButtonItem23.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.productorderdetail_21;
-            this.barButtonItem23.Name = "barButtonItem23";
-            // 
             // barButtonItem24
             // 
-            this.barButtonItem24.Caption = "Receive Stock";
+            this.barButtonItem24.Caption = "Receive";
             this.barButtonItem24.Id = 36;
             this.barButtonItem24.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.shipmentreceived;
             this.barButtonItem24.Name = "barButtonItem24";
             // 
             // barButtonItem25
             // 
-            this.barButtonItem25.Caption = "Update Stock";
+            this.barButtonItem25.Caption = "Update";
             this.barButtonItem25.Id = 40;
             this.barButtonItem25.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.updatedataextract;
             this.barButtonItem25.Name = "barButtonItem25";
             // 
             // barButtonItem26
             // 
-            this.barButtonItem26.Caption = "Move Stock";
+            this.barButtonItem26.Caption = "Move";
             this.barButtonItem26.Id = 41;
             this.barButtonItem26.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.movepivottable1;
             this.barButtonItem26.Name = "barButtonItem26";
@@ -408,7 +398,6 @@ namespace Katswiri
             this.ribbonPageGroup3,
             this.ribbonPageGroup5,
             this.ribbonPageGroup21,
-            this.ribbonPageGroup13,
             this.ribbonPageGroup14});
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Manage Products";
@@ -433,17 +422,13 @@ namespace Katswiri
             this.ribbonPageGroup21.ItemLinks.Add(this.barButtonItem19);
             this.ribbonPageGroup21.Name = "ribbonPageGroup21";
             // 
-            // ribbonPageGroup13
-            // 
-            this.ribbonPageGroup13.ItemLinks.Add(this.barButtonItem23);
-            this.ribbonPageGroup13.Name = "ribbonPageGroup13";
-            // 
             // ribbonPageGroup14
             // 
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem24);
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem25);
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem26);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
+            this.ribbonPageGroup14.Text = "Manage Stock";
             // 
             // ribbonPage4
             // 
@@ -615,8 +600,6 @@ namespace Katswiri
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarStaticItem userNameDisplay;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem25;
