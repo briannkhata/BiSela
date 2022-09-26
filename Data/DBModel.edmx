@@ -107,58 +107,6 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="Qty" Type="float" Nullable="false" />
           <Property Name="Cost" Type="float" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.OrderCats' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="OrderCats">
-          <Key>
-            <PropertyRef Name="OrderCartId" />
-          </Key>
-          <Property Name="OrderCartId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="UserId" Type="int" />
-          <Property Name="OrderPrice" Type="float" />
-          <Property Name="TaxValue" Type="float" />
-          <Property Name="Discount" Type="float" />
-          <Property Name="TotalPrice" Type="float" />
-          <Property Name="Qty" Type="float" />
-        </EntityType>
-        <EntityType Name="OrderDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="OrderPrice" Type="float" Nullable="false" />
-          <Property Name="TaxValue" Type="float" Nullable="false" />
-          <Property Name="Discount" Type="float" Nullable="false" />
-          <Property Name="Qty" Type="float" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
-          <Property Name="TotalPrice" Type="float" />
-          <Property Name="SellingPrice" Type="float" />
-          <Property Name="ExpiryDate" Type="datetime" />
-          <Property Name="BatchNo" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Orders">
-          <Key>
-            <PropertyRef Name="OrderId" />
-          </Key>
-          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TotalBill" Type="float" Nullable="false" />
-          <Property Name="SubTotal" Type="float" Nullable="false" />
-          <Property Name="TotalDiscount" Type="float" Nullable="false" />
-          <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="DeliveryAddress" Type="varchar(max)" />
-          <Property Name="OrderStatus" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="Deleted" Type="int" Nullable="false" />
-          <Property Name="TaxAmount" Type="float" />
-          <Property Name="Terms" Type="varchar(max)" />
-          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
-          <Property Name="RequestedBy" Type="varchar" MaxLength="50" />
-          <Property Name="DeliveryNote" Type="varchar(max)" />
-          <Property Name="BatchNo" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="PaymentTypes">
           <Key>
             <PropertyRef Name="PaymentTypeId" />
@@ -184,6 +132,50 @@ warning 6002: The table/view 'bisela.dbo.OrderCats' does not have a primary key 
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="Image" Type="varchar(max)" />
           <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReceivingCarts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="OrderPrice" Type="float" />
+          <Property Name="SellingPrice" Type="float" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="TotalPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="ReceivingDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="OrderPrice" Type="float" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="TotalPrice" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Receivings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalBill" Type="float" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="TotalDiscount" Type="float" Nullable="false" />
+          <Property Name="ReceivingDate" Type="datetime" Nullable="false" />
+          <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="TaxAmount" Type="float" />
+          <Property Name="PurchasingOrder" Type="varchar(max)" />
+          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryNote" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SaleDetails">
           <Key>
@@ -432,6 +424,20 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
           <Property Name="SubUnit" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwReceivingCart">
+          <Key>
+            <PropertyRef Name="ProductName" />
+          </Key>
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="OrderPrice" Type="float" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SellingPrice" Type="float" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwShops">
           <Key>
@@ -578,30 +584,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OrderDetails_Orders">
-          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetails">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderDetails_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="OrderDetails">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Products_Brands">
           <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -684,10 +666,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceivingCarts" EntityType="Self.ReceivingCarts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceivingDetails" EntityType="Self.ReceivingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receivings" EntityType="Self.Receivings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
@@ -702,18 +685,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [Menus].[Qty] AS [Qty], 
     [Menus].[Cost] AS [Cost]
     FROM [dbo].[Menus] AS [Menus]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OrderCats" EntityType="Self.OrderCats" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OrderCats].[OrderCartId] AS [OrderCartId], 
-    [OrderCats].[ProductId] AS [ProductId], 
-    [OrderCats].[UserId] AS [UserId], 
-    [OrderCats].[OrderPrice] AS [OrderPrice], 
-    [OrderCats].[TaxValue] AS [TaxValue], 
-    [OrderCats].[Discount] AS [Discount], 
-    [OrderCats].[TotalPrice] AS [TotalPrice], 
-    [OrderCats].[Qty] AS [Qty]
-    FROM [dbo].[OrderCats] AS [OrderCats]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwBanks" EntityType="Self.vwBanks" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -807,6 +778,17 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwProducts].[SubUnit] AS [SubUnit]
     FROM [dbo].[vwProducts] AS [vwProducts]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwReceivingCart" EntityType="Self.vwReceivingCart" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwReceivingCart].[ProductName] AS [ProductName], 
+    [vwReceivingCart].[Description] AS [Description], 
+    [vwReceivingCart].[OrderPrice] AS [OrderPrice], 
+    [vwReceivingCart].[UserId] AS [UserId], 
+    [vwReceivingCart].[SellingPrice] AS [SellingPrice], 
+    [vwReceivingCart].[Qty] AS [Qty], 
+    [vwReceivingCart].[ExpiryDate] AS [ExpiryDate]
+    FROM [dbo].[vwReceivingCart] AS [vwReceivingCart]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwShops].[ShopName] AS [ShopName], 
@@ -880,14 +862,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Incomes" EntitySet="Incomes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Orders" Association="Self.FK_OrderDetails_Orders">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Products" Association="Self.FK_OrderDetails_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
             <End Role="Brands" EntitySet="Brands" />
@@ -1015,19 +989,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Qty" Type="Double" Nullable="false" />
           <Property Name="Cost" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="OrderCat">
-          <Key>
-            <PropertyRef Name="OrderCartId" />
-          </Key>
-          <Property Name="OrderCartId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="OrderPrice" Type="Double" />
-          <Property Name="TaxValue" Type="Double" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="TotalPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-        </EntityType>
         <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Banks" EntityType="Self.Bank" />
           <EntitySet Name="Brands" EntityType="Self.Brand" />
@@ -1038,7 +999,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
-          <EntitySet Name="OrderCats" EntityType="Self.OrderCat" />
           <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
           <EntitySet Name="vwExpenseTypes" EntityType="BModel.vwExpenseType" />
           <EntitySet Name="vwPaymentTypes" EntityType="BModel.vwPaymentType" />
@@ -1049,12 +1009,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwUsers" EntityType="BModel.vwUser" />
           <EntitySet Name="TaxTypes" EntityType="BModel.TaxType" />
           <EntitySet Name="vwTaxTypes" EntityType="BModel.vwTaxType" />
-          <EntitySet Name="OrderDetails" EntityType="BModel.OrderDetail" />
-          <EntitySet Name="Orders" EntityType="BModel.Order" />
-          <AssociationSet Name="FK_OrderDetails_Orders" Association="BModel.FK_OrderDetails_Orders">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
           <EntitySet Name="vwCategories" EntityType="BModel.vwCategory" />
           <EntitySet Name="vwBanks" EntityType="BModel.vwBank" />
           <EntitySet Name="vwBrands" EntityType="BModel.vwBrand" />
@@ -1089,10 +1043,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_OrderDetails_Products" Association="BModel.FK_OrderDetails_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="OrderDetail" EntitySet="OrderDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK_Products_TaxTypes" Association="BModel.FK_Products_TaxTypes">
             <End Role="TaxType" EntitySet="TaxTypes" />
             <End Role="Product" EntitySet="Products" />
@@ -1123,6 +1073,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwStocks" EntityType="BModel.vwStock" />
           <EntitySet Name="Sales" EntityType="BModel.Sale" />
           <EntitySet Name="vwOrderCustomers" EntityType="BModel.vwOrderCustomer" />
+          <EntitySet Name="Receivings" EntityType="BModel.Receiving" />
+          <EntitySet Name="ReceivingDetails" EntityType="BModel.ReceivingDetail" />
+          <EntitySet Name="vwReceivingCarts" EntityType="BModel.vwReceivingCart" />
+          <EntitySet Name="ReceivingCarts" EntityType="BModel.ReceivingCart" />
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1256,58 +1210,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
           <Property Name="TaxTypeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="OrderDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="OrderPrice" Type="Double" Nullable="false" />
-          <Property Name="TaxValue" Type="Double" Nullable="false" />
-          <Property Name="Discount" Type="Double" Nullable="false" />
-          <Property Name="Qty" Type="Double" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="TotalPrice" Type="Double" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Order" Relationship="BModel.FK_OrderDetails_Orders" FromRole="OrderDetail" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="BModel.FK_OrderDetails_Products" FromRole="OrderDetail" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderId" />
-          </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TotalBill" Type="Double" Nullable="false" />
-          <Property Name="SubTotal" Type="Double" Nullable="false" />
-          <Property Name="TotalDiscount" Type="Double" Nullable="false" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="TaxAmount" Type="Double" />
-          <Property Name="Terms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RequestedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="BModel.FK_OrderDetails_Orders" FromRole="Order" ToRole="OrderDetail" />
-        </EntityType>
-        <Association Name="FK_OrderDetails_Orders">
-          <End Type="BModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="BModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="vwCategory">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -1454,7 +1356,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="OrderDetails" Relationship="BModel.FK_OrderDetails_Products" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="TaxType" Relationship="BModel.FK_Products_TaxTypes" FromRole="Product" ToRole="TaxType" />
           <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
@@ -1499,18 +1400,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderDetails_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="BModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1686,6 +1575,62 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SaleId" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Receiving">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalBill" Type="Double" Nullable="false" />
+          <Property Name="SubTotal" Type="Double" Nullable="false" />
+          <Property Name="TotalDiscount" Type="Double" Nullable="false" />
+          <Property Name="ReceivingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="TaxAmount" Type="Double" />
+          <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ReceivingDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vwReceivingCart">
+          <Key>
+            <PropertyRef Name="ProductName" />
+          </Key>
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ReceivingCart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPrice" Type="Double" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1784,20 +1729,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderCats">
-            <EntityTypeMapping TypeName="BModel.OrderCat">
-              <MappingFragment StoreEntitySet="OrderCats">
-                <ScalarProperty Name="OrderCartId" ColumnName="OrderCartId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1912,45 +1843,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
                 <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
                 <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="BModel.OrderDetail">
-              <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="BModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
-                <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
-                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
-                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
-                <ScalarProperty Name="Terms" ColumnName="Terms" />
-                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2161,6 +2053,66 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Bill" ColumnName="Bill" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receivings">
+            <EntityTypeMapping TypeName="BModel.Receiving">
+              <MappingFragment StoreEntitySet="Receivings">
+                <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="PurchasingOrder" ColumnName="PurchasingOrder" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="ReceivingDate" ColumnName="ReceivingDate" />
+                <ScalarProperty Name="TotalDiscount" ColumnName="TotalDiscount" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceivingDetails">
+            <EntityTypeMapping TypeName="BModel.ReceivingDetail">
+              <MappingFragment StoreEntitySet="ReceivingDetails">
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwReceivingCarts">
+            <EntityTypeMapping TypeName="BModel.vwReceivingCart">
+              <MappingFragment StoreEntitySet="vwReceivingCart">
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceivingCarts">
+            <EntityTypeMapping TypeName="BModel.ReceivingCart">
+              <MappingFragment StoreEntitySet="ReceivingCarts">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

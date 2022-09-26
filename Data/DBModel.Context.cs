@@ -34,7 +34,6 @@ namespace Katswiri.Data
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<OrderCat> OrderCats { get; set; }
         public virtual DbSet<vwIncome> vwIncomes { get; set; }
         public virtual DbSet<vwExpenseType> vwExpenseTypes { get; set; }
         public virtual DbSet<vwPaymentType> vwPaymentTypes { get; set; }
@@ -45,8 +44,6 @@ namespace Katswiri.Data
         public virtual DbSet<vwUser> vwUsers { get; set; }
         public virtual DbSet<TaxType> TaxTypes { get; set; }
         public virtual DbSet<vwTaxType> vwTaxTypes { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<vwCategory> vwCategories { get; set; }
         public virtual DbSet<vwBank> vwBanks { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
@@ -63,5 +60,9 @@ namespace Katswiri.Data
         public virtual DbSet<vwStock> vwStocks { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<vwOrderCustomer> vwOrderCustomers { get; set; }
+        public virtual DbSet<Receiving> Receivings { get; set; }
+        public virtual DbSet<ReceivingDetail> ReceivingDetails { get; set; }
+        public virtual DbSet<vwReceivingCart> vwReceivingCarts { get; set; }
+        public virtual DbSet<ReceivingCart> ReceivingCarts { get; set; }
     }
 }

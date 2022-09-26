@@ -12,21 +12,17 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class ReceivingDetail
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
-        public double OrderPrice { get; set; }
-        public double TaxValue { get; set; }
-        public double Discount { get; set; }
-        public double Qty { get; set; }
-        public int OrderId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<double> OrderPrice { get; set; }
+        public Nullable<double> UnitPrice { get; set; }
+        public Nullable<double> Qty { get; set; }
+        public Nullable<double> Discount { get; set; }
+        public Nullable<double> Tax { get; set; }
         public Nullable<double> TotalPrice { get; set; }
-        public Nullable<double> SellingPrice { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
-        public string BatchNo { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

@@ -12,32 +12,18 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Receiving
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
-        {
-            this.OrderDetails = new HashSet<OrderDetail>();
-        }
-    
-        public int OrderId { get; set; }
+        public int Id { get; set; }
         public double TotalBill { get; set; }
         public double SubTotal { get; set; }
         public double TotalDiscount { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public string DeliveryAddress { get; set; }
-        public string OrderStatus { get; set; }
+        public System.DateTime ReceivingDate { get; set; }
         public string Supplier { get; set; }
         public int UserId { get; set; }
-        public int Deleted { get; set; }
         public Nullable<double> TaxAmount { get; set; }
-        public string Terms { get; set; }
+        public string PurchasingOrder { get; set; }
         public string DeliveryDate { get; set; }
-        public string RequestedBy { get; set; }
         public string DeliveryNote { get; set; }
-        public string BatchNo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

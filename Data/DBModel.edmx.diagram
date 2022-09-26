@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="BModel.Unit" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.OrderCat" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwIncome" Width="1.5" PointX="17.375" PointY="0.75" />
         <EntityTypeShape EntityType="BModel.vwExpenseType" Width="1.5" PointX="0.75" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.vwPaymentType" Width="1.5" PointX="17.375" PointY="3.75" />
@@ -25,9 +24,6 @@
         <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="7.375" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.TaxType" Width="1.5" PointX="11.375" PointY="14.875" />
         <EntityTypeShape EntityType="BModel.vwTaxType" Width="1.5" PointX="17.375" PointY="6.75" />
-        <EntityTypeShape EntityType="BModel.OrderDetail" Width="1.5" PointX="9" PointY="11.375" />
-        <EntityTypeShape EntityType="BModel.Order" Width="1.5" PointX="6.75" PointY="27" />
-        <AssociationConnector Association="BModel.FK_OrderDetails_Orders" />
         <EntityTypeShape EntityType="BModel.vwCategory" Width="1.5" PointX="11.375" PointY="11.75" />
         <EntityTypeShape EntityType="BModel.vwBank" Width="1.5" PointX="13.375" PointY="8.75" />
         <EntityTypeShape EntityType="BModel.vwBrand" Width="1.5" PointX="13.375" PointY="11.75" />
@@ -44,7 +40,6 @@
         <EntityTypeShape EntityType="BModel.SaleDetail" Width="1.5" PointX="18.25" PointY="10.625" />
         <AssociationConnector Association="BModel.FK_Products_Brands" />
         <AssociationConnector Association="BModel.FK_Products_Categories" />
-        <AssociationConnector Association="BModel.FK_OrderDetails_Products" />
         <AssociationConnector Association="BModel.FK_Products_TaxTypes" />
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
@@ -57,6 +52,10 @@
         <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="13.375" PointY="15.75" />
         <EntityTypeShape EntityType="BModel.vwOrderCustomer" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="BModel.Receiving" Width="1.5" PointX="15.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BModel.ReceivingDetail" Width="1.5" PointX="9.375" PointY="18.75" />
+        <EntityTypeShape EntityType="BModel.vwReceivingCart" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BModel.ReceivingCart" Width="1.5" PointX="13.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
