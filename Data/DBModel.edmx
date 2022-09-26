@@ -428,6 +428,7 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primar
         <EntityType Name="vwReceivingCart">
           <Key>
             <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" />
@@ -436,6 +437,8 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primar
           <Property Name="SellingPrice" Type="float" />
           <Property Name="Qty" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -786,7 +789,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwReceivingCart].[UserId] AS [UserId], 
     [vwReceivingCart].[SellingPrice] AS [SellingPrice], 
     [vwReceivingCart].[Qty] AS [Qty], 
-    [vwReceivingCart].[ExpiryDate] AS [ExpiryDate]
+    [vwReceivingCart].[ExpiryDate] AS [ExpiryDate], 
+    [vwReceivingCart].[Id] AS [Id], 
+    [vwReceivingCart].[ProductId] AS [ProductId]
     FROM [dbo].[vwReceivingCart] AS [vwReceivingCart]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
@@ -1609,6 +1614,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
         <EntityType Name="vwReceivingCart">
           <Key>
             <PropertyRef Name="ProductName" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1617,6 +1623,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SellingPrice" Type="Double" />
           <Property Name="Qty" Type="Double" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
         </EntityType>
         <EntityType Name="ReceivingCart">
           <Key>
@@ -2092,6 +2100,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwReceivingCarts">
             <EntityTypeMapping TypeName="BModel.vwReceivingCart">
               <MappingFragment StoreEntitySet="vwReceivingCart">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />

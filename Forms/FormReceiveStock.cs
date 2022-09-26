@@ -31,6 +31,7 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwReceivingCarts.ToList();
                 gridView1.Columns["UserId"].Visible = false;
+                gridView1.Columns["Id"].Visible = false;
                 gridView1.Columns.ColumnByFieldName("Description").OptionsColumn.ReadOnly = true;
                 gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
 
@@ -113,6 +114,37 @@ namespace Katswiri.Forms
                     }
                     loadCart();
                     textBoxSearch.Text = string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        public void refreshCart()
+        {
+            try
+            {
+                var selectedRows = gridView1.GetSelectedRows();
+                var row = ((vwReceivingCart)gridView1.GetRow(selectedRows[0]));
+                using (var db = new BEntities())
+                {
+                    if (row.Id != -1)
+                    {
+
+                        receivingCart.Id = row.Id;
+                        receivingCart.ProductId = row.ProductId;
+                        receivingCart.SellingPrice = row.SellingPrice;
+                        receivingCart.Qty = row.Qty;
+                        receivingCart.OrderPrice = row.OrderPrice;
+                        receivingCart.TotalPrice = (row.SellingPrice * row.Qty);
+                        receivingCart.ExpiryDate = row.ExpiryDate;
+                        db.Entry(receivingCart).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    loadCart();
                 }
             }
             catch (Exception ex)

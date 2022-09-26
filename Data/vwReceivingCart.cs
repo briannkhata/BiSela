@@ -21,5 +21,7 @@ namespace Katswiri.Data
         public Nullable<double> SellingPrice { get; set; }
         public Nullable<double> Qty { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> ProductId { get; set; }
     }
 }
