@@ -309,11 +309,29 @@
     <Compile Include="Forms\FormCustomer.Designer.cs">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormMoveStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMoveStock.Designer.cs">
+      <DependentUpon>FormMoveStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormOrders.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormOrders.Designer.cs">
       <DependentUpon>FormOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormUpdateStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormUpdateStock.Designer.cs">
+      <DependentUpon>FormUpdateStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FromReceiveStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FromReceiveStock.Designer.cs">
+      <DependentUpon>FromReceiveStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginInfo.cs" />
     <Compile Include="Forms\Pay.cs">
@@ -431,8 +449,17 @@
     <EmbeddedResource Include="Forms\FormCustomer.resx">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMoveStock.resx">
+      <DependentUpon>FormMoveStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormOrders.resx">
       <DependentUpon>FormOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormUpdateStock.resx">
+      <DependentUpon>FormUpdateStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FromReceiveStock.resx">
+      <DependentUpon>FromReceiveStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pay.resx">
       <DependentUpon>Pay.cs</DependentUpon>
@@ -544,6 +571,13 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\movepivottable1.svg" />
+    <None Include="Resources\updatedataextract.svg" />
+    <None Include="Resources\removesheetrows.svg" />
+    <None Include="Resources\movepivottable.svg" />
+    <None Include="Resources\managequeries.svg" />
+    <None Include="Resources\deletedatasource.svg" />
+    <None Include="Resources\saveas1.svg" />
     <None Include="Resources\saveas.svg" />
     <None Include="Resources\business_money.svg" />
   </ItemGroup>
