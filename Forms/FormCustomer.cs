@@ -15,7 +15,9 @@ namespace Katswiri.Forms
     public partial class FormCustomer : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
-        User user = new User();
+        User user;
+        Sale sale;
+        Pos pos = null;
         public FormCustomer()
         {
             InitializeComponent();
@@ -29,28 +31,40 @@ namespace Katswiri.Forms
                 {
                     using (db = new BEntities())
                     {
-                        user.Name = textEditName.Text;
-                        user.Phone = textEditPhone.Text;
-                        user.UserType = "Customer";
-                        user.Gender = "Other";
-                        user.UserName = textEditName.Text;
-                        user.PassWord = textEditName.Text;
-                        user.Email = "shop@yahoo.com";
-                        user.Address = "NAN";
-                        user.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId;
+                        user = new User()
+                        {
+                            Name = textEditName.Text,
+                            Phone = textEditPhone.Text,
+                            UserType = "Customer",
+                            Gender = "Other",
+                            UserName = textEditName.Text,
+                            PassWord = textEditName.Text,
+                            Email = "shop@yahoo.com",
+                            Address = "NAN",
+                            ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                        };
+
                         db.Users.Add(user);
                         db.SaveChanges();
+                        int UserId = user.UserId;
 
-                        //int UserId = user.UserId;
-                       
+                        sale = new Sale()
+                        { 
+                            Customer = UserId,
+                            SoldBy = LoginInfo.UserId,
+                            DateSold = DateTime.Now,
+                            ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                        };
+                        db.Sales.Add(sale);
+                        db.SaveChanges();
+
+
                     }
                     this.Dispose();
                     this.Close();
-                    
-                    Pos pos = new Pos();
+                    pos = new Pos();
                     pos.Activate();
                     pos.ShowDialog();
-                    //XtraMessageBox.Show("IncomeType Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

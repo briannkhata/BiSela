@@ -24,5 +24,6 @@ namespace Katswiri.Data
         public Nullable<double> TaxValue { get; set; }
         public Nullable<int> Customer { get; set; }
         public Nullable<double> Discount { get; set; }
+        public Nullable<int> SaleId { get; set; }
     }
 }

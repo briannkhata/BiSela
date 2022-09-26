@@ -17,8 +17,9 @@ namespace Katswiri.Data
         public string Name { get; set; }
         public string Phone { get; set; }
         public Nullable<double> Bill { get; set; }
-        public string PaymentTypeName { get; set; }
         public Nullable<double> Tendered { get; set; }
         public Nullable<int> Customer { get; set; }
+        public string SaleType { get; set; }
+        public int SaleId { get; set; }
     }
 }

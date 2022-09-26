@@ -11,6 +11,7 @@ namespace Katswiri.Enums
         Sale,
         Return,
         Free,
+        Credit,
         Damage
     }
 }

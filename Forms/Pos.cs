@@ -22,16 +22,17 @@ namespace Katswiri.Forms
         Sale sale;
         SaleDetail saleDetail;
 
-
         public Pos()
         {
             InitializeComponent();
             clearGrid();
-            loadCart();
             autoCompleteSearch();
             loadSaleTypes();
             loadPaymentTypes();
             loadCustomers();
+            loadSales((int)(int?)lookUpEditCustomer.EditValue);
+            loadCart();
+
             dateEditDateSold.DateTime = DateTime.Now;
 
             //clearmyCart();//clear my cart            
@@ -66,18 +67,23 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwCarts.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).ToList();
+                int customer = (int)(int?)lookUpEditCustomer.EditValue;
+                int SaleId = (int)(int?)lookUpEditSaleId.EditValue;
 
-                gridControlOrders.DataSource = db.Sales.Where(x=>x.Customer == (int?)lookUpEditCustomer.EditValue).ToList();
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = db.vwCarts.Where(x => x.Customer == customer && x.SaleId == SaleId).ToList();
+
+                gridControlOrders.DataSource = db.vwOrderCustomers.Where(x => x.Customer == customer && x.SaleId == SaleId).ToList();
                 gridView2.OptionsBehavior.Editable = false;
                 gridView2.Columns["Tendered"].Visible = false;
-                //gridView2.Columns["Phone"].Visible = false;
+                gridView2.Columns["Customer"].Visible = false;
+                gridView2.Columns["SaleId"].Visible = false;
+
 
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
                 //gridView1.OptionsBehavior.Editable = false;
-                //gridView1.Columns["UserId"].Visible = false;
+                gridView1.Columns["SaleId"].Visible = false;
                 gridView1.Columns["Discount"].Visible = false;
                 gridView1.Columns["ProductId"].Visible = false;
                 gridView1.Columns["Customer"].Visible = false;
@@ -179,17 +185,19 @@ namespace Katswiri.Forms
                 {
                     using (var db = new BEntities())
                     {
-                        sale = new Sale()
-                        {
-                            Customer = (int?)lookUpEditCustomer.EditValue,
-                            DateSold = (DateTime)dateEditDateSold.EditValue,
-                            SaleType = lookUpEditSaleType.EditValue.ToString(),
-                            SoldBy = LoginInfo.UserId,
-                            ShopId = db.Shops.SingleOrDefault().ShopId,
-                        };
-                        db.Sales.Add(sale);
-                        db.SaveChanges();
-                        int SaleId = sale.SaleId;
+                        //sale = new Sale()
+                        //{
+                        //    Customer = (int?)lookUpEditCustomer.EditValue,
+                        //    DateSold = (DateTime)dateEditDateSold.EditValue,
+                        //    SaleType = lookUpEditSaleType.EditValue.ToString(),
+                        //    SoldBy = LoginInfo.UserId,
+                        //    ShopId = db.Shops.SingleOrDefault().ShopId,
+                        //};
+                        //db.Sales.Add(sale);
+                        //db.SaveChanges();
+                        //int SaleId = sale.SaleId;
+                        int customer = (int)lookUpEditCustomer.EditValue;
+                        int SaleId = (int)lookUpEditSaleId.EditValue;
 
                         var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
@@ -213,7 +221,7 @@ namespace Katswiri.Forms
                                 cart.SellingPrice = UnitPrice;
                                 cart.ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).Single().ShopId;
                                 cart.UserId = LoginInfo.UserId;
-                                cart.Customer = (int?)lookUpEditCustomer.EditValue;
+                                cart.Customer = customer;
                                 cart.Discount = 0;
                                 cart.Qty = 1;
                                 cart.TaxValue = (UnitPrice * (taxValue / 100));
@@ -222,18 +230,18 @@ namespace Katswiri.Forms
                             }
                             db.SaveChanges();
 
-                            var total = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TotalPrice);
-                            var tax = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.TaxValue);
-                            var subTotal = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.SellingPrice);
-                            var discount = db.Carts?.Where(x => x.Customer == (int?)lookUpEditCustomer.EditValue).Sum(x => x.Discount);
+                            //var total = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.TotalPrice);
+                            //var tax = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.TaxValue);
+                            //var subTotal = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.SellingPrice);
+                            //var discount = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.Discount);
 
-                            var sale2 = db.Sales.Where(x => x.SaleId == sale.SaleId).FirstOrDefault();
-                            sale2.Bill = total;
-                            sale2.Balance = total;
-                            sale2.SubTotal = subTotal;
-                            sale2.TaxAmount = tax;
-                            db.Entry(sale2).State = EntityState.Modified;
-                            db.SaveChanges();
+                            //var sale2 = db.Sales.Where(x => x.SaleId == sale.SaleId).FirstOrDefault();
+                            //sale2.Bill = total;
+                            //sale2.Balance = total;
+                            //sale2.SubTotal = subTotal;
+                            //sale2.TaxAmount = tax;
+                            //db.Entry(sale2).State = EntityState.Modified;
+                            //db.SaveChanges();
                         }
                         else
                         {
@@ -406,11 +414,24 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditCustomer.Properties.DataSource = db.Users.ToList();
+                lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
                 lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
                 lookUpEditCustomer.Properties.NullText = "Customer";
+
+            }
+        }
+
+        private void loadSales(int customer)
+        {
+            using (db = new BEntities())
+            {
+                lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
+                lookUpEditSaleId.Properties.ValueMember = "SaleId";
+                lookUpEditSaleId.Properties.DisplayMember = "SaleId";
+                lookUpEditSaleId.EditValue = db.Sales.Where(x=>x.Customer == customer).Max(x => x.SaleId);
+                lookUpEditSaleId.Properties.NullText = "Order Number";
 
             }
         }
@@ -517,14 +538,23 @@ namespace Katswiri.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
             ShowPosFom();
+            this.Close();
+    
         }
         private void ShowPosFom()
         {
-            Pos pos = new Pos();
-            pos.Activate();
-            pos.ShowDialog();
+            //Pos pos = new Pos();
+            //pos.Activate();
+            //pos.ShowDialog();
+
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormCustomer formCustomer = null;
+            if (formCustomer == null || formCustomer.IsDisposed)
+            {
+                formCustomer = new FormCustomer();
+            }
+            formCustomer.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -573,7 +603,6 @@ namespace Katswiri.Forms
             formOrders.Activate();
             formOrders.ShowDialog();
         }
-
 
     }
 }

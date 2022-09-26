@@ -323,6 +323,7 @@ warning 6002: The table/view 'bisela.dbo.vwCarts' does not have a primary key de
           <Property Name="TaxValue" Type="float" />
           <Property Name="Customer" Type="int" />
           <Property Name="Discount" Type="float" />
+          <Property Name="SaleId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -386,14 +387,15 @@ warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primar
           <Key>
             <PropertyRef Name="Name" />
             <PropertyRef Name="Phone" />
-            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="SaleId" />
           </Key>
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Bill" Type="float" />
-          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Tendered" Type="float" />
           <Property Name="Customer" Type="int" />
+          <Property Name="SaleType" Type="varchar" MaxLength="50" />
+          <Property Name="SaleId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -449,6 +451,7 @@ warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key d
             <PropertyRef Name="ProductName" />
             <PropertyRef Name="BarCode" />
             <PropertyRef Name="UnitId" />
+            
           </Key>
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -460,7 +463,7 @@ warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key d
           <Property Name="KitchenQty" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="SellingPrice" Type="float" />
-          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwTaxTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -736,7 +739,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwCarts].[ProductId] AS [ProductId], 
     [vwCarts].[TaxValue] AS [TaxValue], 
     [vwCarts].[Customer] AS [Customer], 
-    [vwCarts].[Discount] AS [Discount]
+    [vwCarts].[Discount] AS [Discount], 
+    [vwCarts].[SaleId] AS [SaleId]
     FROM [dbo].[vwCarts] AS [vwCarts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwCategories" EntityType="Self.vwCategories" store:Type="Views" store:Schema="dbo">
@@ -778,9 +782,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwOrderCustomer].[Name] AS [Name], 
     [vwOrderCustomer].[Phone] AS [Phone], 
     [vwOrderCustomer].[Bill] AS [Bill], 
-    [vwOrderCustomer].[PaymentTypeName] AS [PaymentTypeName], 
     [vwOrderCustomer].[Tendered] AS [Tendered], 
-    [vwOrderCustomer].[Customer] AS [Customer]
+    [vwOrderCustomer].[Customer] AS [Customer], 
+    [vwOrderCustomer].[SaleType] AS [SaleType], 
+    [vwOrderCustomer].[SaleId] AS [SaleId]
     FROM [dbo].[vwOrderCustomer] AS [vwOrderCustomer]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentTypes" store:Type="Views" store:Schema="dbo">
@@ -1116,8 +1121,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
           <EntitySet Name="vwStocks" EntityType="BModel.vwStock" />
-          <EntitySet Name="vwOrderCustomers" EntityType="BModel.vwOrderCustomer" />
           <EntitySet Name="Sales" EntityType="BModel.Sale" />
+          <EntitySet Name="vwOrderCustomers" EntityType="BModel.vwOrderCustomer" />
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1597,6 +1602,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="TaxValue" Type="Double" />
           <Property Name="Customer" Type="Int32" />
           <Property Name="Discount" Type="Double" />
+          <Property Name="SaleId" Type="Int32" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -1644,20 +1650,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="KitchenQty" Type="Double" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="SellingPrice" Type="Double" />
-          <Property Name="ProductId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="vwOrderCustomer">
-          <Key>
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="PaymentTypeName" />
-          </Key>
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Bill" Type="Double" />
-          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tendered" Type="Double" />
-          <Property Name="Customer" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -1678,6 +1671,20 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="PaymentTypeId" Type="Int32" />
           <Property Name="Paid" Type="Double" />
           <Property Name="Balance" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwOrderCustomer">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bill" Type="Double" />
+          <Property Name="Tendered" Type="Double" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2075,6 +2082,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwCarts">
             <EntityTypeMapping TypeName="BModel.vwCart">
               <MappingFragment StoreEntitySet="vwCarts">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Customer" ColumnName="Customer" />
                 <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
@@ -2122,18 +2130,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwOrderCustomers">
-            <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
-              <MappingFragment StoreEntitySet="vwOrderCustomer">
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
-                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
-                <ScalarProperty Name="Bill" ColumnName="Bill" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="BModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
@@ -2152,6 +2148,19 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Bill" ColumnName="Bill" />
                 <ScalarProperty Name="Tendered" ColumnName="Tendered" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOrderCustomers">
+            <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
+              <MappingFragment StoreEntitySet="vwOrderCustomer">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -32,7 +32,6 @@ namespace Katswiri.Forms
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.dateEditDateSold = new DevExpress.XtraEditors.DateEdit();
-            this.NewCustomer = new System.Windows.Forms.Button();
             this.lblCashier = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
@@ -56,6 +55,7 @@ namespace Katswiri.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.lookUpEditSaleId = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -70,12 +70,15 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lookUpEditSaleType
             // 
             this.lookUpEditSaleType.Location = new System.Drawing.Point(1056, 13);
             this.lookUpEditSaleType.Name = "lookUpEditSaleType";
+            this.lookUpEditSaleType.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditSaleType.Properties.Appearance.Options.UseFont = true;
             this.lookUpEditSaleType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditSaleType.Size = new System.Drawing.Size(226, 30);
@@ -85,12 +88,13 @@ namespace Katswiri.Forms
             // 
             this.panelControl5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl5.Controls.Add(this.lookUpEditSaleId);
             this.panelControl5.Controls.Add(this.dateEditDateSold);
-            this.panelControl5.Controls.Add(this.NewCustomer);
             this.panelControl5.Controls.Add(this.lblCashier);
+            this.panelControl5.Controls.Add(this.lookUpEditCustomer);
             this.panelControl5.Controls.Add(this.label3);
             this.panelControl5.Controls.Add(this.lookUpEditSaleType);
-            this.panelControl5.Location = new System.Drawing.Point(2, 1);
+            this.panelControl5.Location = new System.Drawing.Point(1, 1);
             this.panelControl5.Name = "panelControl5";
             this.panelControl5.Size = new System.Drawing.Size(1532, 58);
             this.panelControl5.TabIndex = 3;
@@ -100,6 +104,8 @@ namespace Katswiri.Forms
             this.dateEditDateSold.EditValue = null;
             this.dateEditDateSold.Location = new System.Drawing.Point(1291, 12);
             this.dateEditDateSold.Name = "dateEditDateSold";
+            this.dateEditDateSold.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateEditDateSold.Properties.Appearance.Options.UseFont = true;
             this.dateEditDateSold.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditDateSold.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -107,23 +113,11 @@ namespace Katswiri.Forms
             this.dateEditDateSold.Size = new System.Drawing.Size(225, 30);
             this.dateEditDateSold.TabIndex = 29;
             // 
-            // NewCustomer
-            // 
-            this.NewCustomer.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.NewCustomer.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewCustomer.Location = new System.Drawing.Point(651, 7);
-            this.NewCustomer.Name = "NewCustomer";
-            this.NewCustomer.Size = new System.Drawing.Size(231, 42);
-            this.NewCustomer.TabIndex = 28;
-            this.NewCustomer.Text = "New Customer";
-            this.NewCustomer.UseVisualStyleBackColor = false;
-            this.NewCustomer.Click += new System.EventHandler(this.NewCustomer_Click);
-            // 
             // lblCashier
             // 
             this.lblCashier.BackColor = System.Drawing.Color.Transparent;
             this.lblCashier.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCashier.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCashier.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblCashier.Location = new System.Drawing.Point(198, 6);
             this.lblCashier.Name = "lblCashier";
             this.lblCashier.Size = new System.Drawing.Size(218, 47);
@@ -134,7 +128,7 @@ namespace Katswiri.Forms
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label3.Location = new System.Drawing.Point(5, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(194, 47);
@@ -144,13 +138,13 @@ namespace Katswiri.Forms
             // 
             // lookUpEditCustomer
             // 
-            this.lookUpEditCustomer.Location = new System.Drawing.Point(476, 82);
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(794, 14);
             this.lookUpEditCustomer.Name = "lookUpEditCustomer";
-            this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpEditCustomer.Properties.Appearance.Options.UseFont = true;
             this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCustomer.Size = new System.Drawing.Size(407, 34);
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(252, 30);
             this.lookUpEditCustomer.TabIndex = 29;
             // 
             // textSearchProduct
@@ -164,7 +158,7 @@ namespace Katswiri.Forms
             this.textSearchProduct.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSearchProduct.Location = new System.Drawing.Point(20, 81);
             this.textSearchProduct.Name = "textSearchProduct";
-            this.textSearchProduct.Size = new System.Drawing.Size(398, 57);
+            this.textSearchProduct.Size = new System.Drawing.Size(863, 57);
             this.textSearchProduct.TabIndex = 0;
             this.textSearchProduct.WordWrap = false;
             this.textSearchProduct.TextChanged += new System.EventHandler(this.textSearchProduct_TextChanged);
@@ -291,7 +285,7 @@ namespace Katswiri.Forms
             // labelBill
             // 
             this.labelBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBill.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBill.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBill.Location = new System.Drawing.Point(579, 567);
             this.labelBill.Name = "labelBill";
             this.labelBill.Size = new System.Drawing.Size(305, 150);
@@ -371,15 +365,28 @@ namespace Katswiri.Forms
             // 
             // button5
             // 
+            this.button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button5.BackColor = System.Drawing.SystemColors.MenuBar;
             this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.DodgerBlue;
             this.button5.Location = new System.Drawing.Point(904, 81);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(293, 42);
+            this.button5.Size = new System.Drawing.Size(293, 56);
             this.button5.TabIndex = 30;
             this.button5.Text = "View All Orders";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // lookUpEditSaleId
+            // 
+            this.lookUpEditSaleId.Location = new System.Drawing.Point(536, 14);
+            this.lookUpEditSaleId.Name = "lookUpEditSaleId";
+            this.lookUpEditSaleId.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditSaleId.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditSaleId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditSaleId.Size = new System.Drawing.Size(252, 30);
+            this.lookUpEditSaleId.TabIndex = 30;
             // 
             // Pos
             // 
@@ -392,7 +399,6 @@ namespace Katswiri.Forms
             this.ClientSize = new System.Drawing.Size(1538, 808);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lookUpEditCustomer);
             this.Controls.Add(this.labelBill);
             this.Controls.Add(this.labelTax);
             this.Controls.Add(this.labelDiscount);
@@ -431,6 +437,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -445,7 +452,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControlOrders;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private System.Windows.Forms.Button NewCustomer;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -464,5 +470,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.DateEdit dateEditDateSold;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditSaleId;
     }
 }
