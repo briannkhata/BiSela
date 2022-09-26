@@ -327,11 +327,11 @@
     <Compile Include="Forms\FormUpdateStock.Designer.cs">
       <DependentUpon>FormUpdateStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FromReceiveStock.cs">
+    <Compile Include="Forms\FormReceiveStock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FromReceiveStock.Designer.cs">
-      <DependentUpon>FromReceiveStock.cs</DependentUpon>
+    <Compile Include="Forms\FormReceiveStock.Designer.cs">
+      <DependentUpon>FormReceiveStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginInfo.cs" />
     <Compile Include="Forms\Pay.cs">
@@ -458,8 +458,8 @@
     <EmbeddedResource Include="Forms\FormUpdateStock.resx">
       <DependentUpon>FormUpdateStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FromReceiveStock.resx">
-      <DependentUpon>FromReceiveStock.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormReceiveStock.resx">
+      <DependentUpon>FormReceiveStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pay.resx">
       <DependentUpon>Pay.cs</DependentUpon>

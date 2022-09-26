@@ -423,6 +423,77 @@ namespace Katswiri
             ShowPosFom();
         }
 
-   
+        private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowUpdateStockFom();
+        }
+
+        private void ShowUpdateStockFom()
+        {
+            try
+            {
+                FormUpdateStock formUpdateStock = null;
+                if (formUpdateStock == null || formUpdateStock.IsDisposed)
+                {
+                    formUpdateStock = new FormUpdateStock();
+                }
+                formUpdateStock.Activate();
+                formUpdateStock.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void barButtonItem26_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowMoveStockFom();
+        }
+
+        private void ShowMoveStockFom()
+        {
+            try
+            {
+                FormMoveStock formMoveStock = null;
+                if (formMoveStock == null || formMoveStock.IsDisposed)
+                {
+                    formMoveStock = new FormMoveStock();
+                }
+                formMoveStock.Activate();
+                formMoveStock.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowReceiveStockFom();
+        }
+
+        private void ShowReceiveStockFom()
+        {
+            try
+            {
+                FormReceiveStock formReceiveStock = null;
+                if (formReceiveStock == null || formReceiveStock.IsDisposed)
+                {
+                    formReceiveStock = new FormReceiveStock();
+                }
+                formReceiveStock.Activate();
+                formReceiveStock.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
     }
 }

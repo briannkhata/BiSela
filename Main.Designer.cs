@@ -352,6 +352,7 @@ namespace Katswiri
             this.barButtonItem24.Id = 36;
             this.barButtonItem24.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.shipmentreceived;
             this.barButtonItem24.Name = "barButtonItem24";
+            this.barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem24_ItemClick);
             // 
             // barButtonItem25
             // 
@@ -359,6 +360,7 @@ namespace Katswiri
             this.barButtonItem25.Id = 40;
             this.barButtonItem25.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.updatedataextract;
             this.barButtonItem25.Name = "barButtonItem25";
+            this.barButtonItem25.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem25_ItemClick);
             // 
             // barButtonItem26
             // 
@@ -366,6 +368,7 @@ namespace Katswiri
             this.barButtonItem26.Id = 41;
             this.barButtonItem26.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.movepivottable1;
             this.barButtonItem26.Name = "barButtonItem26";
+            this.barButtonItem26.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem26_ItemClick);
             // 
             // ribbonPage1
             // 

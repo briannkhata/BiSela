@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Katswiri.Forms
 {
-    public partial class FromReceiveStock : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class FormReceiveStock : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public FromReceiveStock()
+        public FormReceiveStock()
         {
             InitializeComponent();
         }

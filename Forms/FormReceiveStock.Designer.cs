@@ -1,7 +1,7 @@
 ﻿
 namespace Katswiri.Forms
 {
-    partial class FromReceiveStock
+    partial class FormReceiveStock
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,12 @@ namespace Katswiri.Forms
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -52,12 +56,11 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1199, 232);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.ribbon.Size = new System.Drawing.Size(1113, 232);
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Save";
+            this.barButtonItem1.Caption = "Receive";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.saveas1;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -88,25 +91,50 @@ namespace Katswiri.Forms
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
-            // ribbonStatusBar
+            // textBox1
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 643);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1199, 36);
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(4, 273);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(438, 48);
+            this.textBox1.TabIndex = 0;
             // 
-            // FromReceiveStock
+            // gridControl1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.gridControl1.Location = new System.Drawing.Point(0, 339);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.ribbon;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(1113, 438);
+            this.gridControl1.TabIndex = 3;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.DetailHeight = 372;
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // FormReceiveStock
+            // 
+            this.Appearance.Options.UseFont = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 679);
-            this.Controls.Add(this.ribbonStatusBar);
+            this.ClientSize = new System.Drawing.Size(1113, 776);
+            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ribbon);
-            this.Name = "FromReceiveStock";
+            this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "FormReceiveStock";
             this.Ribbon = this.ribbon;
-            this.StatusBar = this.ribbonStatusBar;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receive Stock";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,9 +145,11 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private System.Windows.Forms.TextBox textBox1;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }
