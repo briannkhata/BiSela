@@ -21,7 +21,7 @@ namespace Katswiri.Data
         public string Supplier { get; set; }
         public int UserId { get; set; }
         public string PurchasingOrder { get; set; }
-        public string DeliveryDate { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string DeliveryNote { get; set; }
     }
 }

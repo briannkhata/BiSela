@@ -17,14 +17,11 @@ namespace Katswiri.Data
         public int StockId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> ShopId { get; set; }
-        public Nullable<double> ShopQty { get; set; }
-        public Nullable<double> StoresQty { get; set; }
-        public Nullable<double> KitchenQty { get; set; }
+        public Nullable<double> Shop { get; set; }
+        public Nullable<double> Stores { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<double> SellingPrice { get; set; }
         public string Comment { get; set; }
-        public Nullable<double> Shop { get; set; }
-        public Nullable<double> Stores { get; set; }
     
         public virtual Product Product { get; set; }
     }

@@ -171,7 +171,7 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="PurchasingOrder" Type="varchar(max)" />
-          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="DeliveryNote" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SaleDetails">
@@ -1006,7 +1006,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwShops" EntityType="BModel.vwShop" />
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <EntitySet Name="vwUnits" EntityType="BModel.vwUnit" />
-          <EntitySet Name="Stocks" EntityType="BModel.Stock" />
           <EntitySet Name="vwUsers" EntityType="BModel.vwUser" />
           <EntitySet Name="TaxTypes" EntityType="BModel.TaxType" />
           <EntitySet Name="vwTaxTypes" EntityType="BModel.vwTaxType" />
@@ -1056,10 +1055,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Product" EntitySet="Products" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stocks_Products" Association="BModel.FK_Stocks_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Stock" EntitySet="Stocks" />
-          </AssociationSet>
           <EntitySet Name="Shops" EntityType="BModel.Shop" />
           <AssociationSet Name="FK_Users_Shops" Association="BModel.FK_Users_Shops">
             <End Role="Shop" EntitySet="Shops" />
@@ -1078,6 +1073,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="ReceivingCarts" EntityType="BModel.ReceivingCart" />
           <EntitySet Name="ReceivingDetails" EntityType="BModel.ReceivingDetail" />
           <EntitySet Name="Receivings" EntityType="BModel.Receiving" />
+          <EntitySet Name="Stocks" EntityType="BModel.Stock" />
+          <AssociationSet Name="FK_Stocks_Products" Association="BModel.FK_Stocks_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1151,23 +1151,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UnitValue" Type="Double" Nullable="false" />
           <Property Name="SubUnitValue" Type="Double" Nullable="false" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Stock">
-          <Key>
-            <PropertyRef Name="StockId" />
-          </Key>
-          <Property Name="StockId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="ShopId" Type="Int32" />
-          <Property Name="ShopQty" Type="Double" />
-          <Property Name="StoresQty" Type="Double" />
-          <Property Name="KitchenQty" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="BModel.FK_Stocks_Products" FromRole="Stock" ToRole="Product" />
-          <Property Name="Shop" Type="Double" />
-          <Property Name="Stores" Type="Double" />
         </EntityType>
         <EntityType Name="vwUser">
           <Key>
@@ -1362,8 +1345,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <NavigationProperty Name="TaxType" Relationship="BModel.FK_Products_TaxTypes" FromRole="Product" ToRole="TaxType" />
           <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
-          <NavigationProperty Name="Stocks" Relationship="BModel.FK_Stocks_Products" FromRole="Product" ToRole="Stock" />
           <NavigationProperty Name="Carts" Relationship="BModel.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Stocks" Relationship="BModel.FK_Stocks_Products" FromRole="Product" ToRole="Stock" />
         </EntityType>
         <EntityType Name="SaleDetail">
           <Key>
@@ -1438,18 +1421,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="SaleDetail">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Stocks_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="BModel.Stock" Role="Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Stock">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1631,9 +1602,35 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="StockId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="Stores" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="BModel.FK_Stocks_Products" FromRole="Stock" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Stocks_Products">
+          <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="BModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1795,20 +1792,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
                 <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stocks">
-            <EntityTypeMapping TypeName="BModel.Stock">
-              <MappingFragment StoreEntitySet="Stocks">
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="StockId" ColumnName="StockId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2114,6 +2097,20 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="BModel.Stock">
+              <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

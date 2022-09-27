@@ -20,6 +20,7 @@ namespace Katswiri.Forms
         ReceivingCart receivingCart = new ReceivingCart();
         ReceivingDetail receivingDetail;
         Receiving receiving;
+        Stock stock; 
         public FormReceiveStock()
         {
             InitializeComponent();
@@ -171,14 +172,14 @@ namespace Katswiri.Forms
                 {
                     receiving = new Receiving()
                     {
-                        //ReceivingDate = DateTime.Parse(re.Text),
+                        ReceivingDate = DateTime.Parse(dateTimePickerReceivingDate.Text),
                         TotalBill = (double)db.ReceivingCarts.Sum(x => x.TotalPrice),
                         SubTotal = (double)db.ReceivingCarts.Sum(x => x.SellingPrice),
-                        Supplier = "",
+                        Supplier = textBoxSupplier.Text,
                         UserId = LoginInfo.UserId,
-                        PurchasingOrder = "",
-                        DeliveryDate = DateTime.Now,
-                        DeliveryNote = "",
+                        PurchasingOrder = textBoxPurchasingOrder.Text,
+                        DeliveryDate = DateTime.Parse(dateTimePickerDeliveryDate.Text),
+                        DeliveryNote = textBoxDeliveryNote.Text
                     };
                     int ReceivingId = receiving.Id;
 
@@ -199,15 +200,18 @@ namespace Katswiri.Forms
                         db.ReceivingDetails.Add(receivingDetail);
                         db.SaveChanges();
 
-                        //quantity = new Quantity()
-                        //{
-                        //    ProductId = item.ProductId,
-                        //    ShopQty = quantity.ShopQty - item.Qty,
-                        //};
-                        //db.Quantities.Add(quantity);
-                        //db.SaveChanges();
+                        stock = new Stock()
+                        {
+                            ProductId = item.ProductId,
+                            Stores = item.Qty,
+                            ExpiryDate = item.ExpiryDate,
+                            SellingPrice = item.SellingPrice,
+                        };
+                        db.Stocks.Add(stock);
+                        db.SaveChanges();
                     }
 
+                    loadCart();
                 }
             }
             catch (Exception ex)
