@@ -169,7 +169,6 @@ namespace Katswiri.Forms
             {
                 using(db = new BEntities())
                 {
-
                     receiving = new Receiving()
                     {
                         //ReceivingDate = DateTime.Parse(re.Text),
