@@ -18,11 +18,10 @@ namespace Katswiri.Data
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<double> OrderPrice { get; set; }
-        public Nullable<double> UnitPrice { get; set; }
+        public Nullable<double> SellingPrice { get; set; }
         public Nullable<double> Qty { get; set; }
-        public Nullable<double> Discount { get; set; }
-        public Nullable<double> Tax { get; set; }
         public Nullable<double> TotalPrice { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
+        public Nullable<int> ReceivingId { get; set; }
     }
 }

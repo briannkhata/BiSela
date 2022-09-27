@@ -52,10 +52,10 @@
         <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="13.375" PointY="15.75" />
         <EntityTypeShape EntityType="BModel.vwOrderCustomer" Width="1.5" PointX="3.375" PointY="13.75" />
-        <EntityTypeShape EntityType="BModel.Receiving" Width="1.5" PointX="15.375" PointY="15.75" />
-        <EntityTypeShape EntityType="BModel.ReceivingDetail" Width="1.5" PointX="9.375" PointY="18.75" />
         <EntityTypeShape EntityType="BModel.vwReceivingCart" Width="1.5" PointX="7.375" PointY="11.75" />
         <EntityTypeShape EntityType="BModel.ReceivingCart" Width="1.5" PointX="13.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BModel.ReceivingDetail" Width="1.5" PointX="15.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BModel.Receiving" Width="1.5" PointX="9.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,8 @@ namespace Katswiri.Forms
     {
         BEntities db;
         ReceivingCart receivingCart = new ReceivingCart();
+        ReceivingDetail receivingDetail;
+        Receiving receiving;
         public FormReceiveStock()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = db.vwReceivingCarts.ToList();
                 gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["Id"].Visible = false;
+                gridView1.Columns["ProductId"].Visible = false;
                 gridView1.Columns.ColumnByFieldName("Description").OptionsColumn.ReadOnly = true;
                 gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
 
@@ -55,18 +58,22 @@ namespace Katswiri.Forms
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //if(e.ColumnIndex == 2)
-            //{
-            //    DateTimePicker dateTimePicker = new DateTimePicker();
-            //    gridControl1.Contorls.Add(dateTimePicker);
-            //    dateTimePicker.Format = DateTimePickerFormat.Short;
-            //    Rectangle rectangle = datagridView1.GetCellDisplayRectangle(e.ColumnIndex,e.RowIndex,true);
-            //    dateTimePicker.Size = new Size(rectangle.Width,rectangle.Height);
-            //    dateTimePicker.Location = new Point(rectangle.X,rectangle.Y);
-            //    dateTimePicker.CloseUp += new EventHandler(dateTimePicker_closeup);
-            //    dateTimePicker.TextChanged += new EventHandler(dateTimePicker_textchanged);
-            //    dateTimePicker.Visible = true;
-            //}
+            try
+            {
+                var selectedRows = gridView1.GetSelectedRows();
+                var row = ((vwReceivingCart)gridView1.GetRow(selectedRows[0]));
+                using (var db = new BEntities())
+                {
+                    var receivingCart = db.ReceivingCarts.Find(row.Id);
+                    db.ReceivingCarts.Remove(receivingCart);
+                    db.SaveChanges();
+                }
+                loadCart();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -91,7 +98,6 @@ namespace Katswiri.Forms
 
                         var product = db.Products.Where(p => p.ProductCode == textBoxSearch.Text).FirstOrDefault();
                         var exists = db.ReceivingCarts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
-                        //double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
 
                         if (exists != null)
                         {
@@ -133,7 +139,6 @@ namespace Katswiri.Forms
                 {
                     if (row.Id != -1)
                     {
-
                         receivingCart.Id = row.Id;
                         receivingCart.ProductId = row.ProductId;
                         receivingCart.SellingPrice = row.SellingPrice;
@@ -150,6 +155,65 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            refreshCart();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                using(db = new BEntities())
+                {
+
+                    receiving = new Receiving()
+                    {
+                        //ReceivingDate = DateTime.Parse(re.Text),
+                        TotalBill = (double)db.ReceivingCarts.Sum(x => x.TotalPrice),
+                        SubTotal = (double)db.ReceivingCarts.Sum(x => x.SellingPrice),
+                        Supplier = "",
+                        UserId = LoginInfo.UserId,
+                        PurchasingOrder = "",
+                        DeliveryDate = DateTime.Now,
+                        DeliveryNote = "",
+                    };
+                    int ReceivingId = receiving.Id;
+
+                    var cart = db.ReceivingCarts.ToList();
+                    foreach (var item in cart)
+                    {
+                        receivingDetail = new ReceivingDetail()
+                        {
+                            ReceivingId = ReceivingId,
+                            ProductId = (int)item.ProductId,
+                            SellingPrice = (double)item.SellingPrice,
+                            OrderPrice = (double)item.OrderPrice,
+                            TotalPrice = (double)item.TotalPrice,
+                            Qty = (double)item.Qty,
+                            UserId = (int)item.UserId,
+                            ExpiryDate = item.ExpiryDate
+                        };
+                        db.ReceivingDetails.Add(receivingDetail);
+                        db.SaveChanges();
+
+                        //quantity = new Quantity()
+                        //{
+                        //    ProductId = item.ProductId,
+                        //    ShopQty = quantity.ShopQty - item.Qty,
+                        //};
+                        //db.Quantities.Add(quantity);
+                        //db.SaveChanges();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

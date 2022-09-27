@@ -17,11 +17,9 @@ namespace Katswiri.Data
         public int Id { get; set; }
         public double TotalBill { get; set; }
         public double SubTotal { get; set; }
-        public double TotalDiscount { get; set; }
         public System.DateTime ReceivingDate { get; set; }
         public string Supplier { get; set; }
         public int UserId { get; set; }
-        public Nullable<double> TaxAmount { get; set; }
         public string PurchasingOrder { get; set; }
         public string DeliveryDate { get; set; }
         public string DeliveryNote { get; set; }
