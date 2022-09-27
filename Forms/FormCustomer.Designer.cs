@@ -44,6 +44,9 @@ namespace Katswiri.Forms
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPhone.Properties)).BeginInit();
@@ -57,16 +60,20 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1item)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.textEditPhone);
             this.dataLayoutControl1.Controls.Add(this.textEditName);
+            this.dataLayoutControl1.Controls.Add(this.lookUpEditCustomer);
             this.dataLayoutControl1.Location = new System.Drawing.Point(12, 12);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(455, 295);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(656, 344);
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -74,7 +81,7 @@ namespace Katswiri.Forms
             // 
             this.textEditPhone.Location = new System.Drawing.Point(24, 118);
             this.textEditPhone.Name = "textEditPhone";
-            this.textEditPhone.Size = new System.Drawing.Size(407, 26);
+            this.textEditPhone.Size = new System.Drawing.Size(608, 26);
             this.textEditPhone.StyleController = this.dataLayoutControl1;
             this.textEditPhone.TabIndex = 5;
             // 
@@ -82,7 +89,7 @@ namespace Katswiri.Forms
             // 
             this.textEditName.Location = new System.Drawing.Point(24, 69);
             this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new System.Drawing.Size(407, 26);
+            this.textEditName.Size = new System.Drawing.Size(608, 26);
             this.textEditName.StyleController = this.dataLayoutControl1;
             this.textEditName.TabIndex = 4;
             // 
@@ -91,9 +98,10 @@ namespace Katswiri.Forms
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup1});
+            this.layoutControlGroup1,
+            this.layoutControlGroup3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(455, 295);
+            this.Root.Size = new System.Drawing.Size(656, 295);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -103,28 +111,28 @@ namespace Katswiri.Forms
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(435, 275);
-            this.layoutControlGroup1.Text = "Enter Details";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(636, 148);
+            this.layoutControlGroup1.Text = "New Customer ? Enter Customer Details";
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.textEditName;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(411, 49);
+            this.layoutControlItem1.Size = new System.Drawing.Size(612, 49);
             this.layoutControlItem1.Text = "Name";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(39, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(98, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.textEditPhone;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(411, 176);
+            this.layoutControlItem2.Size = new System.Drawing.Size(612, 49);
             this.layoutControlItem2.Text = "Phone";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(39, 16);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(98, 16);
             // 
             // FormCustomerlayoutControl1ConvertedLayout
             // 
@@ -133,7 +141,7 @@ namespace Katswiri.Forms
             this.FormCustomerlayoutControl1ConvertedLayout.Location = new System.Drawing.Point(0, 232);
             this.FormCustomerlayoutControl1ConvertedLayout.Name = "FormCustomerlayoutControl1ConvertedLayout";
             this.FormCustomerlayoutControl1ConvertedLayout.Root = this.layoutControlGroup2;
-            this.FormCustomerlayoutControl1ConvertedLayout.Size = new System.Drawing.Size(479, 319);
+            this.FormCustomerlayoutControl1ConvertedLayout.Size = new System.Drawing.Size(680, 368);
             this.FormCustomerlayoutControl1ConvertedLayout.TabIndex = 1;
             // 
             // layoutControlGroup2
@@ -143,7 +151,7 @@ namespace Katswiri.Forms
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.dataLayoutControl1item});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(479, 319);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(680, 368);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // dataLayoutControl1item
@@ -151,7 +159,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1item.Control = this.dataLayoutControl1;
             this.dataLayoutControl1item.Location = new System.Drawing.Point(0, 0);
             this.dataLayoutControl1item.Name = "dataLayoutControl1item";
-            this.dataLayoutControl1item.Size = new System.Drawing.Size(459, 299);
+            this.dataLayoutControl1item.Size = new System.Drawing.Size(660, 348);
             this.dataLayoutControl1item.TextSize = new System.Drawing.Size(0, 0);
             this.dataLayoutControl1item.TextVisible = false;
             // 
@@ -167,7 +175,7 @@ namespace Katswiri.Forms
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(479, 232);
+            this.ribbonControl1.Size = new System.Drawing.Size(680, 232);
             // 
             // barButtonItem1
             // 
@@ -194,11 +202,47 @@ namespace Katswiri.Forms
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
             // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.lookUpEditCustomer;
+            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem3.CustomizationFormText = "Phone";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.Size = new System.Drawing.Size(612, 126);
+            this.layoutControlItem3.Text = "Select Customer";
+            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(98, 16);
+            // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(636, 127);
+            this.layoutControlGroup3.Text = "Not New Custmer?";
+            // 
+            // lookUpEditCustomer
+            // 
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(24, 217);
+            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
+            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditCustomer.Properties.NullText = "";
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(608, 26);
+            this.lookUpEditCustomer.StyleController = this.dataLayoutControl1;
+            this.lookUpEditCustomer.TabIndex = 5;
+            this.lookUpEditCustomer.EditValueChanged += new System.EventHandler(this.lookUpEditCustomer_EditValueChanged);
+            // 
             // FormCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 551);
+            this.ClientSize = new System.Drawing.Size(680, 600);
             this.Controls.Add(this.FormCustomerlayoutControl1ConvertedLayout);
             this.Controls.Add(this.ribbonControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -219,6 +263,9 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1item)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +288,8 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
     }
 }

@@ -19,11 +19,10 @@ namespace Katswiri.Data
         public string BarCode { get; set; }
         public int UnitId { get; set; }
         public Nullable<int> ShopId { get; set; }
-        public Nullable<double> ShopQty { get; set; }
-        public Nullable<double> StoresQty { get; set; }
-        public Nullable<double> KitchenQty { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<double> SellingPrice { get; set; }
         public int ProductId { get; set; }
+        public Nullable<double> Shop { get; set; }
+        public Nullable<double> Stores { get; set; }
     }
 }

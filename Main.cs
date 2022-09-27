@@ -420,7 +420,9 @@ namespace Katswiri
         private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowPosFom();
+            FormCustomer formCustomer = new FormCustomer();
+            formCustomer.ShowDialog();
+            //ShowPosFom();
         }
 
         private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)

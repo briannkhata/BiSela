@@ -230,6 +230,14 @@ namespace Katswiri.Forms
                             }
                             db.SaveChanges();
 
+                            //var reduceQty = db.Carts.Where(x => x.SaleId == SaleId && x.Customer == customer).ToList();
+                            //foreach(var i in )
+
+                            //Stock stock = new Stock()
+                            //{
+                                
+                            //};
+
                             //var total = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.TotalPrice);
                             //var tax = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.TaxValue);
                             //var subTotal = db.Carts?.Where(x => x.Customer == customer && x.SaleId == SaleId).Sum(x => x.SellingPrice);

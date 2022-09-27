@@ -21,6 +21,7 @@ namespace Katswiri.Forms
         public FormCustomer()
         {
             InitializeComponent();
+            loadCustomers();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -75,6 +76,16 @@ namespace Katswiri.Forms
 
         }
 
+        private void loadCustomers()
+        {
+            using (db = new BEntities())
+            {
+                lookUpEditCustomer.Properties.DataSource = db.vwCustomers.Where(x=>x.UserType == "Customer").ToList();
+                lookUpEditCustomer.Properties.ValueMember = "UserId";
+                lookUpEditCustomer.Properties.DisplayMember = "Name";
+            }
+        }
+
 
         private bool formValid()
         {
@@ -91,6 +102,17 @@ namespace Katswiri.Forms
             }
  
             return result;
+        }
+
+        private void lookUpEditCustomer_EditValueChanged(object sender, EventArgs e)
+        {
+            int UserId = (int)lookUpEditCustomer.EditValue;
+            //XtraMessageBox.Show(UserId.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Dispose();
+            this.Close();
+            pos = new Pos();
+            pos.Activate();
+            pos.ShowDialog();
         }
     }
 }
