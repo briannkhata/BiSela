@@ -574,6 +574,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\clearrules.svg" />
     <None Include="Resources\managequeries1.svg" />
     <None Include="Resources\movepivottable1.svg" />
     <None Include="Resources\updatedataextract.svg" />

@@ -38,21 +38,23 @@ namespace Katswiri.Forms
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxDeliveryNote = new System.Windows.Forms.TextBox();
-            this.textBoxPurchasingOrder = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxSupplier = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePickerDeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerReceivingDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePickerDeliveryDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxSupplier = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxPurchasingOrder = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxDeliveryNote = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -84,7 +86,8 @@ namespace Katswiri.Forms
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Tools";
             // 
@@ -127,6 +130,19 @@ namespace Katswiri.Forms
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Clear Grid";
+            this.barButtonItem4.Id = 4;
+            this.barButtonItem4.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.clearrules;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
             // ribbon
             // 
             this.ribbon.ExpandCollapseItem.Id = 0;
@@ -135,9 +151,10 @@ namespace Katswiri.Forms
             this.ribbon.SearchEditItem,
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem3});
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 5;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -171,6 +188,7 @@ namespace Katswiri.Forms
             // 
             // panel2
             // 
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel2.Controls.Add(this.dateTimePickerReceivingDate);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.dateTimePickerDeliveryDate);
@@ -186,37 +204,37 @@ namespace Katswiri.Forms
             this.panel2.Size = new System.Drawing.Size(1283, 141);
             this.panel2.TabIndex = 7;
             // 
-            // label2
+            // dateTimePickerReceivingDate
             // 
-            this.label2.Location = new System.Drawing.Point(29, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 29);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Delivery Note";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dateTimePickerReceivingDate.Location = new System.Drawing.Point(709, 91);
+            this.dateTimePickerReceivingDate.Name = "dateTimePickerReceivingDate";
+            this.dateTimePickerReceivingDate.Size = new System.Drawing.Size(340, 23);
+            this.dateTimePickerReceivingDate.TabIndex = 9;
             // 
-            // textBoxDeliveryNote
+            // label6
             // 
-            this.textBoxDeliveryNote.Location = new System.Drawing.Point(33, 50);
-            this.textBoxDeliveryNote.Name = "textBoxDeliveryNote";
-            this.textBoxDeliveryNote.Size = new System.Drawing.Size(300, 23);
-            this.textBoxDeliveryNote.TabIndex = 1;
+            this.label6.Location = new System.Drawing.Point(568, 89);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 29);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Receiving Date";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxPurchasingOrder
+            // dateTimePickerDeliveryDate
             // 
-            this.textBoxPurchasingOrder.Location = new System.Drawing.Point(339, 50);
-            this.textBoxPurchasingOrder.Name = "textBoxPurchasingOrder";
-            this.textBoxPurchasingOrder.Size = new System.Drawing.Size(363, 23);
-            this.textBoxPurchasingOrder.TabIndex = 3;
+            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(168, 95);
+            this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
+            this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(340, 23);
+            this.dateTimePickerDeliveryDate.TabIndex = 7;
             // 
-            // label3
+            // label5
             // 
-            this.label3.Location = new System.Drawing.Point(338, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 29);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Purchasing Order";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Location = new System.Drawing.Point(29, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(112, 29);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Delivery Date";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxSupplier
             // 
@@ -234,37 +252,37 @@ namespace Katswiri.Forms
             this.label4.Text = "Supplier";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label5
+            // textBoxPurchasingOrder
             // 
-            this.label5.Location = new System.Drawing.Point(29, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 29);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Delivery Date";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBoxPurchasingOrder.Location = new System.Drawing.Point(339, 50);
+            this.textBoxPurchasingOrder.Name = "textBoxPurchasingOrder";
+            this.textBoxPurchasingOrder.Size = new System.Drawing.Size(363, 23);
+            this.textBoxPurchasingOrder.TabIndex = 3;
             // 
-            // dateTimePickerDeliveryDate
+            // label3
             // 
-            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(139, 95);
-            this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
-            this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(340, 23);
-            this.dateTimePickerDeliveryDate.TabIndex = 7;
+            this.label3.Location = new System.Drawing.Point(338, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(150, 29);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Purchasing Order";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dateTimePickerReceivingDate
+            // textBoxDeliveryNote
             // 
-            this.dateTimePickerReceivingDate.Location = new System.Drawing.Point(709, 91);
-            this.dateTimePickerReceivingDate.Name = "dateTimePickerReceivingDate";
-            this.dateTimePickerReceivingDate.Size = new System.Drawing.Size(340, 23);
-            this.dateTimePickerReceivingDate.TabIndex = 9;
+            this.textBoxDeliveryNote.Location = new System.Drawing.Point(33, 50);
+            this.textBoxDeliveryNote.Name = "textBoxDeliveryNote";
+            this.textBoxDeliveryNote.Size = new System.Drawing.Size(300, 23);
+            this.textBoxDeliveryNote.TabIndex = 1;
             // 
-            // label6
+            // label2
             // 
-            this.label6.Location = new System.Drawing.Point(568, 89);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 29);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Receiving Date";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label2.Location = new System.Drawing.Point(29, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 29);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Delivery Note";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormReceiveStock
             // 
@@ -320,5 +338,7 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerDeliveryDate;
         private System.Windows.Forms.Label label5;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

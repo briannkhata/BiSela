@@ -75,7 +75,6 @@ namespace Katswiri.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         public void datedateTimePicker_textchanged(object sender, EventArgs e)
@@ -96,7 +95,6 @@ namespace Katswiri.Forms
                 {
                     using (var db = new BEntities())
                     {
-
                         var product = db.Products.Where(p => p.ProductCode == textBoxSearch.Text).FirstOrDefault();
                         var exists = db.ReceivingCarts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
 
@@ -126,6 +124,19 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void clearReceivingCart()
+        {
+            using(db = new BEntities())
+            {
+                //db.Database.ExecuteSqlRaw("TRUNCATE TABLE ReceivingCarts");
+                var list = db.ReceivingCarts.ToList();
+                foreach (var rm in list)
+                {
+                    db.ReceivingCarts.Remove(rm);
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -210,7 +221,7 @@ namespace Katswiri.Forms
                         db.Stocks.Add(stock);
                         db.SaveChanges();
                     }
-
+                    clearReceivingCart();
                     loadCart();
                 }
             }
@@ -218,6 +229,11 @@ namespace Katswiri.Forms
             {
 
             }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            clearReceivingCart();
         }
     }
 }
