@@ -234,6 +234,7 @@ namespace Katswiri.Forms
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             clearReceivingCart();
+            loadCart();
         }
     }
 }
