@@ -521,5 +521,27 @@ namespace Katswiri
                 printTool.ShowPreview();
             }
         }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (db = new BEntities())
+            {
+                SalesReport salesReport = new SalesReport();
+                ReportPrintTool printTool = new ReportPrintTool(salesReport);
+                //printTool.ShowPreviewDialog();
+                printTool.ShowPreview();
+            }
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (db = new BEntities())
+            {
+                ReceivingsReport receivingsReport = new ReceivingsReport();
+                ReportPrintTool printTool = new ReportPrintTool(receivingsReport);
+                //printTool.ShowPreviewDialog();
+                printTool.ShowPreview();
+            }
+        }
     }
 }

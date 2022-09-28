@@ -1,7 +1,7 @@
 ﻿
 namespace Katswiri.Reports
 {
-    partial class SalesReport
+    partial class ReceivingsReport
     {
         /// <summary>
         /// Required designer variable.
@@ -50,11 +50,7 @@ namespace Katswiri.Reports
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression8 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.DataAccess.Sql.Column column9 = new DevExpress.DataAccess.Sql.Column();
             DevExpress.DataAccess.Sql.ColumnExpression columnExpression9 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column10 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression10 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column11 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression11 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesReport));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceivingsReport));
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -80,10 +76,10 @@ namespace Katswiri.Reports
             this.tableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.tableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.tableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -91,10 +87,6 @@ namespace Katswiri.Reports
             this.tableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell21 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.tableCell22 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -104,13 +96,13 @@ namespace Katswiri.Reports
             this.sqlDataSource1.ConnectionName = "mra-hq-ict-bnkh\\sqlexpress.bisela.dbo";
             this.sqlDataSource1.Name = "sqlDataSource1";
             columnExpression1.ColumnName = "ProductCode";
-            table3.Name = "vwSalesReport";
+            table3.Name = "vwReceivingReport";
             columnExpression1.Table = table3;
             column1.Expression = columnExpression1;
             columnExpression2.ColumnName = "ProductName";
             columnExpression2.Table = table3;
             column2.Expression = columnExpression2;
-            columnExpression3.ColumnName = "Description";
+            columnExpression3.ColumnName = "TaxStatus";
             columnExpression3.Table = table3;
             column3.Expression = columnExpression3;
             columnExpression4.ColumnName = "CategoryName";
@@ -119,24 +111,18 @@ namespace Katswiri.Reports
             columnExpression5.ColumnName = "BrandName";
             columnExpression5.Table = table3;
             column5.Expression = columnExpression5;
-            columnExpression6.ColumnName = "SellingPrice";
+            columnExpression6.ColumnName = "OrderPrice";
             columnExpression6.Table = table3;
             column6.Expression = columnExpression6;
-            columnExpression7.ColumnName = "Discount";
+            columnExpression7.ColumnName = "Qty";
             columnExpression7.Table = table3;
             column7.Expression = columnExpression7;
-            columnExpression8.ColumnName = "Qty";
+            columnExpression8.ColumnName = "TotalPrice";
             columnExpression8.Table = table3;
             column8.Expression = columnExpression8;
-            columnExpression9.ColumnName = "TaxValue";
+            columnExpression9.ColumnName = "ExpiryDate";
             columnExpression9.Table = table3;
             column9.Expression = columnExpression9;
-            columnExpression10.ColumnName = "SoldPrice";
-            columnExpression10.Table = table3;
-            column10.Expression = columnExpression10;
-            columnExpression11.ColumnName = "DateSold";
-            columnExpression11.Table = table3;
-            column11.Expression = columnExpression11;
             selectQuery1.Columns.Add(column1);
             selectQuery1.Columns.Add(column2);
             selectQuery1.Columns.Add(column3);
@@ -146,9 +132,7 @@ namespace Katswiri.Reports
             selectQuery1.Columns.Add(column7);
             selectQuery1.Columns.Add(column8);
             selectQuery1.Columns.Add(column9);
-            selectQuery1.Columns.Add(column10);
-            selectQuery1.Columns.Add(column11);
-            selectQuery1.Name = "vwSalesReport";
+            selectQuery1.Name = "vwReceivingReport";
             selectQuery1.Tables.Add(table3);
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             selectQuery1});
@@ -262,7 +246,7 @@ namespace Katswiri.Reports
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(640F, 24.19433F);
             this.label1.StyleName = "Title";
-            this.label1.Text = "SALES REPORT";
+            this.label1.Text = "Report Title";
             // 
             // table1
             // 
@@ -270,7 +254,7 @@ namespace Katswiri.Reports
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(796.9999F, 28F);
+            this.table1.SizeF = new System.Drawing.SizeF(650F, 28F);
             // 
             // tableRow1
             // 
@@ -283,9 +267,7 @@ namespace Katswiri.Reports
             this.tableCell6,
             this.tableCell7,
             this.tableCell8,
-            this.tableCell9,
-            this.tableCell10,
-            this.tableCell11});
+            this.tableCell9});
             this.tableRow1.Name = "tableRow1";
             this.tableRow1.Weight = 1D;
             // 
@@ -295,88 +277,70 @@ namespace Katswiri.Reports
             this.tableCell1.Name = "tableCell1";
             this.tableCell1.StyleName = "DetailCaption1";
             this.tableCell1.StylePriority.UseBorders = false;
-            this.tableCell1.Text = "Code";
-            this.tableCell1.Weight = 0.10857224684495193D;
+            this.tableCell1.Text = "Product Code";
+            this.tableCell1.Weight = 0.1288654033954327D;
             // 
             // tableCell2
             // 
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.StyleName = "DetailCaption1";
-            this.tableCell2.Text = "Name";
-            this.tableCell2.Weight = 0.11169120201697716D;
+            this.tableCell2.Text = "Product Name";
+            this.tableCell2.Weight = 0.13256732647235578D;
             // 
             // tableCell3
             // 
             this.tableCell3.Name = "tableCell3";
             this.tableCell3.StyleName = "DetailCaption1";
-            this.tableCell3.Text = "Description";
-            this.tableCell3.Weight = 0.093862750713641821D;
+            this.tableCell3.Text = "Tax Status";
+            this.tableCell3.Weight = 0.10405931912935697D;
             // 
             // tableCell4
             // 
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.StyleName = "DetailCaption1";
-            this.tableCell4.Text = "Category ";
-            this.tableCell4.Weight = 0.11945455697866586D;
+            this.tableCell4.Text = "Category Name";
+            this.tableCell4.Weight = 0.14178172184870794D;
             // 
             // tableCell5
             // 
             this.tableCell5.Name = "tableCell5";
             this.tableCell5.StyleName = "DetailCaption1";
-            this.tableCell5.Text = "Brand ";
-            this.tableCell5.Weight = 0.09929709801307092D;
+            this.tableCell5.Text = "Brand Name";
+            this.tableCell5.Weight = 0.11785664485051081D;
             // 
             // tableCell6
             // 
             this.tableCell6.Name = "tableCell6";
             this.tableCell6.StyleName = "DetailCaption1";
             this.tableCell6.StylePriority.UseTextAlignment = false;
-            this.tableCell6.Text = "Unit Price";
+            this.tableCell6.Text = "Order Price";
             this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell6.Weight = 0.10085656973031851D;
+            this.tableCell6.Weight = 0.11051746074969952D;
             // 
             // tableCell7
             // 
             this.tableCell7.Name = "tableCell7";
             this.tableCell7.StyleName = "DetailCaption1";
             this.tableCell7.StylePriority.UseTextAlignment = false;
-            this.tableCell7.Text = "Discount";
+            this.tableCell7.Text = "Qty";
             this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell7.Weight = 0.10244491983447046D;
+            this.tableCell7.Weight = 0.047940488962026739D;
             // 
             // tableCell8
             // 
             this.tableCell8.Name = "tableCell8";
             this.tableCell8.StyleName = "DetailCaption1";
             this.tableCell8.StylePriority.UseTextAlignment = false;
-            this.tableCell8.Text = "Qty";
+            this.tableCell8.Text = "Total Price";
             this.tableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell8.Weight = 0.069878150623934987D;
+            this.tableCell8.Weight = 0.10498075045072115D;
             // 
             // tableCell9
             // 
             this.tableCell9.Name = "tableCell9";
             this.tableCell9.StyleName = "DetailCaption1";
-            this.tableCell9.StylePriority.UseTextAlignment = false;
-            this.tableCell9.Text = "Tax";
-            this.tableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell9.Weight = 0.056617615378111844D;
-            // 
-            // tableCell10
-            // 
-            this.tableCell10.Name = "tableCell10";
-            this.tableCell10.StyleName = "DetailCaption1";
-            this.tableCell10.StylePriority.UseTextAlignment = false;
-            this.tableCell10.Text = "Sold Price";
-            this.tableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell10.Weight = 0.16355538037543146D;
-            // 
-            // tableCell11
-            // 
-            this.tableCell11.Name = "tableCell11";
-            this.tableCell11.StyleName = "DetailCaption1";
-            this.tableCell11.Text = "Date Sold";
-            this.tableCell11.Weight = 0.19992317539193183D;
+            this.tableCell9.Text = "Expiry Date";
+            this.tableCell9.Weight = 0.11143092228816105D;
             // 
             // table2
             // 
@@ -385,131 +349,104 @@ namespace Katswiri.Reports
             this.table2.OddStyleName = "DetailData3_Odd";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(796.9999F, 25F);
+            this.table2.SizeF = new System.Drawing.SizeF(650F, 25F);
             // 
             // tableRow2
             // 
             this.tableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.tableCell10,
+            this.tableCell11,
             this.tableCell12,
             this.tableCell13,
             this.tableCell14,
             this.tableCell15,
             this.tableCell16,
             this.tableCell17,
-            this.tableCell18,
-            this.tableCell19,
-            this.tableCell20,
-            this.tableCell21,
-            this.tableCell22});
+            this.tableCell18});
             this.tableRow2.Name = "tableRow2";
             this.tableRow2.Weight = 11.5D;
             // 
+            // tableCell10
+            // 
+            this.tableCell10.Borders = DevExpress.XtraPrinting.BorderSide.None;
+            this.tableCell10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ProductCode]")});
+            this.tableCell10.Name = "tableCell10";
+            this.tableCell10.StyleName = "DetailData1";
+            this.tableCell10.StylePriority.UseBorders = false;
+            this.tableCell10.Weight = 0.1288654033954327D;
+            // 
+            // tableCell11
+            // 
+            this.tableCell11.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ProductName]")});
+            this.tableCell11.Name = "tableCell11";
+            this.tableCell11.StyleName = "DetailData1";
+            this.tableCell11.Weight = 0.13256732647235578D;
+            // 
             // tableCell12
             // 
-            this.tableCell12.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.tableCell12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ProductCode]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TaxStatus]")});
             this.tableCell12.Name = "tableCell12";
             this.tableCell12.StyleName = "DetailData1";
-            this.tableCell12.StylePriority.UseBorders = false;
-            this.tableCell12.Weight = 0.10857225858248197D;
+            this.tableCell12.Weight = 0.10405931912935697D;
             // 
             // tableCell13
             // 
             this.tableCell13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ProductName]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CategoryName]")});
             this.tableCell13.Name = "tableCell13";
             this.tableCell13.StyleName = "DetailData1";
-            this.tableCell13.Weight = 0.11169121375450722D;
+            this.tableCell13.Weight = 0.14178172184870794D;
             // 
             // tableCell14
             // 
             this.tableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Description]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BrandName]")});
             this.tableCell14.Name = "tableCell14";
             this.tableCell14.StyleName = "DetailData1";
-            this.tableCell14.Weight = 0.09386275658240685D;
+            this.tableCell14.Weight = 0.11785664485051081D;
             // 
             // tableCell15
             // 
             this.tableCell15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CategoryName]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OrderPrice]")});
             this.tableCell15.Name = "tableCell15";
             this.tableCell15.StyleName = "DetailData1";
-            this.tableCell15.Weight = 0.11945456871619592D;
+            this.tableCell15.StylePriority.UseTextAlignment = false;
+            this.tableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.tableCell15.Weight = 0.11051746074969952D;
             // 
             // tableCell16
             // 
             this.tableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BrandName]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Qty]")});
             this.tableCell16.Name = "tableCell16";
             this.tableCell16.StyleName = "DetailData1";
-            this.tableCell16.Weight = 0.099297109750600965D;
+            this.tableCell16.StylePriority.UseTextAlignment = false;
+            this.tableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.tableCell16.Weight = 0.047940486027644232D;
             // 
             // tableCell17
             // 
             this.tableCell17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SellingPrice]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TotalPrice]")});
             this.tableCell17.Name = "tableCell17";
             this.tableCell17.StyleName = "DetailData1";
             this.tableCell17.StylePriority.UseTextAlignment = false;
             this.tableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell17.TextFormatString = "{0:n1}";
-            this.tableCell17.Weight = 0.10085658146784855D;
+            this.tableCell17.Weight = 0.10498075045072115D;
             // 
             // tableCell18
             // 
             this.tableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Discount]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ExpiryDate]")});
             this.tableCell18.Name = "tableCell18";
             this.tableCell18.StyleName = "DetailData1";
-            this.tableCell18.StylePriority.UseTextAlignment = false;
-            this.tableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell18.TextFormatString = "{0:n1}";
-            this.tableCell18.Weight = 0.10244487280911334D;
+            this.tableCell18.Weight = 0.11143094576322116D;
             // 
-            // tableCell19
-            // 
-            this.tableCell19.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Qty]")});
-            this.tableCell19.Name = "tableCell19";
-            this.tableCell19.StyleName = "DetailData1";
-            this.tableCell19.StylePriority.UseTextAlignment = false;
-            this.tableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell19.Weight = 0.069878218028201516D;
-            // 
-            // tableCell20
-            // 
-            this.tableCell20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TaxValue]")});
-            this.tableCell20.Name = "tableCell20";
-            this.tableCell20.StyleName = "DetailData1";
-            this.tableCell20.StylePriority.UseTextAlignment = false;
-            this.tableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell20.TextFormatString = "{0:n1}";
-            this.tableCell20.Weight = 0.056617509815590043D;
-            // 
-            // tableCell21
-            // 
-            this.tableCell21.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SoldPrice]")});
-            this.tableCell21.Name = "tableCell21";
-            this.tableCell21.StyleName = "DetailData1";
-            this.tableCell21.StylePriority.UseTextAlignment = false;
-            this.tableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.tableCell21.TextFormatString = "{0:n1}";
-            this.tableCell21.Weight = 0.16355550925876936D;
-            // 
-            // tableCell22
-            // 
-            this.tableCell22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DateSold]")});
-            this.tableCell22.Name = "tableCell22";
-            this.tableCell22.StyleName = "DetailData1";
-            this.tableCell22.TextFormatString = "{0:dd-MMM-yy}";
-            this.tableCell22.Weight = 0.19992306353778683D;
-            // 
-            // SalesReport
+            // ReceivingsReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
             this.TopMargin,
@@ -519,10 +456,9 @@ namespace Katswiri.Reports
             this.Detail});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
-            this.DataMember = "vwSalesReport";
+            this.DataMember = "vwReceivingReport";
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(7, 46, 100, 100);
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.DetailCaption1,
@@ -562,11 +498,11 @@ namespace Katswiri.Reports
         private DevExpress.XtraReports.UI.XRTableCell tableCell7;
         private DevExpress.XtraReports.UI.XRTableCell tableCell8;
         private DevExpress.XtraReports.UI.XRTableCell tableCell9;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell10;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell11;
         private DevExpress.XtraReports.UI.DetailBand Detail;
         private DevExpress.XtraReports.UI.XRTable table2;
         private DevExpress.XtraReports.UI.XRTableRow tableRow2;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell10;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell11;
         private DevExpress.XtraReports.UI.XRTableCell tableCell12;
         private DevExpress.XtraReports.UI.XRTableCell tableCell13;
         private DevExpress.XtraReports.UI.XRTableCell tableCell14;
@@ -574,9 +510,5 @@ namespace Katswiri.Reports
         private DevExpress.XtraReports.UI.XRTableCell tableCell16;
         private DevExpress.XtraReports.UI.XRTableCell tableCell17;
         private DevExpress.XtraReports.UI.XRTableCell tableCell18;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell19;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell20;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell21;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell22;
     }
 }

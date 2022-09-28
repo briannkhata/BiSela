@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace Katswiri.Reports
 {
-    public partial class ReceivingReport : DevExpress.XtraReports.UI.XtraReport
+    public partial class ReceivingsReport : DevExpress.XtraReports.UI.XtraReport
     {
-        public ReceivingReport()
+        public ReceivingsReport()
         {
             InitializeComponent();
         }

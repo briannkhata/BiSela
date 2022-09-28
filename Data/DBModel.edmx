@@ -1115,19 +1115,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Unit">
-          <Key>
-            <PropertyRef Name="UnitId" />
-          </Key>
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SubUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UnitValue" Type="Double" Nullable="false" />
-          <Property Name="SubUnitValue" Type="Double" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Units" FromRole="Unit" ToRole="Product" />
-          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1166,7 +1153,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
-          <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
           <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
@@ -1174,7 +1160,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwPaymentTypes" EntityType="BModel.vwPaymentType" />
           <EntitySet Name="vwShops" EntityType="BModel.vwShop" />
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
-          <EntitySet Name="vwUnits" EntityType="BModel.vwUnit" />
           <EntitySet Name="vwUsers" EntityType="BModel.vwUser" />
           <EntitySet Name="vwCategories" EntityType="BModel.vwCategory" />
           <EntitySet Name="vwBanks" EntityType="BModel.vwBank" />
@@ -1208,10 +1193,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </AssociationSet>
           <AssociationSet Name="FK_Products_Categories" Association="BModel.FK_Products_Categories">
             <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Units" Association="BModel.FK_Products_Units">
-            <End Role="Unit" EntitySet="Units" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_SaleDetails_Products" Association="BModel.FK_SaleDetails_Products">
@@ -1253,6 +1234,12 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwUpdateStocks" EntityType="BModel.vwUpdateStock" />
           <EntitySet Name="vwReceivingReports" EntityType="BModel.vwReceivingReport" />
           <EntitySet Name="vwSalesReports" EntityType="BModel.vwSalesReport" />
+          <EntitySet Name="Units" EntityType="BModel.Unit" />
+          <EntitySet Name="vwUnits" EntityType="BModel.vwUnit" />
+          <AssociationSet Name="FK_Products_Units" Association="BModel.FK_Products_Units">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1312,20 +1299,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwUnit">
-          <Key>
-            <PropertyRef Name="UnitName" />
-            <PropertyRef Name="SubUnit" />
-            <PropertyRef Name="UnitValue" />
-            <PropertyRef Name="SubUnitValue" />
-            <PropertyRef Name="UnitId" />
-          </Key>
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitValue" Type="Double" Nullable="false" />
-          <Property Name="SubUnitValue" Type="Double" Nullable="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vwUser">
           <Key>
@@ -1494,12 +1467,12 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
           <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
           <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
           <NavigationProperty Name="Carts" Relationship="BModel.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Stocks" Relationship="BModel.FK_Stocks_Products" FromRole="Product" ToRole="Stock" />
           <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TaxType" Relationship="BModel.FK_Products_TaxTypes" FromRole="Product" ToRole="TaxType" />
+          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
         </EntityType>
         <EntityType Name="SaleDetail">
           <Key>
@@ -1539,18 +1512,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Units">
-          <End Type="BModel.Unit" Role="Unit" Multiplicity="1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="UnitId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="UnitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1904,6 +1865,42 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SoldPrice" Type="Double" Nullable="false" />
           <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Units" FromRole="Unit" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="vwUnit">
+          <Key>
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="SubUnit" />
+            <PropertyRef Name="UnitValue" />
+            <PropertyRef Name="SubUnitValue" />
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubUnit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitValue" Type="Double" Nullable="false" />
+          <Property Name="SubUnitValue" Type="Double" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Products_Units">
+          <End Type="BModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1962,16 +1959,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
                 <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Units">
-            <EntityTypeMapping TypeName="BModel.Unit">
-              <MappingFragment StoreEntitySet="Units">
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2052,17 +2039,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwUnits">
-            <EntityTypeMapping TypeName="BModel.vwUnit">
-              <MappingFragment StoreEntitySet="vwUnits">
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="SubUnitValue" ColumnName="SubUnitValue" />
-                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
-                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2467,6 +2443,27 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="BModel.Unit">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUnits">
+            <EntityTypeMapping TypeName="BModel.vwUnit">
+              <MappingFragment StoreEntitySet="vwUnits">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="SubUnitValue" ColumnName="SubUnitValue" />
+                <ScalarProperty Name="UnitValue" ColumnName="UnitValue" />
+                <ScalarProperty Name="SubUnit" ColumnName="SubUnit" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

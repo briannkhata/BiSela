@@ -461,11 +461,11 @@
     <Compile Include="Reports\Receipt.Designer.cs">
       <DependentUpon>Receipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReceivingReport.cs">
+    <Compile Include="Reports\ReceivingsReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\ReceivingReport.Designer.cs">
-      <DependentUpon>ReceivingReport.cs</DependentUpon>
+    <Compile Include="Reports\ReceivingsReport.Designer.cs">
+      <DependentUpon>ReceivingsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\SalesReport.cs">
       <SubType>Component</SubType>
@@ -568,8 +568,8 @@
     <EmbeddedResource Include="Reports\Receipt.resx">
       <DependentUpon>Receipt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\ReceivingReport.resx">
-      <DependentUpon>ReceivingReport.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\ReceivingsReport.resx">
+      <DependentUpon>ReceivingsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>

@@ -55,7 +55,7 @@ namespace Katswiri.Forms
                     using (db = new BEntities())
                     {
                         unit.UnitName = textEditUnit.Text;
-                        unit.UnitValue = Convert.ToDouble(textEditUnitQty.Text);
+                        unit.Qty = textEditUnitQty.Text;
                         if (UnitId > 0)
                             db.Entry(unit).State = EntityState.Modified;
                         else

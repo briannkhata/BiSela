@@ -536,7 +536,6 @@ namespace Katswiri.Forms
                 formCustomer = new FormCustomer();
             }
             formCustomer.ShowDialog();
-
         }
 
 
