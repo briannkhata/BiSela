@@ -40,7 +40,7 @@ namespace Katswiri.Forms
 
         public void clearFields()
         {
-            textEditUnit.Text = textEditUnitValue.Text = textEditSubUnitValue.Text = textEditSubUnit.Text = string.Empty;
+            textEditUnit.Text = textEditUnitQty.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             UnitId = 0;
@@ -54,11 +54,8 @@ namespace Katswiri.Forms
                 {
                     using (db = new BEntities())
                     {
-
                         unit.UnitName = textEditUnit.Text;
-                        unit.UnitValue = Convert.ToDouble(textEditUnitValue.Text);
-                        unit.SubUnit = textEditSubUnit.Text;
-                        unit.SubUnitValue = Convert.ToDouble(textEditSubUnitValue.Text);
+                        unit.UnitValue = Convert.ToDouble(textEditUnitQty.Text);
                         if (UnitId > 0)
                             db.Entry(unit).State = EntityState.Modified;
                         else
@@ -88,10 +85,10 @@ namespace Katswiri.Forms
                 result = false;
                 textEditUnit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(textEditUnitValue.Text))
+            if (String.IsNullOrEmpty(textEditUnitQty.Text))
             {
                 result = false;
-                textEditUnitValue.ErrorText = "Required";
+                textEditUnitQty.ErrorText = "Required";
             }
             return result;
         }
@@ -107,9 +104,7 @@ namespace Katswiri.Forms
                     UnitId = row.UnitId;
                     unit = db.Units.Where(x => x.UnitId == UnitId).FirstOrDefault();
                     textEditUnit.Text = unit.UnitName;
-                    textEditUnitValue.Text = unit.SubUnit;
-                    textEditSubUnitValue.Text = unit.SubUnitValue.ToString();
-                    textEditSubUnit.Text = unit.UnitValue.ToString();
+                    textEditUnitQty.Text = unit.Qty;
                 }
             }
             btnSave.Caption = "Update";

@@ -12,17 +12,18 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class vwUpdateStock
+    public partial class vwSalesReport
     {
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public Nullable<double> Shop { get; set; }
-        public Nullable<System.DateTime> ExpiryDate { get; set; }
-        public Nullable<double> SellingPrice { get; set; }
-        public Nullable<int> ShopId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public int StockId { get; set; }
-        public Nullable<double> Stores { get; set; }
+        public string CategoryName { get; set; }
+        public string BrandName { get; set; }
+        public double SellingPrice { get; set; }
+        public double Discount { get; set; }
+        public double Qty { get; set; }
+        public double TaxValue { get; set; }
+        public double SoldPrice { get; set; }
+        public System.DateTime DateSold { get; set; }
     }
 }

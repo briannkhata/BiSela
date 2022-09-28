@@ -26,6 +26,7 @@ namespace Katswiri.Data
         public double UnitValue { get; set; }
         public double SubUnitValue { get; set; }
         public int Deleted { get; set; }
+        public string Qty { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

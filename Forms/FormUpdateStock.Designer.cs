@@ -66,6 +66,7 @@ namespace Katswiri.Forms
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.managequeries;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
             // 
@@ -73,6 +74,7 @@ namespace Katswiri.Forms
             this.barButtonItem2.Id = 2;
             this.barButtonItem2.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.refreshpivottable;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -94,11 +96,11 @@ namespace Katswiri.Forms
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(5, 332);
+            this.gridControl1.Location = new System.Drawing.Point(5, 325);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1108, 396);
+            this.gridControl1.Size = new System.Drawing.Size(1108, 460);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -110,28 +112,28 @@ namespace Katswiri.Forms
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(286, 286);
+            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(13, 283);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(500, 23);
+            this.textBox1.Size = new System.Drawing.Size(500, 26);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 278);
+            this.label1.Location = new System.Drawing.Point(9, 245);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(267, 31);
+            this.label1.Size = new System.Drawing.Size(120, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "Comment";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormUpdateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1120, 738);
+            this.ClientSize = new System.Drawing.Size(1120, 797);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.gridControl1);

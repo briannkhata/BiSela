@@ -60,6 +60,8 @@
         <EntityTypeShape EntityType="BModel.StockMovement" Width="1.5" PointX="17.375" PointY="6.75" />
         <EntityTypeShape EntityType="BModel.vwStockReport" Width="1.5" PointX="19.375" PointY="3.75" />
         <EntityTypeShape EntityType="BModel.vwUpdateStock" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BModel.vwReceivingReport" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="BModel.vwSalesReport" Width="1.5" PointX="15.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

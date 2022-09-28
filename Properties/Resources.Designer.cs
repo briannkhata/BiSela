@@ -93,6 +93,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage deletequery {
+            get {
+                object obj = ResourceManager.GetObject("deletequery", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage managequeries {
             get {
                 object obj = ResourceManager.GetObject("managequeries", resourceCulture);
@@ -186,6 +196,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage shipmentreceived {
             get {
                 object obj = ResourceManager.GetObject("shipmentreceived", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage update {
+            get {
+                object obj = ResourceManager.GetObject("update", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

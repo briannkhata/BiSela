@@ -68,5 +68,7 @@ namespace Katswiri.Data
         public virtual DbSet<StockMovement> StockMovements { get; set; }
         public virtual DbSet<vwStockReport> vwStockReports { get; set; }
         public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
+        public virtual DbSet<vwReceivingReport> vwReceivingReports { get; set; }
+        public virtual DbSet<vwSalesReport> vwSalesReports { get; set; }
     }
 }

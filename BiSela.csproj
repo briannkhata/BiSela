@@ -278,6 +278,12 @@
     <Compile Include="Data\vwReceivingCart.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwReceivingReport.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwSalesReport.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -455,6 +461,18 @@
     <Compile Include="Reports\Receipt.Designer.cs">
       <DependentUpon>Receipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReceivingReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReceivingReport.Designer.cs">
+      <DependentUpon>ReceivingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SalesReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesReport.Designer.cs">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\StockReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -550,6 +568,12 @@
     <EmbeddedResource Include="Reports\Receipt.resx">
       <DependentUpon>Receipt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReceivingReport.resx">
+      <DependentUpon>ReceivingReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesReport.resx">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\StockReport.resx">
       <DependentUpon>StockReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -607,6 +631,8 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\deletequery.svg" />
+    <None Include="Resources\update.svg" />
     <None Include="Resources\refreshpivottable.svg" />
     <None Include="Resources\clearrules.svg" />
     <None Include="Resources\managequeries1.svg" />

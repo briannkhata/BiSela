@@ -41,30 +41,22 @@ namespace Katswiri.Forms
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.textEditUnit = new DevExpress.XtraEditors.TextEdit();
-            this.textEditUnitValue = new DevExpress.XtraEditors.TextEdit();
-            this.textEditSubUnit = new DevExpress.XtraEditors.TextEdit();
-            this.textEditSubUnitValue = new DevExpress.XtraEditors.TextEdit();
+            this.textEditUnitQty = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlUnits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUnit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUnitValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSubUnit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSubUnitValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUnitQty.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -119,7 +111,7 @@ namespace Katswiri.Forms
             // gridControlUnits
             // 
             this.gridControlUnits.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControlUnits.Location = new System.Drawing.Point(0, 436);
+            this.gridControlUnits.Location = new System.Drawing.Point(0, 404);
             this.gridControlUnits.MainView = this.gridView1;
             this.gridControlUnits.MenuManager = this.ribbon;
             this.gridControlUnits.Name = "gridControlUnits";
@@ -145,9 +137,7 @@ namespace Katswiri.Forms
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.textEditUnit);
-            this.layoutControl1.Controls.Add(this.textEditUnitValue);
-            this.layoutControl1.Controls.Add(this.textEditSubUnit);
-            this.layoutControl1.Controls.Add(this.textEditSubUnitValue);
+            this.layoutControl1.Controls.Add(this.textEditUnitQty);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl1.Location = new System.Drawing.Point(0, 232);
             this.layoutControl1.Name = "layoutControl1";
@@ -161,36 +151,18 @@ namespace Katswiri.Forms
             this.textEditUnit.Location = new System.Drawing.Point(24, 69);
             this.textEditUnit.MenuManager = this.ribbon;
             this.textEditUnit.Name = "textEditUnit";
-            this.textEditUnit.Size = new System.Drawing.Size(320, 26);
+            this.textEditUnit.Size = new System.Drawing.Size(652, 26);
             this.textEditUnit.StyleController = this.layoutControl1;
             this.textEditUnit.TabIndex = 4;
             // 
-            // textEditUnitValue
+            // textEditUnitQty
             // 
-            this.textEditUnitValue.Location = new System.Drawing.Point(348, 69);
-            this.textEditUnitValue.MenuManager = this.ribbon;
-            this.textEditUnitValue.Name = "textEditUnitValue";
-            this.textEditUnitValue.Size = new System.Drawing.Size(328, 26);
-            this.textEditUnitValue.StyleController = this.layoutControl1;
-            this.textEditUnitValue.TabIndex = 5;
-            // 
-            // textEditSubUnit
-            // 
-            this.textEditSubUnit.Location = new System.Drawing.Point(24, 118);
-            this.textEditSubUnit.MenuManager = this.ribbon;
-            this.textEditSubUnit.Name = "textEditSubUnit";
-            this.textEditSubUnit.Size = new System.Drawing.Size(320, 26);
-            this.textEditSubUnit.StyleController = this.layoutControl1;
-            this.textEditSubUnit.TabIndex = 6;
-            // 
-            // textEditSubUnitValue
-            // 
-            this.textEditSubUnitValue.Location = new System.Drawing.Point(348, 118);
-            this.textEditSubUnitValue.MenuManager = this.ribbon;
-            this.textEditSubUnitValue.Name = "textEditSubUnitValue";
-            this.textEditSubUnitValue.Size = new System.Drawing.Size(328, 26);
-            this.textEditSubUnitValue.StyleController = this.layoutControl1;
-            this.textEditSubUnitValue.TabIndex = 7;
+            this.textEditUnitQty.Location = new System.Drawing.Point(24, 118);
+            this.textEditUnitQty.MenuManager = this.ribbon;
+            this.textEditUnitQty.Name = "textEditUnitQty";
+            this.textEditUnitQty.Size = new System.Drawing.Size(652, 26);
+            this.textEditUnitQty.StyleController = this.layoutControl1;
+            this.textEditUnitQty.TabIndex = 5;
             // 
             // Root
             // 
@@ -205,10 +177,8 @@ namespace Katswiri.Forms
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(680, 161);
@@ -219,47 +189,27 @@ namespace Katswiri.Forms
             this.layoutControlItem1.Control = this.textEditUnit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(324, 49);
-            this.layoutControlItem1.Text = "Unit ";
+            this.layoutControlItem1.Size = new System.Drawing.Size(656, 49);
+            this.layoutControlItem1.Text = "Unit Name";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(51, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(63, 16);
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEditUnitValue;
-            this.layoutControlItem2.Location = new System.Drawing.Point(324, 0);
+            this.layoutControlItem2.Control = this.textEditUnitQty;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(332, 49);
-            this.layoutControlItem2.Text = "Value";
+            this.layoutControlItem2.Size = new System.Drawing.Size(656, 62);
+            this.layoutControlItem2.Text = "Qty";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(51, 16);
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.textEditSubUnit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 49);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(324, 62);
-            this.layoutControlItem3.Text = "Sub Unit";
-            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(51, 16);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.textEditSubUnitValue;
-            this.layoutControlItem4.Location = new System.Drawing.Point(324, 49);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(332, 62);
-            this.layoutControlItem4.Text = "Value";
-            this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(51, 16);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 16);
             // 
             // Units
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(700, 819);
+            this.ClientSize = new System.Drawing.Size(700, 787);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.gridControlUnits);
             this.Controls.Add(this.ribbon);
@@ -276,15 +226,11 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditUnit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditUnitValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSubUnit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSubUnitValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditUnitQty.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,14 +249,10 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraEditors.TextEdit textEditUnit;
-        private DevExpress.XtraEditors.TextEdit textEditUnitValue;
+        private DevExpress.XtraEditors.TextEdit textEditUnitQty;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraEditors.TextEdit textEditSubUnit;
-        private DevExpress.XtraEditors.TextEdit textEditSubUnitValue;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }
