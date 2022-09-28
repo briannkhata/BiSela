@@ -23,7 +23,6 @@ namespace Katswiri.Data
         public int TaxTypeId { get; set; }
         public string TaxTypeName { get; set; }
         public double TaxTypeValue { get; set; }
-        public string TaxTypeStatus { get; set; }
         public int Deleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

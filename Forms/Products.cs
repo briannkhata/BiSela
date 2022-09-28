@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Katswiri.Data;
+using Katswiri.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,15 +25,26 @@ namespace Katswiri.Forms
             InitializeComponent();
             clearFields();
             loadProducts();
+            loadtaxTypesStatus();
         }
 
         private void clearFields()
         {
-            ProductNameTextEdit.Text = ProductCodeTextEdit.Text = BarCodeTextEdit.Text = TextEditDescription.Text = string.Empty;
+            ProductNameTextEdit.Text = ProductCodeTextEdit.Text = TextEditDescription.Text = string.Empty;
             CategoryIdLookUpEdit.EditValue = UnitIdLookUpEdit.EditValue = TaxTypeIdLookUpEdit.EditValue = null;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             ProductId = 0;
+        }
+        private void loadtaxTypesStatus()
+        {
+            using (db = new BEntities())
+            {
+                Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(TaxTypesStatus)).Cast<TaxTypesStatus>().ToDictionary(x => (int)x, x => x.ToString());
+                lookUpEditTaxStatus.Properties.DataSource = taxTypesStatus;
+                lookUpEditTaxStatus.Properties.ValueMember = "Value";
+                lookUpEditTaxStatus.Properties.DisplayMember = "Value";
+            }
         }
 
         private void loadProducts()
@@ -44,7 +56,7 @@ namespace Katswiri.Forms
                 gridView1.Columns["TaxTypeName"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
-                gridView1.OptionsView.ShowIndicator = false;
+                //gridView1.OptionsView.ShowIndicator = false;
                 loadTaxTypes();
                 loadCategories();
                 loadUnits();
@@ -120,10 +132,10 @@ namespace Katswiri.Forms
                 result = false;
                 ProductCodeTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(BarCodeTextEdit.Text))
+            if (String.IsNullOrEmpty(lookUpEditTaxStatus.Text))
             {
                 result = false;
-                BarCodeTextEdit.ErrorText = "Required";
+                lookUpEditTaxStatus.ErrorText = "Required";
             }
             if (Double.IsNaN(Convert.ToDouble(TextEditDescription.Text)))
             {
@@ -156,7 +168,7 @@ namespace Katswiri.Forms
                     product.CategoryId = Convert.ToInt32(CategoryIdLookUpEdit.EditValue);
                     product.TaxTypeId = Convert.ToInt32(TaxTypeIdLookUpEdit.EditValue);
                     product.BrandId = Convert.ToInt32(BrandLookUpEdit.EditValue);
-                    product.BarCode = BarCodeTextEdit.Text;
+                    product.TaxStatus = (string)lookUpEditTaxStatus.EditValue;
                     product.ProductCode = ProductCodeTextEdit.Text;
                     product.ReOrderLevel = double.Parse(textEditOrderLevel.Text);
                     using (db = new BEntities())
@@ -208,7 +220,7 @@ namespace Katswiri.Forms
                     product = db.Products.Where(x => x.ProductId == ProductId).FirstOrDefault();
                     ProductNameTextEdit.Text = product.ProductName;
                     ProductCodeTextEdit.Text = product.ProductCode;
-                    BarCodeTextEdit.Text = product.BarCode;
+                    lookUpEditTaxStatus.EditValue = product.TaxStatus;
                     UnitIdLookUpEdit.EditValue = product.UnitId;
                     CategoryIdLookUpEdit.EditValue = product.CategoryId;
                     TaxTypeIdLookUpEdit.EditValue = product.TaxTypeId;

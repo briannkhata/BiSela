@@ -55,6 +55,8 @@ namespace Katswiri.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxDeliveryNote = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.radioButtonShop = new System.Windows.Forms.RadioButton();
+            this.radioButtonStores = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -189,6 +191,8 @@ namespace Katswiri.Forms
             // panel2
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.Controls.Add(this.radioButtonStores);
+            this.panel2.Controls.Add(this.radioButtonShop);
             this.panel2.Controls.Add(this.dateTimePickerReceivingDate);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.dateTimePickerDeliveryDate);
@@ -206,14 +210,14 @@ namespace Katswiri.Forms
             // 
             // dateTimePickerReceivingDate
             // 
-            this.dateTimePickerReceivingDate.Location = new System.Drawing.Point(709, 91);
+            this.dateTimePickerReceivingDate.Location = new System.Drawing.Point(1007, 48);
             this.dateTimePickerReceivingDate.Name = "dateTimePickerReceivingDate";
-            this.dateTimePickerReceivingDate.Size = new System.Drawing.Size(340, 23);
+            this.dateTimePickerReceivingDate.Size = new System.Drawing.Size(253, 23);
             this.dateTimePickerReceivingDate.TabIndex = 9;
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(568, 89);
+            this.label6.Location = new System.Drawing.Point(1003, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(134, 29);
             this.label6.TabIndex = 8;
@@ -222,14 +226,14 @@ namespace Katswiri.Forms
             // 
             // dateTimePickerDeliveryDate
             // 
-            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(168, 95);
+            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(339, 87);
             this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
             this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(340, 23);
             this.dateTimePickerDeliveryDate.TabIndex = 7;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(29, 91);
+            this.label5.Location = new System.Drawing.Point(196, 83);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 29);
             this.label5.TabIndex = 6;
@@ -240,7 +244,7 @@ namespace Katswiri.Forms
             // 
             this.textBoxSupplier.Location = new System.Drawing.Point(708, 50);
             this.textBoxSupplier.Name = "textBoxSupplier";
-            this.textBoxSupplier.Size = new System.Drawing.Size(527, 23);
+            this.textBoxSupplier.Size = new System.Drawing.Size(289, 23);
             this.textBoxSupplier.TabIndex = 5;
             // 
             // label4
@@ -284,11 +288,33 @@ namespace Katswiri.Forms
             this.label2.Text = "Delivery Note";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // radioButtonShop
+            // 
+            this.radioButtonShop.AutoSize = true;
+            this.radioButtonShop.Location = new System.Drawing.Point(708, 91);
+            this.radioButtonShop.Name = "radioButtonShop";
+            this.radioButtonShop.Size = new System.Drawing.Size(65, 23);
+            this.radioButtonShop.TabIndex = 10;
+            this.radioButtonShop.TabStop = true;
+            this.radioButtonShop.Text = "Shop";
+            this.radioButtonShop.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonStores
+            // 
+            this.radioButtonStores.AutoSize = true;
+            this.radioButtonStores.Location = new System.Drawing.Point(840, 89);
+            this.radioButtonStores.Name = "radioButtonStores";
+            this.radioButtonStores.Size = new System.Drawing.Size(69, 23);
+            this.radioButtonStores.TabIndex = 11;
+            this.radioButtonStores.TabStop = true;
+            this.radioButtonStores.Text = "Stores";
+            this.radioButtonStores.UseVisualStyleBackColor = true;
+            // 
             // FormReceiveStock
             // 
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1283, 801);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -296,7 +322,7 @@ namespace Katswiri.Forms
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormReceiveStock";
             this.Ribbon = this.ribbon;
@@ -340,5 +366,7 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private System.Windows.Forms.RadioButton radioButtonStores;
+        private System.Windows.Forms.RadioButton radioButtonShop;
     }
 }

@@ -211,13 +211,27 @@ namespace Katswiri.Forms
                         db.ReceivingDetails.Add(receivingDetail);
                         db.SaveChanges();
 
-                        stock = new Stock()
+                        bool stores =  radioButtonStores.Checked;
+                        if (stores)
                         {
-                            ProductId = item.ProductId,
-                            Stores = item.Qty,
-                            ExpiryDate = item.ExpiryDate,
-                            SellingPrice = item.SellingPrice,
-                        };
+                            stock = new Stock()
+                            {
+                                ProductId = item.ProductId,
+                                Stores = item.Qty,
+                                ExpiryDate = item.ExpiryDate,
+                                SellingPrice = item.SellingPrice,
+                            };
+                        }
+                        else
+                        {
+                                stock = new Stock()
+                                {
+                                    ProductId = item.ProductId,
+                                    Shop = item.Qty,
+                                    ExpiryDate = item.ExpiryDate,
+                                    SellingPrice = item.SellingPrice,
+                                };
+                        }
                         db.Stocks.Add(stock);
                         db.SaveChanges();
                     }

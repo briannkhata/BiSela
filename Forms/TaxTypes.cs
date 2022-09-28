@@ -25,26 +25,14 @@ namespace Katswiri.Forms
             InitializeComponent();
             clearFields();
             loadTaxTypes();
-            loadtaxTypesStatus();
         }
 
         private void clearFields()
         {
-            TaxTypeNameTextEdit.Text = TaxTypeStatusTextEdit.Text = TaxTypeValueTextEdit.Text = string.Empty;
+            TaxTypeNameTextEdit.Text = TaxTypeValueTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             TaxTypeId = 0;
-        }
-
-        private void loadtaxTypesStatus()
-        {
-            using (db = new BEntities())
-            {
-                Dictionary<int, string> taxTypesStatus = Enum.GetValues(typeof(TaxTypesStatus)).Cast<TaxTypesStatus>().ToDictionary(x => (int)x, x => x.ToString());
-                TaxTypeStatusTextEdit.Properties.DataSource = taxTypesStatus;
-                TaxTypeStatusTextEdit.Properties.ValueMember = "Value";
-                TaxTypeStatusTextEdit.Properties.DisplayMember = "Value";
-            }
         }
 
         private bool formValid()
@@ -55,11 +43,7 @@ namespace Katswiri.Forms
                 result = false;
                 TaxTypeNameTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(TaxTypeStatusTextEdit.Text))
-            {
-                result = false;
-                TaxTypeStatusTextEdit.ErrorText = "Required";
-            }
+          
             if (String.IsNullOrEmpty(TaxTypeValueTextEdit.Text))
             {
                 result = false;
@@ -91,7 +75,6 @@ namespace Katswiri.Forms
                     {
                         taxType.TaxTypeName = TaxTypeNameTextEdit.Text;
                         taxType.TaxTypeValue = Convert.ToDouble(TaxTypeValueTextEdit.Text);
-                        taxType.TaxTypeStatus = TaxTypeStatusTextEdit.Text;
                         if (TaxTypeId > 0)
                             db.Entry(taxType).State = EntityState.Modified;
                         else
@@ -138,7 +121,6 @@ namespace Katswiri.Forms
                     TaxTypeId = row.TaxTypeId;
                     taxType = db.TaxTypes.Where(x => x.TaxTypeId == TaxTypeId).FirstOrDefault();
                     TaxTypeNameTextEdit.Text = taxType.TaxTypeName;
-                    TaxTypeStatusTextEdit.EditValue = taxType.TaxTypeStatus;
                     TaxTypeValueTextEdit.Text = taxType.TaxTypeValue.ToString();
                 }
             }

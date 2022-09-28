@@ -201,7 +201,7 @@ namespace Katswiri.Forms
 
                         var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text).FirstOrDefault();
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeValue;
-                        var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == product.TaxTypeId).SingleOrDefault().TaxTypeStatus;
+                        var taxStatus = db.Products.Where(x => x.ProductId == product.ProductId).SingleOrDefault().TaxStatus;
                         var exists = db.Carts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
                         double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
 
@@ -279,7 +279,7 @@ namespace Katswiri.Forms
                     {
                         var taxTypeId = db.Products.Where(x => x.ProductId == row.ProductId).SingleOrDefault().TaxTypeId;
                         var taxValue = db.TaxTypes.Where(x => x.TaxTypeId == taxTypeId).SingleOrDefault().TaxTypeValue;
-                        var taxStatus = db.TaxTypes.Where(x => x.TaxTypeId == taxTypeId).SingleOrDefault().TaxTypeStatus;
+                        var taxStatus = db.Products.Where(x => x.ProductId == row.ProductId).SingleOrDefault().TaxStatus;
 
                         if (taxStatus == "Inclusive")
                         {

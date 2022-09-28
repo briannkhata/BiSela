@@ -17,6 +17,5 @@ namespace Katswiri.Data
         public int TaxTypeId { get; set; }
         public string TaxTypeName { get; set; }
         public double TaxTypeValue { get; set; }
-        public string TaxTypeStatus { get; set; }
     }
 }

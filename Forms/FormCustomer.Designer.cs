@@ -101,7 +101,7 @@ namespace Katswiri.Forms
             this.layoutControlGroup1,
             this.layoutControlGroup3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(656, 295);
+            this.Root.Size = new System.Drawing.Size(656, 344);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -223,8 +223,8 @@ namespace Katswiri.Forms
             this.layoutControlItem3});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(636, 127);
-            this.layoutControlGroup3.Text = "Not New Custmer?";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(636, 176);
+            this.layoutControlGroup3.Text = "Not New Customer?";
             // 
             // lookUpEditCustomer
             // 
