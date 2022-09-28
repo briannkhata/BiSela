@@ -223,6 +223,18 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="Address" Type="varchar(max)" />
           <Property Name="Motto" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="StockMovement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="To" Type="int" />
+          <Property Name="From" Type="int" />
+          <Property Name="DateMoved" Type="datetime" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="Comment" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Stocks">
           <Key>
             <PropertyRef Name="StockId" />
@@ -462,6 +474,26 @@ warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key de
           <Property Name="Country" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwStockReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwStockReport">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="TaxStatus" Type="varchar" MaxLength="50" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Shop" Type="float" />
+          <Property Name="Stores" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="SellingPrice" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwStocks">
           <Key>
@@ -683,6 +715,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockMovement" EntityType="Self.StockMovement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxTypes" EntityType="Self.TaxTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
@@ -816,6 +849,20 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwShops].[Location] AS [Location], 
     [vwShops].[Country] AS [Country]
     FROM [dbo].[vwShops] AS [vwShops]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwStockReport" EntityType="Self.vwStockReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwStockReport].[ProductCode] AS [ProductCode], 
+    [vwStockReport].[ProductName] AS [ProductName], 
+    [vwStockReport].[Description] AS [Description], 
+    [vwStockReport].[TaxStatus] AS [TaxStatus], 
+    [vwStockReport].[BrandName] AS [BrandName], 
+    [vwStockReport].[CategoryName] AS [CategoryName], 
+    [vwStockReport].[Shop] AS [Shop], 
+    [vwStockReport].[Stores] AS [Stores], 
+    [vwStockReport].[ExpiryDate] AS [ExpiryDate], 
+    [vwStockReport].[SellingPrice] AS [SellingPrice]
+    FROM [dbo].[vwStockReport] AS [vwStockReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwStocks" EntityType="Self.vwStocks" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1095,6 +1142,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="TaxType" EntitySet="TaxTypes" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="StockMovements" EntityType="BModel.StockMovement" />
+          <EntitySet Name="vwStockReports" EntityType="BModel.vwStockReport" />
           </EntityContainer>
         <EntityType Name="vwIncome">
           <Key>
@@ -1657,6 +1706,36 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StockMovement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="To" Type="Int32" />
+          <Property Name="From" Type="Int32" />
+          <Property Name="DateMoved" Type="DateTime" Precision="3" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwStockReport">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="Stores" Type="Double" />
+          <Property Name="SellingPrice" Type="Double" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2145,6 +2224,35 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
                 <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
                 <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockMovements">
+            <EntityTypeMapping TypeName="BModel.StockMovement">
+              <MappingFragment StoreEntitySet="StockMovement">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="DateMoved" ColumnName="DateMoved" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStockReports">
+            <EntityTypeMapping TypeName="BModel.vwStockReport">
+              <MappingFragment StoreEntitySet="vwStockReport">
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

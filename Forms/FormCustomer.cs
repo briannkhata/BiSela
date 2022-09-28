@@ -62,10 +62,10 @@ namespace Katswiri.Forms
 
                     }
                     this.Dispose();
-                    this.Close();
                     pos = new Pos();
                     pos.Activate();
                     pos.ShowDialog();
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -109,10 +109,10 @@ namespace Katswiri.Forms
             int UserId = (int)lookUpEditCustomer.EditValue;
             //XtraMessageBox.Show(UserId.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Dispose();
-            this.Close();
             pos = new Pos();
             pos.Activate();
             pos.ShowDialog();
+            this.Close();
         }
     }
 }

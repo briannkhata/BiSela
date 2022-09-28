@@ -385,8 +385,6 @@ namespace Katswiri.Forms
                     resetCartUI();
                     textSearchProduct.Focus();
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -427,7 +425,6 @@ namespace Katswiri.Forms
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
                 lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
                 lookUpEditCustomer.Properties.NullText = "Customer";
-
             }
         }
 
@@ -454,7 +451,6 @@ namespace Katswiri.Forms
                 lookUpEditSaleType.Properties.DisplayMember = "Value";
                 lookUpEditSaleType.EditValue = SaleType.Sale;
                 lookUpEditSaleType.Properties.NullText = "Sale Type";
-
             }
         }
 

@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using Katswiri.Forms;
+using Katswiri.Reports;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -181,12 +183,23 @@ namespace Katswiri
         private void ribbon_Merge(object sender, DevExpress.XtraBars.Ribbon.RibbonMergeEventArgs e)
         {
             ribbon.SelectPage(e.MergedChild.SelectedPage);
-
         }
 
         private void btnHome_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ShowHome();
+            //ShowHome();
+            using (db = new BEntities()) 
+            {
+                UsersReport userReport = new UsersReport();
+                //userReport.DataSource = db.Stocks.ToList();
+                ReportPrintTool printTool = new ReportPrintTool(userReport);
+                printTool.ShowPreviewDialog();
+
+                //XtraReport report = new XtraReport();
+                //report.DataSource = db.Stocks.ToList();
+                //ReportPrintTool tool = new ReportPrintTool(report);
+                //tool.ShowPreview();
+            }
         }
 
        
@@ -486,7 +499,7 @@ namespace Katswiri
                 FormReceiveStock formReceiveStock = null;
                 if (formReceiveStock == null || formReceiveStock.IsDisposed)
                 {
-                    formReceiveStock = new FormReceiveStock();
+                   formReceiveStock = new FormReceiveStock();
                 }
                 formReceiveStock.Activate();
                 formReceiveStock.ShowDialog();
@@ -497,5 +510,16 @@ namespace Katswiri
             }
         }
 
+        private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (db = new BEntities())
+            {
+                StockReport stockReport = new StockReport();
+                //userReport.DataSource = db.Stocks.ToList();
+                ReportPrintTool printTool = new ReportPrintTool(stockReport);
+                //printTool.ShowPreviewDialog();
+                printTool.ShowPreview();
+            }
+        }
     }
 }
