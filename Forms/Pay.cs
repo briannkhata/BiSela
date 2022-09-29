@@ -25,8 +25,19 @@ namespace Katswiri.Forms
         public Pay()
         {
             InitializeComponent();
-            pos = new Pos();
             loadPaymentModes();
+        }
+
+        private void dispalyChange()
+        {
+            if (textBoxTendered.Text != string.Empty)
+            {
+                lblChange.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", (Convert.ToDouble(textBoxTendered.Text.Trim()) - Convert.ToDouble(lblBill.Text)).ToString(), 2);
+            }
+            else
+            {
+                lblChange.Text = string.Empty;
+            }
         }
 
         private void loadPaymentModes()
