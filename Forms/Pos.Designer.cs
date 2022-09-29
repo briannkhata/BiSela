@@ -446,7 +446,6 @@ namespace Katswiri.Forms
         }
 
         #endregion
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
         private DevExpress.XtraEditors.PanelControl panelControl5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblCashier;
@@ -454,7 +453,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControlOrders;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -472,6 +470,8 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.DateEdit dateEditDateSold;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button5;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditSaleId;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditSaleId;
     }
 }

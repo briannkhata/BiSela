@@ -17,7 +17,7 @@ namespace Katswiri.Forms
         BEntities db;
         User user;
         Sale sale;
-        Pos pos = null;
+        //Pos pos = null;
         public FormCustomer()
         {
             InitializeComponent();
@@ -58,11 +58,13 @@ namespace Katswiri.Forms
                         };
                         db.Sales.Add(sale);
                         db.SaveChanges();
-
-
                     }
-                    this.Dispose();
-                    pos = new Pos();
+
+                    //this.Dispose();
+                    this.Close();
+                    Pos pos = new Pos();
+                    pos.lookUpEditCustomer.EditValue = user.UserId; ;
+                    pos.lookUpEditSaleId.EditValue = sale.SaleId;
                     pos.Activate();
                     pos.ShowDialog();
                     this.Close();
@@ -80,9 +82,9 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditCustomer.Properties.DataSource = db.vwCustomers.Where(x=>x.UserType == "Customer").ToList();
-                lookUpEditCustomer.Properties.ValueMember = "UserId";
-                lookUpEditCustomer.Properties.DisplayMember = "Name";
+                lookUpEditCustomer2.Properties.DataSource = db.vwCustomers.Where(x=>x.UserType == "Customer").ToList();
+                lookUpEditCustomer2.Properties.ValueMember = "UserId";
+                lookUpEditCustomer2.Properties.DisplayMember = "Name";
             }
         }
 
@@ -104,15 +106,27 @@ namespace Katswiri.Forms
             return result;
         }
 
-        private void lookUpEditCustomer_EditValueChanged(object sender, EventArgs e)
+        private void lookUpEditCustomer2_EditValueChanged(object sender, EventArgs e)
         {
-            int UserId = (int)lookUpEditCustomer.EditValue;
-            //XtraMessageBox.Show(UserId.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Dispose();
-            pos = new Pos();
+            
+            this.Close();
+            Pos pos = new Pos();
+            using (db = new BEntities())
+            {
+                pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
+                pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
+                pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
+                pos.lookUpEditCustomer.EditValue = (int)lookUpEditCustomer2.EditValue;
+                pos.lookUpEditCustomer.Properties.NullText = "Customer";
+
+                pos.lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
+                pos.lookUpEditSaleId.Properties.ValueMember = "SaleId";
+                pos.lookUpEditSaleId.Properties.DisplayMember = "SaleId";
+                pos.lookUpEditSaleId.EditValue = db.Sales.Where(x=>x.Customer == (int)lookUpEditCustomer2.EditValue).Max(x => x.SaleId);
+                pos.lookUpEditSaleId.Properties.NullText = "Order Number";
+            }
             pos.Activate();
             pos.ShowDialog();
-            this.Close();
         }
     }
 }

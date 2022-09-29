@@ -32,7 +32,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.textEditPhone = new DevExpress.XtraEditors.TextEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
-            this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEditCustomer2 = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -51,7 +51,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -69,7 +69,7 @@ namespace Katswiri.Forms
             // 
             this.dataLayoutControl1.Controls.Add(this.textEditPhone);
             this.dataLayoutControl1.Controls.Add(this.textEditName);
-            this.dataLayoutControl1.Controls.Add(this.lookUpEditCustomer);
+            this.dataLayoutControl1.Controls.Add(this.lookUpEditCustomer2);
             this.dataLayoutControl1.Location = new System.Drawing.Point(12, 12);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
@@ -93,17 +93,17 @@ namespace Katswiri.Forms
             this.textEditName.StyleController = this.dataLayoutControl1;
             this.textEditName.TabIndex = 4;
             // 
-            // lookUpEditCustomer
+            // lookUpEditCustomer2
             // 
-            this.lookUpEditCustomer.Location = new System.Drawing.Point(24, 217);
-            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
-            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditCustomer2.Location = new System.Drawing.Point(24, 217);
+            this.lookUpEditCustomer2.Name = "lookUpEditCustomer2";
+            this.lookUpEditCustomer2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCustomer.Properties.NullText = "";
-            this.lookUpEditCustomer.Size = new System.Drawing.Size(608, 26);
-            this.lookUpEditCustomer.StyleController = this.dataLayoutControl1;
-            this.lookUpEditCustomer.TabIndex = 5;
-            this.lookUpEditCustomer.EditValueChanged += new System.EventHandler(this.lookUpEditCustomer_EditValueChanged);
+            this.lookUpEditCustomer2.Properties.NullText = "";
+            this.lookUpEditCustomer2.Size = new System.Drawing.Size(608, 26);
+            this.lookUpEditCustomer2.StyleController = this.dataLayoutControl1;
+            this.lookUpEditCustomer2.TabIndex = 5;
+            this.lookUpEditCustomer2.EditValueChanged += new System.EventHandler(this.lookUpEditCustomer2_EditValueChanged);
             // 
             // Root
             // 
@@ -157,7 +157,7 @@ namespace Katswiri.Forms
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.lookUpEditCustomer;
+            this.layoutControlItem3.Control = this.lookUpEditCustomer2;
             this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem3.CustomizationFormText = "Phone";
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
@@ -257,7 +257,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -293,6 +293,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         public DevExpress.XtraEditors.TextEdit textEditPhone;
         public DevExpress.XtraEditors.TextEdit textEditName;
-        public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer2;
     }
 }

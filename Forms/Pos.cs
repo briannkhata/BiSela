@@ -31,8 +31,7 @@ namespace Katswiri.Forms
             loadSaleTypes();
             loadPaymentTypes();
             loadCustomers();
-            loadSales((int)(int?)formCustomer.lookUpEditCustomer.EditValue);
-            loadCart();
+            //loadCart();
 
             dateEditDateSold.DateTime = DateTime.Now;
 
@@ -68,8 +67,8 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                int customer = (int)(int?)lookUpEditCustomer.EditValue;
-                int SaleId = (int)(int?)lookUpEditSaleId.EditValue;
+                int customer = (int)lookUpEditCustomer.EditValue;
+                int SaleId = (int)lookUpEditSaleId.EditValue;
 
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwCarts.Where(x => x.Customer == customer && x.SaleId == SaleId).ToList();
@@ -79,7 +78,6 @@ namespace Katswiri.Forms
                 gridView2.Columns["Tendered"].Visible = false;
                 gridView2.Columns["Customer"].Visible = false;
                 gridView2.Columns["SaleId"].Visible = false;
-
 
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
@@ -316,8 +314,6 @@ namespace Katswiri.Forms
         {
             //SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             //ShowPayFom();
-
-
             try
             {
 
@@ -424,19 +420,19 @@ namespace Katswiri.Forms
                 //lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
-                lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
+                //lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
                 lookUpEditCustomer.Properties.NullText = "Customer";
             }
         }
 
-        private void loadSales(int customer)
+        private void loadSales()
         {
             using (db = new BEntities())
             {
                 //lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
                 lookUpEditSaleId.Properties.ValueMember = "SaleId";
                 lookUpEditSaleId.Properties.DisplayMember = "SaleId";
-                lookUpEditSaleId.EditValue = db.Sales.Where(x=>x.Customer == customer).Max(x => x.SaleId);
+                //lookUpEditSaleId.EditValue = db.Sales.Where(x=>x.Customer == (int)lookUpEditCustomer.EditValue).Max(x => x.SaleId);
                 lookUpEditSaleId.Properties.NullText = "Order Number";
 
             }
@@ -477,6 +473,8 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
+                loadSales();
+
                 //lookUpEditSaleType.EditValue = db.vwSaleTypes.ToList()[0].SaleTypeId;
                 //lookUpEditPaymentType.EditValue = db.vwPaymentTypes.ToList()[0].PaymentTypeId;
 
