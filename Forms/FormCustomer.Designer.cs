@@ -32,10 +32,13 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.textEditPhone = new DevExpress.XtraEditors.TextEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
+            this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.FormCustomerlayoutControl1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.dataLayoutControl1item = new DevExpress.XtraLayout.LayoutControlItem();
@@ -44,25 +47,22 @@ namespace Katswiri.Forms
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPhone.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FormCustomerlayoutControl1ConvertedLayout)).BeginInit();
             this.FormCustomerlayoutControl1ConvertedLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1item)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -92,6 +92,18 @@ namespace Katswiri.Forms
             this.textEditName.Size = new System.Drawing.Size(608, 26);
             this.textEditName.StyleController = this.dataLayoutControl1;
             this.textEditName.TabIndex = 4;
+            // 
+            // lookUpEditCustomer
+            // 
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(24, 217);
+            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
+            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditCustomer.Properties.NullText = "";
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(608, 26);
+            this.lookUpEditCustomer.StyleController = this.dataLayoutControl1;
+            this.lookUpEditCustomer.TabIndex = 5;
+            this.lookUpEditCustomer.EditValueChanged += new System.EventHandler(this.lookUpEditCustomer_EditValueChanged);
             // 
             // Root
             // 
@@ -133,6 +145,33 @@ namespace Katswiri.Forms
             this.layoutControlItem2.Text = "Phone";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(98, 16);
+            // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(636, 176);
+            this.layoutControlGroup3.Text = "Not New Customer?";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.lookUpEditCustomer;
+            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem3.CustomizationFormText = "Phone";
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem3.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem3.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem3.OptionsPrint.AppearanceItemText.Options.UseFont = true;
+            this.layoutControlItem3.Size = new System.Drawing.Size(612, 126);
+            this.layoutControlItem3.Text = "Select Customer";
+            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(98, 16);
             // 
             // FormCustomerlayoutControl1ConvertedLayout
             // 
@@ -202,42 +241,6 @@ namespace Katswiri.Forms
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
             // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.lookUpEditCustomer;
-            this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem3.CustomizationFormText = "Phone";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem3.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem3.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem3.Size = new System.Drawing.Size(612, 126);
-            this.layoutControlItem3.Text = "Select Customer";
-            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(98, 16);
-            // 
-            // layoutControlGroup3
-            // 
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(636, 176);
-            this.layoutControlGroup3.Text = "Not New Customer?";
-            // 
-            // lookUpEditCustomer
-            // 
-            this.lookUpEditCustomer.Location = new System.Drawing.Point(24, 217);
-            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
-            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCustomer.Properties.NullText = "";
-            this.lookUpEditCustomer.Size = new System.Drawing.Size(608, 26);
-            this.lookUpEditCustomer.StyleController = this.dataLayoutControl1;
-            this.lookUpEditCustomer.TabIndex = 5;
-            this.lookUpEditCustomer.EditValueChanged += new System.EventHandler(this.lookUpEditCustomer_EditValueChanged);
-            // 
             // FormCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -254,18 +257,18 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditPhone.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FormCustomerlayoutControl1ConvertedLayout)).EndInit();
             this.FormCustomerlayoutControl1ConvertedLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1item)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,8 +278,6 @@ namespace Katswiri.Forms
 
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraEditors.TextEdit textEditPhone;
-        private DevExpress.XtraEditors.TextEdit textEditName;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -290,6 +291,8 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
+        public DevExpress.XtraEditors.TextEdit textEditPhone;
+        public DevExpress.XtraEditors.TextEdit textEditName;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
     }
 }

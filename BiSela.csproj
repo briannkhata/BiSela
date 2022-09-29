@@ -631,6 +631,8 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\addcalculatedfield.svg" />
+    <None Include="Resources\insertcaption.svg" />
     <None Include="Resources\deletequery.svg" />
     <None Include="Resources\update.svg" />
     <None Include="Resources\refreshpivottable.svg" />

@@ -15,9 +15,7 @@ namespace Katswiri.Data
     public partial class vwUnit
     {
         public string UnitName { get; set; }
-        public string SubUnit { get; set; }
-        public double UnitValue { get; set; }
-        public double SubUnitValue { get; set; }
         public int UnitId { get; set; }
+        public string Qty { get; set; }
     }
 }

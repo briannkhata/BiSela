@@ -21,6 +21,7 @@ namespace Katswiri.Forms
         int CartId;
         Sale sale;
         SaleDetail saleDetail;
+        FormCustomer formCustomer = new FormCustomer();
 
         public Pos()
         {
@@ -30,7 +31,7 @@ namespace Katswiri.Forms
             loadSaleTypes();
             loadPaymentTypes();
             loadCustomers();
-            loadSales((int)(int?)lookUpEditCustomer.EditValue);
+            loadSales((int)(int?)formCustomer.lookUpEditCustomer.EditValue);
             loadCart();
 
             dateEditDateSold.DateTime = DateTime.Now;
@@ -395,13 +396,13 @@ namespace Katswiri.Forms
 
         private void ShowPayFom()
         {
-                Pay pay = null;
-                if (pay == null || pay.IsDisposed)
-                {
-                    pay = new Pay();
-                }
-                pay.Activate();
-                pay.ShowDialog();
+            Pay pay = null;
+            if (pay == null || pay.IsDisposed)
+            {
+               pay = new Pay();
+            }
+            pay.Activate();
+            pay.ShowDialog();
         }
 
         private void gridControl1_ProcessGridKey(object sender, KeyEventArgs e)
@@ -420,7 +421,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
+                //lookUpEditCustomer.Properties.DataSource = db.Users.Where(x=>x.UserType == "Customer").ToList();
                 lookUpEditCustomer.Properties.ValueMember = "UserId";
                 lookUpEditCustomer.Properties.DisplayMember = "Name";
                 lookUpEditCustomer.EditValue = db.Users.Where(x=>x.UserType =="Customer").Max(x => x.UserId);
@@ -432,7 +433,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
+                //lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
                 lookUpEditSaleId.Properties.ValueMember = "SaleId";
                 lookUpEditSaleId.Properties.DisplayMember = "SaleId";
                 lookUpEditSaleId.EditValue = db.Sales.Where(x=>x.Customer == customer).Max(x => x.SaleId);
@@ -538,12 +539,10 @@ namespace Katswiri.Forms
             formCustomer.ShowDialog();
         }
 
-
         private void button3_Click(object sender, EventArgs e)
         {
             ShowPosFom();
             this.Close();
-    
         }
         private void ShowPosFom()
         {

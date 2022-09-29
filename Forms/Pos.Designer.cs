@@ -31,10 +31,11 @@ namespace Katswiri.Forms
         {
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.lookUpEditSaleId = new DevExpress.XtraEditors.LookUpEdit();
             this.dateEditDateSold = new DevExpress.XtraEditors.DateEdit();
             this.lblCashier = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
+            this.label3 = new System.Windows.Forms.Label();
             this.textSearchProduct = new System.Windows.Forms.TextBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControlOrders = new DevExpress.XtraGrid.GridControl();
@@ -55,10 +56,10 @@ namespace Katswiri.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.lookUpEditSaleId = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
@@ -70,7 +71,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lookUpEditSaleType
@@ -99,6 +99,18 @@ namespace Katswiri.Forms
             this.panelControl5.Size = new System.Drawing.Size(1532, 58);
             this.panelControl5.TabIndex = 3;
             // 
+            // lookUpEditSaleId
+            // 
+            this.lookUpEditSaleId.Enabled = false;
+            this.lookUpEditSaleId.Location = new System.Drawing.Point(536, 14);
+            this.lookUpEditSaleId.Name = "lookUpEditSaleId";
+            this.lookUpEditSaleId.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditSaleId.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditSaleId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditSaleId.Size = new System.Drawing.Size(252, 30);
+            this.lookUpEditSaleId.TabIndex = 30;
+            // 
             // dateEditDateSold
             // 
             this.dateEditDateSold.EditValue = null;
@@ -124,6 +136,18 @@ namespace Katswiri.Forms
             this.lblCashier.TabIndex = 27;
             this.lblCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // lookUpEditCustomer
+            // 
+            this.lookUpEditCustomer.Enabled = false;
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(794, 14);
+            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
+            this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditCustomer.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(252, 30);
+            this.lookUpEditCustomer.TabIndex = 29;
+            // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
@@ -135,17 +159,6 @@ namespace Katswiri.Forms
             this.label3.TabIndex = 26;
             this.label3.Text = "CASHIER : ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lookUpEditCustomer
-            // 
-            this.lookUpEditCustomer.Location = new System.Drawing.Point(794, 14);
-            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
-            this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditCustomer.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditCustomer.Size = new System.Drawing.Size(252, 30);
-            this.lookUpEditCustomer.TabIndex = 29;
             // 
             // textSearchProduct
             // 
@@ -377,17 +390,6 @@ namespace Katswiri.Forms
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // lookUpEditSaleId
-            // 
-            this.lookUpEditSaleId.Location = new System.Drawing.Point(536, 14);
-            this.lookUpEditSaleId.Name = "lookUpEditSaleId";
-            this.lookUpEditSaleId.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditSaleId.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditSaleId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditSaleId.Size = new System.Drawing.Size(252, 30);
-            this.lookUpEditSaleId.TabIndex = 30;
-            // 
             // Pos
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -426,6 +428,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
@@ -437,7 +440,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

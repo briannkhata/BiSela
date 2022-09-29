@@ -21,6 +21,6 @@ namespace Katswiri.Data
         public string CategoryName { get; set; }
         public string BrandName { get; set; }
         public string UnitName { get; set; }
-        public string SubUnit { get; set; }
+        public string Qty { get; set; }
     }
 }

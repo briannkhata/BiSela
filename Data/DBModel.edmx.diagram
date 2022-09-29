@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="BModel.vwExpenseType" Width="1.5" PointX="0.75" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.vwPaymentType" Width="1.5" PointX="17.375" PointY="3.75" />
         <EntityTypeShape EntityType="BModel.vwShop" Width="1.5" PointX="5.375" PointY="15.875" />
-        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="7.5" PointY="15.875" />
         <EntityTypeShape EntityType="BModel.vwCategory" Width="1.5" PointX="11.375" PointY="11.75" />
         <EntityTypeShape EntityType="BModel.vwBank" Width="1.5" PointX="13.375" PointY="8.75" />
@@ -60,8 +59,9 @@
         <EntityTypeShape EntityType="BModel.vwReceivingReport" Width="1.5" PointX="7.375" PointY="19.75" />
         <EntityTypeShape EntityType="BModel.vwSalesReport" Width="1.5" PointX="15.375" PointY="19.75" />
         <EntityTypeShape EntityType="BModel.Unit" Width="1.5" PointX="9.375" PointY="6.875" />
-        <EntityTypeShape EntityType="BModel.vwUnit" Width="1.5" PointX="14.375" PointY="0.75" />
         <AssociationConnector Association="BModel.FK_Products_Units" />
+        <EntityTypeShape EntityType="BModel.vwUnit" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="0.75" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
