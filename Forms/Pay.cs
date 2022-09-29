@@ -75,19 +75,18 @@ namespace Katswiri.Forms
                         Change = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         Tendered = Double.Parse(textBoxTendered.Text),
                         Balance = sale.Balance - sale.Tendered, 
+                        Paid = sale.Tendered,
                         Discount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.Discount),
                     };
-
-                    db.Sales.Add(sale);
+                    db.Entry(sale).State = EntityState.Modified;
                     db.SaveChanges();
-                    var saleId = sale.SaleId;//get recently inserted id
 
                     var cart = db.Carts.Where(x => x.UserId == 1).ToList();
                     foreach (var item in cart)
                     {
                         saleDetail = new SaleDetail()
                         {
-                            SaleId = saleId,
+                            SaleId = (int)pos.lookUpEditSaleId.EditValue,
                             ProductId = (int)item.ProductId,
                             SellingPrice = (double)item.SellingPrice,
                             ShopId = (int)item.ShopId,
@@ -104,11 +103,9 @@ namespace Katswiri.Forms
 
                     this.Close();
                     pos.clearmyCart();
-                    pos.clearGrid();
                     pos.loadCart();
 
-
-
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -120,7 +117,6 @@ namespace Katswiri.Forms
         private void Pay_FormClosing(object sender, FormClosingEventArgs e)
         {
             pos.clearmyCart();
-            pos.clearGrid();
             pos.loadCart();            
         }
     }
