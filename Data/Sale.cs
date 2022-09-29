@@ -29,5 +29,10 @@ namespace Katswiri.Data
         public Nullable<int> PaymentTypeId { get; set; }
         public Nullable<double> Paid { get; set; }
         public Nullable<double> Balance { get; set; }
+
+        public static implicit operator Sale(Sale v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

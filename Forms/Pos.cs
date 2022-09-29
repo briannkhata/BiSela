@@ -31,8 +31,6 @@ namespace Katswiri.Forms
             loadSaleTypes();
             loadPaymentTypes();
             loadCustomers();
-            //loadCart();
-
             dateEditDateSold.DateTime = DateTime.Now;
 
             //clearmyCart();//clear my cart            
@@ -48,7 +46,6 @@ namespace Katswiri.Forms
             }
 
         }
-
 
         public void clearGrid()
         {
@@ -78,6 +75,9 @@ namespace Katswiri.Forms
                 gridView2.Columns["Tendered"].Visible = false;
                 gridView2.Columns["Customer"].Visible = false;
                 gridView2.Columns["SaleId"].Visible = false;
+                gridView2.Columns["Name"].Visible = false;
+                gridView2.Columns["Phone"].Visible = false;
+
 
                 //gridControl1.DataSource = db.vwCarts.Where(x => x.UserId == LoginInfo.UserId).ToList();
 
@@ -137,10 +137,10 @@ namespace Katswiri.Forms
             {
                 AutoCompleteStringCollection autoText = new AutoCompleteStringCollection();
                 //foreach (vwStock vwstock in db.vwStocks.OrderByAscending(x=>x.ExpiryDate) as List<vwStock>)
-                foreach (vwStock vwstock in db.vwStocks.OrderBy(x=>x.ExpiryDate).ToList())
-
+                foreach (vwStock vwstock in db.vwStocks.Where(x=>x.Shop > 0).OrderBy(x=>x.ExpiryDate).ToList())
+                //foreach (vwStock vwstock in db.vwStocks.Where(x => x.Shop > 0 && x.ExpiryDate > DateTime.Today).OrderBy(x => x.ExpiryDate).ToList())
                 {
-                    autoText.Add(vwstock.ProductCode);
+                        autoText.Add(vwstock.ProductCode);
                 }
                 textSearchProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 textSearchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -604,5 +604,9 @@ namespace Katswiri.Forms
             formOrders.ShowDialog();
         }
 
+        private void Pos_Load(object sender, EventArgs e)
+        {
+            loadCart();
+        }
     }
 }

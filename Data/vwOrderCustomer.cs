@@ -21,5 +21,6 @@ namespace Katswiri.Data
         public Nullable<int> Customer { get; set; }
         public string SaleType { get; set; }
         public int SaleId { get; set; }
+        public Nullable<System.DateTime> DateSold { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Katswiri.Forms
         Cart cart = new Cart();
         Sale sale;
         SaleDetail saleDetail;
-        public Pos pos;
+        Pos pos = new Pos();
 
         public Pay()
         {
@@ -36,6 +36,9 @@ namespace Katswiri.Forms
                 lookUpEditPayMode.Properties.DataSource = db.vwPaymentTypes.ToList();
                 lookUpEditPayMode.Properties.ValueMember = "PaymentTypeId";
                 lookUpEditPayMode.Properties.DisplayMember = "PaymentTypeName";
+                lookUpEditPayMode.EditValue = db.PaymentTypes.Where(x => x.PaymentTypeName == "Cash").SingleOrDefault().PaymentTypeId;
+                lookUpEditPayMode.Properties.NullText = "Payment Method";
+
             }
         }
 
@@ -45,6 +48,8 @@ namespace Katswiri.Forms
             {
                 var totalBill = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
                 textBoxTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", totalBill, 2);
+                lblBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", totalBill, 2);
+
             }
         }
 
@@ -52,19 +57,24 @@ namespace Katswiri.Forms
         {
             try
             {
+                
                 using (db = new BEntities())
                 {
                     sale = new Sale()
                     {
+                        SaleId = (int)pos.lookUpEditSaleId.EditValue,
                         DateSold = DateTime.Now,
-                        //SaleTypeId = (int)lookUpEditPayMode.EditValue,
-                        ShopId = 1,
-                        SoldBy = 1,
-                        Customer = 1,
+                        SaleType = (string)pos.lookUpEditSaleType.EditValue,
+                        PaymentTypeId = (int)lookUpEditPayMode.EditValue,
+                        ShopId = db.Shops.SingleOrDefault().ShopId,
+                        SoldBy = LoginInfo.UserId,
+                        Customer = (int?)pos.lookUpEditCustomer.EditValue,
                         TaxAmount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TaxValue),
                         Bill = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice),
+                        SubTotal = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.SellingPrice),
                         Change = Double.Parse(textBoxTendered.Text) - (double)(db.Carts.Where(x => x.UserId == 1).Sum(x => x.TotalPrice)),
                         Tendered = Double.Parse(textBoxTendered.Text),
+                        Balance = sale.Balance - sale.Tendered, 
                         Discount = (double)db.Carts.Where(x => x.UserId == 1).Sum(x => x.Discount),
                     };
 

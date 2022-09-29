@@ -59,7 +59,7 @@ namespace Katswiri.Forms
                         db.Sales.Add(sale);
                         db.SaveChanges();
                     }
-                    setParams();
+                    setParams2();
                 }
             }
             catch (Exception ex)
@@ -103,6 +103,27 @@ namespace Katswiri.Forms
             
             this.Close();
             setParams();
+        }
+        public void setParams2()
+        {
+            Pos pos = new Pos();
+            using (db = new BEntities())
+            {
+                int customer = db.Users.Where(x => x.UserType == "Customer").Max(x => x.UserId);
+                pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
+                pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
+                pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
+                pos.lookUpEditCustomer.EditValue = customer;
+                pos.lookUpEditCustomer.Properties.NullText = "Customer";
+
+                pos.lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
+                pos.lookUpEditSaleId.Properties.ValueMember = "SaleId";
+                pos.lookUpEditSaleId.Properties.DisplayMember = "SaleId";
+                pos.lookUpEditSaleId.EditValue = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId);
+                pos.lookUpEditSaleId.Properties.NullText = "Order Number";
+            }
+            pos.Activate();
+            pos.ShowDialog();
         }
 
         public void setParams()
