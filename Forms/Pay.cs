@@ -1,5 +1,7 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using Katswiri.Data;
+using Katswiri.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +62,6 @@ namespace Katswiri.Forms
                 var totalBill = db.Carts?.Where(x => x.UserId == 1).Sum(x => x.TotalPrice);
                 textBoxTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", totalBill, 2);
                 lblBill.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", totalBill, 2);
-
             }
         }
 
@@ -68,7 +69,6 @@ namespace Katswiri.Forms
         {
             try
             {
-                
                 using (db = new BEntities())
                 {
                     sale = new Sale()
@@ -115,6 +115,15 @@ namespace Katswiri.Forms
                     this.Close();
                     pos.clearmyCart();
                     pos.loadCart();
+
+                    //Receipt bill = new Receipt();
+                    //ReportPrintTool printTool = new ReportPrintTool(bill));
+                    //// Invoke the Print dialog.
+                    //printTool.PrintDialog();
+                    //// Send the report to the default printer.
+                    //printTool.Print();
+                    //// Send the report to the specified printer.
+                    //printTool.Print("myPrinter");
 
                     this.Close();
                 }

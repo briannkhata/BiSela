@@ -198,13 +198,11 @@ namespace Katswiri.Forms
                                 db.Carts.Add(cart);
                             }
                             db.SaveChanges();
-
                         }
                         else
                         {
 
                         }
-
                     }
                 }
             }
