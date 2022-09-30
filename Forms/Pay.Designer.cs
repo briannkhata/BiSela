@@ -46,6 +46,7 @@ namespace Katswiri.Forms
             this.textBoxTendered.Size = new System.Drawing.Size(494, 81);
             this.textBoxTendered.TabIndex = 0;
             this.textBoxTendered.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTendered.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxTendered_KeyUp);
             // 
             // btnFinishSale
             // 

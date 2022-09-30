@@ -121,7 +121,7 @@ namespace Katswiri.Forms
                 foreach (vwStock vwstock in db.vwStocks.Where(x=>x.Shop > 0).OrderBy(x=>x.ExpiryDate).ToList())
                 //foreach (vwStock vwstock in db.vwStocks.Where(x => x.Shop > 0 && x.ExpiryDate > DateTime.Today).OrderBy(x => x.ExpiryDate).ToList())
                 {
-                        autoText.Add(vwstock.ProductCode);
+                   autoText.Add(vwstock.ProductCode);
                 }
                 textSearchProduct.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 textSearchProduct.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -133,7 +133,7 @@ namespace Katswiri.Forms
         {
             using (var db = new BEntities())
             {
-                var list = db.Carts.Where(x => x.UserId == LoginInfo.UserId).ToList();
+                var list = db.Carts.Where(x => x.SaleId == (int)lookUpEditSaleId.EditValue).ToList();
                 foreach (var rm in list)
                 {
                     db.Carts.Remove(rm);
@@ -357,12 +357,12 @@ namespace Katswiri.Forms
         }
 
 
-        private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
-        {
+        //private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
+        //{
            
-            dispalyChange();
-            //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", textEditTendered.Text, 2);
-        }
+        //    dispalyChange();
+        //    //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", textEditTendered.Text, 2);
+        //}
 
         private void textEditTendered_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -130,5 +130,10 @@ namespace Katswiri.Forms
             pos.clearmyCart();
             pos.loadCart();            
         }
+
+        private void textBoxTendered_KeyUp(object sender, KeyEventArgs e)
+        {
+            dispalyChange();
+        }
     }
 }
