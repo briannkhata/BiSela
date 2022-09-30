@@ -29,27 +29,31 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.label5 = new System.Windows.Forms.Label();
-            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            this.lookUpEditCashier = new DevExpress.XtraEditors.LookUpEdit();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCashier.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // dateTimePicker1
+            // dateTimePickerFrom
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(28, 89);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(295, 26);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(28, 89);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(295, 26);
+            this.dateTimePickerFrom.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,21 +71,21 @@ namespace Katswiri.Forms
             this.label2.TabIndex = 3;
             this.label2.Text = "To Date";
             // 
-            // dateTimePicker2
+            // dateTimePickerTo
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(354, 89);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(295, 26);
-            this.dateTimePicker2.TabIndex = 2;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(354, 89);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(295, 26);
+            this.dateTimePickerTo.TabIndex = 2;
             // 
-            // lookUpEdit1
+            // lookUpEditPaymentType
             // 
-            this.lookUpEdit1.Location = new System.Drawing.Point(27, 161);
-            this.lookUpEdit1.Name = "lookUpEdit1";
-            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditPaymentType.Location = new System.Drawing.Point(27, 161);
+            this.lookUpEditPaymentType.Name = "lookUpEditPaymentType";
+            this.lookUpEditPaymentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit1.Size = new System.Drawing.Size(621, 26);
-            this.lookUpEdit1.TabIndex = 4;
+            this.lookUpEditPaymentType.Size = new System.Drawing.Size(621, 26);
+            this.lookUpEditPaymentType.TabIndex = 4;
             // 
             // label3
             // 
@@ -99,14 +103,14 @@ namespace Katswiri.Forms
             this.label4.TabIndex = 7;
             this.label4.Text = "Sale Type";
             // 
-            // lookUpEdit2
+            // lookUpEditSaleType
             // 
-            this.lookUpEdit2.Location = new System.Drawing.Point(28, 227);
-            this.lookUpEdit2.Name = "lookUpEdit2";
-            this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditSaleType.Location = new System.Drawing.Point(28, 227);
+            this.lookUpEditSaleType.Name = "lookUpEditSaleType";
+            this.lookUpEditSaleType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit2.Size = new System.Drawing.Size(621, 26);
-            this.lookUpEdit2.TabIndex = 6;
+            this.lookUpEditSaleType.Size = new System.Drawing.Size(621, 26);
+            this.lookUpEditSaleType.TabIndex = 6;
             // 
             // label5
             // 
@@ -116,14 +120,40 @@ namespace Katswiri.Forms
             this.label5.TabIndex = 9;
             this.label5.Text = "Cashier";
             // 
-            // lookUpEdit3
+            // lookUpEditCashier
             // 
-            this.lookUpEdit3.Location = new System.Drawing.Point(26, 295);
-            this.lookUpEdit3.Name = "lookUpEdit3";
-            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditCashier.Location = new System.Drawing.Point(26, 295);
+            this.lookUpEditCashier.Name = "lookUpEditCashier";
+            this.lookUpEditCashier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit3.Size = new System.Drawing.Size(621, 26);
-            this.lookUpEdit3.TabIndex = 8;
+            this.lookUpEditCashier.Size = new System.Drawing.Size(621, 26);
+            this.lookUpEditCashier.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(22, 341);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(142, 23);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Customer";
+            // 
+            // lookUpEditCustomer
+            // 
+            this.lookUpEditCustomer.Location = new System.Drawing.Point(24, 367);
+            this.lookUpEditCustomer.Name = "lookUpEditCustomer";
+            this.lookUpEditCustomer.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditCustomer.Size = new System.Drawing.Size(621, 26);
+            this.lookUpEditCustomer.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(26, 414);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(191, 49);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Filter Report";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormFilterReport
             // 
@@ -131,41 +161,48 @@ namespace Katswiri.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(711, 459);
+            this.ClientSize = new System.Drawing.Size(691, 502);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lookUpEditCustomer);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.lookUpEdit3);
+            this.Controls.Add(this.lookUpEditCashier);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lookUpEdit2);
+            this.Controls.Add(this.lookUpEditSaleType);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lookUpEdit1);
+            this.Controls.Add(this.lookUpEditPaymentType);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerFrom);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormFilterReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filter Report";
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            this.Text = "Filter Sales Report";
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCashier.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit2;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
         private System.Windows.Forms.Label label5;
-        private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditCashier;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
+        private System.Windows.Forms.Button button1;
     }
 }
