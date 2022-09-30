@@ -524,13 +524,8 @@ namespace Katswiri
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (db = new BEntities())
-            {
-                SalesReport salesReport = new SalesReport();
-                ReportPrintTool printTool = new ReportPrintTool(salesReport);
-                //printTool.ShowPreviewDialog();
-                printTool.ShowPreview();
-            }
+            FormFilterReport formFilterReport = new FormFilterReport();
+            formFilterReport.ShowDialog();
         }
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
