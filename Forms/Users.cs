@@ -145,7 +145,6 @@ namespace Katswiri.Forms
                     user.PassWord = UserNameTextEdit.Text;
                     user.Email = EmailTextEdit.Text;
                     user.Phone = PhoneTextEdit.Text;
-                    user.Address = AddressTextEdit.Text;
                     using (db = new BEntities())
                     {
                         if (UserId > 0)
@@ -200,7 +199,6 @@ namespace Katswiri.Forms
                     //PassWordTextEdit.Text = user.PassWord;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
-                    AddressTextEdit.Text = user.Address;
                 }
             }
             btnSave.Caption = "Update";

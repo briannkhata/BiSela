@@ -5,17 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Accounts">
-          <Key>
-            <PropertyRef Name="AccountId" />
-          </Key>
-          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OpeningBalance" Type="float" Nullable="false" />
-          <Property Name="ClosingBalance" Type="float" Nullable="false" />
-          <Property Name="ActivityDate" Type="datetime" Nullable="false" />
-          <Property Name="ShopId" Type="int" Nullable="false" />
-          <Property Name="Deleted" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Banks">
           <Key>
             <PropertyRef Name="BankId" />
@@ -127,7 +116,6 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="UnitId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="BrandId" Type="int" />
-          <Property Name="TaxTypeId" Type="int" />
           <Property Name="ReOrderLevel" Type="float" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="Image" Type="varchar(max)" />
@@ -211,17 +199,29 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="Paid" Type="float" />
           <Property Name="Balance" Type="float" />
         </EntityType>
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OpeningBalance" Type="float" Nullable="false" />
+          <Property Name="ClosingBalance" Type="float" Nullable="false" />
+          <Property Name="ActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Shop">
           <Key>
             <PropertyRef Name="ShopId" />
           </Key>
-          <Property Name="ShopId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="ShopName" Type="varchar" MaxLength="50" />
           <Property Name="Currency" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar(max)" />
           <Property Name="Motto" Type="varchar(max)" />
+          <Property Name="Vat" Type="float" />
         </EntityType>
         <EntityType Name="StockMovement">
           <Key>
@@ -247,15 +247,21 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="SellingPrice" Type="float" />
           <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="OrderPrice" Type="float" />
         </EntityType>
-        <EntityType Name="TaxTypes">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sysdiagrams">
           <Key>
-            <PropertyRef Name="TaxTypeId" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="TaxTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaxTypeName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TaxTypeValue" Type="float" Nullable="false" />
-          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Units">
           <Key>
@@ -272,13 +278,12 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           </Key>
           <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PassWord" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="ShopId" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Address" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="UserType" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -468,6 +473,8 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingReport' does not have a prim
             <PropertyRef Name="ProductName" />
             <PropertyRef Name="CategoryName" />
             <PropertyRef Name="BrandName" />
+            <PropertyRef Name="ReceivingDate" />
+            <PropertyRef Name="Supplier" />
           </Key>
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -477,7 +484,11 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingReport' does not have a prim
           <Property Name="OrderPrice" Type="float" />
           <Property Name="Qty" Type="float" />
           <Property Name="TotalPrice" Type="float" />
-          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="ReceivingDate" Type="datetime" Nullable="false" />
+          <Property Name="Supplier" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PurchasingOrder" Type="varchar(max)" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="DeliveryNote" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -505,6 +516,10 @@ warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary 
           <Property Name="TaxValue" Type="float" Nullable="false" />
           <Property Name="SoldPrice" Type="float" Nullable="false" />
           <Property Name="DateSold" Type="datetime" Nullable="false" />
+          <Property Name="SaleType" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="SoldBy" Type="int" />
+          <Property Name="ShopId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -517,6 +532,25 @@ warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key de
           <Property Name="Currency" Type="varchar" MaxLength="50" />
           <Property Name="Location" Type="varchar" MaxLength="50" />
           <Property Name="Country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwSReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwSReport">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="BrandName" />
+          </Key>
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
+          <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Shop" Type="float" />
+          <Property Name="Stores" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="SellingPrice" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwStockReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -558,18 +592,6 @@ warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key d
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Shop" Type="float" />
           <Property Name="Stores" Type="float" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwTaxTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwTaxTypes">
-          <Key>
-            <PropertyRef Name="TaxTypeId" />
-            <PropertyRef Name="TaxTypeName" />
-            <PropertyRef Name="TaxTypeValue" />
-          </Key>
-          <Property Name="TaxTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TaxTypeName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TaxTypeValue" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwUnits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -697,18 +719,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Products_TaxTypes">
-          <End Role="TaxTypes" Type="Self.TaxTypes" Multiplicity="0..1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TaxTypes">
-              <PropertyRef Name="TaxTypeId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="TaxTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Products_Units">
           <End Role="Units" Type="Self.Units" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -746,7 +756,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BModelStoreContainer">
-          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
@@ -762,10 +771,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Receivings" EntityType="Self.Receivings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shifts" EntityType="Self.Shifts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockMovement" EntityType="Self.StockMovement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TaxTypes" EntityType="Self.TaxTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" store:Type="Tables" store:Schema="dbo">
@@ -775,6 +784,15 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [Menus].[Qty] AS [Qty], 
     [Menus].[Cost] AS [Cost]
     FROM [dbo].[Menus] AS [Menus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwBanks" EntityType="Self.vwBanks" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -900,7 +918,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwReceivingReport].[OrderPrice] AS [OrderPrice], 
     [vwReceivingReport].[Qty] AS [Qty], 
     [vwReceivingReport].[TotalPrice] AS [TotalPrice], 
-    [vwReceivingReport].[ExpiryDate] AS [ExpiryDate]
+    [vwReceivingReport].[ReceivingDate] AS [ReceivingDate], 
+    [vwReceivingReport].[Supplier] AS [Supplier], 
+    [vwReceivingReport].[PurchasingOrder] AS [PurchasingOrder], 
+    [vwReceivingReport].[DeliveryDate] AS [DeliveryDate], 
+    [vwReceivingReport].[DeliveryNote] AS [DeliveryNote]
     FROM [dbo].[vwReceivingReport] AS [vwReceivingReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwSalesReport" EntityType="Self.vwSalesReport" store:Type="Views" store:Schema="dbo">
@@ -915,7 +937,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwSalesReport].[Qty] AS [Qty], 
     [vwSalesReport].[TaxValue] AS [TaxValue], 
     [vwSalesReport].[SoldPrice] AS [SoldPrice], 
-    [vwSalesReport].[DateSold] AS [DateSold]
+    [vwSalesReport].[DateSold] AS [DateSold], 
+    [vwSalesReport].[SaleType] AS [SaleType], 
+    [vwSalesReport].[PaymentTypeId] AS [PaymentTypeId], 
+    [vwSalesReport].[SoldBy] AS [SoldBy], 
+    [vwSalesReport].[ShopId] AS [ShopId]
     FROM [dbo].[vwSalesReport] AS [vwSalesReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
@@ -926,6 +952,19 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwShops].[Location] AS [Location], 
     [vwShops].[Country] AS [Country]
     FROM [dbo].[vwShops] AS [vwShops]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwSReport" EntityType="Self.vwSReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwSReport].[ProductCode] AS [ProductCode], 
+    [vwSReport].[ProductName] AS [ProductName], 
+    [vwSReport].[Description] AS [Description], 
+    [vwSReport].[CategoryName] AS [CategoryName], 
+    [vwSReport].[BrandName] AS [BrandName], 
+    [vwSReport].[Shop] AS [Shop], 
+    [vwSReport].[Stores] AS [Stores], 
+    [vwSReport].[ExpiryDate] AS [ExpiryDate], 
+    [vwSReport].[SellingPrice] AS [SellingPrice]
+    FROM [dbo].[vwSReport] AS [vwSReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwStockReport" EntityType="Self.vwStockReport" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -954,13 +993,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwStocks].[Shop] AS [Shop], 
     [vwStocks].[Stores] AS [Stores]
     FROM [dbo].[vwStocks] AS [vwStocks]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwTaxTypes" EntityType="Self.vwTaxTypes" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vwTaxTypes].[TaxTypeId] AS [TaxTypeId], 
-    [vwTaxTypes].[TaxTypeName] AS [TaxTypeName], 
-    [vwTaxTypes].[TaxTypeValue] AS [TaxTypeValue]
-    FROM [dbo].[vwTaxTypes] AS [vwTaxTypes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwUnits" EntityType="Self.vwUnits" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1020,10 +1052,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK_Products_TaxTypes" Association="Self.FK_Products_TaxTypes">
-            <End Role="TaxTypes" EntitySet="TaxTypes" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
           <AssociationSet Name="FK_Products_Units" Association="Self.FK_Products_Units">
             <End Role="Units" EntitySet="Units" />
             <End Role="Products" EntitySet="Products" />
@@ -1059,476 +1087,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Brands" FromRole="Brand" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ExpenseType">
-          <Key>
-            <PropertyRef Name="ExpenseTypeId" />
-          </Key>
-          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Expenses" Relationship="BModel.FK_Expenses_ExpenseTypes" FromRole="ExpenseType" ToRole="Expens" />
-        </EntityType>
-        <EntityType Name="IncomeType">
-          <Key>
-            <PropertyRef Name="IncomeTypeId" />
-          </Key>
-          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Incomes" Relationship="BModel.FK_Incomes_IncomeTypes" FromRole="IncomeType" ToRole="Income" />
-        </EntityType>
-        <EntityType Name="PaymentType">
-          <Key>
-            <PropertyRef Name="PaymentTypeId" />
-          </Key>
-          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Expenses" Relationship="BModel.FK_Expenses_Users" FromRole="User" ToRole="Expens" />
-          <NavigationProperty Name="Incomes" Relationship="BModel.FK_Incomes_Users" FromRole="User" ToRole="Income" />
-          <NavigationProperty Name="Shop" Relationship="BModel.FK_Users_Shops" FromRole="User" ToRole="Shop" />
-        </EntityType>
-        <EntityType Name="Menu">
-          <Key>
-            <PropertyRef Name="MenuId" />
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="Cost" />
-          </Key>
-          <Property Name="MenuId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="Double" Nullable="false" />
-          <Property Name="Cost" Type="Double" Nullable="false" />
-        </EntityType>
-        <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Banks" EntityType="Self.Bank" />
-          <EntitySet Name="Brands" EntityType="Self.Brand" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
-          <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
-          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Menus" EntityType="Self.Menu" />
-          <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
-          <EntitySet Name="vwExpenseTypes" EntityType="BModel.vwExpenseType" />
-          <EntitySet Name="vwPaymentTypes" EntityType="BModel.vwPaymentType" />
-          <EntitySet Name="vwShops" EntityType="BModel.vwShop" />
-          <EntitySet Name="vwUsers" EntityType="BModel.vwUser" />
-          <EntitySet Name="vwCategories" EntityType="BModel.vwCategory" />
-          <EntitySet Name="vwBanks" EntityType="BModel.vwBank" />
-          <EntitySet Name="vwBrands" EntityType="BModel.vwBrand" />
-          <EntitySet Name="vwExpenses" EntityType="BModel.vwExpens" />
-          <EntitySet Name="Expenses" EntityType="BModel.Expens" />
-          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="BModel.FK_Expenses_ExpenseTypes">
-            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
-            <End Role="Expens" EntitySet="Expenses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Expenses_Users" Association="BModel.FK_Expenses_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Expens" EntitySet="Expenses" />
-          </AssociationSet>
-          <EntitySet Name="Incomes" EntityType="BModel.Income" />
-          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="BModel.FK_Incomes_IncomeTypes">
-            <End Role="IncomeType" EntitySet="IncomeTypes" />
-            <End Role="Income" EntitySet="Incomes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Incomes_Users" Association="BModel.FK_Incomes_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Income" EntitySet="Incomes" />
-          </AssociationSet>
-          <EntitySet Name="vwIncomTypes" EntityType="BModel.vwIncomType" />
-          <EntitySet Name="Accounts" EntityType="BModel.Account" />
-          <EntitySet Name="Products" EntityType="BModel.Product" />
-          <EntitySet Name="SaleDetails" EntityType="BModel.SaleDetail" />
-          <AssociationSet Name="FK_Products_Brands" Association="BModel.FK_Products_Brands">
-            <End Role="Brand" EntitySet="Brands" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Categories" Association="BModel.FK_Products_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SaleDetails_Products" Association="BModel.FK_SaleDetails_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="SaleDetail" EntitySet="SaleDetails" />
-          </AssociationSet>
-          <EntitySet Name="Shops" EntityType="BModel.Shop" />
-          <AssociationSet Name="FK_Users_Shops" Association="BModel.FK_Users_Shops">
-            <End Role="Shop" EntitySet="Shops" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <EntitySet Name="vwCarts" EntityType="BModel.vwCart" />
-          <EntitySet Name="Carts" EntityType="BModel.Cart" />
-          <AssociationSet Name="FK_Cart_Products" Association="BModel.FK_Cart_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <EntitySet Name="Sales" EntityType="BModel.Sale" />
-          <EntitySet Name="vwOrderCustomers" EntityType="BModel.vwOrderCustomer" />
-          <EntitySet Name="vwReceivingCarts" EntityType="BModel.vwReceivingCart" />
-          <EntitySet Name="ReceivingCarts" EntityType="BModel.ReceivingCart" />
-          <EntitySet Name="ReceivingDetails" EntityType="BModel.ReceivingDetail" />
-          <EntitySet Name="Receivings" EntityType="BModel.Receiving" />
-          <EntitySet Name="Stocks" EntityType="BModel.Stock" />
-          <AssociationSet Name="FK_Stocks_Products" Association="BModel.FK_Stocks_Products">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Stock" EntitySet="Stocks" />
-          </AssociationSet>
-          <EntitySet Name="vwStocks" EntityType="BModel.vwStock" />
-          <EntitySet Name="vwCustomers" EntityType="BModel.vwCustomer" />
-          <EntitySet Name="TaxTypes" EntityType="BModel.TaxType" />
-          <EntitySet Name="vwTaxTypes" EntityType="BModel.vwTaxType" />
-          <AssociationSet Name="FK_Products_TaxTypes" Association="BModel.FK_Products_TaxTypes">
-            <End Role="TaxType" EntitySet="TaxTypes" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <EntitySet Name="StockMovements" EntityType="BModel.StockMovement" />
-          <EntitySet Name="vwStockReports" EntityType="BModel.vwStockReport" />
-          <EntitySet Name="vwUpdateStocks" EntityType="BModel.vwUpdateStock" />
-          <EntitySet Name="vwReceivingReports" EntityType="BModel.vwReceivingReport" />
-          <EntitySet Name="vwSalesReports" EntityType="BModel.vwSalesReport" />
-          <EntitySet Name="Units" EntityType="BModel.Unit" />
-          <AssociationSet Name="FK_Products_Units" Association="BModel.FK_Products_Units">
-            <End Role="Unit" EntitySet="Units" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <EntitySet Name="vwUnits" EntityType="BModel.vwUnit" />
-          <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
-          </EntityContainer>
-        <EntityType Name="vwIncome">
-          <Key>
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IncomeId" />
-          </Key>
-          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IncomeId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwExpenseType">
-          <Key>
-            <PropertyRef Name="ExpenseTypeName" />
-            <PropertyRef Name="ExpenseTypeId" />
-          </Key>
-          <Property Name="ExpenseTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="vwPaymentType">
-          <Key>
-            <PropertyRef Name="PaymentTypeName" />
-            <PropertyRef Name="Description" />
-            <PropertyRef Name="PaymentTypeId" />
-          </Key>
-          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="vwShop">
-          <Key>
-            <PropertyRef Name="ShopId" />
-          </Key>
-          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwUser">
-          <Key>
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Gender" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="ShopId" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="vwCategory">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="CategoryName" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwBank">
-          <Key>
-            <PropertyRef Name="BankId" />
-            <PropertyRef Name="BankName" />
-          </Key>
-          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BankName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwBrand">
-          <Key>
-            <PropertyRef Name="BrandId" />
-            <PropertyRef Name="BrandName" />
-            <PropertyRef Name="BrandDescription" />
-          </Key>
-          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwExpens">
-          <Key>
-            <PropertyRef Name="ExpenseTypeName" />
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Expens">
-          <Key>
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExpenseType" Relationship="BModel.FK_Expenses_ExpenseTypes" FromRole="Expens" ToRole="ExpenseType" />
-          <NavigationProperty Name="User" Relationship="BModel.FK_Expenses_Users" FromRole="Expens" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Expenses_ExpenseTypes">
-          <End Type="BModel.ExpenseType" Role="ExpenseType" Multiplicity="1" />
-          <End Type="BModel.Expens" Role="Expens" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExpenseType">
-              <PropertyRef Name="ExpenseTypeId" />
-            </Principal>
-            <Dependent Role="Expens">
-              <PropertyRef Name="ExpenseTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Expenses_Users">
-          <End Type="BModel.User" Role="User" Multiplicity="1" />
-          <End Type="BModel.Expens" Role="Expens" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Expens">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Income">
-          <Key>
-            <PropertyRef Name="IncomeId" />
-          </Key>
-          <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="IncomeType" Relationship="BModel.FK_Incomes_IncomeTypes" FromRole="Income" ToRole="IncomeType" />
-          <NavigationProperty Name="User" Relationship="BModel.FK_Incomes_Users" FromRole="Income" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Incomes_IncomeTypes">
-          <End Type="BModel.IncomeType" Role="IncomeType" Multiplicity="1" />
-          <End Type="BModel.Income" Role="Income" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IncomeType">
-              <PropertyRef Name="IncomeTypeId" />
-            </Principal>
-            <Dependent Role="Income">
-              <PropertyRef Name="IncomeTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Incomes_Users">
-          <End Type="BModel.User" Role="User" Multiplicity="1" />
-          <End Type="BModel.Income" Role="Income" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Income">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="vwIncomType">
-          <Key>
-            <PropertyRef Name="IncomeTypeId" />
-          </Key>
-          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="Account">
-          <Key>
-            <PropertyRef Name="AccountId" />
-          </Key>
-          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OpeningBalance" Type="Double" Nullable="false" />
-          <Property Name="ClosingBalance" Type="Double" Nullable="false" />
-          <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="BrandId" Type="Int32" />
-          <Property Name="TaxTypeId" Type="Int32" />
-          <Property Name="ReOrderLevel" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
-          <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
-          <NavigationProperty Name="Carts" Relationship="BModel.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
-          <NavigationProperty Name="Stocks" Relationship="BModel.FK_Stocks_Products" FromRole="Product" ToRole="Stock" />
-          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TaxType" Relationship="BModel.FK_Products_TaxTypes" FromRole="Product" ToRole="TaxType" />
-          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
-        </EntityType>
-        <EntityType Name="SaleDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SaleId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="SellingPrice" Type="Double" Nullable="false" />
-          <Property Name="Discount" Type="Double" Nullable="false" />
-          <Property Name="SoldPrice" Type="Double" Nullable="false" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="Double" Nullable="false" />
-          <Property Name="TaxValue" Type="Double" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="BModel.FK_SaleDetails_Products" FromRole="SaleDetail" ToRole="Product" />
-        </EntityType>
-        <Association Name="FK_Products_Brands">
-          <End Type="BModel.Brand" Role="Brand" Multiplicity="0..1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Brand">
-              <PropertyRef Name="BrandId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="BrandId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Categories">
-          <End Type="BModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SaleDetails_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="BModel.SaleDetail" Role="SaleDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="SaleDetail">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Shop">
-          <Key>
-            <PropertyRef Name="ShopId" />
-          </Key>
-          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="BModel.FK_Users_Shops" FromRole="Shop" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Users_Shops">
-          <End Type="BModel.Shop" Role="Shop" Multiplicity="1" />
-          <End Type="BModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shop">
-              <PropertyRef Name="ShopId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="ShopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="vwCart">
-          <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-          <Property Name="TotalPrice" Type="Double" />
-          <Property Name="CartId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="TaxValue" Type="Double" />
-          <Property Name="Customer" Type="Int32" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="SaleId" Type="Int32" />
-        </EntityType>
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="CartId" />
@@ -1542,71 +1100,68 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Qty" Type="Double" />
           <Property Name="TaxValue" Type="Double" />
           <Property Name="ProductId" Type="Int32" />
-          <NavigationProperty Name="Product" Relationship="BModel.FK_Cart_Products" FromRole="Cart" ToRole="Product" />
           <Property Name="SaleId" Type="Int32" />
           <Property Name="Customer" Type="Int32" />
         </EntityType>
-        <Association Name="FK_Cart_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="BModel.Cart" Role="Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Sale">
+        <EntityType Name="Category">
           <Key>
-            <PropertyRef Name="SaleId" />
+            <PropertyRef Name="CategoryId" />
           </Key>
-          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tendered" Type="Double" />
-          <Property Name="Bill" Type="Double" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="TaxAmount" Type="Double" />
-          <Property Name="Customer" Type="Int32" />
-          <Property Name="SoldBy" Type="Int32" />
-          <Property Name="ShopId" Type="Int32" />
-          <Property Name="DateSold" Type="DateTime" Precision="3" />
-          <Property Name="Change" Type="Double" />
-          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SubTotal" Type="Double" />
-          <Property Name="PaymentTypeId" Type="Int32" />
-          <Property Name="Paid" Type="Double" />
-          <Property Name="Balance" Type="Double" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
         </EntityType>
-        <EntityType Name="vwOrderCustomer">
+        <EntityType Name="Expens">
           <Key>
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Phone" />
-            <PropertyRef Name="SaleId" />
+            <PropertyRef Name="ExpenseId" />
           </Key>
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Bill" Type="Double" />
-          <Property Name="Tendered" Type="Double" />
-          <Property Name="Customer" Type="Int32" />
-          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SaleId" Type="Int32" Nullable="false" />
-          <Property Name="DateSold" Type="DateTime" Precision="3" />
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpenseType" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="Expenses" ToRole="ExpenseTypes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Expenses_Users" FromRole="Expenses" ToRole="Users" />
         </EntityType>
-        <EntityType Name="vwReceivingCart">
+        <EntityType Name="ExpenseType">
           <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ExpenseTypeId" />
           </Key>
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OrderPrice" Type="Double" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="ExpenseTypes" ToRole="Expenses" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeId" />
+          </Key>
+          <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IncomeType" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="Incomes" ToRole="IncomeTypes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Incomes_Users" FromRole="Incomes" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="IncomeType">
+          <Key>
+            <PropertyRef Name="IncomeTypeId" />
+          </Key>
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="IncomeTypes" ToRole="Incomes" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ReceivingCart">
           <Key>
@@ -1643,11 +1198,84 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="TotalBill" Type="Double" Nullable="false" />
           <Property Name="SubTotal" Type="Double" Nullable="false" />
           <Property Name="ReceivingDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Supplier" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SaleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SellingPrice" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="SoldPrice" Type="Double" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="TaxValue" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="BModel.FK_SaleDetails_Products" FromRole="SaleDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tendered" Type="Double" />
+          <Property Name="Bill" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="TaxAmount" Type="Double" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="SoldBy" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="DateSold" Type="DateTime" Precision="3" />
+          <Property Name="Change" Type="Double" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Double" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="Paid" Type="Double" />
+          <Property Name="Balance" Type="Double" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OpeningBalance" Type="Double" Nullable="false" />
+          <Property Name="ClosingBalance" Type="Double" Nullable="false" />
+          <Property Name="ActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Motto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Vat" Type="Double" />
+        </EntityType>
+        <EntityType Name="StockMovement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="To" Type="Int32" />
+          <Property Name="From" Type="Int32" />
+          <Property Name="DateMoved" Type="DateTime" Precision="3" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -1661,38 +1289,102 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="SellingPrice" Type="Double" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPrice" Type="Double" />
           <NavigationProperty Name="Product" Relationship="BModel.FK_Stocks_Products" FromRole="Stock" ToRole="Product" />
         </EntityType>
-        <Association Name="FK_Stocks_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="BModel.Stock" Role="Stock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Stock">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="vwStock">
+        <EntityType Name="Unit">
           <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="BarCode" />
             <PropertyRef Name="UnitId" />
-            <PropertyRef Name="ProductId" />
           </Key>
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Qty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Units" FromRole="Unit" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ShopId" Type="Int32" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_Users" FromRole="Users" ToRole="Expenses" />
+          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_Users" FromRole="Users" ToRole="Incomes" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="Cost" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Shop" Type="Double" />
-          <Property Name="Stores" Type="Double" />
+          <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vwBank">
+          <Key>
+            <PropertyRef Name="BankId" />
+            <PropertyRef Name="BankName" />
+          </Key>
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwBrand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="BrandDescription" />
+          </Key>
+          <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwCart">
+          <Key>
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="CartId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="TaxValue" Type="Double" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="SaleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="vwCustomer">
           <Key>
@@ -1701,88 +1393,107 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="Phone" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="TaxType">
+        <EntityType Name="vwExpens">
           <Key>
-            <PropertyRef Name="TaxTypeId" />
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="ExpenseId" />
           </Key>
-          <Property Name="TaxTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_TaxTypes" FromRole="TaxType" ToRole="Product" />
+          <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="vwTaxType">
+        <EntityType Name="vwExpenseType">
           <Key>
-            <PropertyRef Name="TaxTypeId" />
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="ExpenseTypeId" />
+          </Key>
+          <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="vwIncome">
+          <Key>
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="IncomeId" />
+          </Key>
+          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IncomeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwIncomType">
+          <Key>
+            <PropertyRef Name="IncomeTypeId" />
+          </Key>
+          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="vwOrderCustomer">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bill" Type="Double" />
+          <Property Name="Tendered" Type="Double" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <Property Name="DateSold" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vwPaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="vwProduct">
+          <Key>
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductId" />
             <PropertyRef Name="TaxTypeName" />
-            <PropertyRef Name="TaxTypeValue" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Qty" />
           </Key>
-          <Property Name="TaxTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TaxTypeValue" Type="Double" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="TaxTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Qty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Products_TaxTypes">
-          <End Type="BModel.TaxType" Role="TaxType" Multiplicity="0..1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TaxType">
-              <PropertyRef Name="TaxTypeId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="TaxTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="StockMovement">
+        <EntityType Name="vwReceivingCart">
           <Key>
+            <PropertyRef Name="ProductName" />
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="To" Type="Int32" />
-          <Property Name="From" Type="Int32" />
-          <Property Name="DateMoved" Type="DateTime" Precision="3" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SellingPrice" Type="Double" />
           <Property Name="Qty" Type="Double" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwStockReport">
-          <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="BrandName" />
-            <PropertyRef Name="CategoryName" />
-          </Key>
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Shop" Type="Double" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="Stores" Type="Double" />
-          <Property Name="SellingPrice" Type="Double" />
-        </EntityType>
-        <EntityType Name="vwUpdateStock">
-          <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="StockId" />
-          </Key>
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Shop" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="ShopId" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" />
-          <Property Name="StockId" Type="Int32" Nullable="false" />
-          <Property Name="Stores" Type="Double" />
         </EntityType>
         <EntityType Name="vwReceivingReport">
           <Key>
@@ -1790,16 +1501,22 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="ProductName" />
             <PropertyRef Name="CategoryName" />
             <PropertyRef Name="BrandName" />
+            <PropertyRef Name="ReceivingDate" />
+            <PropertyRef Name="Supplier" />
           </Key>
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="OrderPrice" Type="Double" />
           <Property Name="Qty" Type="Double" />
           <Property Name="TotalPrice" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceivingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Supplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vwSalesReport">
           <Key>
@@ -1814,28 +1531,311 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="SoldPrice" />
             <PropertyRef Name="DateSold" />
           </Key>
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SellingPrice" Type="Double" Nullable="false" />
           <Property Name="Discount" Type="Double" Nullable="false" />
           <Property Name="Qty" Type="Double" Nullable="false" />
           <Property Name="TaxValue" Type="Double" Nullable="false" />
           <Property Name="SoldPrice" Type="Double" Nullable="false" />
           <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="SoldBy" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
         </EntityType>
-        <EntityType Name="Unit">
+        <EntityType Name="vwShop">
           <Key>
-            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="ShopId" />
           </Key>
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Units" FromRole="Unit" ToRole="Product" />
+          <Property Name="ShopName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="vwSReport">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="BrandName" />
+          </Key>
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="Stores" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="SellingPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwStockReport">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="CategoryName" />
+          </Key>
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="Stores" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="SellingPrice" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwStock">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="BarCode" />
+            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="Stores" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwUnit">
+          <Key>
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="Qty" />
+          </Key>
+          <Property Name="UnitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwUpdateStock">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="StockId" Type="Int32" Nullable="false" />
+          <Property Name="Stores" Type="Double" />
+        </EntityType>
+        <EntityType Name="vwUser">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_Expenses_ExpenseTypes">
+          <End Role="ExpenseTypes" Type="Self.ExpenseType" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseTypes">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expenses_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Expenses">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_IncomeTypes">
+          <End Role="IncomeTypes" Type="Self.IncomeType" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeTypes">
+              <PropertyRef Name="IncomeTypeId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="IncomeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Incomes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Carts" EntityType="Self.Cart" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Expenses" EntityType="Self.Expens" />
+          <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
+          <EntitySet Name="Incomes" EntityType="Self.Income" />
+          <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
+          <EntitySet Name="ReceivingCarts" EntityType="Self.ReceivingCart" />
+          <EntitySet Name="ReceivingDetails" EntityType="Self.ReceivingDetail" />
+          <EntitySet Name="Receivings" EntityType="Self.Receiving" />
+          <EntitySet Name="SaleDetails" EntityType="Self.SaleDetail" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="Shifts" EntityType="Self.Shift" />
+          <EntitySet Name="Shops" EntityType="Self.Shop" />
+          <EntitySet Name="StockMovements" EntityType="Self.StockMovement" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Menus" EntityType="Self.Menu" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="vwBanks" EntityType="Self.vwBank" />
+          <EntitySet Name="vwBrands" EntityType="Self.vwBrand" />
+          <EntitySet Name="vwCarts" EntityType="Self.vwCart" />
+          <EntitySet Name="vwCategories" EntityType="Self.vwCategory" />
+          <EntitySet Name="vwCustomers" EntityType="Self.vwCustomer" />
+          <EntitySet Name="vwExpenses" EntityType="Self.vwExpens" />
+          <EntitySet Name="vwExpenseTypes" EntityType="Self.vwExpenseType" />
+          <EntitySet Name="vwIncomes" EntityType="Self.vwIncome" />
+          <EntitySet Name="vwIncomTypes" EntityType="Self.vwIncomType" />
+          <EntitySet Name="vwOrderCustomers" EntityType="Self.vwOrderCustomer" />
+          <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentType" />
+          <EntitySet Name="vwProducts" EntityType="Self.vwProduct" />
+          <EntitySet Name="vwReceivingCarts" EntityType="Self.vwReceivingCart" />
+          <EntitySet Name="vwReceivingReports" EntityType="Self.vwReceivingReport" />
+          <EntitySet Name="vwSalesReports" EntityType="Self.vwSalesReport" />
+          <EntitySet Name="vwShops" EntityType="Self.vwShop" />
+          <EntitySet Name="vwSReports" EntityType="Self.vwSReport" />
+          <EntitySet Name="vwStockReports" EntityType="Self.vwStockReport" />
+          <EntitySet Name="vwStocks" EntityType="Self.vwStock" />
+          <EntitySet Name="vwUnits" EntityType="Self.vwUnit" />
+          <EntitySet Name="vwUpdateStocks" EntityType="Self.vwUpdateStock" />
+          <EntitySet Name="vwUsers" EntityType="Self.vwUser" />
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expenses_Users" Association="Self.FK_Expenses_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Expenses" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
+            <End Role="IncomeTypes" EntitySet="IncomeTypes" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Incomes" EntitySet="Incomes" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="BModel.Product" />
+          <AssociationSet Name="FK_Products_Brands" Association="BModel.FK_Products_Brands">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="BModel.FK_Products_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Units" Association="BModel.FK_Products_Units">
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleDetails_Products" Association="BModel.FK_SaleDetails_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SaleDetail" EntitySet="SaleDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stocks_Products" Association="BModel.FK_Stocks_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="ReOrderLevel" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
+          <NavigationProperty Name="Stocks" Relationship="BModel.FK_Stocks_Products" FromRole="Product" ToRole="Stock" />
+        </EntityType>
+        <Association Name="FK_Products_Brands">
+          <End Type="BModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Type="BModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Units">
           <End Type="BModel.Unit" Role="Unit" Multiplicity="1" />
           <End Type="BModel.Product" Role="Product" Multiplicity="*" />
@@ -1848,37 +1848,31 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="vwUnit">
-          <Key>
-            <PropertyRef Name="UnitName" />
-            <PropertyRef Name="UnitId" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="vwProduct">
-          <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="TaxTypeName" />
-            <PropertyRef Name="CategoryName" />
-            <PropertyRef Name="BrandName" />
-            <PropertyRef Name="UnitName" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="TaxTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        </Schema>
+        <Association Name="FK_SaleDetails_Products">
+          <End Type="BModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="BModel.SaleDetail" Role="SaleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SaleDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stocks_Products">
+          <End Type="BModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="BModel.Stock" Role="Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1903,6 +1897,23 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="BModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="BModel.Category">
               <MappingFragment StoreEntitySet="Categories">
@@ -1912,11 +1923,33 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="BModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ExpenseTypes">
             <EntityTypeMapping TypeName="BModel.ExpenseType">
               <MappingFragment StoreEntitySet="ExpenseTypes">
                 <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
                 <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="BModel.Income">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1940,9 +1973,156 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ReceivingCarts">
+            <EntityTypeMapping TypeName="BModel.ReceivingCart">
+              <MappingFragment StoreEntitySet="ReceivingCarts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceivingDetails">
+            <EntityTypeMapping TypeName="BModel.ReceivingDetail">
+              <MappingFragment StoreEntitySet="ReceivingDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="ReceivingId" ColumnName="ReceivingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receivings">
+            <EntityTypeMapping TypeName="BModel.Receiving">
+              <MappingFragment StoreEntitySet="Receivings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ReceivingDate" ColumnName="ReceivingDate" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PurchasingOrder" ColumnName="PurchasingOrder" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleDetails">
+            <EntityTypeMapping TypeName="BModel.SaleDetail">
+              <MappingFragment StoreEntitySet="SaleDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="BModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="SoldBy" ColumnName="SoldBy" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="BModel.Shift">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="BModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Motto" ColumnName="Motto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockMovements">
+            <EntityTypeMapping TypeName="BModel.StockMovement">
+              <MappingFragment StoreEntitySet="StockMovement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="DateMoved" ColumnName="DateMoved" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="BModel.Stock">
+              <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="BModel.Unit">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
@@ -1951,9 +2131,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1967,112 +2145,93 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwIncomes">
-            <EntityTypeMapping TypeName="BModel.vwIncome">
-              <MappingFragment StoreEntitySet="vwIncomes">
-                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwExpenseTypes">
-            <EntityTypeMapping TypeName="BModel.vwExpenseType">
-              <MappingFragment StoreEntitySet="vwExpenseTypes">
-                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
-                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwPaymentTypes">
-            <EntityTypeMapping TypeName="BModel.vwPaymentType">
-              <MappingFragment StoreEntitySet="vwPaymentTypes">
-                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwShops">
-            <EntityTypeMapping TypeName="BModel.vwShop">
-              <MappingFragment StoreEntitySet="vwShops">
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="Location" ColumnName="Location" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwUsers">
-            <EntityTypeMapping TypeName="BModel.vwUser">
-              <MappingFragment StoreEntitySet="vwUsers">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwCategories">
-            <EntityTypeMapping TypeName="BModel.vwCategory">
-              <MappingFragment StoreEntitySet="vwCategories">
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwBanks">
             <EntityTypeMapping TypeName="BModel.vwBank">
               <MappingFragment StoreEntitySet="vwBanks">
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwBrands">
             <EntityTypeMapping TypeName="BModel.vwBrand">
               <MappingFragment StoreEntitySet="vwBrands">
-                <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCarts">
+            <EntityTypeMapping TypeName="BModel.vwCart">
+              <MappingFragment StoreEntitySet="vwCarts">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCategories">
+            <EntityTypeMapping TypeName="BModel.vwCategory">
+              <MappingFragment StoreEntitySet="vwCategories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwCustomers">
+            <EntityTypeMapping TypeName="BModel.vwCustomer">
+              <MappingFragment StoreEntitySet="vwCustomer">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwExpenses">
             <EntityTypeMapping TypeName="BModel.vwExpens">
               <MappingFragment StoreEntitySet="vwExpenses">
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="BModel.Expens">
-              <MappingFragment StoreEntitySet="Expenses">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Incomes">
-            <EntityTypeMapping TypeName="BModel.Income">
-              <MappingFragment StoreEntitySet="Incomes">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <EntitySetMapping Name="vwExpenseTypes">
+            <EntityTypeMapping TypeName="BModel.vwExpenseType">
+              <MappingFragment StoreEntitySet="vwExpenseTypes">
+                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwIncomes">
+            <EntityTypeMapping TypeName="BModel.vwIncome">
+              <MappingFragment StoreEntitySet="vwIncomes">
+                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2080,20 +2239,198 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwIncomTypes">
             <EntityTypeMapping TypeName="BModel.vwIncomType">
               <MappingFragment StoreEntitySet="vwIncomTypes">
-                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
                 <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
+                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Accounts">
-            <EntityTypeMapping TypeName="BModel.Account">
-              <MappingFragment StoreEntitySet="Accounts">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <EntitySetMapping Name="vwOrderCustomers">
+            <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
+              <MappingFragment StoreEntitySet="vwOrderCustomer">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPaymentTypes">
+            <EntityTypeMapping TypeName="BModel.vwPaymentType">
+              <MappingFragment StoreEntitySet="vwPaymentTypes">
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProducts">
+            <EntityTypeMapping TypeName="BModel.vwProduct">
+              <MappingFragment StoreEntitySet="vwProducts">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwReceivingCarts">
+            <EntityTypeMapping TypeName="BModel.vwReceivingCart">
+              <MappingFragment StoreEntitySet="vwReceivingCart">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwReceivingReports">
+            <EntityTypeMapping TypeName="BModel.vwReceivingReport">
+              <MappingFragment StoreEntitySet="vwReceivingReport">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ReceivingDate" ColumnName="ReceivingDate" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="PurchasingOrder" ColumnName="PurchasingOrder" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwSalesReports">
+            <EntityTypeMapping TypeName="BModel.vwSalesReport">
+              <MappingFragment StoreEntitySet="vwSalesReport">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="SoldBy" ColumnName="SoldBy" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ActivityDate" ColumnName="ActivityDate" />
-                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
-                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwShops">
+            <EntityTypeMapping TypeName="BModel.vwShop">
+              <MappingFragment StoreEntitySet="vwShops">
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwSReports">
+            <EntityTypeMapping TypeName="BModel.vwSReport">
+              <MappingFragment StoreEntitySet="vwSReport">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStockReports">
+            <EntityTypeMapping TypeName="BModel.vwStockReport">
+              <MappingFragment StoreEntitySet="vwStockReport">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwStocks">
+            <EntityTypeMapping TypeName="BModel.vwStock">
+              <MappingFragment StoreEntitySet="vwStocks">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUnits">
+            <EntityTypeMapping TypeName="BModel.vwUnit">
+              <MappingFragment StoreEntitySet="vwUnits">
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUpdateStocks">
+            <EntityTypeMapping TypeName="BModel.vwUpdateStock">
+              <MappingFragment StoreEntitySet="vwUpdateStock">
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUsers">
+            <EntityTypeMapping TypeName="BModel.vwUser">
+              <MappingFragment StoreEntitySet="vwUsers">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2105,7 +2442,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
-                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
@@ -2113,333 +2449,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SaleDetails">
-            <EntityTypeMapping TypeName="BModel.SaleDetail">
-              <MappingFragment StoreEntitySet="SaleDetails">
-                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Shops">
-            <EntityTypeMapping TypeName="BModel.Shop">
-              <MappingFragment StoreEntitySet="Shop">
-                <ScalarProperty Name="Motto" ColumnName="Motto" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwCarts">
-            <EntityTypeMapping TypeName="BModel.vwCart">
-              <MappingFragment StoreEntitySet="vwCarts">
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="BModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="BModel.Sale">
-              <MappingFragment StoreEntitySet="Sales">
-                <ScalarProperty Name="Balance" ColumnName="Balance" />
-                <ScalarProperty Name="Paid" ColumnName="Paid" />
-                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
-                <ScalarProperty Name="Change" ColumnName="Change" />
-                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="SoldBy" ColumnName="SoldBy" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Bill" ColumnName="Bill" />
-                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwOrderCustomers">
-            <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
-              <MappingFragment StoreEntitySet="vwOrderCustomer">
-                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
-                <ScalarProperty Name="Bill" ColumnName="Bill" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwReceivingCarts">
-            <EntityTypeMapping TypeName="BModel.vwReceivingCart">
-              <MappingFragment StoreEntitySet="vwReceivingCart">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReceivingCarts">
-            <EntityTypeMapping TypeName="BModel.ReceivingCart">
-              <MappingFragment StoreEntitySet="ReceivingCarts">
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReceivingDetails">
-            <EntityTypeMapping TypeName="BModel.ReceivingDetail">
-              <MappingFragment StoreEntitySet="ReceivingDetails">
-                <ScalarProperty Name="ReceivingId" ColumnName="ReceivingId" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Receivings">
-            <EntityTypeMapping TypeName="BModel.Receiving">
-              <MappingFragment StoreEntitySet="Receivings">
-                <ScalarProperty Name="DeliveryNote" ColumnName="DeliveryNote" />
-                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
-                <ScalarProperty Name="PurchasingOrder" ColumnName="PurchasingOrder" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
-                <ScalarProperty Name="ReceivingDate" ColumnName="ReceivingDate" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stocks">
-            <EntityTypeMapping TypeName="BModel.Stock">
-              <MappingFragment StoreEntitySet="Stocks">
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="StockId" ColumnName="StockId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwStocks">
-            <EntityTypeMapping TypeName="BModel.vwStock">
-              <MappingFragment StoreEntitySet="vwStocks">
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwCustomers">
-            <EntityTypeMapping TypeName="BModel.vwCustomer">
-              <MappingFragment StoreEntitySet="vwCustomer">
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TaxTypes">
-            <EntityTypeMapping TypeName="BModel.TaxType">
-              <MappingFragment StoreEntitySet="TaxTypes">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
-                <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
-                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwTaxTypes">
-            <EntityTypeMapping TypeName="BModel.vwTaxType">
-              <MappingFragment StoreEntitySet="vwTaxTypes">
-                <ScalarProperty Name="TaxTypeValue" ColumnName="TaxTypeValue" />
-                <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
-                <ScalarProperty Name="TaxTypeId" ColumnName="TaxTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StockMovements">
-            <EntityTypeMapping TypeName="BModel.StockMovement">
-              <MappingFragment StoreEntitySet="StockMovement">
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="DateMoved" ColumnName="DateMoved" />
-                <ScalarProperty Name="From" ColumnName="From" />
-                <ScalarProperty Name="To" ColumnName="To" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwStockReports">
-            <EntityTypeMapping TypeName="BModel.vwStockReport">
-              <MappingFragment StoreEntitySet="vwStockReport">
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwUpdateStocks">
-            <EntityTypeMapping TypeName="BModel.vwUpdateStock">
-              <MappingFragment StoreEntitySet="vwUpdateStock">
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
-                <ScalarProperty Name="StockId" ColumnName="StockId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwReceivingReports">
-            <EntityTypeMapping TypeName="BModel.vwReceivingReport">
-              <MappingFragment StoreEntitySet="vwReceivingReport">
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwSalesReports">
-            <EntityTypeMapping TypeName="BModel.vwSalesReport">
-              <MappingFragment StoreEntitySet="vwSalesReport">
-                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
-                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Units">
-            <EntityTypeMapping TypeName="BModel.Unit">
-              <MappingFragment StoreEntitySet="Units">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwUnits">
-            <EntityTypeMapping TypeName="BModel.vwUnit">
-              <MappingFragment StoreEntitySet="vwUnits">
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwProducts">
-            <EntityTypeMapping TypeName="BModel.vwProduct">
-              <MappingFragment StoreEntitySet="vwProducts">
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="TaxTypeName" ColumnName="TaxTypeName" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -22,6 +22,7 @@ namespace Katswiri.Data
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<double> SellingPrice { get; set; }
         public string Comment { get; set; }
+        public Nullable<double> OrderPrice { get; set; }
     
         public virtual Product Product { get; set; }
     }

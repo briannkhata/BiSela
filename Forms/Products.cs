@@ -57,20 +57,9 @@ namespace Katswiri.Forms
                 gridView1.OptionsBehavior.Editable = false;
                 gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
                 //gridView1.OptionsView.ShowIndicator = false;
-                loadTaxTypes();
                 loadCategories();
                 loadUnits();
                 loadBrands();
-            }
-        }
-
-        private void loadTaxTypes()
-        {
-            using (db = new BEntities())
-            {
-                TaxTypeIdLookUpEdit.Properties.DataSource = db.vwTaxTypes.ToList();
-                TaxTypeIdLookUpEdit.Properties.ValueMember = "TaxTypeId";
-                TaxTypeIdLookUpEdit.Properties.DisplayMember = "TaxTypeName";
             }
         }
 
@@ -166,7 +155,6 @@ namespace Katswiri.Forms
                     product.ProductName = ProductNameTextEdit.Text;
                     product.UnitId = Convert.ToInt32(UnitIdLookUpEdit.EditValue);
                     product.CategoryId = Convert.ToInt32(CategoryIdLookUpEdit.EditValue);
-                    product.TaxTypeId = Convert.ToInt32(TaxTypeIdLookUpEdit.EditValue);
                     product.BrandId = Convert.ToInt32(BrandLookUpEdit.EditValue);
                     product.TaxStatus = (string)lookUpEditTaxStatus.EditValue;
                     product.ProductCode = ProductCodeTextEdit.Text;
@@ -223,7 +211,6 @@ namespace Katswiri.Forms
                     lookUpEditTaxStatus.EditValue = product.TaxStatus;
                     UnitIdLookUpEdit.EditValue = product.UnitId;
                     CategoryIdLookUpEdit.EditValue = product.CategoryId;
-                    TaxTypeIdLookUpEdit.EditValue = product.TaxTypeId;
                     BrandLookUpEdit.EditValue = product.BrandId;
                     textEditOrderLevel.Text = product.ReOrderLevel.ToString();
                 }

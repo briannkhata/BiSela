@@ -26,10 +26,9 @@ namespace Katswiri.Data
         public string Gender { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
-        public int ShopId { get; set; }
+        public Nullable<int> ShopId { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Address { get; set; }
         public int Deleted { get; set; }
         public string UserType { get; set; }
     
@@ -37,6 +36,5 @@ namespace Katswiri.Data
         public virtual ICollection<Expens> Expenses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Income> Incomes { get; set; }
-        public virtual Shop Shop { get; set; }
     }
 }

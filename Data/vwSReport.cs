@@ -12,14 +12,13 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class vwStockReport
+    public partial class vwSReport
     {
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string Description { get; set; }
-        public string TaxStatus { get; set; }
-        public string BrandName { get; set; }
         public string CategoryName { get; set; }
+        public string BrandName { get; set; }
         public Nullable<double> Shop { get; set; }
         public Nullable<double> Stores { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }

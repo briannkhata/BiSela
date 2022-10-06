@@ -14,12 +14,6 @@ namespace Katswiri.Data
     
     public partial class Shop
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shop()
-        {
-            this.Users = new HashSet<User>();
-        }
-    
         public int ShopId { get; set; }
         public string ShopName { get; set; }
         public string Currency { get; set; }
@@ -27,8 +21,6 @@ namespace Katswiri.Data
         public string Phone { get; set; }
         public string Address { get; set; }
         public string Motto { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public Nullable<double> Vat { get; set; }
     }
 }

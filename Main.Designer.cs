@@ -52,7 +52,6 @@ namespace Katswiri
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
             this.logout = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
@@ -78,7 +77,6 @@ namespace Katswiri
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup20 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage5 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup17 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -123,7 +121,6 @@ namespace Katswiri
             this.barButtonItem10,
             this.barButtonItem16,
             this.barButtonItem17,
-            this.barButtonItem18,
             this.barButtonItem19,
             this.logout,
             this.barButtonItem21,
@@ -307,14 +304,6 @@ namespace Katswiri
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
-            // barButtonItem18
-            // 
-            this.barButtonItem18.Caption = "Tax Types";
-            this.barButtonItem18.Id = 27;
-            this.barButtonItem18.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem18.ImageOptions.SvgImage")));
-            this.barButtonItem18.Name = "barButtonItem18";
-            this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
-            // 
             // barButtonItem19
             // 
             this.barButtonItem19.Caption = "Brands";
@@ -462,8 +451,7 @@ namespace Katswiri
             this.ribbonPageGroup7,
             this.ribbonPageGroup8,
             this.ribbonPageGroup15,
-            this.ribbonPageGroup16,
-            this.ribbonPageGroup20});
+            this.ribbonPageGroup16});
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "Accounts Management";
             // 
@@ -486,11 +474,6 @@ namespace Katswiri
             // 
             this.ribbonPageGroup16.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroup16.Name = "ribbonPageGroup16";
-            // 
-            // ribbonPageGroup20
-            // 
-            this.ribbonPageGroup20.ItemLinks.Add(this.barButtonItem18);
-            this.ribbonPageGroup20.Name = "ribbonPageGroup20";
             // 
             // ribbonPage5
             // 
@@ -627,8 +610,6 @@ namespace Katswiri
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup19;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup20;
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup21;
         private DevExpress.XtraBars.BarButtonItem logout;

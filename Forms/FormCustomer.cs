@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using System;
 using System.Collections.Generic;
@@ -36,12 +37,11 @@ namespace Katswiri.Forms
                         {
                             Name = textEditName.Text,
                             Phone = textEditPhone.Text,
-                            UserType = "Customer",
                             Gender = "Other",
                             UserName = textEditName.Text,
                             PassWord = textEditName.Text,
+                            UserType = "Customer",
                             Email = "shop@yahoo.com",
-                            Address = "NAN",
                             ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
                         };
 
@@ -100,7 +100,8 @@ namespace Katswiri.Forms
 
         private void lookUpEditCustomer2_EditValueChanged(object sender, EventArgs e)
         {
-            
+
+           // SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             this.Close();
             setParams();
         }
@@ -116,11 +117,13 @@ namespace Katswiri.Forms
                 pos.lookUpEditCustomer.EditValue = customer;
                 pos.lookUpEditCustomer.Properties.NullText = "Customer";
 
-                pos.lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
-                pos.lookUpEditSaleId.Properties.ValueMember = "SaleId";
-                pos.lookUpEditSaleId.Properties.DisplayMember = "SaleId";
-                pos.lookUpEditSaleId.EditValue = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId);
-                pos.lookUpEditSaleId.Properties.NullText = "Order Number";
+                //pos.lookUpEditPaymentType.Properties.DataSource = db.Sales.ToList();
+                //pos.lookUpEditPaymentType.Properties.ValueMember = "SaleId";
+                //pos.lookUpEditPaymentType.Properties.DisplayMember = "SaleId";
+                //pos.lookUpEditPaymentType.EditValue = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId);
+                //pos.lookUpEditPaymentType.Properties.NullText = "Order Number";
+
+                pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId).ToString();
             }
             pos.Activate();
             pos.ShowDialog();
@@ -136,12 +139,7 @@ namespace Katswiri.Forms
                 pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
                 pos.lookUpEditCustomer.EditValue = (int)lookUpEditCustomer2.EditValue;
                 pos.lookUpEditCustomer.Properties.NullText = "Customer";
-
-                pos.lookUpEditSaleId.Properties.DataSource = db.Sales.ToList();
-                pos.lookUpEditSaleId.Properties.ValueMember = "SaleId";
-                pos.lookUpEditSaleId.Properties.DisplayMember = "SaleId";
-                pos.lookUpEditSaleId.EditValue = db.Sales.Where(x => x.Customer == (int)lookUpEditCustomer2.EditValue).Max(x => x.SaleId);
-                pos.lookUpEditSaleId.Properties.NullText = "Order Number";
+                pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == (int)lookUpEditCustomer2.EditValue).Max(x => x.SaleId).ToString();
             }
             pos.Activate();
             pos.ShowDialog();

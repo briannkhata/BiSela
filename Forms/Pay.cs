@@ -73,7 +73,7 @@ namespace Katswiri.Forms
                 {
                     sale = new Sale()
                     {
-                        SaleId = (int)pos.lookUpEditSaleId.EditValue,
+                        SaleId = (int)pos.lookUpEditPaymentType.EditValue,
                         DateSold = DateTime.Now,
                         SaleType = (string)pos.lookUpEditSaleType.EditValue,
                         PaymentTypeId = (int)lookUpEditPayMode.EditValue,
@@ -97,7 +97,7 @@ namespace Katswiri.Forms
                     {
                         saleDetail = new SaleDetail()
                         {
-                            SaleId = (int)pos.lookUpEditSaleId.EditValue,
+                            SaleId = (int)pos.lookUpEditPaymentType.EditValue,
                             ProductId = (int)item.ProductId,
                             SellingPrice = (double)item.SellingPrice,
                             ShopId = (int)item.ShopId,

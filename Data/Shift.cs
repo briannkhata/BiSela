@@ -12,10 +12,13 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class vwTaxType
+    public partial class Shift
     {
-        public int TaxTypeId { get; set; }
-        public string TaxTypeName { get; set; }
-        public double TaxTypeValue { get; set; }
+        public int AccountId { get; set; }
+        public double OpeningBalance { get; set; }
+        public double ClosingBalance { get; set; }
+        public System.DateTime ActivityDate { get; set; }
+        public int ShopId { get; set; }
+        public int Deleted { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Katswiri.Data
         public Product()
         {
             this.SaleDetails = new HashSet<SaleDetail>();
-            this.Carts = new HashSet<Cart>();
             this.Stocks = new HashSet<Stock>();
         }
     
@@ -29,7 +28,6 @@ namespace Katswiri.Data
         public int UnitId { get; set; }
         public int CategoryId { get; set; }
         public Nullable<int> BrandId { get; set; }
-        public Nullable<int> TaxTypeId { get; set; }
         public Nullable<double> ReOrderLevel { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
@@ -38,13 +36,10 @@ namespace Katswiri.Data
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
-        public virtual TaxType TaxType { get; set; }
-        public virtual Unit Unit { get; set; }
     }
 }

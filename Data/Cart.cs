@@ -25,7 +25,5 @@ namespace Katswiri.Data
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> SaleId { get; set; }
         public Nullable<int> Customer { get; set; }
-    
-        public virtual Product Product { get; set; }
     }
 }

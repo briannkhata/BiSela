@@ -12,13 +12,12 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class sysdiagram
     {
-        public int AccountId { get; set; }
-        public double OpeningBalance { get; set; }
-        public double ClosingBalance { get; set; }
-        public System.DateTime ActivityDate { get; set; }
-        public int ShopId { get; set; }
-        public int Deleted { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

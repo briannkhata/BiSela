@@ -354,22 +354,6 @@ namespace Katswiri
             FormShop.ShowDialog();
         }
 
-        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowTaxTypeFom();
-        }
-
-        private void ShowTaxTypeFom()
-        {
-            TaxTypes taxTypes = null;
-            if (taxTypes == null || taxTypes.IsDisposed)
-            {
-                taxTypes = new TaxTypes();
-            }
-            taxTypes.Activate();
-            taxTypes.ShowDialog();
-        }
 
         private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
         {

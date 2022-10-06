@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraReports.Parameters;
 using DevExpress.XtraReports.UI;
 using Katswiri.Data;
 using Katswiri.Enums;
@@ -24,6 +25,7 @@ namespace Katswiri.Forms
             loadCustomers();
             loadCashiers();
             loadSaleTypes();
+            PaymentTypes();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +33,16 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 SalesReport salesReport = new SalesReport();
+                Parameter parameter1 = new Parameter();
+                parameter1.MultiValue = true;
+                parameter1.Name = "PaymentTypeId";
+
+                //Specify other parameter properties.
+                parameter1.Type = typeof(System.Int32);
+                parameter1.Visible = true;
+                parameter1.Description = "PaymentType";
+
+
                 ReportPrintTool printTool = new ReportPrintTool(salesReport);
                 //printTool.ShowPreviewDialog();
                 printTool.ShowPreview();
@@ -76,8 +88,8 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 lookUpEditPaymentType.Properties.DataSource = db.PaymentTypes.Where(x => x.Deleted == 0).ToList();
-                lookUpEditPaymentType.Properties.ValueMember = "Value";
-                lookUpEditPaymentType.Properties.DisplayMember = "Value";
+                lookUpEditPaymentType.Properties.ValueMember = "PaymentTypeId";
+                lookUpEditPaymentType.Properties.DisplayMember = "PaymentTypeName";
                 lookUpEditPaymentType.Properties.NullText = "Payment Type";
             }
         }

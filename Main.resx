@@ -641,34 +641,6 @@
         Y2xhc3M9IkJsdWUiIC8+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
   </data>
-  <data name="barButtonItem18.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi41
-        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
-        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAANUEAAAC77u/
-        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
-        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
-        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
-        Y2U9InByZXNlcnZlIiBpZD0iUmVjdXJyZW50QXBwb2ludG1lbnQiIHN0eWxlPSJlbmFibGUtYmFja2dy
-        b3VuZDpuZXcgMCAwIDMyIDMyIj4NCiAgPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5CbGFja3tmaWxs
-        OiM3MjcyNzI7fQoJLlJlZHtmaWxsOiNEMTFDMUM7fQoJLnN0MHtvcGFjaXR5OjAuNTt9Cjwvc3R5bGU+
-        DQogIDxwYXRoIGQ9Ik0xNiwyNkgyVjZoMjZ2MTAuNWMwLjYsMC4yLDEuMiwwLjUsMS44LDAuOGwwLjIt
-        MC4yVjNjMC0wLjYtMC40LTEtMS0xSDFDMC40LDIsMCwyLjQsMCwzdjI0YzAsMC42LDAuNCwxLDEsMSAg
-        aDE1VjI2eiIgY2xhc3M9IkJsYWNrIiAvPg0KICA8ZyBjbGFzcz0ic3QwIj4NCiAgICA8cGF0aCBkPSJN
-        MjIsMTYuNVYxNGg0djIuMWMtMC4zLDAtMC43LTAuMS0xLTAuMUMyNCwxNiwyMi45LDE2LjIsMjIsMTYu
-        NXogTTIwLDhoLTR2NGg0Vjh6IE0yMCwxNy41VjE0aC00djRoMy40ICAgQzE5LjYsMTcuOCwxOS44LDE3
-        LjcsMjAsMTcuNXogTTI2LDhoLTR2NGg0Vjh6IE00LDI0aDR2LTRINFYyNHogTTEwLDEyaDRWOGgtNFYx
-        MnogTTEwLDI0aDR2LTRoLTRWMjR6IE00LDE4aDR2LTRINFYxOHogTTQsMTJoNFY4ICAgSDRWMTJ6IE0x
-        Ni4xLDIzLjdjMC4yLTEuNCwwLjctMi42LDEuNC0zLjdIMTZ2NGgwLjFMMTYuMSwyMy43eiIgY2xhc3M9
-        IkJsYWNrIiAvPg0KICA8L2c+DQogIDxyZWN0IHg9IjEwIiB5PSIxNCIgd2lkdGg9IjQiIGhlaWdodD0i
-        NCIgcng9IjAiIHJ5PSIwIiBjbGFzcz0iUmVkIiAvPg0KICA8cGF0aCBkPSJNMjkuOSwyMC4xYy0xLjMt
-        MS4zLTMtMi4xLTQuOS0yLjFjLTMuNSwwLTYuNCwyLjYtNi45LDZoMmMwLjUtMi4zLDIuNS00LDQuOS00
-        YzEuNCwwLDIuNiwwLjYsMy41LDEuNUwyNiwyNCAgaDMuOWgySDMydi02TDI5LjksMjAuMXogTTI5Ljks
-        MjZoMmMtMC41LDMuNC0zLjQsNi02LjksNmMtMS45LDAtMy43LTAuOC00LjktMi4xTDE4LDMydi02aDAu
-        MWgySDI0bC0yLjUsMi41ICBjMC45LDAuOSwyLjEsMS41LDMuNSwxLjVDMjcuNCwzMCwyOS40LDI4LjMs
-        MjkuOSwyNnoiIGNsYXNzPSJCbGFjayIgLz4NCjwvc3ZnPgs=
-</value>
-  </data>
   <data name="barButtonItem19.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi41

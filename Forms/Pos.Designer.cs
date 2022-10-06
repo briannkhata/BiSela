@@ -29,48 +29,53 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.lookUpEditSaleId = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
             this.dateEditDateSold = new DevExpress.XtraEditors.DateEdit();
             this.lblCashier = new System.Windows.Forms.Label();
             this.lookUpEditCustomer = new DevExpress.XtraEditors.LookUpEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.textSearchProduct = new System.Windows.Forms.TextBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.gridControlOrders = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.labelSaleId = new System.Windows.Forms.Label();
+            this.labelL = new System.Windows.Forms.Label();
+            this.labelChange = new System.Windows.Forms.Label();
+            this.textBoxTendered = new System.Windows.Forms.TextBox();
+            this.buttonFinishSale = new System.Windows.Forms.Button();
+            this.labelBill = new System.Windows.Forms.Label();
+            this.labelSubTotal = new System.Windows.Forms.Label();
+            this.labelTax = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelDiscount = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
-            this.labelBill = new System.Windows.Forms.Label();
-            this.labelTax = new System.Windows.Forms.Label();
-            this.labelDiscount = new System.Windows.Forms.Label();
-            this.labelSubTotal = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlOrders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lookUpEditSaleType
@@ -88,7 +93,7 @@ namespace Katswiri.Forms
             // 
             this.panelControl5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl5.Controls.Add(this.lookUpEditSaleId);
+            this.panelControl5.Controls.Add(this.lookUpEditPaymentType);
             this.panelControl5.Controls.Add(this.dateEditDateSold);
             this.panelControl5.Controls.Add(this.lblCashier);
             this.panelControl5.Controls.Add(this.lookUpEditCustomer);
@@ -99,17 +104,16 @@ namespace Katswiri.Forms
             this.panelControl5.Size = new System.Drawing.Size(1532, 58);
             this.panelControl5.TabIndex = 3;
             // 
-            // lookUpEditSaleId
+            // lookUpEditPaymentType
             // 
-            this.lookUpEditSaleId.Enabled = false;
-            this.lookUpEditSaleId.Location = new System.Drawing.Point(536, 14);
-            this.lookUpEditSaleId.Name = "lookUpEditSaleId";
-            this.lookUpEditSaleId.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lookUpEditSaleId.Properties.Appearance.Options.UseFont = true;
-            this.lookUpEditSaleId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lookUpEditPaymentType.Location = new System.Drawing.Point(536, 14);
+            this.lookUpEditPaymentType.Name = "lookUpEditPaymentType";
+            this.lookUpEditPaymentType.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lookUpEditPaymentType.Properties.Appearance.Options.UseFont = true;
+            this.lookUpEditPaymentType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEditSaleId.Size = new System.Drawing.Size(252, 30);
-            this.lookUpEditSaleId.TabIndex = 30;
+            this.lookUpEditPaymentType.Size = new System.Drawing.Size(252, 30);
+            this.lookUpEditPaymentType.TabIndex = 30;
             // 
             // dateEditDateSold
             // 
@@ -171,67 +175,167 @@ namespace Katswiri.Forms
             this.textSearchProduct.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textSearchProduct.Location = new System.Drawing.Point(20, 81);
             this.textSearchProduct.Name = "textSearchProduct";
-            this.textSearchProduct.Size = new System.Drawing.Size(863, 57);
+            this.textSearchProduct.Size = new System.Drawing.Size(931, 57);
             this.textSearchProduct.TabIndex = 0;
             this.textSearchProduct.WordWrap = false;
-            this.textSearchProduct.TextChanged += new System.EventHandler(this.textSearchProduct_TextChanged);
             this.textSearchProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textSearchProduct_KeyDown);
             // 
             // panelControl1
             // 
             this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl1.Controls.Add(this.gridControlOrders);
-            this.panelControl1.Location = new System.Drawing.Point(904, 143);
+            this.panelControl1.Controls.Add(this.labelSaleId);
+            this.panelControl1.Controls.Add(this.labelL);
+            this.panelControl1.Controls.Add(this.labelChange);
+            this.panelControl1.Controls.Add(this.textBoxTendered);
+            this.panelControl1.Controls.Add(this.buttonFinishSale);
+            this.panelControl1.Controls.Add(this.labelBill);
+            this.panelControl1.Controls.Add(this.labelSubTotal);
+            this.panelControl1.Controls.Add(this.labelTax);
+            this.panelControl1.Controls.Add(this.label1);
+            this.panelControl1.Controls.Add(this.labelDiscount);
+            this.panelControl1.Controls.Add(this.label2);
+            this.panelControl1.Controls.Add(this.label4);
+            this.panelControl1.Location = new System.Drawing.Point(957, 65);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(622, 636);
+            this.panelControl1.Size = new System.Drawing.Size(569, 731);
             this.panelControl1.TabIndex = 3;
             // 
-            // gridControlOrders
+            // labelSaleId
             // 
-            this.gridControlOrders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gridControlOrders.EmbeddedNavigator.Appearance.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControlOrders.EmbeddedNavigator.Appearance.Options.UseFont = true;
-            this.gridControlOrders.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControlOrders.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.gridControlOrders.Location = new System.Drawing.Point(2, 0);
-            this.gridControlOrders.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
-            this.gridControlOrders.MainView = this.gridView2;
-            this.gridControlOrders.Name = "gridControlOrders";
-            this.gridControlOrders.Size = new System.Drawing.Size(618, 636);
-            this.gridControlOrders.TabIndex = 0;
-            this.gridControlOrders.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.labelSaleId.ForeColor = System.Drawing.Color.Transparent;
+            this.labelSaleId.Location = new System.Drawing.Point(370, 140);
+            this.labelSaleId.Name = "labelSaleId";
+            this.labelSaleId.Size = new System.Drawing.Size(190, 23);
+            this.labelSaleId.TabIndex = 21;
             // 
-            // gridView2
+            // labelL
             // 
-            this.gridView2.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView2.Appearance.ColumnFilterButton.Options.UseFont = true;
-            this.gridView2.GridControl = this.gridControlOrders;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowFooter = true;
+            this.labelL.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelL.Location = new System.Drawing.Point(13, 435);
+            this.labelL.Name = "labelL";
+            this.labelL.Size = new System.Drawing.Size(175, 38);
+            this.labelL.TabIndex = 20;
+            this.labelL.Text = "CHANGE";
+            this.labelL.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // button1
+            // labelChange
             // 
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(20, 729);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 50);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "PAY";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.labelChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelChange.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChange.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.labelChange.Location = new System.Drawing.Point(13, 485);
+            this.labelChange.Name = "labelChange";
+            this.labelChange.Size = new System.Drawing.Size(547, 99);
+            this.labelChange.TabIndex = 19;
+            this.labelChange.Text = "00.00";
+            this.labelChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxTendered
+            // 
+            this.textBoxTendered.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.textBoxTendered.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxTendered.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxTendered.ForeColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBoxTendered.Location = new System.Drawing.Point(13, 318);
+            this.textBoxTendered.Name = "textBoxTendered";
+            this.textBoxTendered.Size = new System.Drawing.Size(547, 106);
+            this.textBoxTendered.TabIndex = 18;
+            this.textBoxTendered.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTendered.TextChanged += new System.EventHandler(this.textBoxTendered_TextChanged);
+            // 
+            // buttonFinishSale
+            // 
+            this.buttonFinishSale.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonFinishSale.BackColor = System.Drawing.Color.DodgerBlue;
+            this.buttonFinishSale.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFinishSale.Location = new System.Drawing.Point(13, 610);
+            this.buttonFinishSale.Name = "buttonFinishSale";
+            this.buttonFinishSale.Size = new System.Drawing.Size(548, 108);
+            this.buttonFinishSale.TabIndex = 6;
+            this.buttonFinishSale.Text = "FINISH SALE";
+            this.buttonFinishSale.UseVisualStyleBackColor = false;
+            this.buttonFinishSale.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // labelBill
+            // 
+            this.labelBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBill.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBill.Location = new System.Drawing.Point(13, 19);
+            this.labelBill.Name = "labelBill";
+            this.labelBill.Size = new System.Drawing.Size(547, 117);
+            this.labelBill.TabIndex = 17;
+            this.labelBill.Text = "00.00";
+            this.labelBill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelSubTotal
+            // 
+            this.labelSubTotal.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubTotal.Location = new System.Drawing.Point(232, 160);
+            this.labelSubTotal.Name = "labelSubTotal";
+            this.labelSubTotal.Size = new System.Drawing.Size(317, 38);
+            this.labelSubTotal.TabIndex = 14;
+            this.labelSubTotal.Text = "00.00";
+            this.labelSubTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelTax
+            // 
+            this.labelTax.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTax.Location = new System.Drawing.Point(232, 257);
+            this.labelTax.Name = "labelTax";
+            this.labelTax.Size = new System.Drawing.Size(329, 38);
+            this.labelTax.TabIndex = 16;
+            this.labelTax.Text = "00.00";
+            this.labelTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 38);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "SUB TOTAL :";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelDiscount
+            // 
+            this.labelDiscount.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDiscount.Location = new System.Drawing.Point(232, 209);
+            this.labelDiscount.Name = "labelDiscount";
+            this.labelDiscount.Size = new System.Drawing.Size(317, 38);
+            this.labelDiscount.TabIndex = 15;
+            this.labelDiscount.Text = "00.00";
+            this.labelDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 210);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(175, 38);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "DISCOUNT:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 257);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 38);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "VAT:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // button2
             // 
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.button2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(415, 729);
+            this.button2.Location = new System.Drawing.Point(334, 682);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 50);
+            this.button2.Size = new System.Drawing.Size(305, 100);
             this.button2.TabIndex = 7;
             this.button2.Text = "VOID";
             this.button2.UseVisualStyleBackColor = false;
@@ -241,154 +345,138 @@ namespace Katswiri.Forms
             this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button3.BackColor = System.Drawing.Color.LimeGreen;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(223, 729);
+            this.button3.Location = new System.Drawing.Point(22, 681);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(186, 50);
+            this.button3.Size = new System.Drawing.Size(305, 100);
             this.button3.TabIndex = 8;
             this.button3.Text = "NEW ORDER";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // gridControl1
-            // 
-            this.gridControl1.EmbeddedNavigator.Appearance.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControl1.EmbeddedNavigator.Appearance.Options.UseFont = true;
-            this.gridControl1.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.gridControl1.Location = new System.Drawing.Point(1, 3);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(862, 406);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gridControl1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.gridControl1_KeyUp);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView1.Appearance.ColumnFilterButton.Options.UseFont = true;
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowFooter = true;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
             // panelControl3
             // 
             this.panelControl3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.panelControl3.Controls.Add(this.gridControl1);
+            this.panelControl3.Controls.Add(this.dataGridView1);
             this.panelControl3.Location = new System.Drawing.Point(20, 143);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(864, 409);
+            this.panelControl3.Size = new System.Drawing.Size(931, 522);
             this.panelControl3.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 50;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductCode,
+            this.ProductName,
+            this.SellingPrice,
+            this.Qty,
+            this.Discount,
+            this.TotalPrice});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(927, 518);
+            this.dataGridView1.StandardTab = true;
+            this.dataGridView1.TabIndex = 0;
             // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.button4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(616, 729);
+            this.button4.Location = new System.Drawing.Point(646, 681);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(268, 50);
+            this.button4.Size = new System.Drawing.Size(305, 100);
             this.button4.TabIndex = 10;
             this.button4.Text = "REMOVE";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // labelBill
+            // ProductCode
             // 
-            this.labelBill.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBill.Font = new System.Drawing.Font("Century Gothic", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBill.Location = new System.Drawing.Point(579, 567);
-            this.labelBill.Name = "labelBill";
-            this.labelBill.Size = new System.Drawing.Size(305, 150);
-            this.labelBill.TabIndex = 17;
-            this.labelBill.Text = "00.00";
-            this.labelBill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductCode.HeaderText = "Code";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.ReadOnly = true;
             // 
-            // labelTax
+            // ProductName
             // 
-            this.labelTax.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTax.Location = new System.Drawing.Point(244, 670);
-            this.labelTax.Name = "labelTax";
-            this.labelTax.Size = new System.Drawing.Size(329, 38);
-            this.labelTax.TabIndex = 16;
-            this.labelTax.Text = "00.00";
-            this.labelTax.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
             // 
-            // labelDiscount
+            // SellingPrice
             // 
-            this.labelDiscount.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDiscount.Location = new System.Drawing.Point(244, 622);
-            this.labelDiscount.Name = "labelDiscount";
-            this.labelDiscount.Size = new System.Drawing.Size(317, 38);
-            this.labelDiscount.TabIndex = 15;
-            this.labelDiscount.Text = "00.00";
-            this.labelDiscount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SellingPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SellingPrice.HeaderText = "Selling Price";
+            this.SellingPrice.MinimumWidth = 6;
+            this.SellingPrice.Name = "SellingPrice";
             // 
-            // labelSubTotal
+            // Qty
             // 
-            this.labelSubTotal.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSubTotal.Location = new System.Drawing.Point(244, 573);
-            this.labelSubTotal.Name = "labelSubTotal";
-            this.labelSubTotal.Size = new System.Drawing.Size(317, 38);
-            this.labelSubTotal.TabIndex = 14;
-            this.labelSubTotal.Text = "00.00";
-            this.labelSubTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            this.Qty.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // label4
+            // Discount
             // 
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 670);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 38);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "TAX :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Discount.HeaderText = "Discount";
+            this.Discount.MinimumWidth = 6;
+            this.Discount.Name = "Discount";
             // 
-            // label2
+            // TotalPrice
             // 
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 623);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 38);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "DISCOUNT:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 574);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 38);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "SUB TOTAL :";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1243, 85);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(283, 38);
-            this.label5.TabIndex = 30;
-            this.label5.Text = "CUSTOMER ORDERS";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // button5
-            // 
-            this.button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button5.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.button5.Location = new System.Drawing.Point(904, 81);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(293, 56);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "View All Orders";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.TotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalPrice.HeaderText = "Total";
+            this.TotalPrice.MinimumWidth = 6;
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
+            this.TotalPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Pos
             // 
@@ -399,19 +487,9 @@ namespace Katswiri.Forms
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1538, 808);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.labelBill);
-            this.Controls.Add(this.labelTax);
-            this.Controls.Add(this.labelDiscount);
-            this.Controls.Add(this.labelSubTotal);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.textSearchProduct);
             this.Controls.Add(this.panelControl5);
@@ -425,22 +503,19 @@ namespace Katswiri.Forms
             this.Text = "Shop Name - Company";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Pos_Load);
-            this.Shown += new System.EventHandler(this.Pos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPaymentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditDateSold.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditCustomer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlOrders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,13 +527,9 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label lblCashier;
         private System.Windows.Forms.TextBox textSearchProduct;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraGrid.GridControl gridControlOrders;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonFinishSale;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label labelBill;
@@ -469,10 +540,19 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.DateEdit dateEditDateSold;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button5;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
-        public DevExpress.XtraEditors.LookUpEdit lookUpEditSaleId;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
+        public System.Windows.Forms.TextBox textBoxTendered;
+        private System.Windows.Forms.Label labelL;
+        private System.Windows.Forms.Label labelChange;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.Label labelSaleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
     }
 }
