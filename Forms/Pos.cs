@@ -217,13 +217,18 @@ namespace Katswiri.Forms
                 double total = 0;
                 double tax = 0;
                 double discount = 0;
+                double quantity = 0;
 
                 int i;
                 for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
                 {
                     total += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
-                    tax += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-                    discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value);
+                    subtotal += Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value);
+
+                    subtotal += Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value);
+
+                    tax += total - discount;
+                    discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
                 }
 
                 labelSubTotal.Text = (total - tax).ToString("##,##0.00");
@@ -256,7 +261,6 @@ namespace Katswiri.Forms
                         {
                             foreach (DataGridViewRow row in this.dataGridView1.Rows)
                             {
-
                                 if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
                                 {
                                     selu = (double)row.Cells[2].Value;
