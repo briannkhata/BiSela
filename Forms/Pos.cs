@@ -211,30 +211,23 @@ namespace Katswiri.Forms
 
         public void calculate_money()
         {
-            using (var db = new BEntities())
-            {
-                double subtotal = 0;
+           
                 double total = 0;
-                double tax = 0;
+                double vat = 0;
                 double discount = 0;
-                double quantity = 0;
 
                 int i;
                 for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
                 {
-                    total += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
-                    subtotal += Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value);
-
-                    subtotal += Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value);
-
-                    tax += total - discount;
+                    total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
+                    vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
                     discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
                 }
 
-                labelSubTotal.Text = (total - tax).ToString("##,##0.00");
-                labelTax.Text = tax.ToString("##,##0.00");
+                labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
+                labelTax.Text = vat.ToString("##,##0.00");
                 labelBill.Text = total.ToString("##,##0.00");
-            }
+                labelDiscount.Text = discount.ToString("##,##0.00");
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
@@ -263,16 +256,20 @@ namespace Katswiri.Forms
                             {
                                 if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
                                 {
-                                    selu = (double)row.Cells[2].Value;
-                                    disc = (double)row.Cells[4].Value;
-                                    qty = (double)row.Cells[3].Value + 1;
+                                    selu =Convert.ToDouble(row.Cells[2].Value);
+                                    qty = Convert.ToDouble(row.Cells[3].Value) + 1;
+                                    disc = Convert.ToDouble(row.Cells[4].Value);
                                     sub = selu * qty;
                                     vat = sub * (taxValue / 100);
                                     toto = (sub + vat) - disc;
                                     row.Cells[3].Value = qty;
-                                    row.Cells[5].Value = toto;
+                                    row.Cells[4].Value = disc;
+                                    row.Cells[5].Value = vat;
+                                    row.Cells[6].Value = toto;
                                     found = true;
-                                } 
+                                    calculate_money();
+
+                                }
                             }
                             if(!found)
                                 {
@@ -284,7 +281,7 @@ namespace Katswiri.Forms
                                     double Discount = 0;
                                     double Tax = (UnitPrice * (taxValue / 100));
                                     double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
-                                    dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty, Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                                    dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
                                     calculate_money();
                                 }
                         }
@@ -548,6 +545,11 @@ namespace Katswiri.Forms
         private void textBoxTendered_TextChanged(object sender, EventArgs e)
         {
             //textBoxTendered.Text = e.ToString("##,##00.00");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
