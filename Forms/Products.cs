@@ -31,7 +31,7 @@ namespace Katswiri.Forms
         private void clearFields()
         {
             ProductNameTextEdit.Text = ProductCodeTextEdit.Text = TextEditDescription.Text = string.Empty;
-            CategoryIdLookUpEdit.EditValue = UnitIdLookUpEdit.EditValue = TaxTypeIdLookUpEdit.EditValue = null;
+            CategoryIdLookUpEdit.EditValue = UnitIdLookUpEdit.EditValue = null;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             ProductId = 0;
@@ -53,7 +53,6 @@ namespace Katswiri.Forms
             {
                 gridControlProducts.DataSource = db.vwProducts.ToList();
                 gridView1.Columns["ProductId"].Visible = false;
-                gridView1.Columns["TaxTypeName"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
                 //gridView1.OptionsView.ShowIndicator = false;
@@ -101,11 +100,7 @@ namespace Katswiri.Forms
                 result = false;
                 UnitIdLookUpEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(TaxTypeIdLookUpEdit.Text))
-            {
-                result = false;
-                TaxTypeIdLookUpEdit.ErrorText = "Required";
-            }
+         
             if (String.IsNullOrEmpty(CategoryIdLookUpEdit.Text))
             {
                 result = false;

@@ -14,11 +14,12 @@ namespace Katswiri.Data
     
     public partial class Shift
     {
-        public int AccountId { get; set; }
-        public double OpeningBalance { get; set; }
-        public double ClosingBalance { get; set; }
-        public System.DateTime ActivityDate { get; set; }
+        public int ShiftId { get; set; }
+        public Nullable<double> OpenBalance { get; set; }
+        public Nullable<double> CloseBalance { get; set; }
+        public Nullable<System.DateTime> OpenDate { get; set; }
         public int ShopId { get; set; }
         public int Deleted { get; set; }
+        public Nullable<System.DateTime> CloseDate { get; set; }
     }
 }

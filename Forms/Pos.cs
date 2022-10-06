@@ -299,49 +299,7 @@ namespace Katswiri.Forms
             textSearchProduct.Text = string.Empty;
         }
       
-        public void refreshCart()
-        {
-            try
-            {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwCart)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
-                {
-                    if (row.CartId != -1)
-                    {
-                        var taxValue = 16;
-                        var taxStatus = db.Products.Where(x => x.ProductId == row.ProductId).SingleOrDefault().TaxStatus;
 
-                        if (taxStatus == "Inclusive")
-                        {
-                            cart.CartId = row.CartId;
-                            cart.Discount = row.Discount;
-                            cart.ProductId = row.ProductId;
-                            cart.SellingPrice = row.SellingPrice - row.Discount;
-                            cart.Qty = row.Qty;
-                            cart.TaxValue = (cart.SellingPrice * (taxValue / 100));
-                            cart.TotalPrice = (cart.SellingPrice * row.Qty) + row.TaxValue;
-                            db.Entry(cart).State = EntityState.Modified;
-                            db.SaveChanges();
-                        }
-                        else
-                        {
-
-                        }
-                    }
-                    loadCart();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void gridControl1_KeyUp(object sender, KeyEventArgs e)
-        {
-            refreshCart();
-        }
 
         private void ShowPayFom()
         {
@@ -399,12 +357,6 @@ namespace Katswiri.Forms
         //}
 
 
-        //private void textEditTendered_KeyUp(object sender, KeyEventArgs e)
-        //{
-           
-        //    dispalyChange();
-        //    //textEditTendered.Text = String.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", textEditTendered.Text, 2);
-        //}
 
         private void textEditTendered_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -533,7 +485,7 @@ namespace Katswiri.Forms
 
         private void textBoxTendered_TextChanged(object sender, EventArgs e)
         {
-            textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
+            //textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
             calculate_change();
         }
 
@@ -567,6 +519,34 @@ namespace Katswiri.Forms
                 dataGridView1.Refresh();
             }
 
+        }
+
+        private void textBoxTendered_KeyUp(object sender, KeyEventArgs e)
+        {
+            //textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
+            //calculate_change();
+        }
+
+        private void textBoxTendered_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
+            //calculate_change();
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            using (db = new BEntities())
+            {
+                double vat = (double)db.Shops.SingleOrDefault().Vat;
+                double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+                double sub = qty * sp;
+                double tax = sub * (vat/100);
+                double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
+                double toto = (sub + vat) - disc;
+                dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                calculate_money();
+            }
         }
     }
 }

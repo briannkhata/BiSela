@@ -306,7 +306,18 @@ namespace Katswiri
             incomes.ShowDialog();
         }
 
-      
+        private void ShowShiftFom()
+        {
+            ShiftForm shiftForm = null;
+            if (shiftForm == null || shiftForm.IsDisposed)
+            {
+                shiftForm = new ShiftForm();
+            }
+            shiftForm.Activate();
+            shiftForm.ShowDialog();
+        }
+
+
         private void ShowPosFom()
         {
             Pos pos = null;
@@ -527,6 +538,30 @@ namespace Katswiri
         {
             FormOrders formOrders = new FormOrders();
             formOrders.ShowDialog();
+        }
+
+        private void barButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowPaymentTypeFom();
+        }
+
+        private void barButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowBankFom();
+        }
+
+        private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowFormShopFom();
+        }
+
+        private void barButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowShiftFom();
         }
     }
 }

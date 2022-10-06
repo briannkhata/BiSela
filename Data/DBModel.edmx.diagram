@@ -19,14 +19,12 @@
         <EntityTypeShape EntityType="BModel.Receiving" Width="1.5" PointX="11.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.SaleDetail" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Sale" Width="1.5" PointX="11.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Shop" Width="1.5" PointX="2.75" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.StockMovement" Width="1.5" PointX="13.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Stock" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Unit" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.User" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="8.75" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.sysdiagram" Width="1.5" PointX="13.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBank" Width="1.5" PointX="13.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBrand" Width="1.5" PointX="4.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="15.75" PointY="1.5" IsExpanded="true" />
@@ -38,7 +36,6 @@
         <EntityTypeShape EntityType="BModel.vwIncomType" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwOrderCustomer" Width="1.5" PointX="6.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwPaymentType" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="14.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwReceivingCart" Width="1.5" PointX="16.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwReceivingReport" Width="1.5" PointX="17.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwSalesReport" Width="1.5" PointX="2.75" PointY="18.5" IsExpanded="true" />
@@ -59,6 +56,8 @@
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
         <AssociationConnector Association="BModel.FK_Stocks_Products" />
+        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="19.375" PointY="17.75" />
+        <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="11.375" PointY="20.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,10 +17,10 @@ namespace Katswiri.Data
         public string ProductName { get; set; }
         public string ProductCode { get; set; }
         public int ProductId { get; set; }
-        public string TaxTypeName { get; set; }
         public string CategoryName { get; set; }
         public string BrandName { get; set; }
         public string UnitName { get; set; }
         public string Qty { get; set; }
+        public string TaxStatus { get; set; }
     }
 }

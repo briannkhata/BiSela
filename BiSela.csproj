@@ -230,9 +230,6 @@
     <Compile Include="Data\StockMovement.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\sysdiagram.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\Unit.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -418,6 +415,12 @@
     <Compile Include="Forms\Products.Designer.cs">
       <DependentUpon>Products.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ShiftForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShiftForm.Designer.cs">
+      <DependentUpon>ShiftForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Units.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +543,9 @@
     <EmbeddedResource Include="Forms\Products.resx">
       <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShiftForm.resx">
+      <DependentUpon>ShiftForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Units.resx">
       <DependentUpon>Units.cs</DependentUpon>
     </EmbeddedResource>
@@ -650,6 +656,13 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\managequeries2.svg" />
+    <None Include="Resources\deletedatasource1.svg" />
+    <None Include="Resources\saveas2.svg" />
+    <None Include="Resources\chartopenhighlowclosestock.svg" />
+    <None Include="Resources\initialstate.svg" />
+    <None Include="Resources\sort&amp;filter.svg" />
+    <None Include="Resources\business_bank.svg" />
     <None Include="Resources\sales.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
