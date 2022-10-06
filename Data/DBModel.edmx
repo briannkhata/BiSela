@@ -413,6 +413,9 @@ warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primar
           <Property Name="SaleType" Type="varchar" MaxLength="50" />
           <Property Name="SaleId" Type="int" Nullable="false" />
           <Property Name="DateSold" Type="datetime" />
+          <Property Name="SubTotal" Type="float" />
+          <Property Name="Paid" Type="float" />
+          <Property Name="Balance" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -873,7 +876,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwOrderCustomer].[Customer] AS [Customer], 
     [vwOrderCustomer].[SaleType] AS [SaleType], 
     [vwOrderCustomer].[SaleId] AS [SaleId], 
-    [vwOrderCustomer].[DateSold] AS [DateSold]
+    [vwOrderCustomer].[DateSold] AS [DateSold], 
+    [vwOrderCustomer].[SubTotal] AS [SubTotal], 
+    [vwOrderCustomer].[Paid] AS [Paid], 
+    [vwOrderCustomer].[Balance] AS [Balance]
     FROM [dbo].[vwOrderCustomer] AS [vwOrderCustomer]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentTypes" store:Type="Views" store:Schema="dbo">
@@ -1449,6 +1455,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SaleId" Type="Int32" Nullable="false" />
           <Property Name="DateSold" Type="DateTime" Precision="3" />
+          <Property Name="SubTotal" Type="Double" />
+          <Property Name="Paid" Type="Double" />
+          <Property Name="Balance" Type="Double" />
         </EntityType>
         <EntityType Name="vwPaymentType">
           <Key>
@@ -2247,6 +2256,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwOrderCustomers">
             <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
               <MappingFragment StoreEntitySet="vwOrderCustomer">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Bill" ColumnName="Bill" />

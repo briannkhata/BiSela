@@ -522,5 +522,11 @@ namespace Katswiri
                 printTool.ShowPreview();
             }
         }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FormOrders formOrders = new FormOrders();
+            formOrders.ShowDialog();
+        }
     }
 }

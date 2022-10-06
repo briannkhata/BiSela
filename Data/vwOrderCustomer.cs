@@ -22,5 +22,8 @@ namespace Katswiri.Data
         public string SaleType { get; set; }
         public int SaleId { get; set; }
         public Nullable<System.DateTime> DateSold { get; set; }
+        public Nullable<double> SubTotal { get; set; }
+        public Nullable<double> Paid { get; set; }
+        public Nullable<double> Balance { get; set; }
     }
 }

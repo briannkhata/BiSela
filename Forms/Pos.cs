@@ -48,6 +48,19 @@ namespace Katswiri.Forms
             dataGridView1.Columns[4].Width = 150;
             dataGridView1.Columns[5].Width = 200;
         }
+        public void disableButtons()
+        {
+            buttonFinishSale.Enabled = false;
+            buttonRemove.Enabled = false;
+            buttonVoid.Enabled = false;
+        }
+
+        public void enableButtons()
+        {
+            buttonFinishSale.Enabled = true;
+            buttonRemove.Enabled = true;
+            buttonVoid.Enabled = true;
+        }
 
         public void loadCart()
         {
@@ -150,27 +163,6 @@ namespace Katswiri.Forms
             }
         }
 
-        public void clearmyCart()
-        {
-            using (var db = new BEntities())
-            {
-                var list = db.Carts.Where(x => x.SaleId == (int)lookUpEditPaymentType.EditValue).ToList();
-                foreach (var rm in list)
-                {
-                    db.Carts.Remove(rm);
-                    db.SaveChanges();
-                }
-            }
-        }
-
-        private void btnClearCart_Click(object sender, EventArgs e)
-        {
-            if (XtraMessageBox.Show("Are you sure you would like to clear this ORDER?", "Katswiri", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                clearmyCart();
-            }
-            loadCart();
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -190,16 +182,16 @@ namespace Katswiri.Forms
                 Double tendered = Convert.ToDouble(textBoxTendered.Text);
                 Double change = tendered - Convert.ToDouble(labelBill.Text);
                 labelChange.Text = change.ToString("##,##00.00");
-                //if (charge >= Convert.ToDouble(txt_totalAmount.Text))
-                //{
-                //    btn_checkout.Enabled = true;
-                //    btn_checkout.BackColor = Color.Green;
-                //}
-                //else
-                //{
-                //    btn_checkout.Enabled = false;
-                //    btn_checkout.BackColor = Color.Gray;
-                //}
+                if (tendered >= Convert.ToDouble(labelBill.Text))
+                {
+                    buttonFinishSale.Enabled = true;
+                    buttonFinishSale.BackColor = Color.Green;
+                }
+                else
+                {
+                    buttonFinishSale.Enabled = false;
+                    buttonFinishSale.BackColor = Color.Gray;
+                }
 ;
             }
             else
@@ -242,7 +234,7 @@ namespace Katswiri.Forms
                         var product = db.Products.Where(p => p.ProductCode == textSearchProduct.Text).FirstOrDefault();
                         double UnitPrice = (double)db.Stocks.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
                         double taxValue = (double)db.Shops.SingleOrDefault().Vat;
-                        Boolean found = false;
+                        Boolean Found = false;
 
                         double qty = 0;
                         double toto = 0;
@@ -266,12 +258,11 @@ namespace Katswiri.Forms
                                     row.Cells[4].Value = disc;
                                     row.Cells[5].Value = vat;
                                     row.Cells[6].Value = toto;
-                                    found = true;
+                                    Found = true;
                                     calculate_money();
-
                                 }
                             }
-                            if(!found)
+                            if(!Found)
                                 {
                                     string ProductId = product.ProductId.ToString();
                                     string ProductCode = product.ProductCode.ToString();
@@ -287,7 +278,6 @@ namespace Katswiri.Forms
                         }
                         else
                         {
-
                             string ProductId = product.ProductId.ToString();
                             string ProductCode = product.ProductCode.ToString();
                             string ProductName = product.ProductName.ToString();
@@ -299,7 +289,6 @@ namespace Katswiri.Forms
                             dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty, Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
                             calculate_money();
                         }
-                        
                     }
                 }
                 catch (Exception ex)
@@ -462,15 +451,15 @@ namespace Katswiri.Forms
         {
             try
             {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwCart)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    var cart = db.Carts.Find(row.CartId);
-                    db.Carts.Remove(cart);
-                    db.SaveChanges();
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                    calculate_money();
                 }
-                loadCart();
+                else
+                {
+                    XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -544,11 +533,39 @@ namespace Katswiri.Forms
 
         private void textBoxTendered_TextChanged(object sender, EventArgs e)
         {
-            //textBoxTendered.Text = e.ToString("##,##00.00");
+            textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
+            calculate_change();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FormOrders formOrders = new FormOrders();
+            formOrders.ShowDialog();
+        }
+
+        private void Pos_Shown(object sender, EventArgs e)
+        {
+            //if (dataGridView1.Rows.Count > 0)
+            //{
+            //    enableButtons();
+            //}
+            //else
+            //{
+            //    disableButtons();
+            //}
+        }
+
+        private void buttonVoid_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                dataGridView1.Refresh();
+            }
 
         }
     }

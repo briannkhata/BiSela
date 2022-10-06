@@ -113,7 +113,6 @@ namespace Katswiri.Forms
                     }
 
                     this.Close();
-                    pos.clearmyCart();
                     pos.loadCart();
 
                     //Receipt bill = new Receipt();
@@ -136,7 +135,6 @@ namespace Katswiri.Forms
 
         private void Pay_FormClosing(object sender, FormClosingEventArgs e)
         {
-            pos.clearmyCart();
             pos.loadCart();            
         }
 
