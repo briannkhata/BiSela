@@ -24,6 +24,7 @@ namespace Katswiri.Forms
         Sale sale;
         SaleDetail saleDetail;
         BillPayment billPayment;
+        Stock stock;
         FormCustomer formCustomer = new FormCustomer();
 
         GridView gridView1 = new GridView();
@@ -164,7 +165,6 @@ namespace Katswiri.Forms
             }
         }
 
-
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             SimpleButton button = (SimpleButton)sender;
@@ -217,24 +217,21 @@ namespace Katswiri.Forms
 
         public void calculate_money()
         {
-           
-                double total = 0;
-                double vat = 0;
-                double discount = 0;
-
-                int i;
-                for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
-                {
-                    total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
-                    vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
-                    discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-                }
-
-                labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
-                labelTax.Text = vat.ToString("##,##0.00");
-                labelBill.Text = total.ToString("##,##0.00");
-                labelDiscount.Text = discount.ToString("##,##0.00");
-                labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
+             double total = 0;
+             double vat = 0;
+             double discount = 0;
+             int i;
+             for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
+             {
+                 total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
+                 vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
+                 discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+             }
+             labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
+             labelTax.Text = vat.ToString("##,##0.00");
+             labelBill.Text = total.ToString("##,##0.00");
+             labelDiscount.Text = discount.ToString("##,##0.00");
+             labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
@@ -500,6 +497,7 @@ namespace Katswiri.Forms
                     {
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
                         {
+
                             saleDetail.ProductId = db.Products.Where(x => x.ProductCode == dataGridView1.Rows[i].Cells[0].Value.ToString()).SingleOrDefault().ProductId;
                             saleDetail.Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
                             saleDetail.Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
@@ -509,6 +507,17 @@ namespace Katswiri.Forms
                             saleDetail.UserId = UserId;
                             saleDetail.TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
                             saleDetail.DateSold = dateEditDateSold.DateTime;
+
+                            var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).SingleOrDefault().StockId;
+                            stock = new Stock() 
+                            { 
+                                StockId = StockId,
+                                ProductId = saleDetail.ProductId,
+                                Shop = stock.Shop - saleDetail.Qty,
+                                ShopId = saleDetail.ShopId,
+                            };
+                            db.Stocks.Add(stock);
+                            db.SaveChanges();
                         }
 
                         billPayment = new BillPayment()
@@ -531,8 +540,7 @@ namespace Katswiri.Forms
                             TaxAmount = double.Parse(labelTax.Text),
                             Bill = double.Parse(labelBill.Text),
                             Paid = db.BillPayments.Where(x => x.SaleId == short.Parse(SaleId)).Sum(x => x.Amount),
-                            Balance = double.Parse(labelBill.Text) - (double.Parse(textBoxTendered.Text) - double.Parse(labelChange.Text)),
-                            //Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
+                            Balance = (double.Parse(labelBill.Text) - (double.Parse(textBoxTendered.Text)) - double.Parse(labelChange.Text)),
                         };
                         db.Entry(sale).State = EntityState.Modified;
                         db.SaveChanges();
@@ -544,7 +552,7 @@ namespace Katswiri.Forms
                         //frm_PrintReceipt.saleId = saleId;
                         buttonFinishSale.Enabled = false;
                         buttonFinishSale.BackColor = Color.Gray;
-                        // frm_PrintReceipt.ShowDialog();
+                        //frm_PrintReceipt.ShowDialog();
                     }
                     else if (SaleType == "Return")
                     {
