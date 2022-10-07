@@ -182,6 +182,8 @@ namespace Katswiri.Forms
             {
                 Double tendered = Convert.ToDouble(textBoxTendered.Text);
                 Double change = tendered - Convert.ToDouble(labelBill.Text);
+                Double balance = (double.Parse(labelBill.Text) - tendered) - change;
+                labelBalance.Text = balance.ToString("##,##00.00");
                 labelChange.Text = change.ToString("##,##00.00");
                 if (tendered >= Convert.ToDouble(labelBill.Text))
                 {
@@ -515,7 +517,9 @@ namespace Katswiri.Forms
                         TaxAmount = double.Parse(labelTax.Text),
                         Bill = double.Parse(labelBill.Text),
                         Paid = db.BillPayments.Where(x=>x.SaleId == short.Parse(SaleId)).Sum(x=>x.Amount),
-                        Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
+                        Balance = double.Parse(labelBill.Text)  - (double.Parse(textBoxTendered.Text) - double.Parse(labelChange.Text)),
+
+                        //Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
                     };
                     db.Entry(sale).State = EntityState.Modified;
                     db.SaveChanges();
@@ -524,7 +528,7 @@ namespace Katswiri.Forms
                     //clear_all_data();
                     //print a receipt
                     //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
-                    // frm_PrintReceipt.saleId = saleId;
+                    //frm_PrintReceipt.saleId = saleId;
                     buttonFinishSale.Enabled = false;
                     buttonFinishSale.BackColor = Color.Gray;
                     // frm_PrintReceipt.ShowDialog();
