@@ -494,58 +494,79 @@ namespace Katswiri.Forms
                     var SaleId = labelSaleId.Text;
                     int Customer = (int)lookUpEditCustomer.EditValue;
                     var PaymentTypeId = (int)lookUpEditPaymentType.EditValue;
-                    var SaleType = lookUpEditSaleType.EditValue;
+                    var SaleType = (string)lookUpEditSaleType.EditValue;
 
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    if (SaleType == "Sale")
                     {
-                        saleDetail.ProductId = db.Products.Where(x=>x.ProductCode == dataGridView1.Rows[i].Cells[0].Value.ToString()).SingleOrDefault().ProductId;
-                        saleDetail.Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
-                        saleDetail.Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                        saleDetail.SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        saleDetail.SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-                        saleDetail.ShopId = db.Shops.SingleOrDefault().ShopId;
-                        saleDetail.UserId = UserId;
-                        saleDetail.TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
-                        saleDetail.DateSold = dateEditDateSold.DateTime;
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                            saleDetail.ProductId = db.Products.Where(x => x.ProductCode == dataGridView1.Rows[i].Cells[0].Value.ToString()).SingleOrDefault().ProductId;
+                            saleDetail.Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                            saleDetail.Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                            saleDetail.SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                            saleDetail.SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                            saleDetail.ShopId = db.Shops.SingleOrDefault().ShopId;
+                            saleDetail.UserId = UserId;
+                            saleDetail.TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
+                            saleDetail.DateSold = dateEditDateSold.DateTime;
+                        }
+
+                        billPayment = new BillPayment()
+                        {
+                            SaleId = short.Parse(SaleId),
+                            Amount = double.Parse(textBoxTendered.Text),
+                            PaymentTypeId = PaymentTypeId,
+                            PaymentDate = dateEditDateSold.DateTime,
+                        };
+                        db.BillPayments.Add(billPayment);
+                        db.SaveChanges();
+
+                        sale = new Sale()
+                        {
+                            SaleId = short.Parse(SaleId),
+                            Customer = Customer,
+                            SoldBy = UserId,
+                            PaymentTypeId = PaymentTypeId,
+                            SaleType = (string)SaleType,
+                            TaxAmount = double.Parse(labelTax.Text),
+                            Bill = double.Parse(labelBill.Text),
+                            Paid = db.BillPayments.Where(x => x.SaleId == short.Parse(SaleId)).Sum(x => x.Amount),
+                            Balance = double.Parse(labelBill.Text) - (double.Parse(textBoxTendered.Text) - double.Parse(labelChange.Text)),
+                            //Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
+                        };
+                        db.Entry(sale).State = EntityState.Modified;
+                        db.SaveChanges();
+
+
+                        //clear_all_data();
+                        //print a receipt
+                        //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
+                        //frm_PrintReceipt.saleId = saleId;
+                        buttonFinishSale.Enabled = false;
+                        buttonFinishSale.BackColor = Color.Gray;
+                        // frm_PrintReceipt.ShowDialog();
                     }
-
-                    billPayment = new BillPayment()
+                    else if (SaleType == "Return")
                     {
-                        SaleId = short.Parse(SaleId),
-                        Amount = double.Parse(textBoxTendered.Text),
-                        PaymentTypeId = PaymentTypeId,
-                        PaymentDate = dateEditDateSold.DateTime,
-                    };
-                    db.BillPayments.Add(billPayment);
-                    db.SaveChanges();
 
-                    sale = new Sale()
+                    }
+                    else if (SaleType == "Credit")
                     {
-                        SaleId = short.Parse(SaleId),
-                        Customer = Customer,
-                        SoldBy = UserId,
-                        PaymentTypeId = PaymentTypeId,
-                        SaleType = (string)SaleType,
-                        TaxAmount = double.Parse(labelTax.Text),
-                        Bill = double.Parse(labelBill.Text),
-                        Paid = db.BillPayments.Where(x=>x.SaleId == short.Parse(SaleId)).Sum(x=>x.Amount),
-                        Balance = double.Parse(labelBill.Text)  - (double.Parse(textBoxTendered.Text) - double.Parse(labelChange.Text)),
 
-                        //Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
-                    };
-                    db.Entry(sale).State = EntityState.Modified;
-                    db.SaveChanges();
+                    }
+                    else if (SaleType == "Free")
+                    {
 
+                    }
+                    else if (SaleType == "Damage")
+                    {
 
-                    //clear_all_data();
-                    //print a receipt
-                    //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
-                    //frm_PrintReceipt.saleId = saleId;
-                    buttonFinishSale.Enabled = false;
-                    buttonFinishSale.BackColor = Color.Gray;
-                    // frm_PrintReceipt.ShowDialog();
+                    }
+                    else
+                    {
+
+                    }
                 }
-
             }
         }
 
