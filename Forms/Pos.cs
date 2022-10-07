@@ -184,7 +184,16 @@ namespace Katswiri.Forms
                 Double tendered = Convert.ToDouble(textBoxTendered.Text);
                 Double change = tendered - Convert.ToDouble(labelBill.Text);
                 Double balance = 0;
-                labelChange.Text = change.ToString("##,##00.00");
+
+                if (change > 0)
+                {
+                    labelChange.Text = change.ToString("##,##00.00");
+                }
+                else
+                {
+                    labelChange.Text = "0.00";
+                }
+
                 if (tendered >= Convert.ToDouble(labelBill.Text))
                 {
                     buttonFinishSale.Enabled = true;
@@ -225,11 +234,11 @@ namespace Katswiri.Forms
                 labelTax.Text = vat.ToString("##,##0.00");
                 labelBill.Text = total.ToString("##,##0.00");
                 labelDiscount.Text = discount.ToString("##,##0.00");
+                labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
         {
-
              if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
                 {
                 try
@@ -261,18 +270,19 @@ namespace Katswiri.Forms
                                     if (taxstatus == "Inclusive")
                                     {
                                         vat = sub * (taxValue / 100);
-                                        toto = (sub + vat) - disc;
-                                    }else if(taxstatus == "Exempted")
+                                    }
+                                    else if(taxstatus == "Exempted")
                                     {
                                         vat = 0;
-                                        toto = (sub + vat) - disc;
                                     }
                                     else if(taxstatus == "Exclusive")
                                     {
 
                                     }
-                                    else { }
-
+                                    else 
+                                    { 
+                                    }
+                                    toto = (sub + vat) - disc;
                                     row.Cells[3].Value = qty.ToString("##,##0.00");
                                     row.Cells[4].Value = disc.ToString("##,##0.00");
                                     row.Cells[5].Value = vat.ToString("##,##0.00");
@@ -290,17 +300,14 @@ namespace Katswiri.Forms
                                     double Qty = 1;
                                     double SellingPrice = UnitPrice;
                                     double Discount = 0;
+                                    double Tax = 0;
                                     if (taxstatus == "Inclusive")
                                     {
-                                        double Tax = (UnitPrice * (taxValue / 100));
-                                        double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
-                                        dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                                        Tax = (UnitPrice * (taxValue / 100));
                                     }
                                     else if (taxstatus == "Expemted")
                                     {
-                                        double Tax = 0;
-                                        double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
-                                        dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                                        Tax = 0;
                                     }
                                     else if (taxstatus == "Exclusive")
                                     {
@@ -310,7 +317,11 @@ namespace Katswiri.Forms
                                     {
 
                                     }
-                                    calculate_money();
+
+                                   double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
+                                   dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+
+                                calculate_money();
                             }
                         }
                         else
@@ -322,17 +333,14 @@ namespace Katswiri.Forms
                             double Qty = 1;
                             double SellingPrice = UnitPrice;
                             double Discount = 0;
+                            double Tax = 0;
                             if (taxstatus == "Inclusive")
                             {
-                                double Tax = (UnitPrice * (taxValue / 100));
-                                double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                                Tax = (UnitPrice * (taxValue / 100));
                             }
                             else if (taxstatus == "Expemted")
                             {
-                                double Tax = 0;
-                                double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                                Tax = 0;
                             }
                             else if (taxstatus == "Exclusive")
                             {
@@ -342,6 +350,8 @@ namespace Katswiri.Forms
                             {
 
                             }
+                            double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
                             calculate_money();
                         }
                     }
@@ -605,7 +615,6 @@ namespace Katswiri.Forms
                     double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
                     double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
                     double sub = qty * sp;
-                    double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
                     double tax = 0;
 
                     if (taxstatus == "Inclusive")
@@ -627,6 +636,7 @@ namespace Katswiri.Forms
                     {
 
                     }
+                    double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
                     double toto = (sub + tax) - disc;
                     dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
                     dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
