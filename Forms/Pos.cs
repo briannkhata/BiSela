@@ -178,24 +178,26 @@ namespace Katswiri.Forms
                 labelChange.Text = "";
                 return;
             }
+
             if (dataGridView1.Rows.Count > 0)
             {
                 Double tendered = Convert.ToDouble(textBoxTendered.Text);
                 Double change = tendered - Convert.ToDouble(labelBill.Text);
-                Double balance = (double.Parse(labelBill.Text) - tendered) - change;
-                labelBalance.Text = balance.ToString("##,##00.00");
+                Double balance = 0;
                 labelChange.Text = change.ToString("##,##00.00");
                 if (tendered >= Convert.ToDouble(labelBill.Text))
                 {
                     buttonFinishSale.Enabled = true;
                     buttonFinishSale.BackColor = Color.Green;
+                    balance = (tendered - double.Parse(labelBill.Text)) - change;
                 }
                 else
                 {
-                    buttonFinishSale.Enabled = false;
-                    buttonFinishSale.BackColor = Color.Gray;
+                    //buttonFinishSale.Enabled = false;
+                    //buttonFinishSale.BackColor = Color.Gray;
+                    balance = (double.Parse(labelBill.Text) - tendered) - change;
                 }
-;
+                labelBalance.Text = balance.ToString("##,##00.00");
             }
             else
             {
