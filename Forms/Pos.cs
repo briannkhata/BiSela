@@ -23,6 +23,7 @@ namespace Katswiri.Forms
         int CartId;
         Sale sale;
         SaleDetail saleDetail;
+        BillPayment billPayment;
         FormCustomer formCustomer = new FormCustomer();
 
         GridView gridView1 = new GridView();
@@ -494,21 +495,38 @@ namespace Katswiri.Forms
                         saleDetail.DateSold = dateEditDateSold.DateTime;
                     }
 
+                    billPayment = new BillPayment()
+                    {
+                        SaleId = short.Parse(SaleId),
+                        Amount = double.Parse(textBoxTendered.Text),
+                        PaymentTypeId = PaymentTypeId,
+                        PaymentDate = dateEditDateSold.DateTime,
+                    };
+                    db.BillPayments.Add(billPayment);
+                    db.SaveChanges();
+
                     sale = new Sale()
                     {
+                        SaleId = short.Parse(SaleId),
                         Customer = Customer,
                         SoldBy = UserId,
                         PaymentTypeId = PaymentTypeId,
                         SaleType = (string)SaleType,
+                        TaxAmount = double.Parse(labelTax.Text),
+                        Bill = double.Parse(labelBill.Text),
+                        Paid = db.BillPayments.Where(x=>x.SaleId == short.Parse(SaleId)).Sum(x=>x.Amount),
+                        Balance = (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Bill) - (db.Sales.Where(x => x.SaleId == short.Parse(SaleId)).SingleOrDefault().Paid),
                     };
+                    db.Entry(sale).State = EntityState.Modified;
+                    db.SaveChanges();
 
 
                     //clear_all_data();
                     //print a receipt
                     //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
                     // frm_PrintReceipt.saleId = saleId;
-                    // btn_checkout.Enabled = false;
-                    // btn_checkout.BackColor = Color.Gray;
+                    buttonFinishSale.Enabled = false;
+                    buttonFinishSale.BackColor = Color.Gray;
                     // frm_PrintReceipt.ShowDialog();
                 }
 
