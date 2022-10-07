@@ -158,6 +158,9 @@
     <Compile Include="Data\Bank.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\BillPayment.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Brand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

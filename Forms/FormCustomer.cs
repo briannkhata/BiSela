@@ -127,6 +127,7 @@ namespace Katswiri.Forms
             }
             pos.Activate();
             pos.ShowDialog();
+            this.Dispose();
         }
 
         public void setParams()
@@ -143,6 +144,8 @@ namespace Katswiri.Forms
             }
             pos.Activate();
             pos.ShowDialog();
+            this.Dispose();
+
         }
     }
 }

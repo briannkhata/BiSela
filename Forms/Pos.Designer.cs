@@ -29,7 +29,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
@@ -64,6 +64,7 @@ namespace Katswiri.Forms
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -184,6 +185,7 @@ namespace Katswiri.Forms
             // 
             this.panelControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.panelControl1.Controls.Add(this.label);
             this.panelControl1.Controls.Add(this.labelSaleId);
             this.panelControl1.Controls.Add(this.labelL);
             this.panelControl1.Controls.Add(this.labelChange);
@@ -212,7 +214,7 @@ namespace Katswiri.Forms
             // labelL
             // 
             this.labelL.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelL.Location = new System.Drawing.Point(13, 435);
+            this.labelL.Location = new System.Drawing.Point(13, 468);
             this.labelL.Name = "labelL";
             this.labelL.Size = new System.Drawing.Size(175, 38);
             this.labelL.TabIndex = 20;
@@ -224,9 +226,9 @@ namespace Katswiri.Forms
             this.labelChange.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelChange.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelChange.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.labelChange.Location = new System.Drawing.Point(13, 485);
+            this.labelChange.Location = new System.Drawing.Point(13, 518);
             this.labelChange.Name = "labelChange";
-            this.labelChange.Size = new System.Drawing.Size(447, 99);
+            this.labelChange.Size = new System.Drawing.Size(447, 72);
             this.labelChange.TabIndex = 19;
             this.labelChange.Text = "00.00";
             this.labelChange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,7 +239,7 @@ namespace Katswiri.Forms
             this.textBoxTendered.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxTendered.Font = new System.Drawing.Font("Century Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTendered.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBoxTendered.Location = new System.Drawing.Point(13, 318);
+            this.textBoxTendered.Location = new System.Drawing.Point(13, 253);
             this.textBoxTendered.Name = "textBoxTendered";
             this.textBoxTendered.Size = new System.Drawing.Size(447, 106);
             this.textBoxTendered.TabIndex = 18;
@@ -265,7 +267,7 @@ namespace Katswiri.Forms
             this.labelBill.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBill.Location = new System.Drawing.Point(13, 19);
             this.labelBill.Name = "labelBill";
-            this.labelBill.Size = new System.Drawing.Size(447, 117);
+            this.labelBill.Size = new System.Drawing.Size(447, 79);
             this.labelBill.TabIndex = 17;
             this.labelBill.Text = "00.00";
             this.labelBill.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -274,7 +276,7 @@ namespace Katswiri.Forms
             // 
             this.labelSubTotal.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSubTotal.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelSubTotal.Location = new System.Drawing.Point(138, 160);
+            this.labelSubTotal.Location = new System.Drawing.Point(138, 108);
             this.labelSubTotal.Name = "labelSubTotal";
             this.labelSubTotal.Size = new System.Drawing.Size(300, 38);
             this.labelSubTotal.TabIndex = 14;
@@ -285,7 +287,7 @@ namespace Katswiri.Forms
             // 
             this.labelTax.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTax.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelTax.Location = new System.Drawing.Point(138, 257);
+            this.labelTax.Location = new System.Drawing.Point(138, 205);
             this.labelTax.Name = "labelTax";
             this.labelTax.Size = new System.Drawing.Size(312, 38);
             this.labelTax.TabIndex = 16;
@@ -296,7 +298,7 @@ namespace Katswiri.Forms
             // 
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(31, 161);
+            this.label1.Location = new System.Drawing.Point(31, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 38);
             this.label1.TabIndex = 11;
@@ -307,7 +309,7 @@ namespace Katswiri.Forms
             // 
             this.labelDiscount.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDiscount.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelDiscount.Location = new System.Drawing.Point(138, 209);
+            this.labelDiscount.Location = new System.Drawing.Point(138, 157);
             this.labelDiscount.Name = "labelDiscount";
             this.labelDiscount.Size = new System.Drawing.Size(300, 38);
             this.labelDiscount.TabIndex = 15;
@@ -318,7 +320,7 @@ namespace Katswiri.Forms
             // 
             this.label2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label2.Location = new System.Drawing.Point(31, 210);
+            this.label2.Location = new System.Drawing.Point(31, 158);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 38);
             this.label2.TabIndex = 12;
@@ -329,7 +331,7 @@ namespace Katswiri.Forms
             // 
             this.label4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label4.Location = new System.Drawing.Point(31, 257);
+            this.label4.Location = new System.Drawing.Point(31, 205);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 38);
             this.label4.TabIndex = 13;
@@ -405,7 +407,6 @@ namespace Katswiri.Forms
             this.dataGridView1.Size = new System.Drawing.Size(1025, 518);
             this.dataGridView1.StandardTab = true;
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // ProductCode
@@ -434,12 +435,12 @@ namespace Katswiri.Forms
             // Qty
             // 
             this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Qty.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle1;
             this.Qty.HeaderText = "Qty";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
@@ -492,6 +493,18 @@ namespace Katswiri.Forms
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // label
+            // 
+            this.label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label.Location = new System.Drawing.Point(14, 389);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(447, 72);
+            this.label.TabIndex = 22;
+            this.label.Text = "00.00";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Pos
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -517,8 +530,6 @@ namespace Katswiri.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shop Name - Company";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Pos_Load);
-            this.Shown += new System.EventHandler(this.Pos_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
@@ -572,5 +583,6 @@ namespace Katswiri.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label;
     }
 }

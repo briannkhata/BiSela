@@ -32,6 +32,7 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = db.Shifts.Where(x=>x.Deleted == 0).ToList();
                 gridView1.Columns["ShiftId"].Visible = false;
                 gridView1.Columns["Deleted"].Visible = false;
+                gridView1.Columns["ShopId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             }

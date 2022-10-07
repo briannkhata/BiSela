@@ -13,6 +13,16 @@
           <Property Name="BankName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="BillPayments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleId" Type="int" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="PaymentDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Brands">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -746,6 +756,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
         </Association>
         <EntityContainer Name="BModelStoreContainer">
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BillPayments" EntityType="Self.BillPayments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
@@ -1731,6 +1742,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </AssociationSet>
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <EntitySet Name="Shifts" EntityType="BModel.Shift" />
+          <EntitySet Name="BillPayments" EntityType="BModel.BillPayment" />
           </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -1844,6 +1856,16 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ShopId" Type="Int32" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="CloseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="BillPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2415,6 +2437,17 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="CloseBalance" ColumnName="CloseBalance" />
                 <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
                 <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillPayments">
+            <EntityTypeMapping TypeName="BModel.BillPayment">
+              <MappingFragment StoreEntitySet="BillPayments">
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

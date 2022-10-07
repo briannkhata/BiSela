@@ -69,5 +69,6 @@ namespace Katswiri.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<vwProduct> vwProducts { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
+        public virtual DbSet<BillPayment> BillPayments { get; set; }
     }
 }
