@@ -476,25 +476,32 @@ namespace Katswiri.Forms
                 if (MessageBox.Show("Do you want to print a receipt?", "Ask", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     int UserId = LoginInfo.UserId;
-                    //int PaymentTypeId = lookUpEditSaleId
+                    var SaleId = labelSaleId.Text;
                     int Customer = (int)lookUpEditCustomer.EditValue;
-                    int SaleId = (int)lookUpEditPaymentType.EditValue;
-
+                    var PaymentTypeId = (int)lookUpEditPaymentType.EditValue;
+                    var SaleType = lookUpEditSaleType.EditValue;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        //saleDetail.ProductId = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.ProductId = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.Discount = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.Qty = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.SellingPrice = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.SoldPrice = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.ShopId = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.UserId = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.TaxValue = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        //saleDetail.DateSold = dateEditDateSold.DateTime;
-
+                        saleDetail.ProductId = db.Products.Where(x=>x.ProductCode == dataGridView1.Rows[i].Cells[0].Value.ToString()).SingleOrDefault().ProductId;
+                        saleDetail.Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
+                        saleDetail.Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                        saleDetail.SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        saleDetail.SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                        saleDetail.ShopId = db.Shops.SingleOrDefault().ShopId;
+                        saleDetail.UserId = UserId;
+                        saleDetail.TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
+                        saleDetail.DateSold = dateEditDateSold.DateTime;
                     }
+
+                    sale = new Sale()
+                    {
+                        Customer = Customer,
+                        SoldBy = UserId,
+                        PaymentTypeId = PaymentTypeId,
+                        SaleType = (string)SaleType,
+                    };
+
 
                     //clear_all_data();
                     //print a receipt
