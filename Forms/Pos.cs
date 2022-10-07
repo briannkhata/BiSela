@@ -195,7 +195,7 @@ namespace Katswiri.Forms
                 {
                     //buttonFinishSale.Enabled = false;
                     //buttonFinishSale.BackColor = Color.Gray;
-                    balance = (double.Parse(labelBill.Text) - tendered) - change;
+                    balance = (double.Parse(labelBill.Text) - tendered);
                 }
                 labelBalance.Text = balance.ToString("##,##00.00");
             }
@@ -599,31 +599,25 @@ namespace Katswiri.Forms
             {
                 if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
                 {
+
                     var taxstatus = db.Products.Where(x => x.ProductCode == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()).FirstOrDefault().TaxStatus;
+                    double vat = (double)db.Shops.SingleOrDefault().Vat;
+                    double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                    double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+                    double sub = qty * sp;
+                    double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
+                    double tax = 0;
+
                     if (taxstatus == "Inclusive")
                     {
-                        double vat = (double)db.Shops.SingleOrDefault().Vat;
-                        double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
-                        double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
-                        double sub = qty * sp;
-                        double tax = sub * (vat / 100);
-                        double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
-                        double toto = (sub + tax) - disc;
-                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
-                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                        
+                        tax = sub * (vat / 100);
 
                     }
                     else if(taxstatus == "Exempted")
                     {
-                        double vat = (double)db.Shops.SingleOrDefault().Vat;
-                        double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
-                        double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
-                        double sub = qty * sp;
-                        double tax = 0;
-                        double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
-                        double toto = (sub + tax) - disc;
-                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
-                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                        tax = 0;
+                         
                     }
                     else if(taxstatus == "Exclusive")
                     {
@@ -633,6 +627,9 @@ namespace Katswiri.Forms
                     {
 
                     }
+                    double toto = (sub + tax) - disc;
+                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
+                    dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
                     calculate_money();
                 }
             }
