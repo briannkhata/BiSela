@@ -27,5 +27,7 @@ namespace Katswiri.Data
         public System.DateTime DateSold { get; set; }
     
         public virtual Product Product { get; set; }
+
+     
     }
 }

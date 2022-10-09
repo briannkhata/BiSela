@@ -212,6 +212,8 @@ namespace Katswiri.Forms
             {
                 labelChange.Text="00.00";
                 textBoxTendered.Clear();
+                labelBalance.Text = "00.00";
+
             }
         }
 
@@ -231,7 +233,7 @@ namespace Katswiri.Forms
              labelTax.Text = vat.ToString("##,##0.00");
              labelBill.Text = total.ToString("##,##0.00");
              labelDiscount.Text = discount.ToString("##,##0.00");
-             labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
+             labelBalance.Text = (total - discount).ToString("##,##0.00");
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
@@ -259,7 +261,8 @@ namespace Katswiri.Forms
                             {
                                 if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
                                 {
-                                    var taxstatus = db.Products.Where(x => x.ProductCode == row.Cells[0].Value.ToString()).FirstOrDefault().TaxStatus;
+                                    var code = row.Cells[0].Value.ToString(); 
+                                    var taxstatus = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().TaxStatus;
                                     selu = Convert.ToDouble(row.Cells[2].Value);
                                     qty = Convert.ToDouble(row.Cells[3].Value) + 1;
                                     disc = Convert.ToDouble(row.Cells[4].Value);
@@ -317,8 +320,7 @@ namespace Katswiri.Forms
 
                                    double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
                                    dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
-
-                                calculate_money();
+                                   calculate_money();
                             }
                         }
                         else
@@ -485,74 +487,90 @@ namespace Katswiri.Forms
         {
             using(db = new BEntities())
             {
-                if (MessageBox.Show("Do you want to print a receipt?", "Ask", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
+                ///if (MessageBox.Show("Do you want to print a receipt?", "Ask", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                //{
                     int UserId = LoginInfo.UserId;
                     var SaleId = labelSaleId.Text;
                     int Customer = (int)lookUpEditCustomer.EditValue;
                     var PaymentTypeId = (int)lookUpEditPaymentType.EditValue;
-                    var SaleType = (string)lookUpEditSaleType.EditValue;
+                    var SaleType = Convert.ToString(lookUpEditSaleType.EditValue);
 
-                    if (SaleType == "Sale")
+                if (SaleType == "Sale")
+                {
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                        saleDetail = new SaleDetail()
                         {
-
-                            saleDetail.ProductId = db.Products.Where(x => x.ProductCode == dataGridView1.Rows[i].Cells[0].Value.ToString()).SingleOrDefault().ProductId;
-                            saleDetail.Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
-                            saleDetail.Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                            saleDetail.SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                            saleDetail.SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-                            saleDetail.ShopId = db.Shops.SingleOrDefault().ShopId;
-                            saleDetail.UserId = UserId;
-                            saleDetail.TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
-                            saleDetail.DateSold = dateEditDateSold.DateTime;
-
-                            var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).SingleOrDefault().StockId;
-                            stock = new Stock() 
-                            { 
-                                StockId = StockId,
-                                ProductId = saleDetail.ProductId,
-                                Shop = stock.Shop - saleDetail.Qty,
-                                ShopId = saleDetail.ShopId,
-                            };
-                            db.Stocks.Add(stock);
-                            db.SaveChanges();
-                        }
-
-                        billPayment = new BillPayment()
-                        {
+                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
+                            Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                            Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                            SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                            SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
+                            UserId = UserId,
                             SaleId = short.Parse(SaleId),
-                            Amount = double.Parse(textBoxTendered.Text),
-                            PaymentTypeId = PaymentTypeId,
-                            PaymentDate = dateEditDateSold.DateTime,
+                            TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                            DateSold = dateEditDateSold.DateTime,
                         };
-                        db.BillPayments.Add(billPayment);
+                        db.SaleDetails.Add(saleDetail);
                         db.SaveChanges();
 
-                        sale = new Sale()
-                        {
-                            SaleId = short.Parse(SaleId),
-                            Customer = Customer,
-                            SoldBy = UserId,
-                            PaymentTypeId = PaymentTypeId,
-                            SaleType = (string)SaleType,
-                            TaxAmount = double.Parse(labelTax.Text),
-                            Bill = double.Parse(labelBill.Text),
-                            Paid = db.BillPayments.Where(x => x.SaleId == short.Parse(SaleId)).Sum(x => x.Amount),
-                            Balance = (double.Parse(labelBill.Text) - (double.Parse(textBoxTendered.Text)) - double.Parse(labelChange.Text)),
-                        };
-                        db.Entry(sale).State = EntityState.Modified;
+                        var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).FirstOrDefault().StockId;
+                        double oldQty = (double)db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault().Shop;
+                        stock = db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault();
+                        //stock = new Stock()
+                        // {
+                        //StockId = StockId,
+                        //ProductId = saleDetail.ProductId,
+                        stock.Shop = oldQty - saleDetail.Qty;
+                            //ShopId = saleDetail.ShopId,
+                        //};
+                        //db.Stocks.Attach(stock);
+                        db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
+                    }
+   
+                billPayment = new BillPayment()
+                {
+                    SaleId = short.Parse(SaleId),
+                    Amount = double.Parse(textBoxTendered.Text),
+                    PaymentTypeId = PaymentTypeId,
+                    PaymentDate = dateEditDateSold.DateTime,
+                };
+                db.BillPayments.Add(billPayment);
+                db.SaveChanges();
+
+                int seluidi = Convert.ToInt32(SaleId);
+                double paid = (double)db.BillPayments.Where(x => x.SaleId == seluidi).Sum(x => x.Amount);
+                sale = db.Sales.Where(x => x.SaleId == seluidi).FirstOrDefault();
+                sale.SaleId = seluidi;
+                sale.Customer = Customer;
+                sale.SoldBy = UserId;
+                sale.PaymentTypeId = PaymentTypeId;
+                sale.SaleType = SaleType;
+                sale.TaxAmount = Convert.ToDouble(labelTax.Text);
+                sale.Bill = Convert.ToDouble(labelBill.Text);
+                sale.Paid = paid;
+                sale.ShopId = db.Shops.SingleOrDefault().ShopId;
+                sale.Change = Convert.ToDouble(labelChange.Text);
+                sale.Balance = Convert.ToDouble(labelBalance.Text);
+                sale.Tendered = Convert.ToDouble(textBoxTendered.Text);
+                sale.Discount = Convert.ToDouble(labelDiscount.Text);
+                sale.SubTotal = Convert.ToDouble(labelSubTotal.Text);
+                sale.DateSold = DateTime.Now;
+                db.Entry(sale).State = EntityState.Modified;
+                db.SaveChanges();
 
 
-                        //clear_all_data();
-                        //print a receipt
-                        //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
-                        //frm_PrintReceipt.saleId = saleId;
-                        buttonFinishSale.Enabled = false;
-                        buttonFinishSale.BackColor = Color.Gray;
-                        //frm_PrintReceipt.ShowDialog();
+
+                //clear_all_data();
+                //print a receipt
+                //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
+                //frm_PrintReceipt.saleId = saleId;
+                buttonFinishSale.Enabled = false;
+                buttonFinishSale.BackColor = Color.Gray;
+                    //frm_PrintReceipt.ShowDialog();
                     }
                     else if (SaleType == "Return")
                     {
@@ -575,10 +593,23 @@ namespace Katswiri.Forms
 
                     }
                 }
-            }
+            //}
+
+            resetCart();
+
         }
 
-       
+        public void resetCart()
+        {
+            labelSubTotal.Text = "00.0";
+            labelDiscount.Text = "00.0";
+            textBoxTendered.Text = "00.0";
+            labelTax.Text = "00.0";
+            labelBill.Text = "00.0";
+            labelBalance.Text = "00.0";
+            dataGridView1.Rows.Clear();
+        }
+
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -600,6 +631,7 @@ namespace Katswiri.Forms
         private void textBoxTendered_TextChanged(object sender, EventArgs e)
         {
             //textBoxTendered.Text = Double.Parse(textBoxTendered.Text).ToString("##,##00.00");
+            //textBoxTendered.Text = Convert.ToDouble(textBoxTendered.Text).ToString("0:###,###,##0");
             calculate_change();
         }
 
@@ -617,7 +649,6 @@ namespace Katswiri.Forms
             {
                 dataGridView1.Refresh();
             }
-
         }
 
         private void textBoxTendered_KeyUp(object sender, KeyEventArgs e)
@@ -636,41 +667,62 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
+                    {
+                        var code = dataGridView1.Rows[e.RowIndex].Cells["ProductCode"].Value.ToString();
+                        var taxstatus = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().TaxStatus;
+                        double vat = (double)db.Shops.SingleOrDefault().Vat;
+                        double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                        double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+                        double sub = qty * sp;
+                        double tax = 0;
+
+                        if (taxstatus == "Inclusive")
+                        {
+                            tax = sub * (vat / 100);
+                        }
+                        else if (taxstatus == "Exempted")
+                        {
+                            tax = 0;
+                        }
+                        else if (taxstatus == "Exclusive")
+                        {
+
+                        }
+                        else
+                        {
+
+                        }
+                        double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
+                        double toto = (sub + tax) - disc;
+                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                        calculate_money();
+                    }
+                }
+            }
+        }
+
+        private void Pos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0) 
+            { 
+                if (e.KeyCode == Keys.F12)
+                {
+                   // textBoxTendered.Enabled = true;
+                   // textBoxTendered.Focus();
+                }
+                else
                 {
 
-                    var taxstatus = db.Products.Where(x => x.ProductCode == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()).FirstOrDefault().TaxStatus;
-                    double vat = (double)db.Shops.SingleOrDefault().Vat;
-                    double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
-                    double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
-                    double sub = qty * sp;
-                    double tax = 0;
-
-                    if (taxstatus == "Inclusive")
-                    {
-                        
-                        tax = sub * (vat / 100);
-
-                    }
-                    else if(taxstatus == "Exempted")
-                    {
-                        tax = 0;
-                         
-                    }
-                    else if(taxstatus == "Exclusive")
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
-                    double disc = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Discount"].Value);
-                    double toto = (sub + tax) - disc;
-                    dataGridView1.Rows[e.RowIndex].Cells[5].Value = tax.ToString("##,##0.00");
-                    dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
-                    calculate_money();
                 }
+            }
+            else
+            {
+                //textBoxTendered.Enabled = false;
+
             }
         }
     }

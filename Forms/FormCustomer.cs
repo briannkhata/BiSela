@@ -145,7 +145,6 @@ namespace Katswiri.Forms
             pos.Activate();
             pos.ShowDialog();
             this.Dispose();
-
         }
     }
 }

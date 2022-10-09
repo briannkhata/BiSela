@@ -139,7 +139,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(517, 220);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(517, 183);
             this.dataLayoutControl1.TabIndex = 1;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -168,7 +168,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(517, 220);
+            this.Root.Size = new System.Drawing.Size(517, 183);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -178,7 +178,7 @@ namespace Katswiri.Forms
             this.layoutControlItem2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(497, 200);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(497, 163);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem1
@@ -196,7 +196,7 @@ namespace Katswiri.Forms
             this.layoutControlItem2.Control = this.textEditClosing;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(473, 101);
+            this.layoutControlItem2.Size = new System.Drawing.Size(473, 64);
             this.layoutControlItem2.Text = "Closing Balance";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(104, 16);
@@ -204,9 +204,9 @@ namespace Katswiri.Forms
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.gridControl1);
-            this.panelControl1.Location = new System.Drawing.Point(13, 454);
+            this.panelControl1.Location = new System.Drawing.Point(0, 428);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(491, 341);
+            this.panelControl1.Size = new System.Drawing.Size(504, 273);
             this.panelControl1.TabIndex = 4;
             // 
             // gridControl1
@@ -216,7 +216,7 @@ namespace Katswiri.Forms
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(487, 337);
+            this.gridControl1.Size = new System.Drawing.Size(500, 269);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -231,7 +231,7 @@ namespace Katswiri.Forms
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 807);
+            this.ClientSize = new System.Drawing.Size(516, 712);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
