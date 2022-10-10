@@ -37,7 +37,8 @@ namespace Katswiri.Forms
             dateEditDateSold.DateTime = DateTime.Now;
             //this.dataGridView1.Columns["ProductId"].Visible = false;
 
-
+            dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 12);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
@@ -304,7 +305,7 @@ namespace Katswiri.Forms
                                     {
                                         Tax = (UnitPrice * (taxValue / 100));
                                     }
-                                    else if (taxstatus == "Expemted")
+                                    else if (taxstatus == "Exempted")
                                     {
                                         Tax = 0;
                                     }
@@ -336,7 +337,7 @@ namespace Katswiri.Forms
                             {
                                 Tax = (UnitPrice * (taxValue / 100));
                             }
-                            else if (taxstatus == "Expemted")
+                            else if (taxstatus == "Exempted")
                             {
                                 Tax = 0;
                             }
@@ -564,7 +565,7 @@ namespace Katswiri.Forms
                     }
                     else if (SaleType == "Return")
                     {
-
+                     
                     }
                     else if (SaleType == "Credit")
                     {
@@ -596,7 +597,6 @@ namespace Katswiri.Forms
                         labelBill.Text = Convert.ToDouble(sale.Balance).ToString("##,##00.00");
                         textBoxTendered.Text = "0.00";
                     }
-
 
             }
             //}

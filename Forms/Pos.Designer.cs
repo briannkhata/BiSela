@@ -29,7 +29,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
@@ -437,12 +437,12 @@ namespace Katswiri.Forms
             // Qty
             // 
             this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = null;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Qty.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle15;
             this.Qty.HeaderText = "Qty";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
@@ -571,14 +571,8 @@ namespace Katswiri.Forms
         private System.Windows.Forms.TextBox textSearchProduct;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Button buttonFinishSale;
-        private System.Windows.Forms.Button buttonVoid;
         private System.Windows.Forms.Button button3;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.Label labelBill;
-        private System.Windows.Forms.Label labelTax;
-        private System.Windows.Forms.Label labelDiscount;
-        private System.Windows.Forms.Label labelSubTotal;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -587,7 +581,6 @@ namespace Katswiri.Forms
         public DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
         public System.Windows.Forms.TextBox textBoxTendered;
         private System.Windows.Forms.Label labelL;
-        private System.Windows.Forms.Label labelChange;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label labelSaleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
@@ -598,8 +591,15 @@ namespace Katswiri.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label labelBalance;
         private System.Windows.Forms.Label label5;
         public DevExpress.XtraEditors.DateEdit dateEditDateSold;
+        public System.Windows.Forms.Label labelBill;
+        public System.Windows.Forms.Label labelTax;
+        public System.Windows.Forms.Label labelDiscount;
+        public System.Windows.Forms.Label labelSubTotal;
+        public System.Windows.Forms.Label labelChange;
+        public System.Windows.Forms.Label labelBalance;
+        public System.Windows.Forms.Button buttonRemove;
+        public System.Windows.Forms.Button buttonVoid;
     }
 }

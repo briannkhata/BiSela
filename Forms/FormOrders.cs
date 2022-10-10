@@ -69,19 +69,51 @@ namespace Katswiri.Forms
         {
 
             var selectedRows = gridView1.GetSelectedRows();
-            var row = ((Sale)gridView1.GetRow(selectedRows[0]));
+            var row = ((vwOrderCustomer)gridView1.GetRow(selectedRows[0]));
             using (db = new BEntities())
             {
                 if (row.SaleId != -1)
                 {
-                    //PaymentTypeId = row.PaymentTypeId;
-                    //paymentType = db.PaymentTypes.Where(x => x.PaymentTypeId == PaymentTypeId).FirstOrDefault();
-                    //textEditPaymentType.Text = paymentType.PaymentTypeName;
-                    //textEditDescription.Text = paymentType.Description;
-                    pos.dataGridView1.DataSource = db.SaleDetails.Where(x => x.SaleId == row.SaleId).ToList();
-                    pos.lookUpEditCustomer.EditValue = row.Customer;
-                    pos.lookUpEditSaleType.EditValue = row.SaleType;
+
+                    var oku = db.SaleDetails.Where(x => x.SaleId == row.SaleId).ToList();
+                    foreach (var item in oku)
+                    {
+                        var ProductCode = db.Products.Where(x => x.ProductId == item.ProductId).SingleOrDefault().ProductCode;
+                        var ProductName = db.Products.Where(x => x.ProductId == item.ProductId).SingleOrDefault().ProductName;
+                        double SellingPrice = item.SellingPrice;
+                        double Qty = item.Qty;
+                        double Discount = item.Discount;
+                        double Tax = item.TaxValue;
+                        double TotalPrice = item.SoldPrice;
+                        pos.dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
+                    }
+
+                    pos.dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 12);
+                    pos.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic",12, FontStyle.Bold);
+                    pos.dataGridView1.RowHeadersVisible = false;
+                    pos.dataGridView1.RowHeadersVisible = false;
+                    pos.dataGridView1.AllowUserToAddRows = false;
+                    pos.dataGridView1.AllowUserToDeleteRows = false;
+                    pos.dataGridView1.AllowUserToResizeRows = false;
+                    pos.dataGridView1.MultiSelect = false;
+
+                    pos.labelBalance.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Balance).ToString("##,##0.00");
+                    pos.labelBill.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Bill).ToString("##,##0.00");
+                    pos.lookUpEditCustomer.EditValue = db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Customer;
+                    pos.lookUpEditSaleType.EditValue = db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().SaleType;
                     pos.labelSaleId.Text = row.SaleId.ToString();
+
+                    if(double.Parse(pos.labelBalance.Text) >= 0.5)
+                    {
+                        pos.textBoxTendered.Enabled = true;
+                    }
+                    else
+                    {
+                        pos.textBoxTendered.Enabled = false;
+                    }
+
+                    pos.buttonRemove.Enabled = false;
+                    pos.buttonVoid.Enabled = false;
                     pos.dateEditDateSold.DateTime = (DateTime)row.DateSold;
                     pos.ShowDialog();
                     this.Close();
