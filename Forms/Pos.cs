@@ -3,7 +3,6 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using Katswiri.Enums;
-using Katswiri.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -519,14 +518,7 @@ namespace Katswiri.Forms
                         var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).FirstOrDefault().StockId;
                         double oldQty = (double)db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault().Shop;
                         stock = db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault();
-                        //stock = new Stock()
-                        // {
-                        //StockId = StockId,
-                        //ProductId = saleDetail.ProductId,
                         stock.Shop = oldQty - saleDetail.Qty;
-                            //ShopId = saleDetail.ShopId,
-                        //};
-                        //db.Stocks.Attach(stock);
                         db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -550,7 +542,15 @@ namespace Katswiri.Forms
                 sale.PaymentTypeId = PaymentTypeId;
                 sale.SaleType = SaleType;
                 sale.TaxAmount = Convert.ToDouble(labelTax.Text);
-                sale.Bill = Convert.ToDouble(labelBill.Text);
+
+                //if (sale.Balance <= 0.5)
+                //{
+                //  sale.Bill = paid + sale.Balance;
+                //}
+                // else
+                //{
+                   sale.Bill = Convert.ToDouble(labelBill.Text);
+                //}
                 sale.Paid = paid;
                 sale.ShopId = db.Shops.SingleOrDefault().ShopId;
                 sale.Change = Convert.ToDouble(labelChange.Text);
@@ -568,8 +568,8 @@ namespace Katswiri.Forms
                 //print a receipt
                 //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
                 //frm_PrintReceipt.saleId = saleId;
-                buttonFinishSale.Enabled = false;
-                buttonFinishSale.BackColor = Color.Gray;
+                //buttonFinishSale.Enabled = false;
+               // buttonFinishSale.BackColor = Color.Gray;
                     //frm_PrintReceipt.ShowDialog();
                     }
                     else if (SaleType == "Return")
@@ -592,10 +592,21 @@ namespace Katswiri.Forms
                     {
 
                     }
-                }
+
+                    if(sale.Balance <= 0.5)
+                    {
+                        resetCart();
+                    }
+                    else
+                    {
+                        labelBill.Text = Convert.ToDouble(sale.Balance).ToString("##,##00.00");
+                        textBoxTendered.Text = "0.00";
+                    }
+
+
+            }
             //}
 
-            resetCart();
 
         }
 

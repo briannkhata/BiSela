@@ -135,12 +135,23 @@ namespace Katswiri.Forms
             Pos pos = new Pos();
             using (db = new BEntities())
             {
+
                 pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
                 pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
                 pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
                 pos.lookUpEditCustomer.EditValue = (int)lookUpEditCustomer2.EditValue;
                 pos.lookUpEditCustomer.Properties.NullText = "Customer";
                 pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == (int)lookUpEditCustomer2.EditValue).Max(x => x.SaleId).ToString();
+
+                sale = new Sale()
+                {
+                    Customer = (int)lookUpEditCustomer2.EditValue,
+                    SoldBy = LoginInfo.UserId,
+                    DateSold = DateTime.Now,
+                    ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                };
+                db.Sales.Add(sale);
+                db.SaveChanges();
             }
             pos.Activate();
             pos.ShowDialog();
