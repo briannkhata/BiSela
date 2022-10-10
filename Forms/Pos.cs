@@ -295,9 +295,11 @@ namespace Katswiri.Forms
                             {
                                     var taxstatus = db.Products.Where(x => x.ProductCode == product.ProductCode.ToString()).FirstOrDefault().TaxStatus;
                                     string ProductId = product.ProductId.ToString();
+                                    var UnitId = db.Products.Where(x => x.ProductId == product.ProductId).SingleOrDefault().UnitId;
+                                    double Qte = Double.Parse(db.Units.Where(x => x.UnitId == UnitId).SingleOrDefault().Qty);
                                     string ProductCode = product.ProductCode.ToString();
                                     string ProductName = product.ProductName.ToString();
-                                    double Qty = 1;
+                                    double Qty = Qte;
                                     double SellingPrice = UnitPrice;
                                     double Discount = 0;
                                     double Tax = 0;
@@ -327,9 +329,11 @@ namespace Katswiri.Forms
                         {
                             var taxstatus = db.Products.Where(x => x.ProductCode == product.ProductCode.ToString()).FirstOrDefault().TaxStatus;
                             string ProductId = product.ProductId.ToString();
+                            var UnitId = db.Products.Where(x => x.ProductId == product.ProductId).SingleOrDefault().UnitId;
+                            double Qte = Double.Parse(db.Units.Where(x => x.UnitId == UnitId).SingleOrDefault().Qty);
                             string ProductCode = product.ProductCode.ToString();
                             string ProductName = product.ProductName.ToString();
-                            double Qty = 1;
+                            double Qty = Qte;
                             double SellingPrice = UnitPrice;
                             double Discount = 0;
                             double Tax = 0;
@@ -565,7 +569,6 @@ namespace Katswiri.Forms
                     }
                     else if (SaleType == "Return")
                     {
-
 
                             for (int i = 0; i < dataGridView1.Rows.Count; i++)
                             {

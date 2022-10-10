@@ -98,18 +98,18 @@ namespace Katswiri.Forms
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-                if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+             if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+             {
+                using (db = new BEntities())
                 {
-                    using (db = new BEntities())
-                    {
-                        shift.Deleted = 1;
-                        db.Entry(shift).State = EntityState.Modified;
-                        db.SaveChanges();
-                        clearFields();
-                        loadShifts();
-                    }
-                    XtraMessageBox.Show("Record Deleted Successfully");
+                   shift.Deleted = 1;
+                   db.Entry(shift).State = EntityState.Modified;
+                   db.SaveChanges();
+                   clearFields();
+                   loadShifts();
                 }
+                  XtraMessageBox.Show("Record Deleted Successfully");
+             }
         }
 
         private void gridControl1_Click(object sender, EventArgs e)
@@ -125,7 +125,7 @@ namespace Katswiri.Forms
                     textEditClosing.Text = row.CloseBalance.ToString();
                 }
             }
-            btnSave.Caption = "Update";
+            btnSave.Caption = "Close Shift";
             btnDelete.Enabled = true;
         }
     }
