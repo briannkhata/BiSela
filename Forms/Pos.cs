@@ -565,7 +565,55 @@ namespace Katswiri.Forms
                     }
                     else if (SaleType == "Return")
                     {
-                     
+
+
+                            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                            {
+                                var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                                saleDetail = new SaleDetail()
+                                {
+                                    ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
+                                    Discount = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                                    Qty = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                                    SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                                    SoldPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                                    ShopId = db.Shops.SingleOrDefault().ShopId,
+                                    UserId = UserId,
+                                    SaleId = short.Parse(SaleId),
+                                    TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                                    DateSold = dateEditDateSold.DateTime,
+                                };
+                                db.SaleDetails.Add(saleDetail);
+                                db.SaveChanges();
+
+                                var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).FirstOrDefault().StockId;
+                                double oldQty = (double)db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault().Shop;
+                                stock = db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault();
+                                stock.Shop = oldQty + saleDetail.Qty;
+                                db.Entry(stock).State = EntityState.Modified;
+                                db.SaveChanges();
+                            }
+
+                            int seluidi = Convert.ToInt32(SaleId);
+                            double paid = (double)db.BillPayments.Where(x => x.SaleId == seluidi).Sum(x => x.Amount);
+                            sale = db.Sales.Where(x => x.SaleId == seluidi).FirstOrDefault();
+                            sale.SaleId = seluidi;
+                            sale.Customer = Customer;
+                            sale.SoldBy = UserId;
+                            sale.PaymentTypeId = PaymentTypeId;
+                            sale.SaleType = SaleType;
+                            sale.TaxAmount = Convert.ToDouble(labelTax.Text);
+                            sale.Bill = - Convert.ToDouble(labelBill.Text);
+                            sale.Paid = - paid;
+                            sale.ShopId = db.Shops.SingleOrDefault().ShopId;
+                            sale.Change = 0;
+                            sale.Balance = 0;
+                            sale.Tendered = 0;
+                            sale.Discount = 0;
+                            sale.SubTotal = 0;
+                            sale.DateSold = DateTime.Now;
+                            db.Entry(sale).State = EntityState.Modified;
+                            db.SaveChanges();
                     }
                     else if (SaleType == "Credit")
                     {
