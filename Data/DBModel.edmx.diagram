@@ -51,13 +51,14 @@
         <AssociationConnector Association="BModel.FK_Incomes_IncomeTypes" ManuallyRouted="false" />
         <AssociationConnector Association="BModel.FK_Incomes_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="19.375" PointY="17.75" />
-        <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="11.375" PointY="20.75" />
         <EntityTypeShape EntityType="BModel.BillPayment" Width="1.5" PointX="20.375" PointY="12.75" />
         <EntityTypeShape EntityType="BModel.Product" Width="1.5" PointX="3" PointY="3.875" />
         <AssociationConnector Association="BModel.FK_Products_Brands" />
         <AssociationConnector Association="BModel.FK_Products_Categories" />
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
+        <EntityTypeShape EntityType="BModel.vwShift" Width="1.5" PointX="13.375" PointY="20.75" />
+        <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="5.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

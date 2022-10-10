@@ -99,8 +99,14 @@ namespace Katswiri.Forms
 
                     pos.labelBalance.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Balance).ToString("##,##0.00");
                     pos.labelBill.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Bill).ToString("##,##0.00");
-                    pos.lookUpEditCustomer.EditValue = db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Customer;
-                    pos.lookUpEditSaleType.EditValue = db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().SaleType;
+
+                    int cus = (int)db.Sales.Where(x => x.SaleId == row.SaleId).SingleOrDefault().Customer;
+                    var saletype = db.Sales.Where(x => x.SaleId == row.SaleId).SingleOrDefault().SaleType;
+
+                    pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
+                    pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
+                    pos.lookUpEditCustomer.EditValue = cus;
+                    pos.lookUpEditSaleType.EditValue = saletype;
                     pos.labelSaleId.Text = row.SaleId.ToString();
 
                     if(double.Parse(pos.labelBalance.Text) >= 0.5)

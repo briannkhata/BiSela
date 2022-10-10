@@ -215,11 +215,11 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           </Key>
           <Property Name="ShiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OpenBalance" Type="float" />
-          <Property Name="CloseBalance" Type="float" />
+          <Property Name="CloseBalance" Type="float" Nullable="false" />
           <Property Name="OpenDate" Type="datetime" />
           <Property Name="ShopId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
-          <Property Name="CloseDate" Type="datetime" />
+          <Property Name="CloseDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -519,6 +519,18 @@ warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary 
           <Property Name="PaymentTypeId" Type="int" />
           <Property Name="SoldBy" Type="int" />
           <Property Name="ShopId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwShifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwShifts">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="OpenBalance" Type="float" />
+          <Property Name="CloseBalance" Type="float" />
+          <Property Name="ShiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OpenDate" Type="datetime" />
+          <Property Name="CloseDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -925,6 +937,15 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwSalesReport].[SoldBy] AS [SoldBy], 
     [vwSalesReport].[ShopId] AS [ShopId]
     FROM [dbo].[vwSalesReport] AS [vwSalesReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwShifts" EntityType="Self.vwShifts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwShifts].[OpenBalance] AS [OpenBalance], 
+    [vwShifts].[CloseBalance] AS [CloseBalance], 
+    [vwShifts].[ShiftId] AS [ShiftId], 
+    [vwShifts].[OpenDate] AS [OpenDate], 
+    [vwShifts].[CloseDate] AS [CloseDate]
+    FROM [dbo].[vwShifts] AS [vwShifts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwShops" EntityType="Self.vwShops" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1703,7 +1724,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
-          <EntitySet Name="Shifts" EntityType="BModel.Shift" />
           <EntitySet Name="BillPayments" EntityType="BModel.BillPayment" />
           <EntitySet Name="Products" EntityType="BModel.Product" />
           <AssociationSet Name="FK_Products_Brands" Association="BModel.FK_Products_Brands">
@@ -1722,6 +1742,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Product" EntitySet="Products" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
+          <EntitySet Name="vwShifts" EntityType="BModel.vwShift" />
+          <EntitySet Name="Shifts" EntityType="BModel.Shift" />
           </EntityContainer>
         <EntityType Name="vwProduct">
           <Key>
@@ -1741,18 +1763,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Shift">
-          <Key>
-            <PropertyRef Name="ShiftId" />
-          </Key>
-          <Property Name="ShiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OpenBalance" Type="Double" />
-          <Property Name="CloseBalance" Type="Double" />
-          <Property Name="OpenDate" Type="DateTime" Precision="3" />
-          <Property Name="ShopId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="CloseDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="BillPayment">
           <Key>
@@ -1833,6 +1843,28 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwShift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="OpenBalance" Type="Double" />
+          <Property Name="CloseBalance" Type="Double" />
+          <Property Name="ShiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OpenDate" Type="DateTime" Precision="3" />
+          <Property Name="CloseDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OpenBalance" Type="Double" />
+          <Property Name="CloseBalance" Type="Double" Nullable="false" />
+          <Property Name="OpenDate" Type="DateTime" Precision="3" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="CloseDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2375,19 +2407,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Shifts">
-            <EntityTypeMapping TypeName="BModel.Shift">
-              <MappingFragment StoreEntitySet="Shifts">
-                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
-                <ScalarProperty Name="CloseBalance" ColumnName="CloseBalance" />
-                <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
-                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BillPayments">
             <EntityTypeMapping TypeName="BModel.BillPayment">
               <MappingFragment StoreEntitySet="BillPayments">
@@ -2414,6 +2433,30 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwShifts">
+            <EntityTypeMapping TypeName="BModel.vwShift">
+              <MappingFragment StoreEntitySet="vwShifts">
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CloseBalance" ColumnName="CloseBalance" />
+                <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="BModel.Shift">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+                <ScalarProperty Name="CloseBalance" ColumnName="CloseBalance" />
+                <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

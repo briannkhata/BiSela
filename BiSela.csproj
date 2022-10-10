@@ -284,6 +284,9 @@
     <Compile Include="Data\vwSalesReport.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\vwShift.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\vwShop.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -454,6 +457,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReceiptDetail.cs" />
     <Compile Include="productsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

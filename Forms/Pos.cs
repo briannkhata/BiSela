@@ -38,7 +38,7 @@ namespace Katswiri.Forms
             //this.dataGridView1.Columns["ProductId"].Visible = false;
 
             dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 12);
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.AllowUserToAddRows = false;
@@ -663,7 +663,6 @@ namespace Katswiri.Forms
             dataGridView1.Rows.Clear();
         }
 
-
         private void button5_Click(object sender, EventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
@@ -688,13 +687,11 @@ namespace Katswiri.Forms
             calculate_change();
         }
 
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             FormOrders formOrders = new FormOrders();
             formOrders.ShowDialog();
         }
-
 
         private void buttonVoid_Click(object sender, EventArgs e)
         {

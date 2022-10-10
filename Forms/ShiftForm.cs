@@ -29,10 +29,8 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControl1.DataSource = db.Shifts.Where(x=>x.Deleted == 0).ToList();
+                gridControl1.DataSource = db.vwShifts.ToList();
                 gridView1.Columns["ShiftId"].Visible = false;
-                gridView1.Columns["Deleted"].Visible = false;
-                gridView1.Columns["ShopId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             }
@@ -41,11 +39,11 @@ namespace Katswiri.Forms
         private bool formValid()
         {
             var result = true;
-            if (String.IsNullOrEmpty(textEditClosing.Text))
-            {
-                result = false;
-                textEditClosing.ErrorText = "Required";
-            }
+            //if (String.IsNullOrEmpty(textEditClosing.Text))
+            //{
+            //    result = false;
+            //    textEditClosing.ErrorText = "Required";
+            //}
 
             if (String.IsNullOrEmpty(textEditOpening.Text))
             {
@@ -61,20 +59,25 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    shift.OpenBalance = Double.Parse(textEditOpening.Text);
-                    shift.CloseBalance = Double.Parse(textEditClosing.Text);
-                    shift.CloseDate = DateTime.Now;
-                    shift.OpenDate = DateTime.Now;
                     using (db = new BEntities())
                     {
+                        shift.OpenBalance = Double.Parse(textEditOpening.Text);
                         shift.ShopId = db.Shops.SingleOrDefault().ShopId;
+                        shift.OpenDate = DateTime.Now;
+                        shift.CloseDate = DateTime.Now;
+
                         if (ShiftId > 0)
+                        {
+                            shift.CloseDate = DateTime.Now;
+                            shift.CloseBalance = Double.Parse(textEditClosing.Text);
                             db.Entry(shift).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
                         else
                         {
                             db.Shifts.Add(shift);
+                            db.SaveChanges();
                         }
-                        db.SaveChanges();
                     }
                     XtraMessageBox.Show("Shift Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -88,9 +91,9 @@ namespace Katswiri.Forms
         private void clearFields()
         {
             textEditClosing.Text = textEditOpening.Text = string.Empty;
-            //btnDelete.Enabled = false;
-            //btnSave.Caption = "Save";
-            //ProductId = 0;
+            btnDelete.Enabled = false;
+            btnSave.Caption = "Save";
+            ShiftId = 0;
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
@@ -107,7 +110,23 @@ namespace Katswiri.Forms
                     }
                     XtraMessageBox.Show("Record Deleted Successfully");
                 }
-            
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+            var selectedRows = gridView1.GetSelectedRows();
+            var row = ((vwShift)gridView1.GetRow(selectedRows[0]));
+            using (db = new BEntities())
+            {
+                if (row.ShiftId != -1)
+                {
+                    ShiftId = row.ShiftId;
+                    textEditOpening.Text = row.OpenBalance.ToString();
+                    textEditClosing.Text = row.CloseBalance.ToString();
+                }
+            }
+            btnSave.Caption = "Update";
+            btnDelete.Enabled = true;
         }
     }
 }

@@ -12,14 +12,12 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Shift
+    public partial class vwShift
     {
-        public int ShiftId { get; set; }
         public Nullable<double> OpenBalance { get; set; }
-        public double CloseBalance { get; set; }
+        public Nullable<double> CloseBalance { get; set; }
+        public int ShiftId { get; set; }
         public Nullable<System.DateTime> OpenDate { get; set; }
-        public int ShopId { get; set; }
-        public int Deleted { get; set; }
-        public System.DateTime CloseDate { get; set; }
+        public Nullable<System.DateTime> CloseDate { get; set; }
     }
 }
