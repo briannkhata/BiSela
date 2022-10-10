@@ -29,7 +29,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
@@ -437,12 +437,12 @@ namespace Katswiri.Forms
             // Qty
             // 
             this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.Format = "N2";
-            dataGridViewCellStyle11.NullValue = null;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Qty.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle12;
             this.Qty.HeaderText = "Qty";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
@@ -582,7 +582,6 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.DateEdit dateEditDateSold;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditSaleType;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditCustomer;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditPaymentType;
@@ -601,5 +600,6 @@ namespace Katswiri.Forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label labelBalance;
         private System.Windows.Forms.Label label5;
+        public DevExpress.XtraEditors.DateEdit dateEditDateSold;
     }
 }

@@ -32,8 +32,8 @@ namespace Katswiri.Forms
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.lookUpEditCus = new DevExpress.XtraEditors.LookUpEdit();
-            this.button1 = new System.Windows.Forms.Button();
             this.FormOrderslayoutControl1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
+            this.button1 = new System.Windows.Forms.Button();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.button1item = new DevExpress.XtraLayout.LayoutControlItem();
             this.lookUpEditCusitem = new DevExpress.XtraLayout.LayoutControlItem();
@@ -59,6 +59,7 @@ namespace Katswiri.Forms
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
             // 
             // gridView1
             // 
@@ -78,16 +79,6 @@ namespace Katswiri.Forms
             this.lookUpEditCus.TabIndex = 1;
             this.lookUpEditCus.EditValueChanged += new System.EventHandler(this.lookUpEditCus_EditValueChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(990, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(277, 26);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FormOrderslayoutControl1ConvertedLayout
             // 
             this.FormOrderslayoutControl1ConvertedLayout.Controls.Add(this.button1);
@@ -99,6 +90,16 @@ namespace Katswiri.Forms
             this.FormOrderslayoutControl1ConvertedLayout.Root = this.layoutControlGroup1;
             this.FormOrderslayoutControl1ConvertedLayout.Size = new System.Drawing.Size(1279, 604);
             this.FormOrderslayoutControl1ConvertedLayout.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(990, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(277, 26);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // layoutControlGroup1
             // 

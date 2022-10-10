@@ -523,53 +523,43 @@ namespace Katswiri.Forms
                         db.SaveChanges();
                     }
    
-                billPayment = new BillPayment()
-                {
-                    SaleId = short.Parse(SaleId),
-                    Amount = double.Parse(textBoxTendered.Text),
-                    PaymentTypeId = PaymentTypeId,
-                    PaymentDate = dateEditDateSold.DateTime,
-                };
-                db.BillPayments.Add(billPayment);
-                db.SaveChanges();
+                    billPayment = new BillPayment()
+                    {
+                        SaleId = short.Parse(SaleId),
+                        Amount = double.Parse(textBoxTendered.Text),
+                        PaymentTypeId = PaymentTypeId,
+                        PaymentDate = dateEditDateSold.DateTime,
+                    };
+                    db.BillPayments.Add(billPayment);
+                    db.SaveChanges();
 
-                int seluidi = Convert.ToInt32(SaleId);
-                double paid = (double)db.BillPayments.Where(x => x.SaleId == seluidi).Sum(x => x.Amount);
-                sale = db.Sales.Where(x => x.SaleId == seluidi).FirstOrDefault();
-                sale.SaleId = seluidi;
-                sale.Customer = Customer;
-                sale.SoldBy = UserId;
-                sale.PaymentTypeId = PaymentTypeId;
-                sale.SaleType = SaleType;
-                sale.TaxAmount = Convert.ToDouble(labelTax.Text);
+                    int seluidi = Convert.ToInt32(SaleId);
+                    double paid = (double)db.BillPayments.Where(x => x.SaleId == seluidi).Sum(x => x.Amount);
+                    sale = db.Sales.Where(x => x.SaleId == seluidi).FirstOrDefault();
+                    sale.SaleId = seluidi;
+                    sale.Customer = Customer;
+                    sale.SoldBy = UserId;
+                    sale.PaymentTypeId = PaymentTypeId;
+                    sale.SaleType = SaleType;
+                    sale.TaxAmount = Convert.ToDouble(labelTax.Text);
+                    sale.Bill = Convert.ToDouble(labelBill.Text);
+                    sale.Paid = paid;
+                    sale.ShopId = db.Shops.SingleOrDefault().ShopId;
+                    sale.Change = Convert.ToDouble(labelChange.Text);
+                    sale.Balance = Convert.ToDouble(labelBalance.Text);
+                    sale.Tendered = Convert.ToDouble(textBoxTendered.Text);
+                    sale.Discount = Convert.ToDouble(labelDiscount.Text);
+                    sale.SubTotal = Convert.ToDouble(labelSubTotal.Text);
+                    sale.DateSold = DateTime.Now;
+                    db.Entry(sale).State = EntityState.Modified;
+                    db.SaveChanges();
 
-                //if (sale.Balance <= 0.5)
-                //{
-                //  sale.Bill = paid + sale.Balance;
-                //}
-                // else
-                //{
-                   sale.Bill = Convert.ToDouble(labelBill.Text);
-                //}
-                sale.Paid = paid;
-                sale.ShopId = db.Shops.SingleOrDefault().ShopId;
-                sale.Change = Convert.ToDouble(labelChange.Text);
-                sale.Balance = Convert.ToDouble(labelBalance.Text);
-                sale.Tendered = Convert.ToDouble(textBoxTendered.Text);
-                sale.Discount = Convert.ToDouble(labelDiscount.Text);
-                sale.SubTotal = Convert.ToDouble(labelSubTotal.Text);
-                sale.DateSold = DateTime.Now;
-                db.Entry(sale).State = EntityState.Modified;
-                db.SaveChanges();
-
-
-
-                //clear_all_data();
-                //print a receipt
-                //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
-                //frm_PrintReceipt.saleId = saleId;
-                //buttonFinishSale.Enabled = false;
-               // buttonFinishSale.BackColor = Color.Gray;
+                    //clear_all_data();
+                    //print a receipt
+                    //frm_printReceipt frm_PrintReceipt = new frm_printReceipt();
+                    //frm_PrintReceipt.saleId = saleId;
+                    //buttonFinishSale.Enabled = false;
+                    //buttonFinishSale.BackColor = Color.Gray;
                     //frm_PrintReceipt.ShowDialog();
                     }
                     else if (SaleType == "Return")
@@ -596,6 +586,10 @@ namespace Katswiri.Forms
                     if(sale.Balance <= 0.5)
                     {
                         resetCart();
+                        double paid = (double)db.BillPayments.Where(x => x.SaleId == sale.SaleId).Sum(x => x.Amount);
+                        sale.Bill = paid + sale.Balance;
+                        db.Entry(sale).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                     else
                     {

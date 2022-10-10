@@ -64,5 +64,29 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = db.vwOrderCustomers.ToList();
             }
         }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+
+            var selectedRows = gridView1.GetSelectedRows();
+            var row = ((Sale)gridView1.GetRow(selectedRows[0]));
+            using (db = new BEntities())
+            {
+                if (row.SaleId != -1)
+                {
+                    //PaymentTypeId = row.PaymentTypeId;
+                    //paymentType = db.PaymentTypes.Where(x => x.PaymentTypeId == PaymentTypeId).FirstOrDefault();
+                    //textEditPaymentType.Text = paymentType.PaymentTypeName;
+                    //textEditDescription.Text = paymentType.Description;
+                    pos.dataGridView1.DataSource = db.SaleDetails.Where(x => x.SaleId == row.SaleId).ToList();
+                    pos.lookUpEditCustomer.EditValue = row.Customer;
+                    pos.lookUpEditSaleType.EditValue = row.SaleType;
+                    pos.labelSaleId.Text = row.SaleId.ToString();
+                    pos.dateEditDateSold.DateTime = (DateTime)row.DateSold;
+                    pos.ShowDialog();
+                    this.Close();
+                }
+            }
+        }
     }
 }
