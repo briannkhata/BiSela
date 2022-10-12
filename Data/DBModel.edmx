@@ -215,7 +215,7 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Key>
             <PropertyRef Name="ShopId" />
           </Key>
-          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="ShopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShopName" Type="varchar" MaxLength="50" />
           <Property Name="Currency" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
@@ -417,6 +417,9 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
             <PropertyRef Name="BrandName" />
             <PropertyRef Name="UnitName" />
             <PropertyRef Name="Qty" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="UnitId" />
           </Key>
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -426,6 +429,9 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
           <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Qty" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TaxStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="UnitId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -837,7 +843,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwProducts].[BrandName] AS [BrandName], 
     [vwProducts].[UnitName] AS [UnitName], 
     [vwProducts].[Qty] AS [Qty], 
-    [vwProducts].[TaxStatus] AS [TaxStatus]
+    [vwProducts].[TaxStatus] AS [TaxStatus], 
+    [vwProducts].[CategoryId] AS [CategoryId], 
+    [vwProducts].[BrandId] AS [BrandId], 
+    [vwProducts].[UnitId] AS [UnitId]
     FROM [dbo].[vwProducts] AS [vwProducts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwReceivingCart" EntityType="Self.vwReceivingCart" store:Type="Views" store:Schema="dbo">
@@ -1574,6 +1583,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="BrandName" />
             <PropertyRef Name="UnitName" />
             <PropertyRef Name="Qty" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="UnitId" />
           </Key>
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1583,6 +1595,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="BillPayment">
           <Key>
@@ -2224,6 +2239,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwProducts">
             <EntityTypeMapping TypeName="BModel.vwProduct">
               <MappingFragment StoreEntitySet="vwProducts">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />

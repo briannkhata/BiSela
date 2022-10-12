@@ -212,7 +212,11 @@ namespace Katswiri
         private void btnProducts_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowProductFom();
+            //ShowProductFom();
+
+            FormProductList formProductList = new FormProductList();
+            formProductList.ShowDialog();
+
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)

@@ -73,6 +73,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage addparagraphtotableofcontents {
+            get {
+                object obj = ResourceManager.GetObject("addparagraphtotableofcontents", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage business_bank {
             get {
                 object obj = ResourceManager.GetObject("business_bank", resourceCulture);
@@ -226,6 +236,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage productorderdetail_21 {
             get {
                 object obj = ResourceManager.GetObject("productorderdetail-21", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage refreshallpivottable {
+            get {
+                object obj = ResourceManager.GetObject("refreshallpivottable", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

@@ -23,16 +23,16 @@ namespace Katswiri.Forms
         public Products()
         {
             InitializeComponent();
-            clearFields();
-            loadProducts();
             loadtaxTypesStatus();
+            loadCategories();
+            loadUnits();
+            loadBrands();
         }
 
         private void clearFields()
         {
             ProductNameTextEdit.Text = ProductCodeTextEdit.Text = TextEditDescription.Text = string.Empty;
             CategoryIdLookUpEdit.EditValue = UnitIdLookUpEdit.EditValue = null;
-            btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             ProductId = 0;
         }
@@ -44,21 +44,6 @@ namespace Katswiri.Forms
                 lookUpEditTaxStatus.Properties.DataSource = taxTypesStatus;
                 lookUpEditTaxStatus.Properties.ValueMember = "Value";
                 lookUpEditTaxStatus.Properties.DisplayMember = "Value";
-            }
-        }
-
-        private void loadProducts()
-        {
-            using (db = new BEntities())
-            {
-                gridControlProducts.DataSource = db.vwProducts.ToList();
-                gridView1.Columns["ProductId"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControlProducts.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-                loadCategories();
-                loadUnits();
-                loadBrands();
             }
         }
 
@@ -164,7 +149,6 @@ namespace Katswiri.Forms
                         }
                         db.SaveChanges();
                         clearFields();
-                        loadProducts();
                     }
                     XtraMessageBox.Show("Product Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -173,45 +157,6 @@ namespace Katswiri.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                using (db = new BEntities())
-                {
-                    product.Deleted = 1;
-                    db.Entry(product).State = EntityState.Modified;
-                    db.SaveChanges();
-                    clearFields();
-                    loadProducts();
-                }
-                XtraMessageBox.Show("Record Deleted Successfully");
-            }
-        }
-
-        private void gridControlProducts_DoubleClick(object sender, EventArgs e)
-        {
-            var selectedRows = gridView1.GetSelectedRows();
-            var row = ((vwProduct)gridView1.GetRow(selectedRows[0]));
-            using (db = new BEntities())
-            {
-                if (row.ProductId != -1)
-                {
-                    ProductId = row.ProductId;
-                    product = db.Products.Where(x => x.ProductId == ProductId).FirstOrDefault();
-                    ProductNameTextEdit.Text = product.ProductName;
-                    ProductCodeTextEdit.Text = product.ProductCode;
-                    lookUpEditTaxStatus.EditValue = product.TaxStatus;
-                    UnitIdLookUpEdit.EditValue = product.UnitId;
-                    CategoryIdLookUpEdit.EditValue = product.CategoryId;
-                    BrandLookUpEdit.EditValue = product.BrandId;
-                    textEditOrderLevel.Text = product.ReOrderLevel.ToString();
-                }
-            }
-            btnSave.Caption = "Update";
-            btnDelete.Enabled = true;
         }
 
         private void Products_Load(object sender, EventArgs e)
