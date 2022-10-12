@@ -39,6 +39,7 @@ namespace Katswiri.Forms
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.searchLookUpEditUnit = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
@@ -135,12 +136,20 @@ namespace Katswiri.Forms
             this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(9, 310);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1521, 415);
+            this.panel1.TabIndex = 5;
+            // 
             // FormProductList
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1541, 737);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.searchLookUpEditUnit);
             this.Controls.Add(this.searchLookUpEditBrand);
             this.Controls.Add(this.searchLookUpEditCategory);
@@ -175,5 +184,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditUnit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
