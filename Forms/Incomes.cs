@@ -89,7 +89,7 @@ namespace Katswiri.Forms
                     using (db = new BEntities())
                     {
                         income.Amount = (double)Decimal.Parse(AmountTextEdit.Text);
-                        income.IncomeTypeId = Convert.ToInt16(IncomeTypeId.EditValue);
+                        income.IncomeTypeId = short.Parse((string)IncomeTypeId.EditValue);
 
                         if (IncomeId > 0)
                             db.Entry(income).State = EntityState.Modified;

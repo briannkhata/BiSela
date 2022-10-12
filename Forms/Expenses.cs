@@ -31,7 +31,6 @@ namespace Katswiri.Forms
 
         private void clearFields()
         {
-
             AmountTextEdit.Text = string.Empty;
             gridView1.OptionsView.ShowIndicator = false;
             ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
