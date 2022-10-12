@@ -27,6 +27,7 @@ namespace Katswiri.Forms
             InitializeComponent();
             clearFields();
             loadIncomes();
+            incomeType();
         }
 
         private void clearFields()
@@ -44,18 +45,11 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwIncomes.ToList();
                 gridView1.OptionsBehavior.Editable = false;
-                //gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["IncomeId"].Visible = false;
-                gridView1.OptionsView.ShowIndicator = false;
+                gridView1.Columns["IncomeTypeId"].Visible = false;
+                //gridView1.OptionsView.ShowIndicator = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-
-                IncomeTypeId.Properties.DataSource = db.vwIncomTypes.ToList();
-                IncomeTypeId.Properties.ValueMember = "IncomeTypeId";
-                IncomeTypeId.Properties.DisplayMember = "IncomeType";
-                IncomeTypeId.Properties.BestFitMode = BestFitMode.BestFit;
-                IncomeTypeId.Properties.SearchMode = SearchMode.AutoComplete;
             }
-
         }
 
         public void incomeType()
@@ -78,7 +72,7 @@ namespace Katswiri.Forms
                 result = false;
                 AmountTextEdit.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(IncomeTypeId.Text))
+            if (String.IsNullOrEmpty((string)IncomeTypeId.EditValue))
             {
                 result = false;
                 IncomeTypeId.ErrorText = "Required";
@@ -92,12 +86,10 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-
                     using (db = new BEntities())
                     {
                         income.Amount = (double)Decimal.Parse(AmountTextEdit.Text);
                         income.IncomeTypeId = Convert.ToInt16(IncomeTypeId.EditValue);
-                        income.UserId = 1;
 
                         if (IncomeId > 0)
                             db.Entry(income).State = EntityState.Modified;
@@ -146,9 +138,8 @@ namespace Katswiri.Forms
                     if (row.IncomeId != -1)
                     {
                         IncomeId = row.IncomeId;
-                        income = db.Incomes.Where(x => x.IncomeId == IncomeId).FirstOrDefault();
-                        AmountTextEdit.Text = income.Amount.ToString();
-                        IncomeTypeId.EditValue = income.IncomeTypeId;
+                        AmountTextEdit.Text = row.Amount.ToString();
+                        IncomeTypeId.EditValue = row.IncomeTypeId.ToString();
                     }
                 }
                 btnSave.Caption = "Update";
@@ -157,7 +148,6 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
 

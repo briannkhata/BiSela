@@ -14,9 +14,9 @@ namespace Katswiri.Data
     
     public partial class vwIncome
     {
-        public string IncomeTypeName { get; set; }
         public double Amount { get; set; }
-        public string Name { get; set; }
+        public string IncomeTypeName { get; set; }
         public int IncomeId { get; set; }
+        public int IncomeTypeId { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Katswiri.Data
     {
         public string ExpenseTypeName { get; set; }
         public double Amount { get; set; }
-        public string Name { get; set; }
         public int ExpenseId { get; set; }
+        public int ExpenseTypeId { get; set; }
     }
 }

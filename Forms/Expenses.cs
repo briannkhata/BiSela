@@ -26,6 +26,7 @@ namespace Katswiri.Forms
             InitializeComponent();
             clearFields();
             loadExpenses();
+            expenseTypes();
         }
 
         private void clearFields()
@@ -34,7 +35,6 @@ namespace Katswiri.Forms
             AmountTextEdit.Text = string.Empty;
             gridView1.OptionsView.ShowIndicator = false;
             ExpenseTypeId.Properties.TextEditStyle = TextEditStyles.Standard;
-
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
         }
@@ -45,19 +45,22 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwExpenses.ToList();
                 gridView1.OptionsBehavior.Editable = false;
-                //gridView1.Columns["UserId"].Visible = false;
+                gridView1.Columns["ExpenseTypeId"].Visible = false;
                 gridView1.Columns["ExpenseId"].Visible = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
+            }
+        }
 
-
-                //populate Expense typs
+        private void expenseTypes()
+        {
+            using (db = new BEntities())
+            {
                 ExpenseTypeId.Properties.DataSource = db.vwExpenseTypes.ToList();
                 ExpenseTypeId.Properties.ValueMember = "ExpenseTypeId";
                 ExpenseTypeId.Properties.DisplayMember = "ExpenseTypeName";
                 ExpenseTypeId.Properties.BestFitMode = BestFitMode.BestFit;
                 ExpenseTypeId.Properties.SearchMode = SearchMode.AutoComplete;
             }
-        
         }
 
         private bool formValid()
@@ -68,7 +71,6 @@ namespace Katswiri.Forms
                 result = false;
                 AmountTextEdit.ErrorText = "Required";
             }
-
 
             if (String.IsNullOrEmpty(ExpenseTypeId.Text))
             {
@@ -86,10 +88,8 @@ namespace Katswiri.Forms
                 {
                     using (db = new BEntities())
                     {
-
                         expense.Amount = Double.Parse(AmountTextEdit.Text);
                         expense.ExpenseTypeId = Convert.ToInt16(ExpenseTypeId.EditValue);
-                        expense.UserId = 1;
 
                         if (ExpenseId > 0)
                             db.Entry(expense).State = EntityState.Modified;
@@ -138,9 +138,8 @@ namespace Katswiri.Forms
                     if (row.ExpenseId != -1)
                     {
                         ExpenseId = row.ExpenseId;
-                        expense = db.Expenses.Where(x => x.ExpenseId == ExpenseId).FirstOrDefault();
-                        AmountTextEdit.Text = expense.Amount.ToString();
-                        ExpenseTypeId.EditValue = expense.ExpenseTypeId;
+                        AmountTextEdit.Text = row.Amount.ToString();
+                        ExpenseTypeId.EditValue = row.ExpenseTypeId;
                     }
                 }
                 btnSave.Caption = "Update";

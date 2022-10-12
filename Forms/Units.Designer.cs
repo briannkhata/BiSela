@@ -111,11 +111,11 @@ namespace Katswiri.Forms
             // gridControlUnits
             // 
             this.gridControlUnits.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControlUnits.Location = new System.Drawing.Point(0, 404);
+            this.gridControlUnits.Location = new System.Drawing.Point(0, 458);
             this.gridControlUnits.MainView = this.gridView1;
             this.gridControlUnits.MenuManager = this.ribbon;
             this.gridControlUnits.Name = "gridControlUnits";
-            this.gridControlUnits.Size = new System.Drawing.Size(516, 383);
+            this.gridControlUnits.Size = new System.Drawing.Size(516, 329);
             this.gridControlUnits.TabIndex = 2;
             this.gridControlUnits.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -142,7 +142,7 @@ namespace Katswiri.Forms
             this.layoutControl1.Location = new System.Drawing.Point(0, 232);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(516, 181);
+            this.layoutControl1.Size = new System.Drawing.Size(516, 196);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -189,7 +189,7 @@ namespace Katswiri.Forms
             this.layoutControlItem2.Control = this.textEditUnitQty;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(472, 62);
+            this.layoutControlItem2.Size = new System.Drawing.Size(472, 77);
             this.layoutControlItem2.Text = "Qty";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(63, 16);

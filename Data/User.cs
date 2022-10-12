@@ -14,13 +14,6 @@ namespace Katswiri.Data
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.Expenses = new HashSet<Expens>();
-            this.Incomes = new HashSet<Income>();
-        }
-    
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Gender { get; set; }
@@ -31,10 +24,5 @@ namespace Katswiri.Data
         public string Phone { get; set; }
         public int Deleted { get; set; }
         public string UserType { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Expens> Expenses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Income> Incomes { get; set; }
     }
 }

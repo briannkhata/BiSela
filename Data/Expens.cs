@@ -17,10 +17,8 @@ namespace Katswiri.Data
         public int ExpenseId { get; set; }
         public int ExpenseTypeId { get; set; }
         public double Amount { get; set; }
-        public int UserId { get; set; }
         public int Deleted { get; set; }
     
         public virtual ExpenseType ExpenseType { get; set; }
-        public virtual User User { get; set; }
     }
 }

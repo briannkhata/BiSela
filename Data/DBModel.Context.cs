@@ -25,13 +25,10 @@ namespace Katswiri.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
-        public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<IncomeType> IncomeTypes { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<ReceivingCart> ReceivingCarts { get; set; }
@@ -45,14 +42,11 @@ namespace Katswiri.Data
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
-        public virtual DbSet<vwBank> vwBanks { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
         public virtual DbSet<vwCart> vwCarts { get; set; }
         public virtual DbSet<vwCategory> vwCategories { get; set; }
         public virtual DbSet<vwCustomer> vwCustomers { get; set; }
-        public virtual DbSet<vwExpens> vwExpenses { get; set; }
         public virtual DbSet<vwExpenseType> vwExpenseTypes { get; set; }
-        public virtual DbSet<vwIncome> vwIncomes { get; set; }
         public virtual DbSet<vwIncomType> vwIncomTypes { get; set; }
         public virtual DbSet<vwOrderCustomer> vwOrderCustomers { get; set; }
         public virtual DbSet<vwPaymentType> vwPaymentTypes { get; set; }
@@ -71,5 +65,9 @@ namespace Katswiri.Data
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<vwShift> vwShifts { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
+        public virtual DbSet<vwIncome> vwIncomes { get; set; }
+        public virtual DbSet<Expens> Expenses { get; set; }
+        public virtual DbSet<Income> Incomes { get; set; }
+        public virtual DbSet<vwExpens> vwExpenses { get; set; }
     }
 }

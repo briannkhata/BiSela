@@ -15,9 +15,9 @@ namespace Katswiri.Data
     public partial class vwShift
     {
         public Nullable<double> OpenBalance { get; set; }
-        public Nullable<double> CloseBalance { get; set; }
+        public double CloseBalance { get; set; }
         public int ShiftId { get; set; }
         public Nullable<System.DateTime> OpenDate { get; set; }
-        public Nullable<System.DateTime> CloseDate { get; set; }
+        public System.DateTime CloseDate { get; set; }
     }
 }

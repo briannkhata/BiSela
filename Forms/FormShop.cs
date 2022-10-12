@@ -36,11 +36,13 @@ namespace Katswiri.Forms
                     {
                         ShopId = shops.ShopId;
                         NameTextEdit.Text = shops.ShopName;
-                        PhoneTextEdit.Text = shops.Currency;
+                        PhoneTextEdit.Text = shops.Phone;
                         TextEditAddress.Text = shops.Address;
                         PhoneTextEdit.Text = shops.Phone;
-                        TextEditAddress.Text = shops.Motto;
+                        textEditMotto.Text = shops.Motto;
                         EmailTextEdit.Text = shops.Email;
+                        textEditVat.Text = shops.Vat.ToString();
+                        labelShopId.Text = shops.ShopId.ToString();
                     }
                 }               
             } 
@@ -111,25 +113,18 @@ namespace Katswiri.Forms
                 {
                     using (db = new BEntities())
                     {
+                        formShop.ShopId = short.Parse(labelShopId.Text);
                         formShop.ShopName = NameTextEdit.Text.ToString();
                         formShop.Address = TextEditAddress.Text.ToString();
                         formShop.Phone = PhoneTextEdit.Text.ToString();
                         formShop.Email = EmailTextEdit.Text.ToString();
                         formShop.Currency = textEditCurrency.Text.ToString();
                         formShop.Motto = textEditMotto.Text.ToString();
-
-                        //if (ShopId > 0)
-                        //{
-                            db.Entry(formShop).State = EntityState.Modified;
-                            //else
-                            //{
-                            //    db.Shops.Add(formShop);
-                            //}
-                            db.SaveChanges();
-                        //}
+                        formShop.Vat = double.Parse(textEditVat.Text);
+                        db.Entry(formShop).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                     loadDetails();
-
                 }
             }
             catch (Exception ex)

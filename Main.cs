@@ -271,24 +271,7 @@ namespace Katswiri
             paymentTypes.Activate();
             paymentTypes.ShowDialog();
         }
-
-        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowBankFom();
-        }
-
-        private void ShowBankFom()
-        {
-            Banks banks = null;
-            if (banks == null || banks.IsDisposed)
-            {
-                banks = new Banks();
-            }
-            banks.Activate();
-            banks.ShowDialog();
-        }
-
+       
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
@@ -546,11 +529,7 @@ namespace Katswiri
             ShowPaymentTypeFom();
         }
 
-        private void barButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowBankFom();
-        }
+       
 
         private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
         {

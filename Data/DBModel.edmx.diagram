@@ -5,13 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="912513a75582498dbd7bff2a2b03d5a0" Name="Diagram1">
-        <EntityTypeShape EntityType="BModel.Bank" Width="1.5" PointX="2.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Brand" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Cart" Width="1.5" PointX="4.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.Expens" Width="1.5" PointX="10" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.ExpenseType" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.Income" Width="1.5" PointX="13" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.IncomeType" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.PaymentType" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.ReceivingCart" Width="1.5" PointX="9.75" PointY="10.5" IsExpanded="true" />
@@ -25,14 +22,11 @@
         <EntityTypeShape EntityType="BModel.Unit" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.User" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="8.75" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwBank" Width="1.5" PointX="13.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBrand" Width="1.5" PointX="4.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="15.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCategory" Width="1.5" PointX="15.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCustomer" Width="1.5" PointX="15.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwExpens" Width="1.5" PointX="15.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwExpenseType" Width="1.5" PointX="10.75" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwIncome" Width="1.5" PointX="15.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwIncomType" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwOrderCustomer" Width="1.5" PointX="6.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwPaymentType" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
@@ -46,10 +40,6 @@
         <EntityTypeShape EntityType="BModel.vwUnit" Width="1.5" PointX="19.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwUpdateStock" Width="1.5" PointX="19.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="19.75" PointY="8.5" IsExpanded="true" />
-        <AssociationConnector Association="BModel.FK_Expenses_ExpenseTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="BModel.FK_Expenses_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="BModel.FK_Incomes_IncomeTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="BModel.FK_Incomes_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="19.375" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.BillPayment" Width="1.5" PointX="20.375" PointY="12.75" />
         <EntityTypeShape EntityType="BModel.Product" Width="1.5" PointX="3" PointY="3.875" />
@@ -59,6 +49,12 @@
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
         <EntityTypeShape EntityType="BModel.vwShift" Width="1.5" PointX="13.375" PointY="20.75" />
         <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="5.375" PointY="21.75" />
+        <EntityTypeShape EntityType="BModel.vwIncome" Width="1.5" PointX="21.375" PointY="15.75" />
+        <EntityTypeShape EntityType="BModel.Expens" Width="1.5" PointX="10" PointY="4.625" />
+        <EntityTypeShape EntityType="BModel.Income" Width="1.5" PointX="13" PointY="4.375" />
+        <AssociationConnector Association="BModel.FK_Expenses_ExpenseTypes" />
+        <AssociationConnector Association="BModel.FK_Incomes_IncomeTypes" />
+        <EntityTypeShape EntityType="BModel.vwExpens" Width="1.5" PointX="14.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

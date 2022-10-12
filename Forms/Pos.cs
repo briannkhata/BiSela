@@ -319,7 +319,6 @@ namespace Katswiri.Forms
                                     {
 
                                     }
-
                                    double TotalPrice = ((UnitPrice * Qty) + Tax) - Discount;
                                    dataGridView1.Rows.Add(ProductCode, ProductName, SellingPrice.ToString("##,##0.00"), Qty.ToString("##,##0.00"), Discount.ToString("##,##0.00"), Tax.ToString("##,##0.00"), TotalPrice.ToString("##,##0.00"));
                                    calculate_money();

@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Banks">
-          <Key>
-            <PropertyRef Name="BankId" />
-          </Key>
-          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BankName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Deleted" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="BillPayments">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,7 +55,6 @@
           <Property Name="ExpenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ExpenseTypeId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ExpenseTypes">
@@ -81,7 +72,6 @@
           <Property Name="IncomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IncomeTypeId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="IncomeTypes">
@@ -285,16 +275,6 @@ warning 6002: The table/view 'bisela.dbo.Menus' does not have a primary key defi
           <Property Name="UserType" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwBanks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwBanks">
-          <Key>
-            <PropertyRef Name="BankId" />
-            <PropertyRef Name="BankName" />
-          </Key>
-          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BankName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwBrands' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwBrands">
           <Key>
@@ -354,13 +334,13 @@ warning 6002: The table/view 'bisela.dbo.vwExpenses' does not have a primary key
           <Key>
             <PropertyRef Name="ExpenseTypeName" />
             <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
             <PropertyRef Name="ExpenseId" />
+            <PropertyRef Name="ExpenseTypeId" />
           </Key>
           <Property Name="ExpenseTypeName" Type="varchar(max)" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ExpenseId" Type="int" Nullable="false" />
+          <Property Name="ExpenseTypeId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwExpenseTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -377,13 +357,13 @@ warning 6002: The table/view 'bisela.dbo.vwIncomes' does not have a primary key 
         <EntityType Name="vwIncomes">
           <Key>
             <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
             <PropertyRef Name="IncomeId" />
+            <PropertyRef Name="IncomeTypeId" />
           </Key>
-          <Property Name="IncomeTypeName" Type="varchar(max)" />
           <Property Name="Amount" Type="float" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IncomeTypeName" Type="varchar(max)" />
           <Property Name="IncomeId" Type="int" Nullable="false" />
+          <Property Name="IncomeTypeId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwIncomTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -524,13 +504,15 @@ warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary 
 warning 6002: The table/view 'bisela.dbo.vwShifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwShifts">
           <Key>
+            
             <PropertyRef Name="ShiftId" />
+            
           </Key>
           <Property Name="OpenBalance" Type="float" />
-          <Property Name="CloseBalance" Type="float" />
+          <Property Name="CloseBalance" Type="float" Nullable="false" />
           <Property Name="ShiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OpenDate" Type="datetime" />
-          <Property Name="CloseDate" Type="datetime" />
+          <Property Name="CloseDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -670,18 +652,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Expenses_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Expenses" Type="Self.Expenses" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Expenses">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Incomes_IncomeTypes">
           <End Role="IncomeTypes" Type="Self.IncomeTypes" Multiplicity="1" />
           <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
@@ -691,18 +661,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Principal>
             <Dependent Role="Incomes">
               <PropertyRef Name="IncomeTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Incomes_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Incomes" Type="Self.Incomes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Incomes">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -755,7 +713,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BModelStoreContainer">
-          <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillPayments" EntityType="Self.BillPayments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
@@ -784,12 +741,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [Menus].[Qty] AS [Qty], 
     [Menus].[Cost] AS [Cost]
     FROM [dbo].[Menus] AS [Menus]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwBanks" EntityType="Self.vwBanks" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vwBanks].[BankId] AS [BankId], 
-    [vwBanks].[BankName] AS [BankName]
-    FROM [dbo].[vwBanks] AS [vwBanks]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwBrands" EntityType="Self.vwBrands" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -831,8 +782,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <DefiningQuery>SELECT 
     [vwExpenses].[ExpenseTypeName] AS [ExpenseTypeName], 
     [vwExpenses].[Amount] AS [Amount], 
-    [vwExpenses].[Name] AS [Name], 
-    [vwExpenses].[ExpenseId] AS [ExpenseId]
+    [vwExpenses].[ExpenseId] AS [ExpenseId], 
+    [vwExpenses].[ExpenseTypeId] AS [ExpenseTypeId]
     FROM [dbo].[vwExpenses] AS [vwExpenses]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwExpenseTypes" EntityType="Self.vwExpenseTypes" store:Type="Views" store:Schema="dbo">
@@ -843,10 +794,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </EntitySet>
           <EntitySet Name="vwIncomes" EntityType="Self.vwIncomes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwIncomes].[IncomeTypeName] AS [IncomeTypeName], 
     [vwIncomes].[Amount] AS [Amount], 
-    [vwIncomes].[Name] AS [Name], 
-    [vwIncomes].[IncomeId] AS [IncomeId]
+    [vwIncomes].[IncomeTypeName] AS [IncomeTypeName], 
+    [vwIncomes].[IncomeId] AS [IncomeId], 
+    [vwIncomes].[IncomeTypeId] AS [IncomeTypeId]
     FROM [dbo].[vwIncomes] AS [vwIncomes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwIncomTypes" EntityType="Self.vwIncomTypes" store:Type="Views" store:Schema="dbo">
@@ -1035,16 +986,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
             <End Role="Expenses" EntitySet="Expenses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Expenses_Users" Association="Self.FK_Expenses_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Expenses" EntitySet="Expenses" />
-          </AssociationSet>
           <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
             <End Role="IncomeTypes" EntitySet="IncomeTypes" />
-            <End Role="Incomes" EntitySet="Incomes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
-            <End Role="Users" EntitySet="Users" />
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
           <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
@@ -1068,14 +1011,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Bank">
-          <Key>
-            <PropertyRef Name="BankId" />
-          </Key>
-          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Brand">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -1111,18 +1046,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Expens">
-          <Key>
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExpenseType" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="Expenses" ToRole="ExpenseTypes" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Expenses_Users" FromRole="Expenses" ToRole="Users" />
-        </EntityType>
         <EntityType Name="ExpenseType">
           <Key>
             <PropertyRef Name="ExpenseTypeId" />
@@ -1130,19 +1053,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_ExpenseTypes" FromRole="ExpenseTypes" ToRole="Expenses" />
-        </EntityType>
-        <EntityType Name="Income">
-          <Key>
-            <PropertyRef Name="IncomeId" />
-          </Key>
-          <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="IncomeType" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="Incomes" ToRole="IncomeTypes" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Incomes_Users" FromRole="Incomes" ToRole="Users" />
+          <NavigationProperty Name="Expenses" Relationship="BModel.FK_Expenses_ExpenseTypes" FromRole="ExpenseType" ToRole="Expens" />
         </EntityType>
         <EntityType Name="IncomeType">
           <Key>
@@ -1151,7 +1062,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="IncomeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_IncomeTypes" FromRole="IncomeTypes" ToRole="Incomes" />
+          <NavigationProperty Name="Incomes" Relationship="BModel.FK_Incomes_IncomeTypes" FromRole="IncomeType" ToRole="Income" />
         </EntityType>
         <EntityType Name="PaymentType">
           <Key>
@@ -1302,8 +1213,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Expenses" Relationship="Self.FK_Expenses_Users" FromRole="Users" ToRole="Expenses" />
-          <NavigationProperty Name="Incomes" Relationship="Self.FK_Incomes_Users" FromRole="Users" ToRole="Incomes" />
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Menu">
@@ -1317,14 +1226,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="Double" Nullable="false" />
           <Property Name="Cost" Type="Double" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwBank">
-          <Key>
-            <PropertyRef Name="BankId" />
-            <PropertyRef Name="BankName" />
-          </Key>
-          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="vwBrand">
           <Key>
@@ -1372,18 +1273,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="vwExpens">
-          <Key>
-            <PropertyRef Name="ExpenseTypeName" />
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="ExpenseId" />
-          </Key>
-          <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="vwExpenseType">
           <Key>
             <PropertyRef Name="ExpenseTypeName" />
@@ -1391,17 +1280,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </Key>
           <Property Name="ExpenseTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="vwIncome">
-          <Key>
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="IncomeId" />
-          </Key>
-          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IncomeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vwIncomType">
           <Key>
@@ -1617,62 +1495,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <Association Name="FK_Expenses_ExpenseTypes">
-          <End Role="ExpenseTypes" Type="Self.ExpenseType" Multiplicity="1" />
-          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExpenseTypes">
-              <PropertyRef Name="ExpenseTypeId" />
-            </Principal>
-            <Dependent Role="Expenses">
-              <PropertyRef Name="ExpenseTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Expenses_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Expenses" Type="Self.Expens" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Expenses">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Incomes_IncomeTypes">
-          <End Role="IncomeTypes" Type="Self.IncomeType" Multiplicity="1" />
-          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IncomeTypes">
-              <PropertyRef Name="IncomeTypeId" />
-            </Principal>
-            <Dependent Role="Incomes">
-              <PropertyRef Name="IncomeTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Incomes_Users">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Incomes" Type="Self.Income" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Incomes">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Banks" EntityType="Self.Bank" />
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Expenses" EntityType="Self.Expens" />
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
-          <EntitySet Name="Incomes" EntityType="Self.Income" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
           <EntitySet Name="ReceivingCarts" EntityType="Self.ReceivingCart" />
@@ -1686,14 +1513,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Menus" EntityType="Self.Menu" />
-          <EntitySet Name="vwBanks" EntityType="Self.vwBank" />
           <EntitySet Name="vwBrands" EntityType="Self.vwBrand" />
           <EntitySet Name="vwCarts" EntityType="Self.vwCart" />
           <EntitySet Name="vwCategories" EntityType="Self.vwCategory" />
           <EntitySet Name="vwCustomers" EntityType="Self.vwCustomer" />
-          <EntitySet Name="vwExpenses" EntityType="Self.vwExpens" />
           <EntitySet Name="vwExpenseTypes" EntityType="Self.vwExpenseType" />
-          <EntitySet Name="vwIncomes" EntityType="Self.vwIncome" />
           <EntitySet Name="vwIncomTypes" EntityType="Self.vwIncomType" />
           <EntitySet Name="vwOrderCustomers" EntityType="Self.vwOrderCustomer" />
           <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentType" />
@@ -1707,22 +1531,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwUnits" EntityType="Self.vwUnit" />
           <EntitySet Name="vwUpdateStocks" EntityType="Self.vwUpdateStock" />
           <EntitySet Name="vwUsers" EntityType="Self.vwUser" />
-          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="Self.FK_Expenses_ExpenseTypes">
-            <End Role="ExpenseTypes" EntitySet="ExpenseTypes" />
-            <End Role="Expenses" EntitySet="Expenses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Expenses_Users" Association="Self.FK_Expenses_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Expenses" EntitySet="Expenses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="Self.FK_Incomes_IncomeTypes">
-            <End Role="IncomeTypes" EntitySet="IncomeTypes" />
-            <End Role="Incomes" EntitySet="Incomes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Incomes_Users" Association="Self.FK_Incomes_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Incomes" EntitySet="Incomes" />
-          </AssociationSet>
           <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <EntitySet Name="BillPayments" EntityType="BModel.BillPayment" />
           <EntitySet Name="Products" EntityType="BModel.Product" />
@@ -1744,6 +1552,18 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           </AssociationSet>
           <EntitySet Name="vwShifts" EntityType="BModel.vwShift" />
           <EntitySet Name="Shifts" EntityType="BModel.Shift" />
+          <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
+          <EntitySet Name="Expenses" EntityType="BModel.Expens" />
+          <EntitySet Name="Incomes" EntityType="BModel.Income" />
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="BModel.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
+            <End Role="Expens" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="BModel.FK_Incomes_IncomeTypes">
+            <End Role="IncomeType" EntitySet="IncomeTypes" />
+            <End Role="Income" EntitySet="Incomes" />
+          </AssociationSet>
+          <EntitySet Name="vwExpenses" EntityType="BModel.vwExpens" />
           </EntityContainer>
         <EntityType Name="vwProduct">
           <Key>
@@ -1848,10 +1668,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="ShiftId" />
           </Key>
           <Property Name="OpenBalance" Type="Double" />
-          <Property Name="CloseBalance" Type="Double" />
+          <Property Name="CloseBalance" Type="Double" Nullable="false" />
           <Property Name="ShiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OpenDate" Type="DateTime" Precision="3" />
-          <Property Name="CloseDate" Type="DateTime" Precision="3" />
+          <Property Name="CloseDate" Type="DateTime" Precision="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Shift">
           <Key>
@@ -1865,21 +1685,79 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="CloseDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="vwIncome">
+          <Key>
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="IncomeId" />
+            <PropertyRef Name="IncomeTypeId" />
+          </Key>
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="IncomeTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IncomeId" Type="Int32" Nullable="false" />
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expens">
+          <Key>
+            <PropertyRef Name="ExpenseId" />
+          </Key>
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpenseType" Relationship="BModel.FK_Expenses_ExpenseTypes" FromRole="Expens" ToRole="ExpenseType" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeId" />
+          </Key>
+          <Property Name="IncomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IncomeType" Relationship="BModel.FK_Incomes_IncomeTypes" FromRole="Income" ToRole="IncomeType" />
+        </EntityType>
+        <Association Name="FK_Expenses_ExpenseTypes">
+          <End Type="BModel.ExpenseType" Role="ExpenseType" Multiplicity="1" />
+          <End Type="BModel.Expens" Role="Expens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpenseType">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Principal>
+            <Dependent Role="Expens">
+              <PropertyRef Name="ExpenseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incomes_IncomeTypes">
+          <End Type="BModel.IncomeType" Role="IncomeType" Multiplicity="1" />
+          <End Type="BModel.Income" Role="Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeType">
+              <PropertyRef Name="IncomeTypeId" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="IncomeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwExpens">
+          <Key>
+            <PropertyRef Name="ExpenseTypeName" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="ExpenseId" />
+            <PropertyRef Name="ExpenseTypeId" />
+          </Key>
+          <Property Name="ExpenseTypeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="ExpenseId" Type="Int32" Nullable="false" />
+          <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BModelStoreContainer" CdmEntityContainer="BEntities">
-          <EntitySetMapping Name="Banks">
-            <EntityTypeMapping TypeName="BModel.Bank">
-              <MappingFragment StoreEntitySet="Banks">
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="BModel.Brand">
               <MappingFragment StoreEntitySet="Brands">
@@ -1916,33 +1794,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="BModel.Expens">
-              <MappingFragment StoreEntitySet="Expenses">
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
-                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ExpenseTypes">
             <EntityTypeMapping TypeName="BModel.ExpenseType">
               <MappingFragment StoreEntitySet="ExpenseTypes">
                 <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
                 <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Incomes">
-            <EntityTypeMapping TypeName="BModel.Income">
-              <MappingFragment StoreEntitySet="Incomes">
-                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
-                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2126,14 +1982,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwBanks">
-            <EntityTypeMapping TypeName="BModel.vwBank">
-              <MappingFragment StoreEntitySet="vwBanks">
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwBrands">
             <EntityTypeMapping TypeName="BModel.vwBrand">
               <MappingFragment StoreEntitySet="vwBrands">
@@ -2178,31 +2026,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwExpenses">
-            <EntityTypeMapping TypeName="BModel.vwExpens">
-              <MappingFragment StoreEntitySet="vwExpenses">
-                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwExpenseTypes">
             <EntityTypeMapping TypeName="BModel.vwExpenseType">
               <MappingFragment StoreEntitySet="vwExpenseTypes">
                 <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
                 <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwIncomes">
-            <EntityTypeMapping TypeName="BModel.vwIncome">
-              <MappingFragment StoreEntitySet="vwIncomes">
-                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2457,6 +2285,46 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="CloseBalance" ColumnName="CloseBalance" />
                 <ScalarProperty Name="OpenBalance" ColumnName="OpenBalance" />
                 <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwIncomes">
+            <EntityTypeMapping TypeName="BModel.vwIncome">
+              <MappingFragment StoreEntitySet="vwIncomes">
+                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
+                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+                <ScalarProperty Name="IncomeTypeName" ColumnName="IncomeTypeName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="BModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="BModel.Income">
+              <MappingFragment StoreEntitySet="Incomes">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IncomeTypeId" ColumnName="IncomeTypeId" />
+                <ScalarProperty Name="IncomeId" ColumnName="IncomeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwExpenses">
+            <EntityTypeMapping TypeName="BModel.vwExpens">
+              <MappingFragment StoreEntitySet="vwExpenses">
+                <ScalarProperty Name="ExpenseTypeId" ColumnName="ExpenseTypeId" />
+                <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
