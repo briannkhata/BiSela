@@ -18,6 +18,7 @@ namespace Katswiri.Forms
     {
         BEntities db;
         Product product = new Product();
+        int ProductId;
         public FormProductList()
         {
             InitializeComponent();
@@ -25,10 +26,12 @@ namespace Katswiri.Forms
             loadBrands();
             loadCategories();
             loadUnits();
-            //gridView1.Columns["ProductId"].Visible = false;
-            //gridView1.Columns["BrandId"].Visible = false;
-            //gridView1.Columns["UnitId"].Visible = false;
-            btnDelete.Enabled = false;
+            gridView3.Columns["ProductId"].Visible = false;
+            gridView3.Columns["BrandId"].Visible = false;
+            gridView3.Columns["UnitId"].Visible = false;
+            gridView3.Columns["CategoryId"].Visible = false;
+            gridView3.OptionsBehavior.Editable = false;
+            gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
         }
 
 
@@ -36,12 +39,8 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
+                gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwProducts.ToList();
-                //gridView1.Columns["Product Id"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-            
             }
         }
 
@@ -92,11 +91,7 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwProducts.Where(x=>x.CategoryId == categoryId).ToList();
-                //gridView1.Columns["Product Id"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-
+              
             }
         }
 
@@ -107,11 +102,7 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwProducts.Where(x => x.BrandId == brandId).ToList();
-                //gridView1.Columns["Product Id"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-
+            
             }
         }
 
@@ -122,11 +113,7 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwProducts.Where(x => x.UnitId == unitId).ToList();
-                //gridView1.Columns["Product Id"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-
+       
             }
         }
 
@@ -135,11 +122,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwProducts.ToList();
-                //gridView1.Columns["Product Id"].Visible = false;
-                gridView1.OptionsBehavior.Editable = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-                //gridView1.OptionsView.ShowIndicator = false;
-
             }
         }
 
@@ -160,23 +142,26 @@ namespace Katswiri.Forms
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-            var selectedRows = gridView1.GetSelectedRows();
-            var row = ((vwProduct)gridView1.GetRow(selectedRows[0]));
+            Products products = new Products();
+            var selectedRows = gridView3.GetSelectedRows();
+            var row = ((vwProduct)gridView3.GetRow(selectedRows[0]));
             using (db = new BEntities())
             {
                 if (row.ProductId != -1)
                 {
-                    //ProductId = row.ProductId;
-                    //product = db.Products.Where(x => x.ProductId == ProductId).FirstOrDefault();
-                    //ProductNameTextEdit.Text = product.ProductName;
-                    //ProductCodeTextEdit.Text = product.ProductCode;
-                    //lookUpEditTaxStatus.EditValue = product.TaxStatus;
-                    //UnitIdLookUpEdit.EditValue = product.UnitId;
-                    //CategoryIdLookUpEdit.EditValue = product.CategoryId;
-                    //BrandLookUpEdit.EditValue = product.BrandId;
-                    //textEditOrderLevel.Text = product.ReOrderLevel.ToString();
+                    products.textEditBarcode.Text = row.ProductCode;
+                    products.TextEditDescription.Text = row.Description;
+                    products.UnitIdLookUpEdit.EditValue = row.UnitId;
+                    products.CategoryIdLookUpEdit.EditValue = row.CategoryId;
+                    products.textEditOrderLevel.Text = row.ReOrderLevel.ToString();
+                    products.BrandLookUpEdit.EditValue = row.BrandId;
+                    products.lookUpEditTaxStatus.EditValue = row.TaxStatus;
+                    products.ProductCodeTextEdit.Text = row.ProductCode;
+                    products.ProductNameTextEdit.Text = row.ProductName;
+                    products.lblProductId.Text = row.ProductId.ToString();
                 }
             }
+            products.ShowDialog();
             btnDelete.Enabled = true;
         }
 

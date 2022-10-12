@@ -25,5 +25,8 @@ namespace Katswiri.Data
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
         public int UnitId { get; set; }
+        public Nullable<double> ReOrderLevel { get; set; }
+        public string BarCode { get; set; }
+        public string Description { get; set; }
     }
 }

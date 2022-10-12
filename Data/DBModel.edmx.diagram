@@ -40,13 +40,7 @@
         <EntityTypeShape EntityType="BModel.vwUnit" Width="1.5" PointX="19.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwUpdateStock" Width="1.5" PointX="19.75" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="19.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="19.375" PointY="17.75" />
         <EntityTypeShape EntityType="BModel.BillPayment" Width="1.5" PointX="20.375" PointY="12.75" />
-        <EntityTypeShape EntityType="BModel.Product" Width="1.5" PointX="3" PointY="3.875" />
-        <AssociationConnector Association="BModel.FK_Products_Brands" />
-        <AssociationConnector Association="BModel.FK_Products_Categories" />
-        <AssociationConnector Association="BModel.FK_Products_Units" />
-        <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
         <EntityTypeShape EntityType="BModel.vwShift" Width="1.5" PointX="13.375" PointY="20.75" />
         <EntityTypeShape EntityType="BModel.Shift" Width="1.5" PointX="5.375" PointY="21.75" />
         <EntityTypeShape EntityType="BModel.vwIncome" Width="1.5" PointX="21.375" PointY="15.75" />
@@ -55,6 +49,12 @@
         <AssociationConnector Association="BModel.FK_Expenses_ExpenseTypes" />
         <AssociationConnector Association="BModel.FK_Incomes_IncomeTypes" />
         <EntityTypeShape EntityType="BModel.vwExpens" Width="1.5" PointX="14.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BModel.Product" Width="1.5" PointX="3" PointY="3.875" />
+        <EntityTypeShape EntityType="BModel.vwProduct" Width="1.5" PointX="19.375" PointY="18.75" />
+        <AssociationConnector Association="BModel.FK_Products_Brands" />
+        <AssociationConnector Association="BModel.FK_Products_Categories" />
+        <AssociationConnector Association="BModel.FK_Products_Units" />
+        <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

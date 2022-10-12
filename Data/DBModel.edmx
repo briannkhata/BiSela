@@ -420,6 +420,7 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
             <PropertyRef Name="CategoryId" />
             <PropertyRef Name="BrandId" />
             <PropertyRef Name="UnitId" />
+            <PropertyRef Name="BarCode" />
           </Key>
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
@@ -432,6 +433,9 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="BrandId" Type="int" Nullable="false" />
           <Property Name="UnitId" Type="int" Nullable="false" />
+          <Property Name="ReOrderLevel" Type="float" />
+          <Property Name="BarCode" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -846,7 +850,10 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwProducts].[TaxStatus] AS [TaxStatus], 
     [vwProducts].[CategoryId] AS [CategoryId], 
     [vwProducts].[BrandId] AS [BrandId], 
-    [vwProducts].[UnitId] AS [UnitId]
+    [vwProducts].[UnitId] AS [UnitId], 
+    [vwProducts].[ReOrderLevel] AS [ReOrderLevel], 
+    [vwProducts].[BarCode] AS [BarCode], 
+    [vwProducts].[Description] AS [Description]
     FROM [dbo].[vwProducts] AS [vwProducts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwReceivingCart" EntityType="Self.vwReceivingCart" store:Type="Views" store:Schema="dbo">
@@ -1540,9 +1547,23 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwUnits" EntityType="Self.vwUnit" />
           <EntitySet Name="vwUpdateStocks" EntityType="Self.vwUpdateStock" />
           <EntitySet Name="vwUsers" EntityType="Self.vwUser" />
-          <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <EntitySet Name="BillPayments" EntityType="BModel.BillPayment" />
+          <EntitySet Name="vwShifts" EntityType="BModel.vwShift" />
+          <EntitySet Name="Shifts" EntityType="BModel.Shift" />
+          <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
+          <EntitySet Name="Expenses" EntityType="BModel.Expens" />
+          <EntitySet Name="Incomes" EntityType="BModel.Income" />
+          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="BModel.FK_Expenses_ExpenseTypes">
+            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
+            <End Role="Expens" EntitySet="Expenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="BModel.FK_Incomes_IncomeTypes">
+            <End Role="IncomeType" EntitySet="IncomeTypes" />
+            <End Role="Income" EntitySet="Incomes" />
+          </AssociationSet>
+          <EntitySet Name="vwExpenses" EntityType="BModel.vwExpens" />
           <EntitySet Name="Products" EntityType="BModel.Product" />
+          <EntitySet Name="vwProducts" EntityType="BModel.vwProduct" />
           <AssociationSet Name="FK_Products_Brands" Association="BModel.FK_Products_Brands">
             <End Role="Brand" EntitySet="Brands" />
             <End Role="Product" EntitySet="Products" />
@@ -1559,46 +1580,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Product" EntitySet="Products" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
-          <EntitySet Name="vwShifts" EntityType="BModel.vwShift" />
-          <EntitySet Name="Shifts" EntityType="BModel.Shift" />
-          <EntitySet Name="vwIncomes" EntityType="BModel.vwIncome" />
-          <EntitySet Name="Expenses" EntityType="BModel.Expens" />
-          <EntitySet Name="Incomes" EntityType="BModel.Income" />
-          <AssociationSet Name="FK_Expenses_ExpenseTypes" Association="BModel.FK_Expenses_ExpenseTypes">
-            <End Role="ExpenseType" EntitySet="ExpenseTypes" />
-            <End Role="Expens" EntitySet="Expenses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Incomes_IncomeTypes" Association="BModel.FK_Incomes_IncomeTypes">
-            <End Role="IncomeType" EntitySet="IncomeTypes" />
-            <End Role="Income" EntitySet="Incomes" />
-          </AssociationSet>
-          <EntitySet Name="vwExpenses" EntityType="BModel.vwExpens" />
           </EntityContainer>
-        <EntityType Name="vwProduct">
-          <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="CategoryName" />
-            <PropertyRef Name="BrandName" />
-            <PropertyRef Name="UnitName" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="CategoryId" />
-            <PropertyRef Name="BrandId" />
-            <PropertyRef Name="UnitId" />
-          </Key>
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="BrandId" Type="Int32" Nullable="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="BillPayment">
           <Key>
             <PropertyRef Name="Id" />
@@ -1609,75 +1591,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Amount" Type="Double" />
           <Property Name="PaymentDate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UnitId" Type="Int32" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="BrandId" Type="Int32" />
-          <Property Name="ReOrderLevel" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
-          <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
-          <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
-        </EntityType>
-        <Association Name="FK_Products_Brands">
-          <End Type="BModel.Brand" Role="Brand" Multiplicity="0..1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Brand">
-              <PropertyRef Name="BrandId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="BrandId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Categories">
-          <End Type="BModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Units">
-          <End Type="BModel.Unit" Role="Unit" Multiplicity="1" />
-          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unit">
-              <PropertyRef Name="UnitId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="UnitId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SaleDetails_Products">
-          <End Type="BModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="BModel.SaleDetail" Role="SaleDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="SaleDetail">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="vwShift">
           <Key>
             <PropertyRef Name="ShiftId" />
@@ -1767,6 +1680,104 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ExpenseId" Type="Int32" Nullable="false" />
           <Property Name="ExpenseTypeId" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" />
+          <Property Name="ReOrderLevel" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Brand" Relationship="BModel.FK_Products_Brands" FromRole="Product" ToRole="Brand" />
+          <NavigationProperty Name="Category" Relationship="BModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Unit" Relationship="BModel.FK_Products_Units" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="SaleDetails" Relationship="BModel.FK_SaleDetails_Products" FromRole="Product" ToRole="SaleDetail" />
+        </EntityType>
+        <EntityType Name="vwProduct">
+          <Key>
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="BrandName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="CategoryId" />
+            <PropertyRef Name="BrandId" />
+            <PropertyRef Name="UnitId" />
+            <PropertyRef Name="BarCode" />
+          </Key>
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="BrandId" Type="Int32" Nullable="false" />
+          <Property Name="UnitId" Type="Int32" Nullable="false" />
+          <Property Name="ReOrderLevel" Type="Double" />
+          <Property Name="BarCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Products_Brands">
+          <End Type="BModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Type="BModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Units">
+          <End Type="BModel.Unit" Role="Unit" Multiplicity="1" />
+          <End Type="BModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleDetails_Products">
+          <End Type="BModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="BModel.SaleDetail" Role="SaleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="SaleDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2236,23 +2247,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwProducts">
-            <EntityTypeMapping TypeName="BModel.vwProduct">
-              <MappingFragment StoreEntitySet="vwProducts">
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="BillPayments">
             <EntityTypeMapping TypeName="BModel.BillPayment">
               <MappingFragment StoreEntitySet="BillPayments">
@@ -2261,24 +2255,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="BModel.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
-                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2343,6 +2319,44 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="ExpenseId" ColumnName="ExpenseId" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ExpenseTypeName" ColumnName="ExpenseTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="BModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwProducts">
+            <EntityTypeMapping TypeName="BModel.vwProduct">
+              <MappingFragment StoreEntitySet="vwProducts">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ReOrderLevel" ColumnName="ReOrderLevel" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
