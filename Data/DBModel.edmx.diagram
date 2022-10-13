@@ -21,7 +21,6 @@
         <EntityTypeShape EntityType="BModel.Stock" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Unit" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.User" Width="1.5" PointX="7.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="8.75" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwBrand" Width="1.5" PointX="4.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCart" Width="1.5" PointX="15.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwCategory" Width="1.5" PointX="15.75" PointY="5.5" IsExpanded="true" />
@@ -55,6 +54,10 @@
         <AssociationConnector Association="BModel.FK_Products_Categories" />
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
+        <EntityTypeShape EntityType="BModel.Recipe" Width="1.5" PointX="6.5" PointY="25.75" />
+        <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="8.75" PointY="25.75" />
+        <AssociationConnector Association="BModel.FK_Menus_Recipes" />
+        <EntityTypeShape EntityType="BModel.vwMenu" Width="1.5" PointX="15.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

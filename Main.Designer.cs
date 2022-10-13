@@ -67,6 +67,8 @@ namespace Katswiri
             this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem31 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem32 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup22 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -79,6 +81,7 @@ namespace Katswiri
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup21 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup14 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup19 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -92,9 +95,8 @@ namespace Katswiri
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem31 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,9 +145,10 @@ namespace Katswiri
             this.barButtonItem28,
             this.barButtonItem29,
             this.barButtonItem30,
-            this.barButtonItem31});
+            this.barButtonItem31,
+            this.barButtonItem32});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 50;
+            this.ribbon.MaxItemId = 51;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -432,6 +435,21 @@ namespace Katswiri
             this.barButtonItem30.Name = "barButtonItem30";
             this.barButtonItem30.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem30_ItemClick);
             // 
+            // barButtonItem31
+            // 
+            this.barButtonItem31.Caption = "Payment History";
+            this.barButtonItem31.Id = 49;
+            this.barButtonItem31.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.payment;
+            this.barButtonItem31.Name = "barButtonItem31";
+            // 
+            // barButtonItem32
+            // 
+            this.barButtonItem32.Caption = "Menu List";
+            this.barButtonItem32.Id = 50;
+            this.barButtonItem32.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.differentfirstpage;
+            this.barButtonItem32.Name = "barButtonItem32";
+            this.barButtonItem32.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem32_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -475,7 +493,8 @@ namespace Katswiri
             this.ribbonPageGroup3,
             this.ribbonPageGroup5,
             this.ribbonPageGroup21,
-            this.ribbonPageGroup14});
+            this.ribbonPageGroup14,
+            this.ribbonPageGroup19});
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "Manage Products";
             // 
@@ -506,6 +525,11 @@ namespace Katswiri
             this.ribbonPageGroup14.ItemLinks.Add(this.barButtonItem26);
             this.ribbonPageGroup14.Name = "ribbonPageGroup14";
             this.ribbonPageGroup14.Text = "Manage Stock";
+            // 
+            // ribbonPageGroup19
+            // 
+            this.ribbonPageGroup19.ItemLinks.Add(this.barButtonItem32);
+            this.ribbonPageGroup19.Name = "ribbonPageGroup19";
             // 
             // ribbonPage4
             // 
@@ -586,6 +610,11 @@ namespace Katswiri
             this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem23);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             // 
+            // ribbonPageGroup18
+            // 
+            this.ribbonPageGroup18.ItemLinks.Add(this.barButtonItem31);
+            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.userNameDisplay);
@@ -593,18 +622,6 @@ namespace Katswiri
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1432, 36);
-            // 
-            // ribbonPageGroup18
-            // 
-            this.ribbonPageGroup18.ItemLinks.Add(this.barButtonItem31);
-            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
-            // 
-            // barButtonItem31
-            // 
-            this.barButtonItem31.Caption = "Payment History";
-            this.barButtonItem31.Id = 49;
-            this.barButtonItem31.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.payment;
-            this.barButtonItem31.Name = "barButtonItem31";
             // 
             // Main
             // 
@@ -697,5 +714,7 @@ namespace Katswiri
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem31;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem32;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup19;
     }
 }

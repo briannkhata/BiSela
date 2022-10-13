@@ -532,9 +532,6 @@ namespace Katswiri
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             ShowPaymentTypeFom();
         }
-
-       
-
         private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
@@ -545,6 +542,13 @@ namespace Katswiri
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             ShowShiftFom();
+        }
+
+        private void barButtonItem32_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            MenuList menuList = new MenuList();
+            menuList.ShowDialog();
         }
     }
 }

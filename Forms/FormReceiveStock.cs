@@ -20,14 +20,15 @@ namespace Katswiri.Forms
         ReceivingCart receivingCart = new ReceivingCart();
         ReceivingDetail receivingDetail;
         Receiving receiving;
-        Stock stock; 
+        Stock stock;
+        DateTimePicker dateTimePicker = new DateTimePicker();
         public FormReceiveStock()
         {
             InitializeComponent();
             autoCompleteSearch();
-
+        
         }
-      
+
         private void autoCompleteSearch()
         {
             using (db = new BEntities())
@@ -222,7 +223,6 @@ namespace Katswiri.Forms
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice
                             };
-
                         }
                         else
                         {
@@ -271,6 +271,29 @@ namespace Katswiri.Forms
                         dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
                     }
                 }
+        }
+
+        private void DPTextchange(object sender,EventArgs e)
+        {
+            dataGridView1.CurrentCell.Value = dateTimePicker.Text.ToString();
+        }
+
+        private void DPClose(object sender, EventArgs e)
+        {
+            dateTimePicker.Visible = false;
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                dataGridView1.Controls.Add(dateTimePicker);
+                dateTimePicker.Format = DateTimePickerFormat.Custom;
+                dateTimePicker.CustomFormat = "dd/MM/yyy";
+                Rectangle rectangle = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex,e.RowIndex,true);
+                dateTimePicker.Size = new Size(rectangle.Width,rectangle.Height);
+                dateTimePicker.Location = new Point(rectangle.X,rectangle.Y);
+            }
         }
     }
 }

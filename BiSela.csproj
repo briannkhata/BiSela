@@ -213,6 +213,9 @@
     <Compile Include="Data\ReceivingDetail.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Recipe.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Sale.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -259,6 +262,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwIncomType.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\vwMenu.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwOrderCustomer.cs">
@@ -319,6 +325,12 @@
     <Compile Include="Forms\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAddMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddMenu.Designer.cs">
+      <DependentUpon>FormAddMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -330,6 +342,12 @@
     </Compile>
     <Compile Include="Forms\FormFilterReport.Designer.cs">
       <DependentUpon>FormFilterReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MenuList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MenuList.Designer.cs">
+      <DependentUpon>MenuList.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMoveStock.cs">
       <SubType>Form</SubType>
@@ -502,11 +520,17 @@
     <EmbeddedResource Include="Forms\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddMenu.resx">
+      <DependentUpon>FormAddMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomer.resx">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFilterReport.resx">
       <DependentUpon>FormFilterReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenuList.resx">
+      <DependentUpon>MenuList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMoveStock.resx">
       <DependentUpon>FormMoveStock.cs</DependentUpon>
@@ -666,6 +690,11 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\deletetablerows.svg" />
+    <None Include="Resources\saveas3.svg" />
+    <None Include="Resources\differentfirstpage.svg" />
+    <None Include="Resources\deletetable.svg" />
+    <None Include="Resources\actions_addcircled.svg" />
     <None Include="Resources\payment.svg" />
     <None Include="Resources\refreshallpivottable.svg" />
     <None Include="Resources\addparagraphtotableofcontents.svg" />
