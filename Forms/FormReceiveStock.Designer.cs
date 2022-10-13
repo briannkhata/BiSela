@@ -30,7 +30,6 @@ namespace Katswiri.Forms
         private void InitializeComponent()
         {
             this.textBoxSearch = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -42,46 +41,60 @@ namespace Katswiri.Forms
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dateTimePickerReceivingDate = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePickerDeliveryDate = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxSupplier = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPurchasingOrder = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxDeliveryNote = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.radioButtonShop = new System.Windows.Forms.RadioButton();
             this.radioButtonStores = new System.Windows.Forms.RadioButton();
+            this.radioButtonShop = new System.Windows.Forms.RadioButton();
+            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.textEditDN = new DevExpress.XtraEditors.TextEdit();
+            this.textEditPO = new DevExpress.XtraEditors.TextEdit();
+            this.textEditSup = new DevExpress.XtraEditors.TextEdit();
+            this.dateEditRD = new DevExpress.XtraEditors.DateEdit();
+            this.dateEditDD = new DevExpress.XtraEditors.DateEdit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPO.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDD.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDD.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(187, 377);
+            this.textBoxSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSearch.Location = new System.Drawing.Point(735, 137);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(482, 48);
+            this.textBoxSearch.Size = new System.Drawing.Size(439, 32);
             this.textBoxSearch.TabIndex = 0;
             this.textBoxSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxSearch_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(15, 377);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 48);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Item Code";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ribbonPage1
             // 
@@ -100,7 +113,7 @@ namespace Katswiri.Forms
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Receive Items";
+            this.barButtonItem1.Caption = "Save Items";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.saveas1;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -130,7 +143,6 @@ namespace Katswiri.Forms
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.managequeries1;
             this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // ribbonPageGroup4
             // 
@@ -160,149 +172,20 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1283, 232);
+            this.ribbon.Size = new System.Drawing.Size(1198, 232);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gridControl1);
-            this.panel1.Location = new System.Drawing.Point(12, 436);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Location = new System.Drawing.Point(10, 434);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1259, 354);
+            this.panel1.Size = new System.Drawing.Size(1176, 353);
             this.panel1.TabIndex = 5;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.ribbon;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1259, 354);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // panel2
-            // 
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.Controls.Add(this.radioButtonStores);
-            this.panel2.Controls.Add(this.radioButtonShop);
-            this.panel2.Controls.Add(this.dateTimePickerReceivingDate);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.dateTimePickerDeliveryDate);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBoxSupplier);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.textBoxPurchasingOrder);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.textBoxDeliveryNote);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(0, 230);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1283, 141);
-            this.panel2.TabIndex = 7;
-            // 
-            // dateTimePickerReceivingDate
-            // 
-            this.dateTimePickerReceivingDate.Location = new System.Drawing.Point(1007, 48);
-            this.dateTimePickerReceivingDate.Name = "dateTimePickerReceivingDate";
-            this.dateTimePickerReceivingDate.Size = new System.Drawing.Size(253, 23);
-            this.dateTimePickerReceivingDate.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(1003, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 29);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Receiving Date";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dateTimePickerDeliveryDate
-            // 
-            this.dateTimePickerDeliveryDate.Location = new System.Drawing.Point(339, 87);
-            this.dateTimePickerDeliveryDate.Name = "dateTimePickerDeliveryDate";
-            this.dateTimePickerDeliveryDate.Size = new System.Drawing.Size(340, 23);
-            this.dateTimePickerDeliveryDate.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(196, 83);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 29);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Delivery Date";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxSupplier
-            // 
-            this.textBoxSupplier.Location = new System.Drawing.Point(708, 50);
-            this.textBoxSupplier.Name = "textBoxSupplier";
-            this.textBoxSupplier.Size = new System.Drawing.Size(289, 23);
-            this.textBoxSupplier.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(704, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 29);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Supplier";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxPurchasingOrder
-            // 
-            this.textBoxPurchasingOrder.Location = new System.Drawing.Point(339, 50);
-            this.textBoxPurchasingOrder.Name = "textBoxPurchasingOrder";
-            this.textBoxPurchasingOrder.Size = new System.Drawing.Size(363, 23);
-            this.textBoxPurchasingOrder.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(338, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 29);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Purchasing Order";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxDeliveryNote
-            // 
-            this.textBoxDeliveryNote.Location = new System.Drawing.Point(33, 50);
-            this.textBoxDeliveryNote.Name = "textBoxDeliveryNote";
-            this.textBoxDeliveryNote.Size = new System.Drawing.Size(300, 23);
-            this.textBoxDeliveryNote.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(29, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 29);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Delivery Note";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // radioButtonShop
-            // 
-            this.radioButtonShop.AutoSize = true;
-            this.radioButtonShop.Location = new System.Drawing.Point(708, 91);
-            this.radioButtonShop.Name = "radioButtonShop";
-            this.radioButtonShop.Size = new System.Drawing.Size(65, 23);
-            this.radioButtonShop.TabIndex = 10;
-            this.radioButtonShop.TabStop = true;
-            this.radioButtonShop.Text = "Shop";
-            this.radioButtonShop.UseVisualStyleBackColor = true;
             // 
             // radioButtonStores
             // 
             this.radioButtonStores.AutoSize = true;
-            this.radioButtonStores.Location = new System.Drawing.Point(840, 89);
+            this.radioButtonStores.Location = new System.Drawing.Point(490, 180);
             this.radioButtonStores.Name = "radioButtonStores";
             this.radioButtonStores.Size = new System.Drawing.Size(69, 23);
             this.radioButtonStores.TabIndex = 11;
@@ -310,15 +193,273 @@ namespace Katswiri.Forms
             this.radioButtonStores.Text = "Stores";
             this.radioButtonStores.UseVisualStyleBackColor = true;
             // 
+            // radioButtonShop
+            // 
+            this.radioButtonShop.BackColor = System.Drawing.Color.Transparent;
+            this.radioButtonShop.Location = new System.Drawing.Point(490, 137);
+            this.radioButtonShop.Name = "radioButtonShop";
+            this.radioButtonShop.Size = new System.Drawing.Size(218, 31);
+            this.radioButtonShop.TabIndex = 10;
+            this.radioButtonShop.TabStop = true;
+            this.radioButtonShop.Text = "Shop";
+            this.radioButtonShop.UseVisualStyleBackColor = false;
+            // 
+            // dataLayoutControl1
+            // 
+            this.dataLayoutControl1.Controls.Add(this.textEditDN);
+            this.dataLayoutControl1.Controls.Add(this.textEditPO);
+            this.dataLayoutControl1.Controls.Add(this.textEditSup);
+            this.dataLayoutControl1.Controls.Add(this.dateEditRD);
+            this.dataLayoutControl1.Controls.Add(this.dateEditDD);
+            this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
+            this.dataLayoutControl1.Name = "dataLayoutControl1";
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.BackColor = System.Drawing.Color.LightGray;
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.Options.UseBackColor = true;
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.Options.UseFont = true;
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.Options.UseTextOptions = true;
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.dataLayoutControl1.Root = this.Root;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1198, 196);
+            this.dataLayoutControl1.TabIndex = 9;
+            this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(1198, 196);
+            this.Root.TextVisible = false;
+            // 
+            // textEditDN
+            // 
+            this.textEditDN.Location = new System.Drawing.Point(24, 118);
+            this.textEditDN.MenuManager = this.ribbon;
+            this.textEditDN.Name = "textEditDN";
+            this.textEditDN.Size = new System.Drawing.Size(226, 26);
+            this.textEditDN.StyleController = this.dataLayoutControl1;
+            this.textEditDN.TabIndex = 4;
+            // 
+            // textEditPO
+            // 
+            this.textEditPO.Location = new System.Drawing.Point(254, 118);
+            this.textEditPO.MenuManager = this.ribbon;
+            this.textEditPO.Name = "textEditPO";
+            this.textEditPO.Size = new System.Drawing.Size(224, 26);
+            this.textEditPO.StyleController = this.dataLayoutControl1;
+            this.textEditPO.TabIndex = 5;
+            // 
+            // textEditSup
+            // 
+            this.textEditSup.Location = new System.Drawing.Point(24, 69);
+            this.textEditSup.MenuManager = this.ribbon;
+            this.textEditSup.Name = "textEditSup";
+            this.textEditSup.Size = new System.Drawing.Size(1150, 26);
+            this.textEditSup.StyleController = this.dataLayoutControl1;
+            this.textEditSup.TabIndex = 6;
+            // 
+            // dateEditRD
+            // 
+            this.dateEditRD.EditValue = null;
+            this.dateEditRD.Location = new System.Drawing.Point(482, 118);
+            this.dateEditRD.MenuManager = this.ribbon;
+            this.dateEditRD.Name = "dateEditRD";
+            this.dateEditRD.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditRD.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditRD.Size = new System.Drawing.Size(344, 26);
+            this.dateEditRD.StyleController = this.dataLayoutControl1;
+            this.dateEditRD.TabIndex = 7;
+            // 
+            // dateEditDD
+            // 
+            this.dateEditDD.EditValue = null;
+            this.dateEditDD.Location = new System.Drawing.Point(830, 118);
+            this.dateEditDD.MenuManager = this.ribbon;
+            this.dateEditDD.Name = "dateEditDD";
+            this.dateEditDD.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDD.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEditDD.Size = new System.Drawing.Size(344, 26);
+            this.dateEditDD.StyleController = this.dataLayoutControl1;
+            this.dateEditDD.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(486, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 19);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Receive To";
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.dateEditDD;
+            this.layoutControlItem5.Location = new System.Drawing.Point(806, 49);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(348, 77);
+            this.layoutControlItem5.Text = "Delivery Date";
+            this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.dateEditRD;
+            this.layoutControlItem4.Location = new System.Drawing.Point(458, 49);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(348, 77);
+            this.layoutControlItem4.Text = "Receiving Date";
+            this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.textEditSup;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1154, 49);
+            this.layoutControlItem3.Text = "Supplier";
+            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.textEditPO;
+            this.layoutControlItem2.Location = new System.Drawing.Point(230, 49);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(228, 77);
+            this.layoutControlItem2.Text = "Purchasing Order";
+            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.textEditDN;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(230, 77);
+            this.layoutControlItem1.Text = "DeliveryNote";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.layoutControlItem3});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1178, 176);
+            this.layoutControlGroup1.Text = "Enter Details";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(735, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(154, 19);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Search By Item Code";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dataGridView1.ColumnHeadersHeight = 29;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductCode,
+            this.ProductName,
+            this.Qty,
+            this.OrderPrice,
+            this.SellingPrice,
+            this.ExpiryDate,
+            this.TotalCost});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1176, 353);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // ProductCode
+            // 
+            this.ProductCode.HeaderText = "Product Code";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            // 
+            // OrderPrice
+            // 
+            this.OrderPrice.HeaderText = "OrderPrice";
+            this.OrderPrice.MinimumWidth = 6;
+            this.OrderPrice.Name = "OrderPrice";
+            // 
+            // SellingPrice
+            // 
+            this.SellingPrice.HeaderText = "SellingPrice";
+            this.SellingPrice.MinimumWidth = 6;
+            this.SellingPrice.Name = "SellingPrice";
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.HeaderText = "ExpiryDate";
+            this.ExpiryDate.MinimumWidth = 6;
+            this.ExpiryDate.Name = "ExpiryDate";
+            // 
+            // TotalCost
+            // 
+            this.TotalCost.HeaderText = "TotalCost";
+            this.TotalCost.MinimumWidth = 6;
+            this.TotalCost.Name = "TotalCost";
+            this.TotalCost.ReadOnly = true;
+            // 
             // FormReceiveStock
             // 
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1283, 801);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1198, 799);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.radioButtonStores);
+            this.Controls.Add(this.dataLayoutControl1);
+            this.Controls.Add(this.radioButtonShop);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -330,10 +471,23 @@ namespace Katswiri.Forms
             this.Text = "Receive Stock";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditPO.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDD.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEditDD.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +495,6 @@ namespace Katswiri.Forms
 
         #endregion
         private System.Windows.Forms.TextBox textBoxSearch;
-        private System.Windows.Forms.Label label1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -349,24 +502,34 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBoxDeliveryNote;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxPurchasingOrder;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxSupplier;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePickerReceivingDate;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDeliveryDate;
-        private System.Windows.Forms.Label label5;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.RadioButton radioButtonStores;
         private System.Windows.Forms.RadioButton radioButtonShop;
+        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
+        private DevExpress.XtraEditors.TextEdit textEditDN;
+        private DevExpress.XtraEditors.TextEdit textEditPO;
+        private DevExpress.XtraEditors.TextEdit textEditSup;
+        private DevExpress.XtraEditors.DateEdit dateEditRD;
+        private DevExpress.XtraEditors.DateEdit dateEditDD;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalCost;
     }
 }

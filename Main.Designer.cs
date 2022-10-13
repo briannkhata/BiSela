@@ -93,6 +93,8 @@ namespace Katswiri
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem31 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,9 +142,10 @@ namespace Katswiri
             this.barButtonItem27,
             this.barButtonItem28,
             this.barButtonItem29,
-            this.barButtonItem30});
+            this.barButtonItem30,
+            this.barButtonItem31});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 49;
+            this.ribbon.MaxItemId = 50;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -553,7 +556,8 @@ namespace Katswiri
             this.ribbonPageGroup11,
             this.ribbonPageGroup12,
             this.ribbonPageGroup6,
-            this.ribbonPageGroup9});
+            this.ribbonPageGroup9,
+            this.ribbonPageGroup18});
             this.ribbonPage6.Name = "ribbonPage6";
             this.ribbonPage6.Text = "Reports";
             // 
@@ -589,6 +593,18 @@ namespace Katswiri
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1432, 36);
+            // 
+            // ribbonPageGroup18
+            // 
+            this.ribbonPageGroup18.ItemLinks.Add(this.barButtonItem31);
+            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
+            // 
+            // barButtonItem31
+            // 
+            this.barButtonItem31.Caption = "Payment History";
+            this.barButtonItem31.Id = 49;
+            this.barButtonItem31.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.payment;
+            this.barButtonItem31.Name = "barButtonItem31";
             // 
             // Main
             // 
@@ -679,5 +695,7 @@ namespace Katswiri
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup24;
         private DevExpress.XtraBars.BarButtonItem barButtonItem30;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup17;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem31;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
     }
 }

@@ -32,12 +32,12 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControl1.DataSource = db.vwReceivingCarts.ToList();
-                gridView1.Columns["UserId"].Visible = false;
-                gridView1.Columns["Id"].Visible = false;
-                gridView1.Columns["ProductId"].Visible = false;
-                gridView1.Columns.ColumnByFieldName("Description").OptionsColumn.ReadOnly = true;
-                gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
+                //gridControl1.DataSource = db.vwReceivingCarts.ToList();
+                //gridView1.Columns["UserId"].Visible = false;
+                //gridView1.Columns["Id"].Visible = false;
+                //gridView1.Columns["ProductId"].Visible = false;
+                //gridView1.Columns.ColumnByFieldName("Description").OptionsColumn.ReadOnly = true;
+                //gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
 
             }
         }
@@ -61,15 +61,14 @@ namespace Katswiri.Forms
         {
             try
             {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwReceivingCart)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    var receivingCart = db.ReceivingCarts.Find(row.Id);
-                    db.ReceivingCarts.Remove(receivingCart);
-                    db.SaveChanges();
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
                 }
-                loadCart();
+                else
+                {
+                    XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -89,90 +88,88 @@ namespace Katswiri.Forms
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+
+
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
             {
-                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
+                try
                 {
                     using (var db = new BEntities())
                     {
                         var product = db.Products.Where(p => p.ProductCode == textBoxSearch.Text).FirstOrDefault();
-                        var exists = db.ReceivingCarts.Where(x => x.ProductId == product.ProductId).FirstOrDefault();
+                        double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
+                        Boolean Found = false;
 
-                        if (exists != null)
+                        double qty = 0;
+                        double toto = 0;
+                        double selu = 0;
+                        double order = 0;
+                        if (dataGridView1.Rows.Count > 0)
                         {
-                            exists.Qty += 1;
-                            exists.TotalPrice = (receivingCart.SellingPrice * exists.Qty);
-                            db.Entry(exists).State = EntityState.Modified;
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
+                                {
+                                    var code = row.Cells[0].Value.ToString();
+                                    selu = Convert.ToDouble(row.Cells[4].Value);
+                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
+                                    order = Convert.ToDouble(row.Cells[3].Value);
+                                    toto = order * qty;
+                                   
+                                    row.Cells[2].Value = qty.ToString("##,##0.00");
+                                    row.Cells[3].Value = order.ToString("##,##0.00");
+                                    row.Cells[4].Value = selu.ToString("##,##0.00");
+                                    row.Cells[6].Value = toto.ToString("##,##0.00");
+                                    Found = true;
+                                }
+                            }
+                            if (!Found)
+                            {
+                                string ProductId = product.ProductId.ToString();
+                                string ProductCode = product.ProductCode.ToString();
+                                string ProductName = product.ProductName.ToString();
+
+                                DateTime expiry = DateTime.Now;
+
+                                double Qty = 1;
+                                string Order = "0.00";
+                                string Total = "0.00";
+                                double SellingPrice = UnitPrice;
+                               
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
+                            }
                         }
                         else
                         {
-                            receivingCart.ProductId = product.ProductId;
-                            receivingCart.SellingPrice = 00.00;
-                            receivingCart.UserId = LoginInfo.UserId;
-                            receivingCart.OrderPrice = 0.00;
-                            receivingCart.ExpiryDate = DateTime.Now;
-                            receivingCart.Qty = 1;
-                            receivingCart.TotalPrice = (receivingCart.SellingPrice * receivingCart.Qty);
-                            db.ReceivingCarts.Add(receivingCart);
+                            string ProductId = product.ProductId.ToString();
+                            string ProductCode = product.ProductCode.ToString();
+                            string ProductName = product.ProductName.ToString();
+
+                            string Total = "0.00";
+                            string Order = "0.00";
+                            DateTime expiry = DateTime.Now;
+
+                            double Qty = 1;
+                            double SellingPrice = UnitPrice;
+
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
                         }
-                        db.SaveChanges();
                     }
-                    loadCart();
-                    textBoxSearch.Text = string.Empty;
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            textBoxSearch.Text = string.Empty;
+
         }
         public void clearReceivingCart()
         {
-            using(db = new BEntities())
+           if(dataGridView1.Rows.Count > 1)
             {
-                //db.Database.ExecuteSqlRaw("TRUNCATE TABLE ReceivingCarts");
-                var list = db.ReceivingCarts.ToList();
-                foreach (var rm in list)
-                {
-                    db.ReceivingCarts.Remove(rm);
-                    db.SaveChanges();
-                }
+                dataGridView1.Rows.Clear();
             }
-        }
-
-
-        public void refreshCart()
-        {
-            try
-            {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwReceivingCart)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
-                {
-                    if (row.Id != -1)
-                    {
-                        receivingCart.Id = row.Id;
-                        receivingCart.ProductId = row.ProductId;
-                        receivingCart.SellingPrice = row.SellingPrice;
-                        receivingCart.Qty = row.Qty;
-                        receivingCart.OrderPrice = row.OrderPrice;
-                        receivingCart.TotalPrice = (row.SellingPrice * row.Qty);
-                        receivingCart.ExpiryDate = row.ExpiryDate;
-                        db.Entry(receivingCart).State = EntityState.Modified;
-                        db.SaveChanges();
-                    }
-                    loadCart();
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            refreshCart();
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -183,14 +180,14 @@ namespace Katswiri.Forms
                 {
                     receiving = new Receiving()
                     {
-                        ReceivingDate = DateTime.Parse(dateTimePickerReceivingDate.Text),
+                        ReceivingDate = dateEditRD.DateTime,
                         TotalBill = (double)db.ReceivingCarts.Sum(x => x.TotalPrice),
                         SubTotal = (double)db.ReceivingCarts.Sum(x => x.SellingPrice),
-                        Supplier = textBoxSupplier.Text,
+                        Supplier = textEditSup.Text,
                         UserId = LoginInfo.UserId,
-                        PurchasingOrder = textBoxPurchasingOrder.Text,
-                        DeliveryDate = DateTime.Parse(dateTimePickerDeliveryDate.Text),
-                        DeliveryNote = textBoxDeliveryNote.Text
+                        PurchasingOrder = textEditPO.Text,
+                        DeliveryDate = dateEditDD.DateTime,
+                        DeliveryNote = textEditDN.Text
                     };
                     int ReceivingId = receiving.Id;
 
@@ -249,6 +246,27 @@ namespace Katswiri.Forms
         {
             clearReceivingCart();
             loadCart();
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
+                    {
+                        double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                        double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+                        double order = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["OrderPrice"].Value);
+                        double expiry = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value);
+                        double toto = order * qty;
+                        dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[3].Value = order.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = sp.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = expiry.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                    }
+                }
+           
         }
     }
 }

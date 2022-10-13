@@ -666,6 +666,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\payment.svg" />
     <None Include="Resources\refreshallpivottable.svg" />
     <None Include="Resources\addparagraphtotableofcontents.svg" />
     <None Include="Resources\del.svg" />
