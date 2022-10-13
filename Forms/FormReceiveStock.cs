@@ -162,7 +162,7 @@ namespace Katswiri.Forms
         {
             try
             {
-                using(db = new BEntities())
+                using (db = new BEntities())
                 {
                     double total = 0.00;
                     double torder = 0.00;
@@ -188,7 +188,6 @@ namespace Katswiri.Forms
                         DeliveryDate = DD,
                         DeliveryNote = DN,
                         UserId = LoginInfo.UserId,
-
                     };
                     db.Receivings.Add(receiving);
                     db.SaveChanges();
@@ -202,112 +201,56 @@ namespace Katswiri.Forms
                             Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
                             OrderPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
                             SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
-                            ExpiryDate = dataGridView1.Rows[i].Cells[5].Value.ToString(),
-                            TotalCost = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
-                            ShopId = db.Shops.SingleOrDefault().ShopId,
+                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                            TotalPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
                             UserId = LoginInfo.UserId,
-                            TaxValue = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
-                            DateSold = dateEditDateSold.DateTime,
+                            ReceivingId = receiving.Id,
                         };
-                        db.SaleDetails.Add(saleDetail);
+                        db.ReceivingDetails.Add(receivingDetail);
                         db.SaveChanges();
 
-                        var StockId = db.Stocks.Where(x => x.ProductId == saleDetail.ProductId).FirstOrDefault().StockId;
-                        double oldQty = (double)db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault().Shop;
-                        stock = db.Stocks.Where(x => x.StockId == StockId).FirstOrDefault();
-                        stock.Shop = oldQty - saleDetail.Qty;
-                        db.Entry(stock).State = EntityState.Modified;
+
+                        bool stores = radioButtonStores.Checked;
+                        if (stores)
+                        {
+                            stock = new Stock()
+                            {
+                                ProductId = receivingDetail.ProductId,
+                                ShopId = db.Shops.SingleOrDefault().ShopId,
+                                Stores = receivingDetail.Qty,
+                                SellingPrice = receivingDetail.SellingPrice,
+                                ExpiryDate = receivingDetail.ExpiryDate,
+                                OrderPrice = receivingDetail.OrderPrice
+                            };
+
+                        }
+                        else
+                        {
+                            stock = new Stock()
+                            {
+                                ProductId = receivingDetail.ProductId,
+                                ShopId = db.Shops.SingleOrDefault().ShopId,
+                                Shop = receivingDetail.Qty,
+                                SellingPrice = receivingDetail.SellingPrice,
+                                ExpiryDate = receivingDetail.ExpiryDate,
+                                OrderPrice = receivingDetail.OrderPrice
+                            };
+                        }
+                        db.Stocks.Add(stock);
                         db.SaveChanges();
                     }
-            }catch(Exception ex)
-            {
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //try
-            //{
-            //    using(db = new BEntities())
-            //    {
-            //        receiving = new Receiving()
-            //        {
-            //            ReceivingDate = dateEditRD.DateTime,
-            //            TotalBill = (double)db.ReceivingCarts.Sum(x => x.TotalPrice),
-            //            SubTotal = (double)db.ReceivingCarts.Sum(x => x.SellingPrice),
-            //            Supplier = textEditSup.Text,
-            //            UserId = LoginInfo.UserId,
-            //            PurchasingOrder = textEditPO.Text,
-            //            DeliveryDate = dateEditDD.DateTime,
-            //            DeliveryNote = textEditDN.Text
-            //        };
-            //        int ReceivingId = receiving.Id;
-
-            //        var cart = db.ReceivingCarts.ToList();
-            //        foreach (var item in cart)
-            //        {
-            //            receivingDetail = new ReceivingDetail()
-            //            {
-            //                ReceivingId = ReceivingId,
-            //                ProductId = (int)item.ProductId,
-            //                SellingPrice = (double)item.SellingPrice,
-            //                OrderPrice = (double)item.OrderPrice,
-            //                TotalPrice = (double)item.TotalPrice,
-            //                Qty = (double)item.Qty,
-            //                UserId = (int)item.UserId,
-            //                ExpiryDate = item.ExpiryDate
-            //            };
-            //            db.ReceivingDetails.Add(receivingDetail);
-            //            db.SaveChanges();
-
-            //            bool stores =  radioButtonStores.Checked;
-            //            if (stores)
-            //            {
-            //                stock = new Stock()
-            //                {
-            //                    ProductId = item.ProductId,
-            //                    Stores = item.Qty,
-            //                    ExpiryDate = item.ExpiryDate,
-            //                    SellingPrice = item.SellingPrice,
-            //                };
-            //            }
-            //            else
-            //            {
-            //                    stock = new Stock()
-            //                    {
-            //                        ProductId = item.ProductId,
-            //                        Shop = item.Qty,
-            //                        ExpiryDate = item.ExpiryDate,
-            //                        SellingPrice = item.SellingPrice,
-            //                    };
-            //            }
-            //            db.Stocks.Add(stock);
-            //            db.SaveChanges();
-            //        }
-            //        clearReceivingCart();
-            //    }
+                }
             }
             catch (Exception ex)
             {
-
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
             clearReceivingCart();
-            loadCart();
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
