@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="BModel.ExpenseType" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.IncomeType" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.PaymentType" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.ReceivingCart" Width="1.5" PointX="9.75" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.ReceivingDetail" Width="1.5" PointX="6.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.Receiving" Width="1.5" PointX="11.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.SaleDetail" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />

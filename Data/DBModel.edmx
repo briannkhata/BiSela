@@ -154,7 +154,6 @@
           <Property Name="RecipeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" />
           <Property Name="Qty" Type="float" />
-          <Property Name="Title" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="CostPrice" Type="float" />
         </EntityType>
@@ -1116,19 +1115,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="ReceivingCart">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="OrderPrice" Type="Double" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="TotalPrice" Type="Double" />
-        </EntityType>
         <EntityType Name="ReceivingDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -1533,7 +1519,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentType" />
-          <EntitySet Name="ReceivingCarts" EntityType="Self.ReceivingCart" />
           <EntitySet Name="ReceivingDetails" EntityType="Self.ReceivingDetail" />
           <EntitySet Name="Receivings" EntityType="Self.Receiving" />
           <EntitySet Name="SaleDetails" EntityType="Self.SaleDetail" />
@@ -2409,7 +2394,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               <MappingFragment StoreEntitySet="Recipes">
                 <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />

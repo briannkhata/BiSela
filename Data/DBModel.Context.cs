@@ -31,7 +31,6 @@ namespace Katswiri.Data
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<IncomeType> IncomeTypes { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<ReceivingCart> ReceivingCarts { get; set; }
         public virtual DbSet<ReceivingDetail> ReceivingDetails { get; set; }
         public virtual DbSet<Receiving> Receivings { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }

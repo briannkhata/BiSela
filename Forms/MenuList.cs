@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,19 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwMenus.ToList();
                 gridView1.Columns["MenuId"].Visible = false;
-                gridView1.Columns["RecepeId"].Visible = false;
+                gridView1.Columns["RecipeId"].Visible = false;
                 gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
                 gridView1.Columns["Cost"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 gridView1.Columns["Cost"].DisplayFormat.FormatString = "c2";
             }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormAddMenu formAddMenu = new FormAddMenu();
+            formAddMenu.ShowDialog();
         }
     }
 }

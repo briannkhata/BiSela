@@ -17,7 +17,6 @@ namespace Katswiri.Forms
     public partial class FormReceiveStock : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
-        ReceivingCart receivingCart = new ReceivingCart();
         ReceivingDetail receivingDetail;
         Receiving receiving;
         Stock stock;
@@ -102,7 +101,6 @@ namespace Katswiri.Forms
                                     qty = Convert.ToDouble(row.Cells[2].Value) + 1;
                                     order = Convert.ToDouble(row.Cells[3].Value);
                                     toto = order * qty;
-                                   
                                     row.Cells[2].Value = qty.ToString("##,##0.00");
                                     row.Cells[3].Value = order.ToString("##,##0.00");
                                     row.Cells[4].Value = selu.ToString("##,##0.00");
@@ -115,14 +113,11 @@ namespace Katswiri.Forms
                                 string ProductId = product.ProductId.ToString();
                                 string ProductCode = product.ProductCode.ToString();
                                 string ProductName = product.ProductName.ToString();
-
                                 DateTime expiry = DateTime.Now;
-
                                 double Qty = 1;
                                 double Order = 0.00;
                                 double Total = 0.00;
                                 double SellingPrice = UnitPrice;
-                               
                                 dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
                             }
                         }
@@ -131,14 +126,11 @@ namespace Katswiri.Forms
                             string ProductId = product.ProductId.ToString();
                             string ProductCode = product.ProductCode.ToString();
                             string ProductName = product.ProductName.ToString();
-
                             double Total = 0.00;
                             double Order = 0.00;
                             DateTime expiry = DateTime.Now;
-
                             double Qty = 1;
                             double SellingPrice = UnitPrice;
-
                             dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
                         }
                     }
