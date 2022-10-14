@@ -16,6 +16,8 @@ namespace Katswiri.Forms
     public partial class FormAddMenu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
+        Recipe recipe;
+        //Menu menu;
         public FormAddMenu()
         {
             InitializeComponent();
@@ -79,6 +81,73 @@ namespace Katswiri.Forms
                     dataGridView1.Rows[e.RowIndex].Cells[3].Value = CP.ToString("##,##0.00");
                 }
             }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                using (db = new BEntities())
+                {
+                    double tcost = 0.00;
+                    string Title = textEditTitle.Text;
+                    double SP = Double.Parse(textEditSP.Text);
+                    double CP = Double.Parse(textEditCP.Text);
+
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        tcost += Double.Parse((string)dataGridView1.Rows[i].Cells[3].Value);
+                    }
+
+                    //receiving = new Receiving()
+                    //{
+                    //    TotalBill = total,
+                    //    SubTotal = torder,
+                    //    Supplier = Sup,
+                    //    ReceivingDate = DR,
+                    //    PurchasingOrder = PO,
+                    //    DeliveryDate = DD,
+                    //    DeliveryNote = DN,
+                    //    UserId = LoginInfo.UserId,
+                    //};
+                    //db.Receivings.Add(receiving);
+                    //db.SaveChanges();
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                        recipe = new Recipe()
+                        {
+                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
+                            Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                            CostPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                        };
+                        db.Recipes.Add(recipe);
+                        db.SaveChanges();
+
+
+                       
+                        //    stock = new Stock()
+                        //    {
+                        //        ProductId = receivingDetail.ProductId,
+                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
+                        //        Stores = receivingDetail.Qty,
+                        //        SellingPrice = receivingDetail.SellingPrice,
+                        //        ExpiryDate = receivingDetail.ExpiryDate,
+                        //        OrderPrice = receivingDetail.OrderPrice
+                        //    };
+                      
+                        //db.Stocks.Add(stock);
+                        //db.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
