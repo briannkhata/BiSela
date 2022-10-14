@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -123,14 +124,14 @@ namespace Katswiri.Forms
                         db.Recipes.Add(recipe);
                         db.SaveChanges();
 
+                        double OldQTY = (double)db.Stocks.Where(x => x.ProductId == recipe.ProductId).FirstOrDefault().Kitchen;
                         stock = new Stock()
                         {
                             ProductId = recipe.ProductId,
-                            ShopId = db.Shops.SingleOrDefault().ShopId,
-                            Kitchen = recipe.Qty,
+                            Kitchen = OldQTY - recipe.Qty,
                         };
 
-                        db.Stocks.Add(stock);
+                        db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                 }
