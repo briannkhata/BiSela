@@ -74,8 +74,6 @@ namespace Katswiri.Forms
 
         private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
         {
-
-
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
             {
                 try
