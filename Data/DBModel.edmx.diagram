@@ -53,10 +53,10 @@
         <AssociationConnector Association="BModel.FK_Products_Categories" />
         <AssociationConnector Association="BModel.FK_Products_Units" />
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
-        <EntityTypeShape EntityType="BModel.Recipe" Width="1.5" PointX="6.5" PointY="25.75" />
         <EntityTypeShape EntityType="BModel.Menu" Width="1.5" PointX="8.75" PointY="25.75" />
-        <AssociationConnector Association="BModel.FK_Menus_Recipes" />
         <EntityTypeShape EntityType="BModel.vwMenu" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="BModel.Recipe" Width="1.5" PointX="6.5" PointY="26" />
+        <AssociationConnector Association="BModel.FK_Menus_Recipes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -67,8 +67,8 @@ namespace Katswiri.Data
         public virtual DbSet<vwExpens> vwExpenses { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<vwProduct> vwProducts { get; set; }
-        public virtual DbSet<Recipe> Recipes { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<vwMenu> vwMenus { get; set; }
+        public virtual DbSet<Recipe> Recipes { get; set; }
     }
 }

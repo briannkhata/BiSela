@@ -23,8 +23,6 @@ namespace Katswiri.Data
         public int RecipeId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<double> Qty { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
         public Nullable<double> CostPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
