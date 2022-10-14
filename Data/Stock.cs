@@ -23,5 +23,6 @@ namespace Katswiri.Data
         public Nullable<double> SellingPrice { get; set; }
         public string Comment { get; set; }
         public Nullable<double> OrderPrice { get; set; }
+        public Nullable<double> Kitchen { get; set; }
     }
 }

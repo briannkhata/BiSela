@@ -17,7 +17,8 @@ namespace Katswiri.Forms
     {
         BEntities db;
         Recipe recipe;
-        //Menu menu;
+        FoodMenu foodMenu;
+        Stock stock;
         public FormAddMenu()
         {
             InitializeComponent();
@@ -94,25 +95,20 @@ namespace Katswiri.Forms
                     double SP = Double.Parse(textEditSP.Text);
                     double CP = Double.Parse(textEditCP.Text);
 
-
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         tcost += Double.Parse((string)dataGridView1.Rows[i].Cells[3].Value);
                     }
 
-                    //receiving = new Receiving()
-                    //{
-                    //    TotalBill = total,
-                    //    SubTotal = torder,
-                    //    Supplier = Sup,
-                    //    ReceivingDate = DR,
-                    //    PurchasingOrder = PO,
-                    //    DeliveryDate = DD,
-                    //    DeliveryNote = DN,
-                    //    UserId = LoginInfo.UserId,
-                    //};
-                    //db.Receivings.Add(receiving);
-                    //db.SaveChanges();
+                    foodMenu = new FoodMenu()
+                    {
+                        Title = Title,
+                        UnitPrice = SP,
+                        Cost = CP,
+                       
+                    };
+                    db.FoodMenus.Add(foodMenu);
+                    db.SaveChanges();
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -122,24 +118,20 @@ namespace Katswiri.Forms
                             ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
                             Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
                             CostPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                            FoodMenuId = foodMenu.FoodMenuId,
                         };
                         db.Recipes.Add(recipe);
                         db.SaveChanges();
 
+                        stock = new Stock()
+                        {
+                            ProductId = recipe.ProductId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
+                            Kitchen = recipe.Qty,
+                        };
 
-                       
-                        //    stock = new Stock()
-                        //    {
-                        //        ProductId = receivingDetail.ProductId,
-                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
-                        //        Stores = receivingDetail.Qty,
-                        //        SellingPrice = receivingDetail.SellingPrice,
-                        //        ExpiryDate = receivingDetail.ExpiryDate,
-                        //        OrderPrice = receivingDetail.OrderPrice
-                        //    };
-                      
-                        //db.Stocks.Add(stock);
-                        //db.SaveChanges();
+                        db.Stocks.Add(stock);
+                        db.SaveChanges();
                     }
                 }
             }

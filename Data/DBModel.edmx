@@ -65,6 +65,66 @@
           <Property Name="ExpenseTypeName" Type="varchar(max)" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.FoodBills' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FoodBills">
+          <Key>
+            <PropertyRef Name="SaleId" />
+          </Key>
+          <Property Name="SaleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tendered" Type="float" />
+          <Property Name="Bill" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="TaxAmount" Type="float" />
+          <Property Name="Customer" Type="int" />
+          <Property Name="SoldBy" Type="int" />
+          <Property Name="ShopId" Type="int" />
+          <Property Name="DateSold" Type="datetime" />
+          <Property Name="Change" Type="float" />
+          <Property Name="SaleType" Type="varchar" MaxLength="50" />
+          <Property Name="SubTotal" Type="float" />
+          <Property Name="PaymentTypeId" Type="int" />
+          <Property Name="Paid" Type="float" />
+          <Property Name="Balance" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FoodBillsDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SaleId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="SoldPrice" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="TaxValue" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DateSold" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SaleId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="SellingPrice" Type="float" Nullable="false" />
+          <Property Name="Discount" Type="float" Nullable="false" />
+          <Property Name="SoldPrice" Type="float" Nullable="false" />
+          <Property Name="ShopId" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="float" Nullable="false" />
+          <Property Name="TaxValue" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DateSold" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FoodMenus">
+          <Key>
+            <PropertyRef Name="FoodMenuId" />
+          </Key>
+          <Property Name="FoodMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="Cost" Type="float" />
+        </EntityType>
         <EntityType Name="Incomes">
           <Key>
             <PropertyRef Name="IncomeId" />
@@ -81,17 +141,6 @@
           <Property Name="IncomeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IncomeTypeName" Type="varchar(max)" />
           <Property Name="Deleted" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Menus">
-          <Key>
-            <PropertyRef Name="MenuId" />
-          </Key>
-          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar(max)" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="SellingPrice" Type="float" />
-          <Property Name="RecipeId" Type="int" />
-          <Property Name="Cost" Type="float" />
         </EntityType>
         <EntityType Name="PaymentTypes">
           <Key>
@@ -155,6 +204,7 @@
           <Property Name="ProductId" Type="int" />
           <Property Name="Qty" Type="float" />
           <Property Name="CostPrice" Type="float" />
+          <Property Name="FoodMenuId" Type="int" />
         </EntityType>
         <EntityType Name="SaleDetails">
           <Key>
@@ -237,6 +287,7 @@
           <Property Name="ProductId" Type="int" />
           <Property Name="ShopId" Type="int" />
           <Property Name="Shop" Type="float" />
+          <Property Name="Kitchen" Type="float" />
           <Property Name="Stores" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="SellingPrice" Type="float" />
@@ -346,6 +397,19 @@ warning 6002: The table/view 'bisela.dbo.vwExpenseTypes' does not have a primary
           <Property Name="ExpenseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwFoodMenus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwFoodMenus">
+          <Key>
+            <PropertyRef Name="FoodMenuId" />
+          </Key>
+          <Property Name="FoodMenuId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="SellingPrice" Type="float" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="RecipeId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwIncomes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwIncomes">
           <Key>
@@ -366,19 +430,6 @@ warning 6002: The table/view 'bisela.dbo.vwIncomTypes' does not have a primary k
           </Key>
           <Property Name="IncomeTypeName" Type="varchar(max)" />
           <Property Name="IncomeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwMenus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwMenus">
-          <Key>
-            <PropertyRef Name="MenuId" />
-          </Key>
-          <Property Name="Title" Type="varchar(max)" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="SellingPrice" Type="float" />
-          <Property Name="Cost" Type="float" />
-          <Property Name="RecipeId" Type="int" />
-          <Property Name="MenuId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -680,18 +731,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Menus_Recipes">
-          <End Role="Recipes" Type="Self.Recipes" Multiplicity="0..1" />
-          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recipes">
-              <PropertyRef Name="RecipeId" />
-            </Principal>
-            <Dependent Role="Menus">
-              <PropertyRef Name="RecipeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Products_Brands">
           <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -747,9 +786,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodMenus" EntityType="Self.FoodMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Incomes" EntityType="Self.Incomes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReceivingDetails" EntityType="Self.ReceivingDetails" Schema="dbo" store:Type="Tables" />
@@ -763,6 +802,40 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Stocks" EntityType="Self.Stocks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FoodBills" EntityType="Self.FoodBills" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FoodBills].[SaleId] AS [SaleId], 
+    [FoodBills].[Tendered] AS [Tendered], 
+    [FoodBills].[Bill] AS [Bill], 
+    [FoodBills].[Discount] AS [Discount], 
+    [FoodBills].[TaxAmount] AS [TaxAmount], 
+    [FoodBills].[Customer] AS [Customer], 
+    [FoodBills].[SoldBy] AS [SoldBy], 
+    [FoodBills].[ShopId] AS [ShopId], 
+    [FoodBills].[DateSold] AS [DateSold], 
+    [FoodBills].[Change] AS [Change], 
+    [FoodBills].[SaleType] AS [SaleType], 
+    [FoodBills].[SubTotal] AS [SubTotal], 
+    [FoodBills].[PaymentTypeId] AS [PaymentTypeId], 
+    [FoodBills].[Paid] AS [Paid], 
+    [FoodBills].[Balance] AS [Balance]
+    FROM [dbo].[FoodBills] AS [FoodBills]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FoodBillsDetails" EntityType="Self.FoodBillsDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FoodBillsDetails].[Id] AS [Id], 
+    [FoodBillsDetails].[SaleId] AS [SaleId], 
+    [FoodBillsDetails].[ProductId] AS [ProductId], 
+    [FoodBillsDetails].[SellingPrice] AS [SellingPrice], 
+    [FoodBillsDetails].[Discount] AS [Discount], 
+    [FoodBillsDetails].[SoldPrice] AS [SoldPrice], 
+    [FoodBillsDetails].[ShopId] AS [ShopId], 
+    [FoodBillsDetails].[Qty] AS [Qty], 
+    [FoodBillsDetails].[TaxValue] AS [TaxValue], 
+    [FoodBillsDetails].[UserId] AS [UserId], 
+    [FoodBillsDetails].[DateSold] AS [DateSold]
+    FROM [dbo].[FoodBillsDetails] AS [FoodBillsDetails]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwBrands" EntityType="Self.vwBrands" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwBrands].[BrandId] AS [BrandId], 
@@ -813,6 +886,16 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwExpenseTypes].[ExpenseTypeId] AS [ExpenseTypeId]
     FROM [dbo].[vwExpenseTypes] AS [vwExpenseTypes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwFoodMenus" EntityType="Self.vwFoodMenus" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwFoodMenus].[FoodMenuId] AS [FoodMenuId], 
+    [vwFoodMenus].[Title] AS [Title], 
+    [vwFoodMenus].[Description] AS [Description], 
+    [vwFoodMenus].[SellingPrice] AS [SellingPrice], 
+    [vwFoodMenus].[Cost] AS [Cost], 
+    [vwFoodMenus].[RecipeId] AS [RecipeId]
+    FROM [dbo].[vwFoodMenus] AS [vwFoodMenus]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwIncomes" EntityType="Self.vwIncomes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwIncomes].[Amount] AS [Amount], 
@@ -826,16 +909,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwIncomTypes].[IncomeTypeName] AS [IncomeTypeName], 
     [vwIncomTypes].[IncomeTypeId] AS [IncomeTypeId]
     FROM [dbo].[vwIncomTypes] AS [vwIncomTypes]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwMenus" EntityType="Self.vwMenus" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vwMenus].[Title] AS [Title], 
-    [vwMenus].[Description] AS [Description], 
-    [vwMenus].[SellingPrice] AS [SellingPrice], 
-    [vwMenus].[Cost] AS [Cost], 
-    [vwMenus].[RecipeId] AS [RecipeId], 
-    [vwMenus].[MenuId] AS [MenuId]
-    FROM [dbo].[vwMenus] AS [vwMenus]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwOrderCustomer" EntityType="Self.vwOrderCustomer" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1027,10 +1100,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="IncomeTypes" EntitySet="IncomeTypes" />
             <End Role="Incomes" EntitySet="Incomes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Menus_Recipes" Association="Self.FK_Menus_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="Menus" EntitySet="Menus" />
-          </AssociationSet>
           <AssociationSet Name="FK_Products_Brands" Association="Self.FK_Products_Brands">
             <End Role="Brands" EntitySet="Brands" />
             <End Role="Products" EntitySet="Products" />
@@ -1217,6 +1286,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SellingPrice" Type="Double" />
           <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OrderPrice" Type="Double" />
+          <Property Name="Kitchen" Type="Double" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -1578,13 +1648,11 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Product" EntitySet="Products" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
-          <EntitySet Name="Menus" EntityType="BModel.Menu" />
-          <EntitySet Name="vwMenus" EntityType="BModel.vwMenu" />
+          <EntitySet Name="FoodBills" EntityType="BModel.FoodBill" />
+          <EntitySet Name="FoodBillsDetails" EntityType="BModel.FoodBillsDetail" />
+          <EntitySet Name="FoodMenus" EntityType="BModel.FoodMenu" />
           <EntitySet Name="Recipes" EntityType="BModel.Recipe" />
-          <AssociationSet Name="FK_Menus_Recipes" Association="BModel.FK_Menus_Recipes">
-            <End Role="Recipe" EntitySet="Recipes" />
-            <End Role="Menu" EntitySet="Menus" />
-          </AssociationSet>
+          <EntitySet Name="vwFoodMenus" EntityType="BModel.vwFoodMenu" />
           </EntityContainer>
         <EntityType Name="BillPayment">
           <Key>
@@ -1783,28 +1851,61 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Menu">
+        <EntityType Name="FoodBill">
           <Key>
-            <PropertyRef Name="MenuId" />
+            <PropertyRef Name="SaleId" />
           </Key>
-          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="RecipeId" Type="Int32" />
-          <Property Name="Cost" Type="Double" />
-          <NavigationProperty Name="Recipe" Relationship="BModel.FK_Menus_Recipes" FromRole="Menu" ToRole="Recipe" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tendered" Type="Double" />
+          <Property Name="Bill" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="TaxAmount" Type="Double" />
+          <Property Name="Customer" Type="Int32" />
+          <Property Name="SoldBy" Type="Int32" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="DateSold" Type="DateTime" Precision="3" />
+          <Property Name="Change" Type="Double" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Double" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="Paid" Type="Double" />
+          <Property Name="Balance" Type="Double" />
         </EntityType>
-        <EntityType Name="vwMenu">
+        <EntityType Name="FoodBillsDetail">
           <Key>
-            <PropertyRef Name="MenuId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="SaleId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="SellingPrice" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="SoldPrice" />
+            <PropertyRef Name="ShopId" />
+            <PropertyRef Name="Qty" />
+            <PropertyRef Name="TaxValue" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DateSold" />
           </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SaleId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SellingPrice" Type="Double" Nullable="false" />
+          <Property Name="Discount" Type="Double" Nullable="false" />
+          <Property Name="SoldPrice" Type="Double" Nullable="false" />
+          <Property Name="ShopId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Double" Nullable="false" />
+          <Property Name="TaxValue" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="DateSold" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FoodMenu">
+          <Key>
+            <PropertyRef Name="FoodMenuId" />
+          </Key>
+          <Property Name="FoodMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="UnitPrice" Type="Double" />
           <Property Name="Cost" Type="Double" />
-          <Property Name="RecipeId" Type="Int32" />
-          <Property Name="MenuId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -1814,20 +1915,19 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="ProductId" Type="Int32" />
           <Property Name="Qty" Type="Double" />
           <Property Name="CostPrice" Type="Double" />
-          <NavigationProperty Name="Menus" Relationship="BModel.FK_Menus_Recipes" FromRole="Recipe" ToRole="Menu" />
+          <Property Name="FoodMenuId" Type="Int32" />
         </EntityType>
-        <Association Name="FK_Menus_Recipes">
-          <End Type="BModel.Recipe" Role="Recipe" Multiplicity="0..1" />
-          <End Type="BModel.Menu" Role="Menu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Recipe">
-              <PropertyRef Name="RecipeId" />
-            </Principal>
-            <Dependent Role="Menu">
-              <PropertyRef Name="RecipeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="vwFoodMenu">
+          <Key>
+            <PropertyRef Name="FoodMenuId" />
+          </Key>
+          <Property Name="FoodMenuId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="RecipeId" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1996,6 +2096,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="Stocks">
             <EntityTypeMapping TypeName="BModel.Stock">
               <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
                 <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="StockId" ColumnName="StockId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -2386,37 +2487,75 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="BModel.Menu">
-              <MappingFragment StoreEntitySet="Menus">
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <EntitySetMapping Name="FoodBills">
+            <EntityTypeMapping TypeName="BModel.FoodBill">
+              <MappingFragment StoreEntitySet="FoodBills">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="SoldBy" ColumnName="SoldBy" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="Tendered" ColumnName="Tendered" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwMenus">
-            <EntityTypeMapping TypeName="BModel.vwMenu">
-              <MappingFragment StoreEntitySet="vwMenus">
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <EntitySetMapping Name="FoodBillsDetails">
+            <EntityTypeMapping TypeName="BModel.FoodBillsDetail">
+              <MappingFragment StoreEntitySet="FoodBillsDetails">
+                <ScalarProperty Name="DateSold" ColumnName="DateSold" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="SoldPrice" ColumnName="SoldPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FoodMenus">
+            <EntityTypeMapping TypeName="BModel.FoodMenu">
+              <MappingFragment StoreEntitySet="FoodMenus">
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FoodMenuId" ColumnName="FoodMenuId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="BModel.Recipe">
               <MappingFragment StoreEntitySet="Recipes">
+                <ScalarProperty Name="FoodMenuId" ColumnName="FoodMenuId" />
                 <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwFoodMenus">
+            <EntityTypeMapping TypeName="BModel.vwFoodMenu">
+              <MappingFragment StoreEntitySet="vwFoodMenus">
+                <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FoodMenuId" ColumnName="FoodMenuId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

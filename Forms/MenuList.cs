@@ -26,8 +26,8 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControl1.DataSource = db.vwMenus.ToList();
-                gridView1.Columns["MenuId"].Visible = false;
+                gridControl1.DataSource = db.vwFoodMenus.ToList();
+                gridView1.Columns["FoodMenuId"].Visible = false;
                 gridView1.Columns["RecipeId"].Visible = false;
                 gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
                 gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";

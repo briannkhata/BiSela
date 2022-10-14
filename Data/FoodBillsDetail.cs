@@ -12,15 +12,18 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Menu
+    public partial class FoodBillsDetail
     {
-        public int MenuId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public Nullable<double> SellingPrice { get; set; }
-        public Nullable<int> RecipeId { get; set; }
-        public Nullable<double> Cost { get; set; }
-    
-        public virtual Recipe Recipe { get; set; }
+        public int Id { get; set; }
+        public int SaleId { get; set; }
+        public int ProductId { get; set; }
+        public double SellingPrice { get; set; }
+        public double Discount { get; set; }
+        public double SoldPrice { get; set; }
+        public int ShopId { get; set; }
+        public double Qty { get; set; }
+        public double TaxValue { get; set; }
+        public int UserId { get; set; }
+        public System.DateTime DateSold { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace Katswiri.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Recipe
+    public partial class FoodMenu
     {
-        public int RecipeId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<double> Qty { get; set; }
-        public Nullable<double> CostPrice { get; set; }
-        public Nullable<int> FoodMenuId { get; set; }
+        public int FoodMenuId { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public Nullable<double> UnitPrice { get; set; }
+        public Nullable<double> Cost { get; set; }
     }
 }
