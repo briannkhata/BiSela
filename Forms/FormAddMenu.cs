@@ -56,7 +56,7 @@ namespace Katswiri.Forms
                         string ProductName = product.ProductName.ToString();
                         double Qty = 1;
                         double CP = 0.00;
-                        dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), CP);                      
+                        dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), CP.ToString("##,##0.00"));                      
                     }
                 }
                 catch (Exception ex)
@@ -65,7 +65,20 @@ namespace Katswiri.Forms
                 }
             }
             textBoxCode.Text = string.Empty;
+        }
 
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
+                {
+                    double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                    double CP = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["CostPrice"].Value);
+                    dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
+                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = CP.ToString("##,##0.00");
+                }
+            }
         }
     }
 }
