@@ -686,6 +686,8 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\barcodeshowtext.svg" />
+    <None Include="Resources\filter.svg" />
     <None Include="Resources\deletetablerows.svg" />
     <None Include="Resources\saveas3.svg" />
     <None Include="Resources\differentfirstpage.svg" />

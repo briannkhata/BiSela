@@ -93,6 +93,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage barcodeshowtext {
+            get {
+                object obj = ResourceManager.GetObject("barcodeshowtext", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage business_bank {
             get {
                 object obj = ResourceManager.GetObject("business_bank", resourceCulture);
@@ -196,6 +206,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage differentfirstpage {
             get {
                 object obj = ResourceManager.GetObject("differentfirstpage", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage filter {
+            get {
+                object obj = ResourceManager.GetObject("filter", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
