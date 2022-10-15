@@ -239,6 +239,7 @@ warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a prima
           <Property Name="PaymentTypeId" Type="int" />
           <Property Name="Paid" Type="float" />
           <Property Name="Balance" Type="float" />
+          <Property Name="Waiter" Type="int" />
         </EntityType>
         <EntityType Name="Shifts">
           <Key>
@@ -445,6 +446,7 @@ warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primar
           <Property Name="SubTotal" Type="float" />
           <Property Name="Paid" Type="float" />
           <Property Name="Balance" Type="float" />
+          <Property Name="Waiter" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -670,14 +672,14 @@ warning 6002: The table/view 'bisela.dbo.vwUpdateStock' does not have a primary 
           </Key>
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar(max)" />
           <Property Name="Shop" Type="float" />
-          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="Stores" Type="float" />
+          <Property Name="Kitchen" Type="float" />
           <Property Name="SellingPrice" Type="float" />
+          <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="ShopId" Type="int" />
           <Property Name="ProductId" Type="int" />
           <Property Name="StockId" Type="int" Nullable="false" />
-          <Property Name="Stores" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -922,7 +924,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwOrderCustomer].[DateSold] AS [DateSold], 
     [vwOrderCustomer].[SubTotal] AS [SubTotal], 
     [vwOrderCustomer].[Paid] AS [Paid], 
-    [vwOrderCustomer].[Balance] AS [Balance]
+    [vwOrderCustomer].[Balance] AS [Balance], 
+    [vwOrderCustomer].[Waiter] AS [Waiter]
     FROM [dbo].[vwOrderCustomer] AS [vwOrderCustomer]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentTypes" store:Type="Views" store:Schema="dbo">
@@ -1069,14 +1072,14 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <DefiningQuery>SELECT 
     [vwUpdateStock].[ProductCode] AS [ProductCode], 
     [vwUpdateStock].[ProductName] AS [ProductName], 
-    [vwUpdateStock].[Description] AS [Description], 
     [vwUpdateStock].[Shop] AS [Shop], 
-    [vwUpdateStock].[ExpiryDate] AS [ExpiryDate], 
+    [vwUpdateStock].[Stores] AS [Stores], 
+    [vwUpdateStock].[Kitchen] AS [Kitchen], 
     [vwUpdateStock].[SellingPrice] AS [SellingPrice], 
+    [vwUpdateStock].[ExpiryDate] AS [ExpiryDate], 
     [vwUpdateStock].[ShopId] AS [ShopId], 
     [vwUpdateStock].[ProductId] AS [ProductId], 
-    [vwUpdateStock].[StockId] AS [StockId], 
-    [vwUpdateStock].[Stores] AS [Stores]
+    [vwUpdateStock].[StockId] AS [StockId]
     FROM [dbo].[vwUpdateStock] AS [vwUpdateStock]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwUsers" EntityType="Self.vwUsers" store:Type="Views" store:Schema="dbo">
@@ -1250,6 +1253,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="PaymentTypeId" Type="Int32" />
           <Property Name="Paid" Type="Double" />
           <Property Name="Balance" Type="Double" />
+          <Property Name="Waiter" Type="Int32" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -1394,6 +1398,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="SubTotal" Type="Double" />
           <Property Name="Paid" Type="Double" />
           <Property Name="Balance" Type="Double" />
+          <Property Name="Waiter" Type="Int32" />
         </EntityType>
         <EntityType Name="vwPaymentType">
           <Key>
@@ -1546,23 +1551,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="UnitId" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="vwUpdateStock">
-          <Key>
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="StockId" />
-          </Key>
-          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Shop" Type="Double" />
-          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="ShopId" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="StockId" Type="Int32" Nullable="false" />
-          <Property Name="Stores" Type="Double" />
-        </EntityType>
         <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
@@ -1595,7 +1583,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="vwStockReports" EntityType="Self.vwStockReport" />
           <EntitySet Name="vwStocks" EntityType="Self.vwStock" />
           <EntitySet Name="vwUnits" EntityType="Self.vwUnit" />
-          <EntitySet Name="vwUpdateStocks" EntityType="Self.vwUpdateStock" />
           <EntitySet Name="BillPayments" EntityType="BModel.BillPayment" />
           <EntitySet Name="vwShifts" EntityType="BModel.vwShift" />
           <EntitySet Name="Shifts" EntityType="BModel.Shift" />
@@ -1639,6 +1626,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <End Role="Ingredient" EntitySet="Ingredients" />
             <End Role="Ingredient1" EntitySet="Ingredients" />
           </AssociationSet>
+          <EntitySet Name="vwUpdateStocks" EntityType="BModel.vwUpdateStock" />
           </EntityContainer>
         <EntityType Name="BillPayment">
           <Key>
@@ -1940,6 +1928,23 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwUpdateStock">
+          <Key>
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="ProductName" />
+            <PropertyRef Name="StockId" />
+          </Key>
+          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Shop" Type="Double" />
+          <Property Name="Stores" Type="Double" />
+          <Property Name="Kitchen" Type="Double" />
+          <Property Name="SellingPrice" Type="Double" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="StockId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2060,6 +2065,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="BModel.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Waiter" ColumnName="Waiter" />
                 <ScalarProperty Name="SaleId" ColumnName="SaleId" />
                 <ScalarProperty Name="Tendered" ColumnName="Tendered" />
                 <ScalarProperty Name="Bill" ColumnName="Bill" />
@@ -2210,6 +2216,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwOrderCustomers">
             <EntityTypeMapping TypeName="BModel.vwOrderCustomer">
               <MappingFragment StoreEntitySet="vwOrderCustomer">
+                <ScalarProperty Name="Waiter" ColumnName="Waiter" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="Paid" ColumnName="Paid" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
@@ -2352,22 +2359,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwUpdateStocks">
-            <EntityTypeMapping TypeName="BModel.vwUpdateStock">
-              <MappingFragment StoreEntitySet="vwUpdateStock">
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Shop" ColumnName="Shop" />
-                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="StockId" ColumnName="StockId" />
-                <ScalarProperty Name="Stores" ColumnName="Stores" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2562,6 +2553,22 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwUpdateStocks">
+            <EntityTypeMapping TypeName="BModel.vwUpdateStock">
+              <MappingFragment StoreEntitySet="vwUpdateStock">
+                <ScalarProperty Name="StockId" ColumnName="StockId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
+                <ScalarProperty Name="Stores" ColumnName="Stores" />
+                <ScalarProperty Name="Shop" ColumnName="Shop" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

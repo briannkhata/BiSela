@@ -31,11 +31,9 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = db.vwUpdateStocks.ToList();
                 gridView1.Columns["ProductId"].Visible = false;
                 gridView1.Columns["ShopId"].Visible = false;
-                gridView1.Columns["Description"].Visible = false;
-                gridView1.Columns["Stores"].Visible = false;
                 gridView1.Columns["StockId"].Visible = false;
                 gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
+                //gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
 
                 gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
                 gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
@@ -64,6 +62,8 @@ namespace Katswiri.Forms
                         {
                             StockId = row.StockId,
                             Shop = row.Shop,
+                            Kitchen = row.Kitchen,
+                            Stores = row.Stores,
                             ProductId = row.ProductId,
                             SellingPrice = row.SellingPrice,
                             ExpiryDate = row.ExpiryDate,

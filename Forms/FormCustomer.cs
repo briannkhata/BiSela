@@ -23,6 +23,7 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             loadCustomers();
+            loadWaiters();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -42,7 +43,7 @@ namespace Katswiri.Forms
                             PassWord = textEditName.Text,
                             UserType = "Customer",
                             Email = "shop@yahoo.com",
-                            ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
 
                         db.Users.Add(user);
@@ -52,9 +53,10 @@ namespace Katswiri.Forms
                         sale = new Sale()
                         { 
                             Customer = UserId,
+                            Waiter = (int?)lookUpEditWaiter.EditValue,
                             SoldBy = LoginInfo.UserId,
                             DateSold = DateTime.Now,
-                            ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
                         db.Sales.Add(sale);
                         db.SaveChanges();
@@ -80,7 +82,15 @@ namespace Katswiri.Forms
             }
         }
 
-
+        private void loadWaiters()
+        {
+            using (db = new BEntities())
+            {
+                lookUpEditWaiter.Properties.DataSource = db.vwCustomers.Where(x => x.UserType == "Waiter").ToList();
+                lookUpEditWaiter.Properties.ValueMember = "UserId";
+                lookUpEditWaiter.Properties.DisplayMember = "Name";
+            }
+        }
         private bool formValid()
         {
             var result = true;
@@ -94,16 +104,35 @@ namespace Katswiri.Forms
                 result = false;
                 textEditPhone.ErrorText = "Required";
             }
- 
+
+            if (String.IsNullOrEmpty((string)lookUpEditWaiter.EditValue))
+            {
+                result = false;
+                lookUpEditWaiter.ErrorText = "Required";
+            }
+
+            return result;
+        }
+
+        private bool formValid2()
+        {
+            var result = true;
+            if (String.IsNullOrEmpty(lookUpEditWaiter.EditValue.ToString()))
+            {
+                result = false;
+                lookUpEditWaiter.ErrorText = "Required";
+            }
+
             return result;
         }
 
         private void lookUpEditCustomer2_EditValueChanged(object sender, EventArgs e)
         {
-
-           // SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            this.Close();
-            setParams();
+            if (formValid2())
+            {
+                this.Close();
+                setParams();
+            }
         }
         public void setParams2()
         {
@@ -116,13 +145,6 @@ namespace Katswiri.Forms
                 pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
                 pos.lookUpEditCustomer.EditValue = customer;
                 pos.lookUpEditCustomer.Properties.NullText = "Customer";
-
-                //pos.lookUpEditPaymentType.Properties.DataSource = db.Sales.ToList();
-                //pos.lookUpEditPaymentType.Properties.ValueMember = "SaleId";
-                //pos.lookUpEditPaymentType.Properties.DisplayMember = "SaleId";
-                //pos.lookUpEditPaymentType.EditValue = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId);
-                //pos.lookUpEditPaymentType.Properties.NullText = "Order Number";
-
                 pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == customer).Max(x => x.SaleId).ToString();
             }
             pos.Activate();
@@ -148,7 +170,8 @@ namespace Katswiri.Forms
                     Customer = (int)lookUpEditCustomer2.EditValue,
                     SoldBy = LoginInfo.UserId,
                     DateSold = DateTime.Now,
-                    ShopId = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().ShopId,
+                    Waiter = (int?)lookUpEditWaiter.EditValue,
+                    ShopId = db.Shops.SingleOrDefault().ShopId,
                 };
                 db.Sales.Add(sale);
                 db.SaveChanges();

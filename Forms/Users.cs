@@ -130,6 +130,7 @@ namespace Katswiri.Forms
                     user.PassWord = UserNameTextEdit.Text;
                     user.Email = EmailTextEdit.Text;
                     user.Phone = PhoneTextEdit.Text;
+                    user.ShopId = db.Shops.SingleOrDefault().ShopId;
                     using (db = new BEntities())
                     {
                         if (UserId > 0)
@@ -148,6 +149,7 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -181,7 +183,6 @@ namespace Katswiri.Forms
                     textEditGender.EditValue = user.Gender;
                     UserNameTextEdit.Text = user.UserName;
                     comboBoxEditUserType.EditValue = user.UserType;
-                    //PassWordTextEdit.Text = user.PassWord;
                     EmailTextEdit.Text = user.Email;
                     PhoneTextEdit.Text = user.Phone;
                 }

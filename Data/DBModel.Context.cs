@@ -56,7 +56,6 @@ namespace Katswiri.Data
         public virtual DbSet<vwStockReport> vwStockReports { get; set; }
         public virtual DbSet<vwStock> vwStocks { get; set; }
         public virtual DbSet<vwUnit> vwUnits { get; set; }
-        public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
         public virtual DbSet<BillPayment> BillPayments { get; set; }
         public virtual DbSet<vwShift> vwShifts { get; set; }
         public virtual DbSet<Shift> Shifts { get; set; }
@@ -72,5 +71,6 @@ namespace Katswiri.Data
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<vwFoodMenu> vwFoodMenus { get; set; }
         public virtual DbSet<vwUser> vwUsers { get; set; }
+        public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
     }
 }

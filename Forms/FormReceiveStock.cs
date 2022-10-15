@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Katswiri.Data;
+using Katswiri.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             autoCompleteSearch();
+            loadTo();
         
         }
 
@@ -41,6 +43,16 @@ namespace Katswiri.Forms
                 textBoxSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 textBoxSearch.AutoCompleteCustomSource = autoText;
             }
+        }
+
+        private void loadTo()
+        {
+
+            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
+            searchLookUpEditTo.Properties.DataSource = store;
+            searchLookUpEditTo.Properties.ValueMember = "Value";
+            searchLookUpEditTo.Properties.DisplayMember = "Value";
+            searchLookUpEditTo.Properties.NullText = "Receive To";
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
@@ -201,33 +213,33 @@ namespace Katswiri.Forms
                         db.SaveChanges();
 
 
-                        bool stores = radioButtonStores.Checked;
-                        if (stores)
-                        {
-                            stock = new Stock()
-                            {
-                                ProductId = receivingDetail.ProductId,
-                                ShopId = db.Shops.SingleOrDefault().ShopId,
-                                Stores = receivingDetail.Qty,
-                                SellingPrice = receivingDetail.SellingPrice,
-                                ExpiryDate = receivingDetail.ExpiryDate,
-                                OrderPrice = receivingDetail.OrderPrice
-                            };
-                        }
-                        else
-                        {
-                            stock = new Stock()
-                            {
-                                ProductId = receivingDetail.ProductId,
-                                ShopId = db.Shops.SingleOrDefault().ShopId,
-                                Shop = receivingDetail.Qty,
-                                SellingPrice = receivingDetail.SellingPrice,
-                                ExpiryDate = receivingDetail.ExpiryDate,
-                                OrderPrice = receivingDetail.OrderPrice
-                            };
-                        }
-                        db.Stocks.Add(stock);
-                        db.SaveChanges();
+                        //bool stores = radioButtonStores.Checked;
+                        //if (stores)
+                        //{
+                        //    stock = new Stock()
+                        //    {
+                        //        ProductId = receivingDetail.ProductId,
+                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
+                        //        Stores = receivingDetail.Qty,
+                        //        SellingPrice = receivingDetail.SellingPrice,
+                        //        ExpiryDate = receivingDetail.ExpiryDate,
+                        //        OrderPrice = receivingDetail.OrderPrice
+                        //    };
+                        //}
+                        //else
+                        //{
+                        //    stock = new Stock()
+                        //    {
+                        //        ProductId = receivingDetail.ProductId,
+                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
+                        //        Shop = receivingDetail.Qty,
+                        //        SellingPrice = receivingDetail.SellingPrice,
+                        //        ExpiryDate = receivingDetail.ExpiryDate,
+                        //        OrderPrice = receivingDetail.OrderPrice
+                        //    };
+                        //}
+                        //db.Stocks.Add(stock);
+                        //db.SaveChanges();
                     }
                 }
             }

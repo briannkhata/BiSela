@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Katswiri.Data;
+using Katswiri.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,19 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             loadData();
+            loadTo();
+            loadFrom();
+            gridView1.Columns["ProductId"].Visible = false;
+            gridView1.Columns["ShopId"].Visible = false;
+            gridView1.Columns["StockId"].Visible = false;
+            gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
+
+            gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
+            gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
+
+            gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
+            gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
         }
 
         public void loadData()
@@ -29,19 +43,27 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwUpdateStocks.ToList();
-                gridView1.Columns["ProductId"].Visible = false;
-                gridView1.Columns["ShopId"].Visible = false;
-                gridView1.Columns["Description"].Visible = false;
-                gridView1.Columns["StockId"].Visible = false;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
-
-                gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
-                gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
-
-                gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
-                gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
             }
+        }
+
+        private void loadTo()
+        {
+          
+                Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
+                searchLookUpEditTo.Properties.DataSource = store;
+                searchLookUpEditTo.Properties.ValueMember = "Value";
+                searchLookUpEditTo.Properties.DisplayMember = "Value";
+                searchLookUpEditTo.Properties.NullText = "Move To";
+        }
+
+        private void loadFrom()
+        {
+
+            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
+            searchLookUpEditFrom.Properties.DataSource = store;
+            searchLookUpEditFrom.Properties.ValueMember = "Value";
+            searchLookUpEditFrom.Properties.DisplayMember = "Value";
+            searchLookUpEditFrom.Properties.NullText = "Move From";
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -67,7 +89,7 @@ namespace Katswiri.Forms
                             ProductId = row.ProductId,
                             SellingPrice = row.SellingPrice,
                             ExpiryDate = row.ExpiryDate,
-                            Comment = textBox1.Text,
+                            Comment = "Moved From " +searchLookUpEditFrom.EditValue + "To" + searchLookUpEditTo.EditValue,
                             ShopId = row.ShopId,
                         };
                         db.Stocks.Add(stock);

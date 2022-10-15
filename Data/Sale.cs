@@ -29,5 +29,6 @@ namespace Katswiri.Data
         public Nullable<int> PaymentTypeId { get; set; }
         public Nullable<double> Paid { get; set; }
         public Nullable<double> Balance { get; set; }
+        public Nullable<int> Waiter { get; set; }
     }
 }
