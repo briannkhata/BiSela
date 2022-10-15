@@ -93,7 +93,7 @@ namespace Katswiri.Forms
                     using (var db = new BEntities())
                     {
                         var product = db.Products.Where(p => p.ProductCode == textBoxSearch.Text).FirstOrDefault();
-                        double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
+                        //double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
                         Boolean Found = false;
 
                         double qty = 0;
@@ -114,6 +114,7 @@ namespace Katswiri.Forms
                                     row.Cells[2].Value = qty.ToString("##,##0.00");
                                     row.Cells[3].Value = order.ToString("##,##0.00");
                                     row.Cells[4].Value = selu.ToString("##,##0.00");
+                                    row.Cells[5].Value = DateTime.Now;
                                     row.Cells[6].Value = toto.ToString("##,##0.00");
                                     Found = true;
                                 }
@@ -127,8 +128,8 @@ namespace Katswiri.Forms
                                 double Qty = 1;
                                 double Order = 0.00;
                                 double Total = 0.00;
-                                double SellingPrice = UnitPrice;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
+                                double SellingPrice = 0.00;
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
                             }
                         }
                         else
@@ -140,8 +141,8 @@ namespace Katswiri.Forms
                             double Order = 0.00;
                             DateTime expiry = DateTime.Now;
                             double Qty = 1;
-                            double SellingPrice = UnitPrice;
-                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order, SellingPrice.ToString("##,##0.00"), expiry, Total);
+                            double SellingPrice = 0.00;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
                         }
                     }
                 }
@@ -222,7 +223,8 @@ namespace Katswiri.Forms
                                 Stores = receivingDetail.Qty,
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
-                                OrderPrice = receivingDetail.OrderPrice
+                                OrderPrice = receivingDetail.OrderPrice,
+                                Comment = "New Receiving Batch",
                             };
                         }
                         else if (RCT == "Kitchen")
@@ -234,7 +236,9 @@ namespace Katswiri.Forms
                                 Kitchen = receivingDetail.Qty,
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
-                                OrderPrice = receivingDetail.OrderPrice
+                                OrderPrice = receivingDetail.OrderPrice,
+                                Comment = "New Receiving Batch",
+
                             };
                         } 
                         else if (RCT == "Stores")
@@ -246,13 +250,16 @@ namespace Katswiri.Forms
                                 Stores = receivingDetail.Qty,
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
-                                OrderPrice = receivingDetail.OrderPrice
+                                OrderPrice = receivingDetail.OrderPrice,
+                                Comment = "New Receiving Batch",
+
                             };
                         }
-                        db.Entry(stock).State = EntityState.Modified;
+                        db.Stocks.Add(stock);
                         db.SaveChanges();
                     }
                     XtraMessageBox.Show("Products Received successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 }
             }
             catch (Exception ex)

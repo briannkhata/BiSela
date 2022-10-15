@@ -22,6 +22,17 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             loadData();
+            gridView1.Columns["ProductId"].Visible = false;
+            gridView1.Columns["ShopId"].Visible = false;
+            gridView1.Columns["StockId"].Visible = false;
+            gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            //gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
+
+            gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
+            gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
+
+            gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
+            gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
         }
 
         public void loadData()
@@ -29,17 +40,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 gridControl1.DataSource = db.vwUpdateStocks.ToList();
-                gridView1.Columns["ProductId"].Visible = false;
-                gridView1.Columns["ShopId"].Visible = false;
-                gridView1.Columns["StockId"].Visible = false;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                //gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
-
-                gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
-                gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
-
-                gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
-                gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
             }
         }
 
@@ -67,14 +67,14 @@ namespace Katswiri.Forms
                             ProductId = row.ProductId,
                             SellingPrice = row.SellingPrice,
                             ExpiryDate = row.ExpiryDate,
-                            Comment = textBox1.Text,
+                            Comment = "Stock Update on " + DateTime.Now,
                             ShopId = row.ShopId,
                         };
                         db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                     XtraMessageBox.Show("Stock Updating Successfull", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadData();
+                    reloadData();
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,36 @@ namespace Katswiri.Forms
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            loadData();
+            reloadData();
+        }
+
+        private void reloadData()
+        {
+            using (db = new BEntities())
+            {
+                gridControl1.DataSource = null;
+                gridControl1.DataSource = db.vwUpdateStocks.ToList();
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                var selectedRows = gridView1.GetSelectedRows();
+                var row = ((vwUpdateStock)gridView1.GetRow(selectedRows[0]));
+                using (var db = new BEntities())
+                {
+                    var stock = db.Stocks.Find(row.StockId);
+                    db.Stocks.Remove(stock);
+                    db.SaveChanges();
+                }
+                loadData();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

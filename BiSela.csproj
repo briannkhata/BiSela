@@ -693,6 +693,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\snapdeletelist.svg" />
     <None Include="Resources\refreshpivottable1.svg" />
     <None Include="Resources\addcolumn.svg" />
     <None Include="Resources\employeetasklist.svg" />
