@@ -283,12 +283,12 @@ namespace Katswiri.Forms
                         double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
                         double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
                         double order = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["OrderPrice"].Value);
-                        double expiry = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value);
+                        DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
                         double toto = order * qty;
                         dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
                         dataGridView1.Rows[e.RowIndex].Cells[3].Value = order.ToString("##,##0.00");
                         dataGridView1.Rows[e.RowIndex].Cells[4].Value = sp.ToString("##,##0.00");
-                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = expiry.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = expiry;
                         dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
                     }
                 }
