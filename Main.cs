@@ -560,5 +560,10 @@ namespace Katswiri
             FormOrders formOrders = new FormOrders();
             formOrders.ShowDialog();
         }
+
+        private void barButtonItem32_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

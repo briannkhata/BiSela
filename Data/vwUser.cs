@@ -17,10 +17,9 @@ namespace Katswiri.Data
         public string Name { get; set; }
         public string Gender { get; set; }
         public string UserName { get; set; }
-        public int ShopId { get; set; }
+        public Nullable<int> ShopId { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Address { get; set; }
         public string UserType { get; set; }
         public int UserId { get; set; }
     }

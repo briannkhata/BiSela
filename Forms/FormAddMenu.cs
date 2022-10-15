@@ -19,6 +19,7 @@ namespace Katswiri.Forms
         BEntities db;
         Ingredient ingredient;
         FoodMenu foodMenu;
+        int FoodMenuId;
         public FormAddMenu()
         {
             InitializeComponent();
@@ -61,50 +62,85 @@ namespace Katswiri.Forms
             {
                 using (db = new BEntities())
                 {
+                    int FoodMenuId = short.Parse(lblFoodMenuId.Text);
                     string Title = textEditTitle.Text;
                     double SP = Double.Parse(textEditSP.Text);
 
-                    foodMenu = new FoodMenu()
-                    {
-                        Title = Title,
-                        UnitPrice = SP,
-                    };
-                    db.FoodMenus.Add(foodMenu);
-                    db.SaveChanges();
-
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                    {
-                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        ingredient = new Ingredient()
+                    //if (FoodMenuId == 0)
+                    //{
+                        foodMenu = new FoodMenu()
                         {
-                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
-                            Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
-                            CostPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
-                            FoodMenuId = foodMenu.FoodMenuId,
+                            Title = Title,
+                            UnitPrice = SP,
+                            FoodMenuId = FoodMenuId,
                         };
-                        db.Ingredients.Add(ingredient);
+
+                        if (foodMenu.FoodMenuId > 0)
+                        {
+                            db.Entry(foodMenu).State = EntityState.Modified;
+                        }
+                        else
+                        {
+                            db.FoodMenus.Add(foodMenu);
+                        }
                         db.SaveChanges();
 
-                        //double OldQTY = (double)db.Stocks.Where(x => x.ProductId == recipe.ProductId).FirstOrDefault().Kitchen;
-                        //stock = new Stock()
-                        //{
-                        //    ProductId = recipe.ProductId,
-                        //    Kitchen = OldQTY - recipe.Qty,
-                        //};
+                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                        {
+                        var code = "";
+                        var code2 = "";
+                        int IngId = 0;
+                                if (foodMenu.FoodMenuId > 0)
+                                {
+                                    code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                                    code2 = code.Substring(0, code.IndexOf("-"));
+                                    IngId = short.Parse(code.Substring(code.IndexOf("-") + 1));
+                                }
+                                else
+                                {
+                                    code2 = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                                    IngId = 0;
+                                }
 
-                        //db.Entry(stock).State = EntityState.Modified;
-                        //db.SaveChanges();
+                            ingredient = new Ingredient()
+                            {
+                                ProductId = db.Products.Where(x => x.ProductCode == code2).FirstOrDefault().ProductId,
+                                Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
+                                CostPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                                FoodMenuId = foodMenu.FoodMenuId,
+                                IngredientId = IngId,
+
+                            };
+
+                            if (ingredient.IngredientId > 0)
+                            {
+                                db.Entry(ingredient).State = EntityState.Modified;
+                            }
+                            else
+                            {
+                                db.Ingredients.Add(ingredient);
+                            }
+                            db.SaveChanges();
                     }
+                    
                     XtraMessageBox.Show("Menu Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    textEditTitle.Text = "";
-                    textEditSP.Text = "";
-                    textBoxCode.Text = "";
-                    dataGridView1.Rows.Clear();
+                    if (foodMenu.FoodMenuId > 0 || ingredient.IngredientId > 0)
+                    {
+
+                    }
+                    else
+                    {
+                        textEditTitle.Text = "";
+                        textEditSP.Text = "";
+                        textBoxCode.Text = "";
+                        dataGridView1.Rows.Clear();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -135,6 +171,23 @@ namespace Katswiri.Forms
             textBoxCode.Text = string.Empty;
         }
 
-        
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                }
+                else
+                {
+                    XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

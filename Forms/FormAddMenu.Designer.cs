@@ -47,12 +47,13 @@ namespace Katswiri.Forms
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.textBoxCode = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblFoodMenuId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -102,6 +103,7 @@ namespace Katswiri.Forms
             this.barButtonItem2.Id = 2;
             this.barButtonItem2.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.deletetablerows;
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barEditItem1
             // 
@@ -252,17 +254,11 @@ namespace Katswiri.Forms
             this.dataGridView1.Size = new System.Drawing.Size(1183, 292);
             this.dataGridView1.TabIndex = 0;
             // 
-            // CostPrice
+            // ProductCode
             // 
-            this.CostPrice.HeaderText = "CostPrice";
-            this.CostPrice.MinimumWidth = 6;
-            this.CostPrice.Name = "CostPrice";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
+            this.ProductCode.HeaderText = "ProductCode";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
             // 
             // ProductName
             // 
@@ -270,11 +266,17 @@ namespace Katswiri.Forms
             this.ProductName.MinimumWidth = 6;
             this.ProductName.Name = "ProductName";
             // 
-            // ProductCode
+            // Qty
             // 
-            this.ProductCode.HeaderText = "ProductCode";
-            this.ProductCode.MinimumWidth = 6;
-            this.ProductCode.Name = "ProductCode";
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            // 
+            // CostPrice
+            // 
+            this.CostPrice.HeaderText = "CostPrice";
+            this.CostPrice.MinimumWidth = 6;
+            this.CostPrice.Name = "CostPrice";
             // 
             // panelControl1
             // 
@@ -295,6 +297,16 @@ namespace Katswiri.Forms
             this.label1.TabIndex = 8;
             this.label1.Text = "Product Code";
             // 
+            // lblFoodMenuId
+            // 
+            this.lblFoodMenuId.AutoSize = true;
+            this.lblFoodMenuId.BackColor = System.Drawing.Color.Gainsboro;
+            this.lblFoodMenuId.ForeColor = System.Drawing.Color.Transparent;
+            this.lblFoodMenuId.Location = new System.Drawing.Point(1104, 164);
+            this.lblFoodMenuId.Name = "lblFoodMenuId";
+            this.lblFoodMenuId.Size = new System.Drawing.Size(0, 19);
+            this.lblFoodMenuId.TabIndex = 10;
+            // 
             // FormAddMenu
             // 
             this.Appearance.Options.UseFont = true;
@@ -303,6 +315,7 @@ namespace Katswiri.Forms
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1202, 658);
+            this.Controls.Add(this.lblFoodMenuId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.dataLayoutControl1);
@@ -342,10 +355,8 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraEditors.TextEdit textEditTitle;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.TextEdit textEditSP;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
@@ -359,5 +370,8 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox textBoxCode;
+        public DevExpress.XtraEditors.TextEdit textEditTitle;
+        public DevExpress.XtraEditors.TextEdit textEditSP;
+        public System.Windows.Forms.Label lblFoodMenuId;
     }
 }

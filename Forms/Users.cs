@@ -33,7 +33,6 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwUsers.ToList();
                 gridView1.Columns["UserId"].Visible = false;
-                gridView1.Columns["UserType"].Visible = false;
                 gridView1.Columns["ShopId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridView1.OptionsView.ShowIndicator = false;
@@ -62,10 +61,9 @@ namespace Katswiri.Forms
       
         private void clearFields()
         {
-            NameTextEdit.Text = EmailTextEdit.Text = PhoneTextEdit.Text = AddressTextEdit.Text = AddressTextEdit.Text = string.Empty;
+            NameTextEdit.Text = EmailTextEdit.Text = PhoneTextEdit.Text = string.Empty;
             textEditGender.EditValue = null;
             UserNameTextEdit.Text = string.Empty;
-            //PassWordTextEdit.Text = string.Empty;
             btnDelete.Enabled = false;
             btnSave.Caption = "Save";
             UserId = 0;
@@ -80,11 +78,7 @@ namespace Katswiri.Forms
         private bool formValid()
         {
             var result = true;
-            //if (String.IsNullOrEmpty(PassWordTextEdit.Text))
-            //{
-            //    result = false;
-            //    PassWordTextEdit.ErrorText = "Required";
-            //}
+         
             if (String.IsNullOrEmpty(UserNameTextEdit.Text))
             {
                 result = false;
@@ -96,16 +90,7 @@ namespace Katswiri.Forms
                 result = false;
                 textEditGender.ErrorText = "Required";
             }
-            if (String.IsNullOrEmpty(AddressTextEdit.Text))
-            {
-                result = false;
-                AddressTextEdit.ErrorText = "Required";
-            }
-            if (String.IsNullOrEmpty(AddressTextEdit.Text))
-            {
-                result = false;
-                AddressTextEdit.ErrorText = "Required";
-            }
+          
           
             if (String.IsNullOrEmpty(PhoneTextEdit.Text))
             {
