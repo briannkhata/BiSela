@@ -91,7 +91,7 @@ namespace Katswiri.Forms
             // textBoxSearch
             // 
             this.textBoxSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearch.Location = new System.Drawing.Point(735, 133);
+            this.textBoxSearch.Location = new System.Drawing.Point(701, 139);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(439, 32);
             this.textBoxSearch.TabIndex = 0;
@@ -416,7 +416,7 @@ namespace Katswiri.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(735, 103);
+            this.label3.Location = new System.Drawing.Point(701, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(154, 19);
             this.label3.TabIndex = 13;

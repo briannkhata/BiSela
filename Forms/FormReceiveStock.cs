@@ -212,35 +212,47 @@ namespace Katswiri.Forms
                         db.ReceivingDetails.Add(receivingDetail);
                         db.SaveChanges();
 
-
-                        //bool stores = radioButtonStores.Checked;
-                        //if (stores)
-                        //{
-                        //    stock = new Stock()
-                        //    {
-                        //        ProductId = receivingDetail.ProductId,
-                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
-                        //        Stores = receivingDetail.Qty,
-                        //        SellingPrice = receivingDetail.SellingPrice,
-                        //        ExpiryDate = receivingDetail.ExpiryDate,
-                        //        OrderPrice = receivingDetail.OrderPrice
-                        //    };
-                        //}
-                        //else
-                        //{
-                        //    stock = new Stock()
-                        //    {
-                        //        ProductId = receivingDetail.ProductId,
-                        //        ShopId = db.Shops.SingleOrDefault().ShopId,
-                        //        Shop = receivingDetail.Qty,
-                        //        SellingPrice = receivingDetail.SellingPrice,
-                        //        ExpiryDate = receivingDetail.ExpiryDate,
-                        //        OrderPrice = receivingDetail.OrderPrice
-                        //    };
-                        //}
-                        //db.Stocks.Add(stock);
-                        //db.SaveChanges();
+                        var RCT = searchLookUpEditTo.EditValue.ToString();
+                        if (RCT == "Shop")
+                        {
+                            stock = new Stock()
+                            {
+                                ProductId = receivingDetail.ProductId,
+                                ShopId = db.Shops.SingleOrDefault().ShopId,
+                                Stores = receivingDetail.Qty,
+                                SellingPrice = receivingDetail.SellingPrice,
+                                ExpiryDate = receivingDetail.ExpiryDate,
+                                OrderPrice = receivingDetail.OrderPrice
+                            };
+                        }
+                        else if (RCT == "Kitchen")
+                        {
+                            stock = new Stock()
+                            {
+                                ProductId = receivingDetail.ProductId,
+                                ShopId = db.Shops.SingleOrDefault().ShopId,
+                                Kitchen = receivingDetail.Qty,
+                                SellingPrice = receivingDetail.SellingPrice,
+                                ExpiryDate = receivingDetail.ExpiryDate,
+                                OrderPrice = receivingDetail.OrderPrice
+                            };
+                        } 
+                        else if (RCT == "Stores")
+                        {
+                            stock = new Stock()
+                            {
+                                ProductId = receivingDetail.ProductId,
+                                ShopId = db.Shops.SingleOrDefault().ShopId,
+                                Stores = receivingDetail.Qty,
+                                SellingPrice = receivingDetail.SellingPrice,
+                                ExpiryDate = receivingDetail.ExpiryDate,
+                                OrderPrice = receivingDetail.OrderPrice
+                            };
+                        }
+                        db.Entry(stock).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
+                    XtraMessageBox.Show("Products Received successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
