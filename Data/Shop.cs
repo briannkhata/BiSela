@@ -22,5 +22,6 @@ namespace Katswiri.Data
         public string Address { get; set; }
         public string Motto { get; set; }
         public Nullable<double> Vat { get; set; }
+        public Nullable<System.DateTime> ExpiryAlert { get; set; }
     }
 }

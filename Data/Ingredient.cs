@@ -19,8 +19,5 @@ namespace Katswiri.Data
         public Nullable<double> Qty { get; set; }
         public Nullable<double> CostPrice { get; set; }
         public Nullable<int> FoodMenuId { get; set; }
-    
-        public virtual Ingredient Ingredients1 { get; set; }
-        public virtual Ingredient Ingredient1 { get; set; }
     }
 }

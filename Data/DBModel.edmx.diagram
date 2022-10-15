@@ -31,7 +31,6 @@
         <EntityTypeShape EntityType="BModel.vwReceivingCart" Width="1.5" PointX="16.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwReceivingReport" Width="1.5" PointX="17.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwSalesReport" Width="1.5" PointX="2.75" PointY="18.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BModel.vwShop" Width="1.5" PointX="17.75" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwSReport" Width="1.5" PointX="17.75" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwStockReport" Width="1.5" PointX="17.75" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BModel.vwStock" Width="1.5" PointX="8.75" PointY="19.5" IsExpanded="true" />
@@ -59,6 +58,7 @@
         <EntityTypeShape EntityType="BModel.vwUser" Width="1.5" PointX="20.375" PointY="8.75" />
         <AssociationConnector Association="BModel.FK_Ingredients_Ingredients" />
         <EntityTypeShape EntityType="BModel.vwUpdateStock" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="BModel.vwShop" Width="1.5" PointX="22.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
