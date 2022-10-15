@@ -17,19 +17,14 @@ namespace Katswiri.Forms
     public partial class FormAddMenu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         BEntities db;
-        Recipe recipe;
+        Ingredient ingredient;
         FoodMenu foodMenu;
-        Stock stock;
         public FormAddMenu()
         {
             InitializeComponent();
             autoCompleteSearch();
         }
 
-        private void textBoxCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void autoCompleteSearch()
         {
@@ -44,31 +39,6 @@ namespace Katswiri.Forms
                 textBoxCode.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 textBoxCode.AutoCompleteCustomSource = autoText;
             }
-        }
-
-        private void textBoxCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
-            {
-                try
-                {
-                    using (var db = new BEntities())
-                    {
-                        var product = db.Products.Where(p => p.ProductCode == textBoxCode.Text).FirstOrDefault();
-                        string ProductId = product.ProductId.ToString();
-                        string ProductCode = product.ProductCode.ToString();
-                        string ProductName = product.ProductName.ToString();
-                        double Qty = 1;
-                        double CP = 0.00;
-                        dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), CP.ToString("##,##0.00"));                      
-                    }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            textBoxCode.Text = string.Empty;
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -91,22 +61,13 @@ namespace Katswiri.Forms
             {
                 using (db = new BEntities())
                 {
-                    double tcost = 0.00;
                     string Title = textEditTitle.Text;
                     double SP = Double.Parse(textEditSP.Text);
-                    double CP = Double.Parse(textEditCP.Text);
-
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                    {
-                        tcost += Double.Parse((string)dataGridView1.Rows[i].Cells[3].Value);
-                    }
 
                     foodMenu = new FoodMenu()
                     {
                         Title = Title,
                         UnitPrice = SP,
-                        Cost = CP,
-                       
                     };
                     db.FoodMenus.Add(foodMenu);
                     db.SaveChanges();
@@ -114,26 +75,31 @@ namespace Katswiri.Forms
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        recipe = new Recipe()
+                        ingredient = new Ingredient()
                         {
                             ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
                             Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
                             CostPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
                             FoodMenuId = foodMenu.FoodMenuId,
                         };
-                        db.Recipes.Add(recipe);
+                        db.Ingredients.Add(ingredient);
                         db.SaveChanges();
 
-                        double OldQTY = (double)db.Stocks.Where(x => x.ProductId == recipe.ProductId).FirstOrDefault().Kitchen;
-                        stock = new Stock()
-                        {
-                            ProductId = recipe.ProductId,
-                            Kitchen = OldQTY - recipe.Qty,
-                        };
+                        //double OldQTY = (double)db.Stocks.Where(x => x.ProductId == recipe.ProductId).FirstOrDefault().Kitchen;
+                        //stock = new Stock()
+                        //{
+                        //    ProductId = recipe.ProductId,
+                        //    Kitchen = OldQTY - recipe.Qty,
+                        //};
 
-                        db.Entry(stock).State = EntityState.Modified;
-                        db.SaveChanges();
+                        //db.Entry(stock).State = EntityState.Modified;
+                        //db.SaveChanges();
                     }
+                    XtraMessageBox.Show("Menu Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textEditTitle.Text = "";
+                    textEditSP.Text = "";
+                    textBoxCode.Text = "";
+                    dataGridView1.Rows.Clear();
                 }
             }
             catch (Exception ex)
@@ -142,5 +108,33 @@ namespace Katswiri.Forms
             }
 
         }
+
+
+        private void textBoxCode_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
+            {
+                try
+                {
+                    using (var db = new BEntities())
+                    {
+                        var product = db.Products.Where(p => p.ProductCode == textBoxCode.Text).FirstOrDefault();
+                        string ProductId = product.ProductId.ToString();
+                        string ProductCode = product.ProductCode.ToString();
+                        string ProductName = product.ProductName.ToString();
+                        double Qty = 1;
+                        double CP = 0.00;
+                        dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), CP.ToString("##,##0.00"));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            textBoxCode.Text = string.Empty;
+        }
+
+        
     }
 }

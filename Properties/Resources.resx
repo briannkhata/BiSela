@@ -154,6 +154,9 @@
   <data name="movepivottable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\movepivottable.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="saveas4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveas4.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="updatedataextract" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\updatedataextract.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -178,11 +181,17 @@
   <data name="deletetablerows" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deletetablerows.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="barcodeshowtext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\barcodeshowtext.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="differentfirstpage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\differentfirstpage.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="saveas3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveas3.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="movepivottable1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\movepivottable1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -196,8 +205,14 @@
   <data name="business_money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business_money.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="folderpanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folderpanel.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="addcalculatedfield" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addcalculatedfield.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="insertgroupheader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\insertgroupheader.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -207,6 +222,9 @@
   </data>
   <data name="actions_addcircled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\actions_addcircled.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="employeetasklist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employeetasklist.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="shipmentreceived" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shipmentreceived.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -223,10 +241,13 @@
   <data name="productorderdetail-21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\productorderdetail-21.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="purpledatabarsolid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\purpledatabarsolid.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="business_bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business_bank.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="barcodeshowtext" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\barcodeshowtext.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="addcolumn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addcolumn.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

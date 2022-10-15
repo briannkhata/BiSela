@@ -16,8 +16,6 @@ namespace Katswiri.Data
     {
         public int FoodMenuId { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
         public Nullable<double> UnitPrice { get; set; }
-        public Nullable<double> Cost { get; set; }
     }
 }

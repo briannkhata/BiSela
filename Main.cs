@@ -412,13 +412,7 @@ namespace Katswiri
             doSignOut();
         }
 
-        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            FormCustomer formCustomer = new FormCustomer();
-            formCustomer.ShowDialog();
-            //ShowPosFom();
-        }
+      
 
         private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -521,11 +515,6 @@ namespace Katswiri
             }
         }
 
-        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            FormOrders formOrders = new FormOrders();
-            formOrders.ShowDialog();
-        }
 
         private void barButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -544,11 +533,32 @@ namespace Katswiri
             ShowShiftFom();
         }
 
-        private void barButtonItem32_ItemClick(object sender, ItemClickEventArgs e)
+        private void barButtonItem33_ItemClick(object sender, ItemClickEventArgs e)
         {
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             MenuList menuList = new MenuList();
             menuList.ShowDialog();
+        }
+
+        private void barButtonItem34_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormAddMenu formAddMenu = new FormAddMenu();
+            formAddMenu.ShowDialog();
+        }
+
+        private void barButtonItem38_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormCustomer formCustomer = new FormCustomer();
+            formCustomer.ShowDialog();
+        }
+
+        private void barButtonItem37_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormOrders formOrders = new FormOrders();
+            formOrders.ShowDialog();
         }
     }
 }

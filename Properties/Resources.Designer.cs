@@ -63,6 +63,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage _new {
+            get {
+                object obj = ResourceManager.GetObject("new", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage actions_addcircled {
             get {
                 object obj = ResourceManager.GetObject("actions_addcircled", resourceCulture);
@@ -76,6 +86,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage addcalculatedfield {
             get {
                 object obj = ResourceManager.GetObject("addcalculatedfield", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage addcolumn {
+            get {
+                object obj = ResourceManager.GetObject("addcolumn", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
@@ -213,9 +233,29 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage employeetasklist {
+            get {
+                object obj = ResourceManager.GetObject("employeetasklist", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage filter {
             get {
                 object obj = ResourceManager.GetObject("filter", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage folderpanel {
+            get {
+                object obj = ResourceManager.GetObject("folderpanel", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
@@ -236,6 +276,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage insertcaption {
             get {
                 object obj = ResourceManager.GetObject("insertcaption", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage insertgroupheader {
+            get {
+                object obj = ResourceManager.GetObject("insertgroupheader", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
@@ -306,6 +356,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage productorderdetail_21 {
             get {
                 object obj = ResourceManager.GetObject("productorderdetail-21", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage purpledatabarsolid {
+            get {
+                object obj = ResourceManager.GetObject("purpledatabarsolid", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
@@ -386,6 +446,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage saveas3 {
             get {
                 object obj = ResourceManager.GetObject("saveas3", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage saveas4 {
+            get {
+                object obj = ResourceManager.GetObject("saveas4", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

@@ -55,8 +55,8 @@
         <AssociationConnector Association="BModel.FK_SaleDetails_Products" />
         <EntityTypeShape EntityType="BModel.FoodBill" Width="1.5" PointX="21.375" PointY="18.75" />
         <EntityTypeShape EntityType="BModel.FoodBillsDetail" Width="1.5" PointX="22.375" PointY="0.75" />
-        <EntityTypeShape EntityType="BModel.FoodMenu" Width="1.5" PointX="14.375" PointY="14.75" />
-        <EntityTypeShape EntityType="BModel.Recipe" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="BModel.FoodMenu" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BModel.Ingredient" Width="1.5" PointX="14.375" PointY="14.75" />
         <EntityTypeShape EntityType="BModel.vwFoodMenu" Width="1.5" PointX="22.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>

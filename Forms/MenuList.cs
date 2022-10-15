@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using Katswiri.Data;
 using System;
@@ -28,11 +29,8 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwFoodMenus.ToList();
                 gridView1.Columns["FoodMenuId"].Visible = false;
-                gridView1.Columns["RecipeId"].Visible = false;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
-                gridView1.Columns["Cost"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-                gridView1.Columns["Cost"].DisplayFormat.FormatString = "c2";
+                gridView1.Columns["UnitPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                gridView1.Columns["UnitPrice"].DisplayFormat.FormatString = "c2".Trim('$');
             }
         }
 
@@ -41,6 +39,32 @@ namespace Katswiri.Forms
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             FormAddMenu formAddMenu = new FormAddMenu();
             formAddMenu.ShowDialog();
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            FormAddMenu formAddMenu = new FormAddMenu();
+            try
+            {
+                var selectedRows = gridView1.GetSelectedRows();
+                var row = ((vwFoodMenu)gridView1.GetRow(selectedRows[0]));
+                using (db = new BEntities())
+                {
+                    if (row.FoodMenuId != -1)
+                    {
+                        formAddMenu.dataGridView1.DataSource = db.Ingredients.Where(x => x.FoodMenuId == row.FoodMenuId).ToList();
+                        //IncomeId = row.IncomeId;
+                        //AmountTextEdit.Text = row.Amount.ToString();
+                        //IncomeTypeId.EditValue = row.IncomeTypeId.ToString();
+                    }
+                }
+                //btnSave.Caption = "Update";
+                //btnDelete.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

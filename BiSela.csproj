@@ -203,6 +203,9 @@
     <Compile Include="Data\IncomeType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Ingredient.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\PaymentType.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -213,9 +216,6 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ReceivingDetail.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Recipe.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Sale.cs">
@@ -692,6 +692,13 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\addcolumn.svg" />
+    <None Include="Resources\employeetasklist.svg" />
+    <None Include="Resources\saveas4.svg" />
+    <None Include="Resources\folderpanel.svg" />
+    <None Include="Resources\new.svg" />
+    <None Include="Resources\insertgroupheader.svg" />
+    <None Include="Resources\purpledatabarsolid.svg" />
     <None Include="Resources\barcodeshowtext.svg" />
     <None Include="Resources\filter.svg" />
     <None Include="Resources\deletetablerows.svg" />

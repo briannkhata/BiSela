@@ -59,9 +59,9 @@ namespace Katswiri.Forms
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Create New";
+            this.barButtonItem1.Caption = "Update";
             this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.actions_addcircled;
+            this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.saveas4;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 

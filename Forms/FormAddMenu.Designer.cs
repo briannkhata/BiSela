@@ -41,19 +41,17 @@ namespace Katswiri.Forms
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.textEditTitle = new DevExpress.XtraEditors.TextEdit();
             this.textEditSP = new DevExpress.XtraEditors.TextEdit();
-            this.textEditCP = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxCode = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CostPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -62,14 +60,13 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTitle.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSP.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCP.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -89,7 +86,7 @@ namespace Katswiri.Forms
             this.ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemLookUpEdit1,
             this.repositoryItemTextEdit1});
-            this.ribbon.Size = new System.Drawing.Size(1173, 232);
+            this.ribbon.Size = new System.Drawing.Size(1202, 232);
             // 
             // barButtonItem1
             // 
@@ -149,39 +146,30 @@ namespace Katswiri.Forms
             // 
             this.dataLayoutControl1.Controls.Add(this.textEditTitle);
             this.dataLayoutControl1.Controls.Add(this.textEditSP);
-            this.dataLayoutControl1.Controls.Add(this.textEditCP);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1173, 220);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1202, 123);
             this.dataLayoutControl1.TabIndex = 1;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
             // textEditTitle
             // 
-            this.textEditTitle.Location = new System.Drawing.Point(24, 71);
+            this.textEditTitle.Location = new System.Drawing.Point(24, 69);
             this.textEditTitle.MenuManager = this.ribbon;
             this.textEditTitle.Name = "textEditTitle";
-            this.textEditTitle.Size = new System.Drawing.Size(1125, 26);
+            this.textEditTitle.Size = new System.Drawing.Size(679, 26);
             this.textEditTitle.StyleController = this.dataLayoutControl1;
             this.textEditTitle.TabIndex = 4;
             // 
             // textEditSP
             // 
-            this.textEditSP.Location = new System.Drawing.Point(24, 120);
+            this.textEditSP.Location = new System.Drawing.Point(707, 69);
             this.textEditSP.Name = "textEditSP";
-            this.textEditSP.Size = new System.Drawing.Size(560, 26);
+            this.textEditSP.Size = new System.Drawing.Size(471, 26);
             this.textEditSP.StyleController = this.dataLayoutControl1;
             this.textEditSP.TabIndex = 5;
-            // 
-            // textEditCP
-            // 
-            this.textEditCP.Location = new System.Drawing.Point(588, 120);
-            this.textEditCP.Name = "textEditCP";
-            this.textEditCP.Size = new System.Drawing.Size(561, 26);
-            this.textEditCP.StyleController = this.dataLayoutControl1;
-            this.textEditCP.TabIndex = 5;
             // 
             // Root
             // 
@@ -190,18 +178,17 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1173, 220);
+            this.Root.Size = new System.Drawing.Size(1202, 123);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1153, 198);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1182, 103);
             this.layoutControlGroup1.Text = "Menu Detail";
             // 
             // layoutControlItem1
@@ -209,7 +196,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1.Control = this.textEditTitle;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1129, 49);
+            this.layoutControlItem1.Size = new System.Drawing.Size(683, 53);
             this.layoutControlItem1.Text = "Title";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(75, 16);
@@ -219,7 +206,7 @@ namespace Katswiri.Forms
             this.layoutControlItem3.Control = this.textEditSP;
             this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem3.Location = new System.Drawing.Point(683, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.layoutControlItem3.OptionsPrint.AppearanceItem.Options.UseFont = true;
@@ -227,36 +214,21 @@ namespace Katswiri.Forms
             this.layoutControlItem3.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
             this.layoutControlItem3.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.layoutControlItem3.OptionsPrint.AppearanceItemText.Options.UseFont = true;
-            this.layoutControlItem3.Size = new System.Drawing.Size(564, 97);
+            this.layoutControlItem3.Size = new System.Drawing.Size(475, 53);
             this.layoutControlItem3.Text = "Selling Price";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(75, 16);
             // 
-            // layoutControlItem4
+            // textBoxCode
             // 
-            this.layoutControlItem4.Control = this.textEditCP;
-            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem4.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem4.Location = new System.Drawing.Point(564, 49);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem4.OptionsPrint.AppearanceItem.Options.UseFont = true;
-            this.layoutControlItem4.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem4.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
-            this.layoutControlItem4.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.layoutControlItem4.OptionsPrint.AppearanceItemText.Options.UseFont = true;
-            this.layoutControlItem4.Size = new System.Drawing.Size(565, 97);
-            this.layoutControlItem4.Text = "Cost";
-            this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(75, 16);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(5, 476);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1161, 288);
-            this.panel1.TabIndex = 2;
+            this.textBoxCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCode.Location = new System.Drawing.Point(503, 135);
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.Size = new System.Drawing.Size(573, 32);
+            this.textBoxCode.TabIndex = 4;
+            this.textBoxCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxCode_KeyDown_1);
             // 
             // dataGridView1
             // 
@@ -272,31 +244,13 @@ namespace Katswiri.Forms
             this.Qty,
             this.CostPrice});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1161, 288);
+            this.dataGridView1.Size = new System.Drawing.Size(1183, 292);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // ProductCode
-            // 
-            this.ProductCode.HeaderText = "ProductCode";
-            this.ProductCode.MinimumWidth = 6;
-            this.ProductCode.Name = "ProductCode";
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.MinimumWidth = 6;
-            this.ProductName.Name = "ProductName";
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
             // 
             // CostPrice
             // 
@@ -304,20 +258,41 @@ namespace Katswiri.Forms
             this.CostPrice.MinimumWidth = 6;
             this.CostPrice.Name = "CostPrice";
             // 
-            // textBoxCode
+            // Qty
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(402, 156);
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(610, 23);
-            this.textBoxCode.TabIndex = 4;
-            this.textBoxCode.TextChanged += new System.EventHandler(this.textBoxCode_TextChanged);
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            // 
+            // ProductCode
+            // 
+            this.ProductCode.HeaderText = "ProductCode";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.dataGridView1);
+            this.panelControl1.Location = new System.Drawing.Point(9, 355);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(1187, 296);
+            this.panelControl1.TabIndex = 7;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(254, 155);
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(264, 135);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 24);
-            this.label1.TabIndex = 5;
+            this.label1.Size = new System.Drawing.Size(149, 23);
+            this.label1.TabIndex = 8;
             this.label1.Text = "Product Code";
             // 
             // FormAddMenu
@@ -325,12 +300,13 @@ namespace Katswiri.Forms
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1173, 774);
+            this.ClientSize = new System.Drawing.Size(1202, 658);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxCode);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.dataLayoutControl1);
+            this.Controls.Add(this.textBoxCode);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -345,14 +321,13 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditTitle.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSP.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCP.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,20 +346,18 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.TextEdit textEditSP;
-        private DevExpress.XtraEditors.TextEdit textEditCP;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn CostPrice;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private System.Windows.Forms.TextBox textBoxCode;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox textBoxCode;
     }
 }

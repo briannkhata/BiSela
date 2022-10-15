@@ -70,7 +70,7 @@ namespace Katswiri.Data
         public virtual DbSet<FoodBill> FoodBills { get; set; }
         public virtual DbSet<FoodBillsDetail> FoodBillsDetails { get; set; }
         public virtual DbSet<FoodMenu> FoodMenus { get; set; }
-        public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<vwFoodMenu> vwFoodMenus { get; set; }
     }
 }
