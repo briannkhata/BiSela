@@ -27,7 +27,9 @@ namespace Katswiri.Forms
             InitializeComponent();
             autoCompleteSearch();
             loadTo();
-        
+            //loadBranhces();
+
+
         }
 
         private void autoCompleteSearch()
@@ -39,20 +41,31 @@ namespace Katswiri.Forms
                 {
                     autoText.Add(product.ProductCode);
                 }
-                textBoxSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                textBoxSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                textBoxSearch.AutoCompleteCustomSource = autoText;
+                textBoxAuto.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                textBoxAuto.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                textBoxAuto.AutoCompleteCustomSource = autoText;
             }
         }
+        
+        //public void loadBranhces()
+        //{
+        //    using(db = new BEntities())
+        //    {
+        //        textEditFrom.Properties.DataSource = db.vwBranches.ToList();
+        //        textEditFrom.Properties.ValueMember = "BranchId";
+        //        textEditFrom.Properties.DisplayMember = "BranchName";
+        //        textEditFrom.Properties.NullText = "Receive From";
+        //    }
+        //}
 
         private void loadTo()
         {
 
             Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
-            searchLookUpEditTo.Properties.DataSource = store;
-            searchLookUpEditTo.Properties.ValueMember = "Value";
-            searchLookUpEditTo.Properties.DisplayMember = "Value";
-            searchLookUpEditTo.Properties.NullText = "Receive To";
+            textEditTo.Properties.DataSource = store;
+            textEditTo.Properties.ValueMember = "Value";
+            textEditTo.Properties.DisplayMember = "Value";
+            textEditTo.Properties.NullText = "Receive To";
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
@@ -84,76 +97,7 @@ namespace Katswiri.Forms
             //datetimepicker.visible = false;
         }
 
-        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
-            {
-                try
-                {
-                    using (var db = new BEntities())
-                    {
-                        var product = db.Products.Where(p => p.ProductCode == textBoxSearch.Text).FirstOrDefault();
-                        //double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
-                        Boolean Found = false;
-
-                        double qty = 0;
-                        double toto = 0;
-                        double selu = 0;
-                        double order = 0;
-                        if (dataGridView1.Rows.Count > 0)
-                        {
-                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
-                            {
-                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
-                                {
-                                    var code = row.Cells[0].Value.ToString();
-                                    selu = Convert.ToDouble(row.Cells[4].Value);
-                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
-                                    order = Convert.ToDouble(row.Cells[3].Value);
-                                    toto = order * qty;
-                                    row.Cells[2].Value = qty.ToString("##,##0.00");
-                                    row.Cells[3].Value = order.ToString("##,##0.00");
-                                    row.Cells[4].Value = selu.ToString("##,##0.00");
-                                    row.Cells[5].Value = DateTime.Now;
-                                    row.Cells[6].Value = toto.ToString("##,##0.00");
-                                    Found = true;
-                                }
-                            }
-                            if (!Found)
-                            {
-                                string ProductId = product.ProductId.ToString();
-                                string ProductCode = product.ProductCode.ToString();
-                                string ProductName = product.ProductName.ToString();
-                                DateTime expiry = DateTime.Now;
-                                double Qty = 1;
-                                double Order = 0.00;
-                                double Total = 0.00;
-                                double SellingPrice = 0.00;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
-                            }
-                        }
-                        else
-                        {
-                            string ProductId = product.ProductId.ToString();
-                            string ProductCode = product.ProductCode.ToString();
-                            string ProductName = product.ProductName.ToString();
-                            double Total = 0.00;
-                            double Order = 0.00;
-                            DateTime expiry = DateTime.Now;
-                            double Qty = 1;
-                            double SellingPrice = 0.00;
-                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            textBoxSearch.Text = string.Empty;
-
-        }
+      
         public void clearReceivingCart()
         {
            if(dataGridView1.Rows.Count > 1)
@@ -209,7 +153,7 @@ namespace Katswiri.Forms
                         db.ReceivingDetails.Add(receivingDetail);
                         db.SaveChanges();
 
-                        var RCT = searchLookUpEditTo.EditValue.ToString();
+                        var RCT = textEditTo.EditValue.ToString();
                         if (RCT == "Shop")
                         {
                             stock = new Stock()
@@ -311,6 +255,77 @@ namespace Katswiri.Forms
                 dateTimePicker.Size = new Size(rectangle.Width,rectangle.Height);
                 dateTimePicker.Location = new Point(rectangle.X,rectangle.Y);
             }
+        }
+
+
+        private void textBoxAuto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
+            {
+                try
+                {
+                    using (var db = new BEntities())
+                    {
+                        var product = db.Products.Where(p => p.ProductCode == textBoxAuto.Text).FirstOrDefault();
+                        //double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
+                        Boolean Found = false;
+
+                        double qty = 0;
+                        double toto = 0;
+                        double selu = 0;
+                        double order = 0;
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
+                                {
+                                    var code = row.Cells[0].Value.ToString();
+                                    selu = Convert.ToDouble(row.Cells[4].Value);
+                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
+                                    order = Convert.ToDouble(row.Cells[3].Value);
+                                    toto = order * qty;
+                                    row.Cells[2].Value = qty.ToString("##,##0.00");
+                                    row.Cells[3].Value = order.ToString("##,##0.00");
+                                    row.Cells[4].Value = selu.ToString("##,##0.00");
+                                    row.Cells[5].Value = DateTime.Now;
+                                    row.Cells[6].Value = toto.ToString("##,##0.00");
+                                    Found = true;
+                                }
+                            }
+                            if (!Found)
+                            {
+                                string ProductId = product.ProductId.ToString();
+                                string ProductCode = product.ProductCode.ToString();
+                                string ProductName = product.ProductName.ToString();
+                                DateTime expiry = DateTime.Now;
+                                double Qty = 1;
+                                double Order = 0.00;
+                                double Total = 0.00;
+                                double SellingPrice = 0.00;
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
+                            }
+                        }
+                        else
+                        {
+                            string ProductId = product.ProductId.ToString();
+                            string ProductCode = product.ProductCode.ToString();
+                            string ProductName = product.ProductName.ToString();
+                            double Total = 0.00;
+                            double Order = 0.00;
+                            DateTime expiry = DateTime.Now;
+                            double Qty = 1;
+                            double SellingPrice = 0.00;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            textBoxAuto.Text = string.Empty;
         }
     }
 }
