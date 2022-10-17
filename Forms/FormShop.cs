@@ -41,7 +41,8 @@ namespace Katswiri.Forms
                         PhoneTextEdit.Text = shops.Phone;
                         textEditMotto.Text = shops.Motto;
                         EmailTextEdit.Text = shops.Email;
-                        dateEditExpiryAlert.DateTime = (DateTime)shops.ExpiryAlert;
+                        textEditCurrency.Text = shops.Currency;
+                        dateEditExpiryAlert.Text = shops.ExpiryAlert.ToString();
                         textEditVat.Text = shops.Vat.ToString();
                         labelShopId.Text = shops.ShopId.ToString();
                     }
@@ -80,10 +81,10 @@ namespace Katswiri.Forms
                 textEditMotto.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty(TextEditAddress.Text))
+            if (String.IsNullOrEmpty(textEditCurrency.Text))
             {
                 result = false;
-                TextEditAddress.ErrorText = "Required";
+                textEditCurrency.ErrorText = "Required";
             }
 
             if (String.IsNullOrEmpty(TextEditAddress.Text))
@@ -127,7 +128,7 @@ namespace Katswiri.Forms
                         formShop.Email = EmailTextEdit.Text.ToString();
                         formShop.Currency = textEditCurrency.Text.ToString();
                         formShop.Motto = textEditMotto.Text.ToString();
-                        formShop.ExpiryAlert = dateEditExpiryAlert.DateTime;
+                        formShop.ExpiryAlert = short.Parse(dateEditExpiryAlert.Text);
                         formShop.Vat = double.Parse(textEditVat.Text);
                         db.Entry(formShop).State = EntityState.Modified;
                         db.SaveChanges();

@@ -523,8 +523,7 @@ namespace Katswiri
         }
         private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
-            ShowFormShopFom();
+           
         }
 
         private void barButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
@@ -564,6 +563,12 @@ namespace Katswiri
         private void barButtonItem32_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            ShowFormShopFom();
         }
     }
 }

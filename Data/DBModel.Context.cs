@@ -35,10 +35,8 @@ namespace Katswiri.Data
         public virtual DbSet<Receiving> Receivings { get; set; }
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
-        public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<StockMovement> StockMovements { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
-        public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
         public virtual DbSet<vwCart> vwCarts { get; set; }
@@ -71,6 +69,8 @@ namespace Katswiri.Data
         public virtual DbSet<vwFoodMenu> vwFoodMenus { get; set; }
         public virtual DbSet<vwUser> vwUsers { get; set; }
         public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
+        public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<vwShop> vwShops { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
     }
 }

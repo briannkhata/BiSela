@@ -29,7 +29,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
@@ -39,6 +39,8 @@ namespace Katswiri.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.textSearchProduct = new System.Windows.Forms.TextBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelBalance = new System.Windows.Forms.Label();
             this.labelSaleId = new System.Windows.Forms.Label();
             this.labelL = new System.Windows.Forms.Label();
             this.labelChange = new System.Windows.Forms.Label();
@@ -64,8 +66,6 @@ namespace Katswiri.Forms
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.labelBalance = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditSaleType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -138,7 +138,7 @@ namespace Katswiri.Forms
             this.lblCashier.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblCashier.Location = new System.Drawing.Point(198, 6);
             this.lblCashier.Name = "lblCashier";
-            this.lblCashier.Size = new System.Drawing.Size(218, 47);
+            this.lblCashier.Size = new System.Drawing.Size(259, 47);
             this.lblCashier.TabIndex = 27;
             this.lblCashier.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -204,6 +204,30 @@ namespace Katswiri.Forms
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(469, 731);
             this.panelControl1.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Location = new System.Drawing.Point(19, 389);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 72);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "BAL";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBalance
+            // 
+            this.labelBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBalance.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBalance.ForeColor = System.Drawing.Color.Red;
+            this.labelBalance.Location = new System.Drawing.Point(144, 389);
+            this.labelBalance.Name = "labelBalance";
+            this.labelBalance.Size = new System.Drawing.Size(317, 72);
+            this.labelBalance.TabIndex = 22;
+            this.labelBalance.Text = "00.00";
+            this.labelBalance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelSaleId
             // 
@@ -437,12 +461,12 @@ namespace Katswiri.Forms
             // Qty
             // 
             this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Qty.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle1;
             this.Qty.HeaderText = "Qty";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
@@ -494,30 +518,6 @@ namespace Katswiri.Forms
             this.button1.Text = "ORDERS";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // labelBalance
-            // 
-            this.labelBalance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelBalance.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBalance.ForeColor = System.Drawing.Color.Red;
-            this.labelBalance.Location = new System.Drawing.Point(144, 389);
-            this.labelBalance.Name = "labelBalance";
-            this.labelBalance.Size = new System.Drawing.Size(317, 72);
-            this.labelBalance.TabIndex = 22;
-            this.labelBalance.Text = "00.00";
-            this.labelBalance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(19, 389);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 72);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "BAL";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Pos
             // 

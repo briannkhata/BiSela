@@ -75,6 +75,7 @@ namespace Katswiri.Forms
                     loadPaymentTypes();
                 }
                 XtraMessageBox.Show("Record Deleted Successfully");
+                return;
             }
         }
 
@@ -99,12 +100,13 @@ namespace Katswiri.Forms
                         loadPaymentTypes();
                     }
                     XtraMessageBox.Show("PaymentType Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                return;
             }
         }
 
@@ -117,9 +119,8 @@ namespace Katswiri.Forms
                 if (row.PaymentTypeId != -1)
                 {
                     PaymentTypeId = row.PaymentTypeId;
-                    paymentType = db.PaymentTypes.Where(x => x.PaymentTypeId == PaymentTypeId).FirstOrDefault();
-                    textEditPaymentType.Text = paymentType.PaymentTypeName;
-                    textEditDescription.Text = paymentType.Description;
+                    textEditPaymentType.Text = row.PaymentTypeName;
+                    textEditDescription.Text = row.Description;
                 }
             }
             btnSave.Caption = "Update";

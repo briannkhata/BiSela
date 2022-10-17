@@ -37,6 +37,8 @@ namespace Katswiri.Forms
             dateEditDateSold.DateTime = DateTime.Now;
             //this.dataGridView1.Columns["ProductId"].Visible = false;
 
+            initVaribles();
+
             dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 12);
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 9, FontStyle.Bold);
             dataGridView1.RowHeadersVisible = false;
@@ -49,6 +51,15 @@ namespace Katswiri.Forms
             dataGridView1.Columns[3].Width = 60;
             dataGridView1.Columns[4].Width = 150;
             dataGridView1.Columns[5].Width = 200;
+        }
+
+        public void initVaribles()
+        {
+            using(db = new BEntities())
+            {
+                lblCashier.Text = db.Users.Where(x => x.UserId == LoginInfo.UserId).SingleOrDefault().Name;
+            }
+
         }
         public void disableButtons()
         {

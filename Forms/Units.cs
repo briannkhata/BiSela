@@ -67,11 +67,13 @@ namespace Katswiri.Forms
                         loadUnits();
                     }
                     XtraMessageBox.Show("Unit Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
             }
 
@@ -102,9 +104,8 @@ namespace Katswiri.Forms
                 if (row.UnitId != -1)
                 {
                     UnitId = row.UnitId;
-                    unit = db.Units.Where(x => x.UnitId == UnitId).FirstOrDefault();
-                    textEditUnit.Text = unit.UnitName;
-                    textEditUnitQty.Text = unit.Qty;
+                    textEditUnit.Text = row.UnitName;
+                    textEditUnitQty.Text = row.Qty;
                 }
             }
             btnSave.Caption = "Update";

@@ -35,7 +35,6 @@ namespace Katswiri.Data
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }
-        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleDetail> SaleDetails { get; set; }
     }

@@ -40,22 +40,24 @@ namespace Katswiri.Forms
             this.textEditPaymentType = new DevExpress.XtraEditors.TextEdit();
             this.textEditDescription = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPaymentType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -72,7 +74,7 @@ namespace Katswiri.Forms
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
-            this.ribbon.Size = new System.Drawing.Size(547, 232);
+            this.ribbon.Size = new System.Drawing.Size(512, 232);
             // 
             // btnSave
             // 
@@ -116,25 +118,25 @@ namespace Katswiri.Forms
             this.layoutControl1.Location = new System.Drawing.Point(0, 232);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(547, 140);
+            this.layoutControl1.Size = new System.Drawing.Size(512, 199);
             this.layoutControl1.TabIndex = 2;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // textEditPaymentType
             // 
-            this.textEditPaymentType.Location = new System.Drawing.Point(24, 69);
+            this.textEditPaymentType.Location = new System.Drawing.Point(24, 77);
             this.textEditPaymentType.MenuManager = this.ribbon;
             this.textEditPaymentType.Name = "textEditPaymentType";
-            this.textEditPaymentType.Size = new System.Drawing.Size(206, 26);
+            this.textEditPaymentType.Size = new System.Drawing.Size(464, 26);
             this.textEditPaymentType.StyleController = this.layoutControl1;
             this.textEditPaymentType.TabIndex = 4;
             // 
             // textEditDescription
             // 
-            this.textEditDescription.Location = new System.Drawing.Point(234, 69);
+            this.textEditDescription.Location = new System.Drawing.Point(24, 126);
             this.textEditDescription.MenuManager = this.ribbon;
             this.textEditDescription.Name = "textEditDescription";
-            this.textEditDescription.Size = new System.Drawing.Size(289, 26);
+            this.textEditDescription.Size = new System.Drawing.Size(464, 26);
             this.textEditDescription.StyleController = this.layoutControl1;
             this.textEditDescription.TabIndex = 5;
             // 
@@ -143,49 +145,19 @@ namespace Katswiri.Forms
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup1});
+            this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(547, 206);
+            this.Root.Size = new System.Drawing.Size(512, 199);
             this.Root.TextVisible = false;
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem2});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(527, 186);
-            this.layoutControlGroup1.Text = "Enter Details ";
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.textEditPaymentType;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(210, 70);
-            this.layoutControlItem1.Text = "Payment Type";
-            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(88, 16);
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.textEditDescription;
-            this.layoutControlItem2.Location = new System.Drawing.Point(210, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(293, 70);
-            this.layoutControlItem2.Text = "Details";
-            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(88, 16);
             // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControl1.Location = new System.Drawing.Point(0, 378);
+            this.gridControl1.Location = new System.Drawing.Point(0, 437);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(547, 386);
+            this.gridControl1.Size = new System.Drawing.Size(512, 327);
             this.gridControl1.TabIndex = 3;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -197,12 +169,51 @@ namespace Katswiri.Forms
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // tabbedControlGroup1
+            // 
+            this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.tabbedControlGroup1.Name = "tabbedControlGroup1";
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(492, 179);
+            this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(468, 121);
+            this.layoutControlGroup1.Text = "Enter Details ";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.textEditPaymentType;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(468, 49);
+            this.layoutControlItem1.Text = "Payment Type";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(88, 16);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.textEditDescription;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(468, 72);
+            this.layoutControlItem2.Text = "Details";
+            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(88, 16);
+            // 
             // PaymentTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(547, 764);
+            this.ClientSize = new System.Drawing.Size(512, 764);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.ribbon);
@@ -217,11 +228,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.textEditPaymentType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,10 +251,11 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.TextEdit textEditPaymentType;
         private DevExpress.XtraEditors.TextEdit textEditDescription;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

@@ -31,6 +31,8 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = db.vwShifts.ToList();
                 gridView1.Columns["ShiftId"].Visible = false;
+                //gridView1.Columns["CloseDate"].Visible = false;
+                //gridView1.Columns["OpenDate"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
                 gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
             }
@@ -68,23 +70,27 @@ namespace Katswiri.Forms
 
                         if (ShiftId > 0)
                         {
-                            shift.CloseDate = DateTime.Now;
-                            shift.CloseBalance = Double.Parse(textEditClosing.Text);
-                            db.Entry(shift).State = EntityState.Modified;
-                            db.SaveChanges();
+                            var update = db.Shifts.Where(x => x.ShiftId == ShiftId).FirstOrDefault();
+                            update.CloseDate = DateTime.Now;
+                            update.CloseBalance = Double.Parse(textEditClosing.Text);
+                            db.Entry(update).State = EntityState.Modified;
                         }
                         else
                         {
                             db.Shifts.Add(shift);
-                            db.SaveChanges();
                         }
+                        db.SaveChanges();
+                        loadShifts();
+
                     }
                     XtraMessageBox.Show("Shift Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -109,6 +115,7 @@ namespace Katswiri.Forms
                    loadShifts();
                 }
                   XtraMessageBox.Show("Record Deleted Successfully");
+                return;
              }
         }
 
