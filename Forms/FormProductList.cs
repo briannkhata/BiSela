@@ -52,7 +52,6 @@ namespace Katswiri.Forms
                 searchLookUpEditCategory.Properties.ValueMember = "CategoryId";
                 searchLookUpEditCategory.Properties.DisplayMember = "CategoryName";
                 searchLookUpEditCategory.Properties.NullText = "Product Category";
-
             }
         }
 
@@ -64,7 +63,6 @@ namespace Katswiri.Forms
                 searchLookUpEditBrand.Properties.ValueMember = "BrandId";
                 searchLookUpEditBrand.Properties.DisplayMember = "BrandName";
                 searchLookUpEditBrand.Properties.NullText = "Product Brand";
-
             }
         }
 
@@ -76,7 +74,6 @@ namespace Katswiri.Forms
                 searchLookUpEditUnit.Properties.ValueMember = "UnitId";
                 searchLookUpEditUnit.Properties.DisplayMember = "UnitName";
                 searchLookUpEditUnit.Properties.NullText = "Unit Category";
-
             }
         }
         private void FormProductList_Load(object sender, EventArgs e)
@@ -113,7 +110,6 @@ namespace Katswiri.Forms
             {
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwProducts.Where(x => x.UnitId == unitId).ToList();
-       
             }
         }
 
@@ -127,16 +123,26 @@ namespace Katswiri.Forms
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                using (db = new BEntities())
+                if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    product.Deleted = 1;
-                    db.Entry(product).State = EntityState.Modified;
-                    db.SaveChanges();
+                    using (db = new BEntities())
+                    {
+                        var del = db.Products.Where(x => x.ProductId == ProductId).FirstOrDefault();
+                        del.Deleted = 1;
+                        db.Entry(del).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
                     loadProducts();
+                    return;
                 }
-                XtraMessageBox.Show("Record Deleted Successfully");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

@@ -10,7 +10,6 @@ namespace Katswiri.Enums
     {
         Customer,
         Supplier,
-        Staff,
         Administrator,
         Cahier,
         Waiter,
