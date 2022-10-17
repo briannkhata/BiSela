@@ -68,6 +68,7 @@ namespace Katswiri.Forms
                     loadExpenseTypes();
                 }
                 XtraMessageBox.Show("Record Deleted Successfully");
+                return;
             }
         }
 
@@ -80,7 +81,6 @@ namespace Katswiri.Forms
                     using (db = new BEntities())
                     {
                         expenseType.ExpenseTypeName = textEditExpenseType.Text;
-
                         if (ExpenseTypeId > 0)
                             db.Entry(expenseType).State = EntityState.Modified;
                         else
@@ -92,11 +92,13 @@ namespace Katswiri.Forms
                         loadExpenseTypes();
                     }
                     XtraMessageBox.Show("ExpenseType Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
             }
         }
@@ -110,8 +112,7 @@ namespace Katswiri.Forms
                 if (row.ExpenseTypeId != -1)
                 {
                     ExpenseTypeId = row.ExpenseTypeId;
-                    expenseType = db.ExpenseTypes.Where(x => x.ExpenseTypeId == ExpenseTypeId).FirstOrDefault();
-                    textEditExpenseType.Text = expenseType.ExpenseTypeName;
+                    textEditExpenseType.Text = row.ExpenseTypeName;
                 }
             }
             btnSave.Caption = "Update";

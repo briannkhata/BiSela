@@ -77,6 +77,7 @@ namespace Katswiri.Forms
                     XtraMessageBox.Show("Category Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFields();
                     loadCategories();
+                    return;
                 }
             }
             catch (Exception ex)
@@ -87,17 +88,26 @@ namespace Katswiri.Forms
 
         private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                using (db = new BEntities())
+                if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    category.Deleted = 1;
-                    db.Entry(category).State = EntityState.Modified;
-                    db.SaveChanges();
-                    clearFields();
+                    using (db = new BEntities())
+                    {
+                        var del = db.Categories.Where(x => x.CategoryId == CategoryId).FirstOrDefault();
+                        del.Deleted = 1;
+                        db.Entry(del).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
                     loadCategories();
+                    return;
                 }
-                XtraMessageBox.Show("Record Deleted Successfully");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -121,6 +131,7 @@ namespace Katswiri.Forms
             }catch(Exception ex)
             {
                 XtraMessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
             }
         }
     }

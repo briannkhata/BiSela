@@ -101,28 +101,39 @@ namespace Katswiri.Forms
                     clearFields();
                     loadExpenses();
                     XtraMessageBox.Show("Expense Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
 
             }
         }
 
         private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                expense.Deleted = 1;
-                using (db = new BEntities())
+                if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    db.Entry(expense).State = EntityState.Modified;
-                    db.SaveChanges();
-                    clearFields();
+                    using (db = new BEntities())
+                    {
+                        var del = db.Expenses.Where(x => x.ExpenseId == ExpenseId).FirstOrDefault();
+                        del.Deleted = 1;
+                        db.Entry(del).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
                     loadExpenses();
+                    return;
                 }
-                XtraMessageBox.Show("Record Deleted Successfully");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -147,6 +158,7 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

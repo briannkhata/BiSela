@@ -144,6 +144,7 @@ namespace Katswiri.Forms
                         loadUsers();
                     }
                     XtraMessageBox.Show("User Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
             }
             catch (Exception ex)

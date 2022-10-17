@@ -83,30 +83,40 @@ namespace Katswiri.Forms
                     }
                     clearFields();
                     loadBrands();
-                    XtraMessageBox.Show("Tax Type Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Brand Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
         private void btnDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                using (db = new BEntities())
+                if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    brand.Deleted = 1;
-                    db.Entry(brand).State = EntityState.Modified;
-                    db.SaveChanges();
-
+                    using (db = new BEntities())
+                    {
+                        var del = db.Brands.Where(x => x.BrandId == BrandId).FirstOrDefault();
+                        del.Deleted = 1;
+                        db.Entry(del).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
+                    loadBrands();
+                    return;
                 }
-                clearFields();
-                loadBrands();
-                XtraMessageBox.Show("Record Deleted Successfully");
             }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
         }
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
@@ -118,9 +128,8 @@ namespace Katswiri.Forms
                 if (row.BrandId != -1)
                 {
                     BrandId = row.BrandId;
-                    brand = db.Brands.Where(x => x.BrandId == BrandId).FirstOrDefault();
-                    BrandDescriptionTextEdit.Text = brand.BrandDescription;
-                    BrandNameTextEdit.Text = brand.BrandName;
+                    BrandDescriptionTextEdit.Text = row.BrandDescription;
+                    BrandNameTextEdit.Text = row.BrandName;
                 }
             }
             btnSave.Caption = "Update";

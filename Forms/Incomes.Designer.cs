@@ -48,12 +48,12 @@ namespace Katswiri.Forms
             this.IncomeTypeId = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForAmount = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForIncomeTypeId = new DevExpress.XtraLayout.LayoutControlItem();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox3)).BeginInit();
@@ -64,12 +64,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.IncomeTypeId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeTypeId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -92,7 +92,7 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3});
-            this.ribbon.Size = new System.Drawing.Size(643, 232);
+            this.ribbon.Size = new System.Drawing.Size(626, 232);
             // 
             // btnSave
             // 
@@ -183,7 +183,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(643, 202);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(626, 202);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -197,7 +197,7 @@ namespace Katswiri.Forms
             this.AmountTextEdit.Properties.Mask.EditMask = "F";
             this.AmountTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.AmountTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.AmountTextEdit.Size = new System.Drawing.Size(595, 26);
+            this.AmountTextEdit.Size = new System.Drawing.Size(578, 26);
             this.AmountTextEdit.StyleController = this.dataLayoutControl1;
             this.AmountTextEdit.TabIndex = 0;
             // 
@@ -215,7 +215,7 @@ namespace Katswiri.Forms
             this.IncomeTypeId.Properties.NullText = "";
             this.IncomeTypeId.Properties.PopupSizeable = false;
             this.IncomeTypeId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.IncomeTypeId.Size = new System.Drawing.Size(595, 28);
+            this.IncomeTypeId.Size = new System.Drawing.Size(578, 28);
             this.IncomeTypeId.StyleController = this.dataLayoutControl1;
             this.IncomeTypeId.TabIndex = 3;
             // 
@@ -226,7 +226,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(643, 202);
+            this.Root.Size = new System.Drawing.Size(626, 202);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -237,33 +237,14 @@ namespace Katswiri.Forms
             this.tabbedControlGroup1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(623, 182);
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
-            this.gridControl1.Location = new System.Drawing.Point(0, 458);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.ribbon;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(643, 424);
-            this.gridControl1.TabIndex = 4;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(606, 182);
             // 
             // tabbedControlGroup1
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup2;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(623, 182);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(606, 182);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             // 
@@ -274,7 +255,7 @@ namespace Katswiri.Forms
             this.ItemForIncomeTypeId});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(599, 124);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(582, 124);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForAmount
@@ -282,7 +263,7 @@ namespace Katswiri.Forms
             this.ItemForAmount.Control = this.AmountTextEdit;
             this.ItemForAmount.Location = new System.Drawing.Point(0, 0);
             this.ItemForAmount.Name = "ItemForAmount";
-            this.ItemForAmount.Size = new System.Drawing.Size(599, 49);
+            this.ItemForAmount.Size = new System.Drawing.Size(582, 49);
             this.ItemForAmount.Text = "Amount";
             this.ItemForAmount.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForAmount.TextSize = new System.Drawing.Size(79, 16);
@@ -292,16 +273,35 @@ namespace Katswiri.Forms
             this.ItemForIncomeTypeId.Control = this.IncomeTypeId;
             this.ItemForIncomeTypeId.Location = new System.Drawing.Point(0, 49);
             this.ItemForIncomeTypeId.Name = "ItemForIncomeTypeId";
-            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(599, 75);
+            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(582, 75);
             this.ItemForIncomeTypeId.Text = "Income Type";
             this.ItemForIncomeTypeId.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForIncomeTypeId.TextSize = new System.Drawing.Size(79, 16);
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridControl1.ImeMode = System.Windows.Forms.ImeMode.AlphaFull;
+            this.gridControl1.Location = new System.Drawing.Point(0, 458);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.ribbon;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(626, 424);
+            this.gridControl1.TabIndex = 4;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridControl1.DoubleClick += new System.EventHandler(this.gridControl1_DoubleClick);
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
             // 
             // Incomes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 882);
+            this.ClientSize = new System.Drawing.Size(626, 882);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
@@ -320,12 +320,12 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.IncomeTypeId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForIncomeTypeId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

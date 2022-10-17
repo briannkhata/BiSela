@@ -158,44 +158,18 @@ namespace Katswiri.Forms
                         db.SaveChanges();
                     }
                     XtraMessageBox.Show("Product Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     clearFields();
+                    return;
 
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
-        private void Products_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BrandLookUpEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UnitIdLookUpEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textEditOrderLevel_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CategoryIdLookUpEdit_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lookUpEditTaxStatus_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

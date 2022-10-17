@@ -45,6 +45,7 @@ namespace Katswiri.Forms
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.textEditCategory = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -56,6 +57,7 @@ namespace Katswiri.Forms
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
@@ -157,7 +159,7 @@ namespace Katswiri.Forms
             // 
             // textEditCategory
             // 
-            this.textEditCategory.Location = new System.Drawing.Point(24, 69);
+            this.textEditCategory.Location = new System.Drawing.Point(24, 77);
             this.textEditCategory.MenuManager = this.ribbon;
             this.textEditCategory.Name = "textEditCategory";
             this.textEditCategory.Size = new System.Drawing.Size(467, 26);
@@ -169,10 +171,19 @@ namespace Katswiri.Forms
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup1});
+            this.tabbedControlGroup1});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(515, 157);
             this.Root.TextVisible = false;
+            // 
+            // tabbedControlGroup1
+            // 
+            this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.tabbedControlGroup1.Name = "tabbedControlGroup1";
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(495, 137);
+            this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
             // 
             // layoutControlGroup1
             // 
@@ -180,7 +191,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(495, 137);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(471, 79);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem1
@@ -188,7 +199,7 @@ namespace Katswiri.Forms
             this.layoutControlItem1.Control = this.textEditCategory;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(471, 87);
+            this.layoutControlItem1.Size = new System.Drawing.Size(471, 79);
             this.layoutControlItem1.Text = "Category";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(55, 16);
@@ -217,6 +228,7 @@ namespace Katswiri.Forms
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
@@ -239,6 +251,7 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private TextEdit textEditCategory;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
     }

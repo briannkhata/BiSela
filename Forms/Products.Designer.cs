@@ -50,6 +50,8 @@ namespace Katswiri.Forms
             this.textEditBarcode = new DevExpress.XtraEditors.TextEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.lblProductId = new System.Windows.Forms.Label();
+            this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ItemForCategoryId = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -60,7 +62,6 @@ namespace Katswiri.Forms
             this.ItemForProductCode = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.lblProductId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
@@ -77,6 +78,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.textEditBarcode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCategoryId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -177,7 +179,7 @@ namespace Katswiri.Forms
             // 
             // lookUpEditTaxStatus
             // 
-            this.lookUpEditTaxStatus.Location = new System.Drawing.Point(589, 216);
+            this.lookUpEditTaxStatus.Location = new System.Drawing.Point(589, 224);
             this.lookUpEditTaxStatus.MenuManager = this.ribbon;
             this.lookUpEditTaxStatus.Name = "lookUpEditTaxStatus";
             this.lookUpEditTaxStatus.Properties.Appearance.Options.UseTextOptions = true;
@@ -188,21 +190,19 @@ namespace Katswiri.Forms
             this.lookUpEditTaxStatus.Size = new System.Drawing.Size(561, 26);
             this.lookUpEditTaxStatus.StyleController = this.dataLayoutControl1;
             this.lookUpEditTaxStatus.TabIndex = 14;
-            this.lookUpEditTaxStatus.EditValueChanged += new System.EventHandler(this.lookUpEditTaxStatus_EditValueChanged);
             // 
             // textEditOrderLevel
             // 
-            this.textEditOrderLevel.Location = new System.Drawing.Point(24, 167);
+            this.textEditOrderLevel.Location = new System.Drawing.Point(24, 175);
             this.textEditOrderLevel.MenuManager = this.ribbon;
             this.textEditOrderLevel.Name = "textEditOrderLevel";
             this.textEditOrderLevel.Size = new System.Drawing.Size(245, 26);
             this.textEditOrderLevel.StyleController = this.dataLayoutControl1;
             this.textEditOrderLevel.TabIndex = 13;
-            this.textEditOrderLevel.EditValueChanged += new System.EventHandler(this.textEditOrderLevel_EditValueChanged);
             // 
             // ProductCodeTextEdit
             // 
-            this.ProductCodeTextEdit.Location = new System.Drawing.Point(657, 69);
+            this.ProductCodeTextEdit.Location = new System.Drawing.Point(657, 77);
             this.ProductCodeTextEdit.MenuManager = this.ribbon;
             this.ProductCodeTextEdit.Name = "ProductCodeTextEdit";
             this.ProductCodeTextEdit.Size = new System.Drawing.Size(493, 26);
@@ -211,7 +211,7 @@ namespace Katswiri.Forms
             // 
             // ProductNameTextEdit
             // 
-            this.ProductNameTextEdit.Location = new System.Drawing.Point(24, 69);
+            this.ProductNameTextEdit.Location = new System.Drawing.Point(24, 77);
             this.ProductNameTextEdit.MenuManager = this.ribbon;
             this.ProductNameTextEdit.Name = "ProductNameTextEdit";
             this.ProductNameTextEdit.Size = new System.Drawing.Size(629, 26);
@@ -220,7 +220,7 @@ namespace Katswiri.Forms
             // 
             // UnitIdLookUpEdit
             // 
-            this.UnitIdLookUpEdit.Location = new System.Drawing.Point(778, 167);
+            this.UnitIdLookUpEdit.Location = new System.Drawing.Point(778, 175);
             this.UnitIdLookUpEdit.MenuManager = this.ribbon;
             this.UnitIdLookUpEdit.Name = "UnitIdLookUpEdit";
             this.UnitIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -231,11 +231,10 @@ namespace Katswiri.Forms
             this.UnitIdLookUpEdit.Size = new System.Drawing.Size(372, 26);
             this.UnitIdLookUpEdit.StyleController = this.dataLayoutControl1;
             this.UnitIdLookUpEdit.TabIndex = 7;
-            this.UnitIdLookUpEdit.EditValueChanged += new System.EventHandler(this.UnitIdLookUpEdit_EditValueChanged);
             // 
             // CategoryIdLookUpEdit
             // 
-            this.CategoryIdLookUpEdit.Location = new System.Drawing.Point(24, 216);
+            this.CategoryIdLookUpEdit.Location = new System.Drawing.Point(24, 224);
             this.CategoryIdLookUpEdit.MenuManager = this.ribbon;
             this.CategoryIdLookUpEdit.Name = "CategoryIdLookUpEdit";
             this.CategoryIdLookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
@@ -246,11 +245,10 @@ namespace Katswiri.Forms
             this.CategoryIdLookUpEdit.Size = new System.Drawing.Size(561, 26);
             this.CategoryIdLookUpEdit.StyleController = this.dataLayoutControl1;
             this.CategoryIdLookUpEdit.TabIndex = 8;
-            this.CategoryIdLookUpEdit.EditValueChanged += new System.EventHandler(this.CategoryIdLookUpEdit_EditValueChanged);
             // 
             // BrandLookUpEdit
             // 
-            this.BrandLookUpEdit.Location = new System.Drawing.Point(273, 167);
+            this.BrandLookUpEdit.Location = new System.Drawing.Point(273, 175);
             this.BrandLookUpEdit.MenuManager = this.ribbon;
             this.BrandLookUpEdit.Name = "BrandLookUpEdit";
             this.BrandLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -259,11 +257,10 @@ namespace Katswiri.Forms
             this.BrandLookUpEdit.Size = new System.Drawing.Size(501, 26);
             this.BrandLookUpEdit.StyleController = this.dataLayoutControl1;
             this.BrandLookUpEdit.TabIndex = 12;
-            this.BrandLookUpEdit.EditValueChanged += new System.EventHandler(this.BrandLookUpEdit_EditValueChanged);
             // 
             // TextEditDescription
             // 
-            this.TextEditDescription.Location = new System.Drawing.Point(24, 265);
+            this.TextEditDescription.Location = new System.Drawing.Point(24, 273);
             this.TextEditDescription.Name = "TextEditDescription";
             this.TextEditDescription.Size = new System.Drawing.Size(1126, 26);
             this.TextEditDescription.StyleController = this.dataLayoutControl1;
@@ -271,7 +268,7 @@ namespace Katswiri.Forms
             // 
             // textEditBarcode
             // 
-            this.textEditBarcode.Location = new System.Drawing.Point(24, 118);
+            this.textEditBarcode.Location = new System.Drawing.Point(24, 126);
             this.textEditBarcode.MenuManager = this.ribbon;
             this.textEditBarcode.Name = "textEditBarcode";
             this.textEditBarcode.Size = new System.Drawing.Size(1126, 26);
@@ -293,10 +290,27 @@ namespace Katswiri.Forms
             this.layoutControlGroup1.AllowDrawBackground = false;
             this.layoutControlGroup1.GroupBordersVisible = false;
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup2});
+            this.tabbedControlGroup1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1154, 369);
+            // 
+            // lblProductId
+            // 
+            this.lblProductId.BackColor = System.Drawing.Color.Gainsboro;
+            this.lblProductId.Location = new System.Drawing.Point(472, 140);
+            this.lblProductId.Name = "lblProductId";
+            this.lblProductId.Size = new System.Drawing.Size(217, 23);
+            this.lblProductId.TabIndex = 6;
+            // 
+            // tabbedControlGroup1
+            // 
+            this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.tabbedControlGroup1.Name = "tabbedControlGroup1";
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup2;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1154, 369);
+            this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup2});
             // 
             // layoutControlGroup2
             // 
@@ -312,7 +326,7 @@ namespace Katswiri.Forms
             this.layoutControlItem4});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1154, 369);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1130, 311);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForCategoryId
@@ -348,7 +362,7 @@ namespace Katswiri.Forms
             this.ItemForProductName1.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
             this.ItemForProductName1.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.ItemForProductName1.OptionsPrint.AppearanceItemText.Options.UseFont = true;
-            this.ItemForProductName1.Size = new System.Drawing.Size(1130, 123);
+            this.ItemForProductName1.Size = new System.Drawing.Size(1130, 115);
             this.ItemForProductName1.Text = "Description";
             this.ItemForProductName1.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForProductName1.TextSize = new System.Drawing.Size(88, 16);
@@ -413,13 +427,6 @@ namespace Katswiri.Forms
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 16);
             // 
-            // lblProductId
-            // 
-            this.lblProductId.Location = new System.Drawing.Point(472, 140);
-            this.lblProductId.Name = "lblProductId";
-            this.lblProductId.Size = new System.Drawing.Size(217, 23);
-            this.lblProductId.TabIndex = 6;
-            // 
             // Products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,7 +443,6 @@ namespace Katswiri.Forms
             this.Ribbon = this.ribbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Product";
-            this.Load += new System.EventHandler(this.Products_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
@@ -453,6 +459,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.textEditBarcode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForCategoryId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -481,16 +488,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForProductCode;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForProductName;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForUnitId;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForCategoryId;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForProductName1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         public DevExpress.XtraEditors.TextEdit ProductCodeTextEdit;
         public DevExpress.XtraEditors.TextEdit ProductNameTextEdit;
         public DevExpress.XtraEditors.TextEdit TextEditDescription;
@@ -501,5 +498,16 @@ namespace Katswiri.Forms
         public DevExpress.XtraEditors.TextEdit textEditOrderLevel;
         public DevExpress.XtraEditors.LookUpEdit lookUpEditTaxStatus;
         public System.Windows.Forms.Label lblProductId;
+        private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForCategoryId;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForProductName1;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForProductName;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForUnitId;
+        private DevExpress.XtraLayout.LayoutControlItem ItemForProductCode;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }
