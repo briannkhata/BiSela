@@ -104,19 +104,27 @@ namespace Katswiri.Forms
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-             if (XtraMessageBox.Show("Are you sure you want to delete this Record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-             {
-                using (db = new BEntities())
+            try
+            {
+                if (XtraMessageBox.Show("Are you sure you want to delete this record ?", "Delete ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                   shift.Deleted = 1;
-                   db.Entry(shift).State = EntityState.Modified;
-                   db.SaveChanges();
-                   clearFields();
-                   loadShifts();
+                    using (db = new BEntities())
+                    {
+                        var del = db.Shifts.Where(x => x.ShiftId == ShiftId).FirstOrDefault();
+                        del.Deleted = 1;
+                        db.Entry(del).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    XtraMessageBox.Show("Record Deleted Successfully");
+                    loadShifts();
+                    return;
                 }
-                  XtraMessageBox.Show("Record Deleted Successfully");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-             }
+            }
         }
 
         private void gridControl1_Click(object sender, EventArgs e)

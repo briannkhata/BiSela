@@ -171,10 +171,8 @@ namespace Katswiri.Forms
                     double total = 0.00;
                     double torder = 0.00;
                     string PO = textEditPO.Text;
-                    DateTime DD = dateEditDD.DateTime;
                     DateTime DR = dateEditRD.DateTime;
                     string Sup = textEditSup.Text;
-                    string DN = textEditDN.Text;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -189,8 +187,6 @@ namespace Katswiri.Forms
                         Supplier = Sup,
                         ReceivingDate = DR,
                         PurchasingOrder = PO,
-                        DeliveryDate = DD,
-                        DeliveryNote = DN,
                         UserId = LoginInfo.UserId,
                     };
                     db.Receivings.Add(receiving);

@@ -158,10 +158,10 @@
     <Compile Include="Data\BillPayment.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Brand.cs">
+    <Compile Include="Data\Branch.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Cart.cs">
+    <Compile Include="Data\Brand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Category.cs">
@@ -242,10 +242,10 @@
     <Compile Include="Data\User.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwBrand.cs">
+    <Compile Include="Data\vwBranch.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\vwCart.cs">
+    <Compile Include="Data\vwBrand.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\vwCategory.cs">
@@ -334,6 +334,12 @@
     <Compile Include="Forms\FormAddMenu.Designer.cs">
       <DependentUpon>FormAddMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormBranches.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBranches.Designer.cs">
+      <DependentUpon>FormBranches.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,12 +389,6 @@
       <DependentUpon>FormReceiveStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginInfo.cs" />
-    <Compile Include="Forms\Pay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Pay.Designer.cs">
-      <DependentUpon>Pay.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormShop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -520,6 +520,9 @@
     <EmbeddedResource Include="Forms\FormAddMenu.resx">
       <DependentUpon>FormAddMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormBranches.resx">
+      <DependentUpon>FormBranches.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomer.resx">
       <DependentUpon>FormCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -543,9 +546,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormReceiveStock.resx">
       <DependentUpon>FormReceiveStock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Pay.resx">
-      <DependentUpon>Pay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormShop.resx">
       <DependentUpon>FormShop.cs</DependentUpon>
@@ -684,6 +684,9 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\snapdeletelist1.svg" />
+    <None Include="Resources\saveas5.svg" />
+    <None Include="Resources\floatingobjectbringtofront.svg" />
     <None Include="Resources\automaticupdates.svg" />
     <None Include="Resources\snapdeletelist.svg" />
     <None Include="Resources\refreshpivottable1.svg" />

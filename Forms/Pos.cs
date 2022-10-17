@@ -19,8 +19,6 @@ namespace Katswiri.Forms
     public partial class Pos : DevExpress.XtraEditors.XtraForm
     {
         BEntities db;
-        Cart cart = new Cart();
-        int CartId;
         Sale sale;
         SaleDetail saleDetail;
         BillPayment billPayment;
@@ -379,18 +377,6 @@ namespace Katswiri.Forms
         }
       
 
-
-        private void ShowPayFom()
-        {
-            Pay pay = null;
-            if (pay == null || pay.IsDisposed)
-            {
-               pay = new Pay();
-            }
-            pay.Activate();
-            pay.ShowDialog();
-        }
-
         private void gridControl1_ProcessGridKey(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -500,7 +486,7 @@ namespace Katswiri.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            endSale();
         }
 
         public void resetCart()

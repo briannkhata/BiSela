@@ -15,6 +15,14 @@
           <Property Name="Amount" Type="float" />
           <Property Name="PaymentDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Brands">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -23,22 +31,6 @@
           <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BrandDescription" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="int" />
-          <Property Name="ShopId" Type="int" />
-          <Property Name="Discount" Type="float" />
-          <Property Name="SellingPrice" Type="float" />
-          <Property Name="TotalPrice" Type="float" />
-          <Property Name="Qty" Type="float" />
-          <Property Name="TaxValue" Type="float" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="SaleId" Type="int" />
-          <Property Name="Customer" Type="int" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
@@ -319,6 +311,16 @@ warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a prima
           <Property Name="Gender" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'bisela.dbo.vwBranches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwBranches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+            <PropertyRef Name="BranchName" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwBrands' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwBrands">
           <Key>
@@ -329,25 +331,6 @@ warning 6002: The table/view 'bisela.dbo.vwBrands' does not have a primary key d
           <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BrandName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BrandDescription" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwCarts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vwCarts">
-          <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar(max)" />
-          <Property Name="SellingPrice" Type="float" />
-          <Property Name="Qty" Type="float" />
-          <Property Name="TotalPrice" Type="float" />
-          <Property Name="CartId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="TaxValue" Type="float" />
-          <Property Name="Customer" Type="int" />
-          <Property Name="Discount" Type="float" />
-          <Property Name="SaleId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bisela.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -779,8 +762,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
         </Association>
         <EntityContainer Name="BModelStoreContainer">
           <EntitySet Name="BillPayments" EntityType="Self.BillPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" Schema="dbo" store:Type="Tables" />
@@ -834,27 +817,18 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [FoodBillsDetails].[DateSold] AS [DateSold]
     FROM [dbo].[FoodBillsDetails] AS [FoodBillsDetails]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwBranches" EntityType="Self.vwBranches" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwBranches].[BranchId] AS [BranchId], 
+    [vwBranches].[BranchName] AS [BranchName]
+    FROM [dbo].[vwBranches] AS [vwBranches]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwBrands" EntityType="Self.vwBrands" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwBrands].[BrandId] AS [BrandId], 
     [vwBrands].[BrandName] AS [BrandName], 
     [vwBrands].[BrandDescription] AS [BrandDescription]
     FROM [dbo].[vwBrands] AS [vwBrands]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vwCarts" EntityType="Self.vwCarts" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vwCarts].[ProductName] AS [ProductName], 
-    [vwCarts].[Description] AS [Description], 
-    [vwCarts].[SellingPrice] AS [SellingPrice], 
-    [vwCarts].[Qty] AS [Qty], 
-    [vwCarts].[TotalPrice] AS [TotalPrice], 
-    [vwCarts].[CartId] AS [CartId], 
-    [vwCarts].[ProductId] AS [ProductId], 
-    [vwCarts].[TaxValue] AS [TaxValue], 
-    [vwCarts].[Customer] AS [Customer], 
-    [vwCarts].[Discount] AS [Discount], 
-    [vwCarts].[SaleId] AS [SaleId]
-    FROM [dbo].[vwCarts] AS [vwCarts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwCategories" EntityType="Self.vwCategories" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1130,22 +1104,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="BModel.FK_Products_Brands" FromRole="Brand" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="ShopId" Type="Int32" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="TotalPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-          <Property Name="TaxValue" Type="Double" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="SaleId" Type="Int32" />
-          <Property Name="Customer" Type="Int32" />
-        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -1299,23 +1257,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="BrandId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BrandDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwCart">
-          <Key>
-            <PropertyRef Name="ProductName" />
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SellingPrice" Type="Double" />
-          <Property Name="Qty" Type="Double" />
-          <Property Name="TotalPrice" Type="Double" />
-          <Property Name="CartId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="TaxValue" Type="Double" />
-          <Property Name="Customer" Type="Int32" />
-          <Property Name="Discount" Type="Double" />
-          <Property Name="SaleId" Type="Int32" />
         </EntityType>
         <EntityType Name="vwCategory">
           <Key>
@@ -1513,7 +1454,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
         </EntityType>
         <EntityContainer Name="BEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brands" EntityType="Self.Brand" />
-          <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseType" />
           <EntitySet Name="IncomeTypes" EntityType="Self.IncomeType" />
@@ -1526,7 +1466,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="vwBrands" EntityType="Self.vwBrand" />
-          <EntitySet Name="vwCarts" EntityType="Self.vwCart" />
           <EntitySet Name="vwCategories" EntityType="Self.vwCategory" />
           <EntitySet Name="vwCustomers" EntityType="Self.vwCustomer" />
           <EntitySet Name="vwExpenseTypes" EntityType="Self.vwExpenseType" />
@@ -1583,6 +1522,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySet Name="Shops" EntityType="BModel.Shop" />
           <EntitySet Name="vwShops" EntityType="BModel.vwShop" />
           <EntitySet Name="Units" EntityType="BModel.Unit" />
+          <EntitySet Name="Branches" EntityType="BModel.Branch" />
+          <EntitySet Name="vwBranches" EntityType="BModel.vwBranch" />
           </EntityContainer>
         <EntityType Name="BillPayment">
           <Key>
@@ -1923,6 +1864,22 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwBranch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+            <PropertyRef Name="BranchName" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1936,23 +1893,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="BModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2113,23 +2053,6 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
                 <ScalarProperty Name="BrandDescription" ColumnName="BrandDescription" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwCarts">
-            <EntityTypeMapping TypeName="BModel.vwCart">
-              <MappingFragment StoreEntitySet="vwCarts">
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
-                <ScalarProperty Name="Customer" ColumnName="Customer" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2552,6 +2475,23 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="BModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwBranches">
+            <EntityTypeMapping TypeName="BModel.vwBranch">
+              <MappingFragment StoreEntitySet="vwBranches">
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

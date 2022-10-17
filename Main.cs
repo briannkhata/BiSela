@@ -570,5 +570,12 @@ namespace Katswiri
             SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
             ShowFormShopFom();
         }
+
+        private void barButtonItem20_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowDefaultWaitForm("Please Wait", "Loading");
+            FormBranches formBranches = new FormBranches();
+            formBranches.ShowDialog();
+        }
     }
 }

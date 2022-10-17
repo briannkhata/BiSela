@@ -26,7 +26,6 @@ namespace Katswiri.Data
         }
     
         public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<ExpenseType> ExpenseTypes { get; set; }
         public virtual DbSet<IncomeType> IncomeTypes { get; set; }
@@ -39,7 +38,6 @@ namespace Katswiri.Data
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vwBrand> vwBrands { get; set; }
-        public virtual DbSet<vwCart> vwCarts { get; set; }
         public virtual DbSet<vwCategory> vwCategories { get; set; }
         public virtual DbSet<vwCustomer> vwCustomers { get; set; }
         public virtual DbSet<vwExpenseType> vwExpenseTypes { get; set; }
@@ -72,5 +70,7 @@ namespace Katswiri.Data
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<vwShop> vwShops { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<vwBranch> vwBranches { get; set; }
     }
 }

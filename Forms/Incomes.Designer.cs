@@ -37,11 +37,9 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
-            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.AmountTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -81,8 +79,7 @@ namespace Katswiri.Forms
             this.btnSave,
             this.btnDelete,
             this.barEditItem1,
-            this.barEditItem2,
-            this.btnRefresh});
+            this.barEditItem2});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 7;
             this.ribbon.Name = "ribbon";
@@ -92,7 +89,7 @@ namespace Katswiri.Forms
             this.repositoryItemComboBox1,
             this.repositoryItemComboBox2,
             this.repositoryItemComboBox3});
-            this.ribbon.Size = new System.Drawing.Size(626, 232);
+            this.ribbon.Size = new System.Drawing.Size(492, 232);
             // 
             // btnSave
             // 
@@ -136,20 +133,11 @@ namespace Katswiri.Forms
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemComboBox3.Name = "repositoryItemComboBox3";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Caption = "Refresh";
-            this.btnRefresh.Id = 6;
-            this.btnRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRefresh.ImageOptions.SvgImage")));
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Tools";
             // 
@@ -162,11 +150,6 @@ namespace Katswiri.Forms
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnDelete);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.btnRefresh);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // repositoryItemComboBox2
             // 
@@ -183,7 +166,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(626, 202);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(492, 220);
             this.dataLayoutControl1.TabIndex = 2;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
@@ -197,7 +180,7 @@ namespace Katswiri.Forms
             this.AmountTextEdit.Properties.Mask.EditMask = "F";
             this.AmountTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.AmountTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.AmountTextEdit.Size = new System.Drawing.Size(578, 26);
+            this.AmountTextEdit.Size = new System.Drawing.Size(444, 26);
             this.AmountTextEdit.StyleController = this.dataLayoutControl1;
             this.AmountTextEdit.TabIndex = 0;
             // 
@@ -215,7 +198,7 @@ namespace Katswiri.Forms
             this.IncomeTypeId.Properties.NullText = "";
             this.IncomeTypeId.Properties.PopupSizeable = false;
             this.IncomeTypeId.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.IncomeTypeId.Size = new System.Drawing.Size(578, 28);
+            this.IncomeTypeId.Size = new System.Drawing.Size(444, 28);
             this.IncomeTypeId.StyleController = this.dataLayoutControl1;
             this.IncomeTypeId.TabIndex = 3;
             // 
@@ -226,7 +209,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(626, 202);
+            this.Root.Size = new System.Drawing.Size(492, 220);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -237,14 +220,14 @@ namespace Katswiri.Forms
             this.tabbedControlGroup1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(606, 182);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(472, 200);
             // 
             // tabbedControlGroup1
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup2;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(606, 182);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(472, 200);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             // 
@@ -255,7 +238,7 @@ namespace Katswiri.Forms
             this.ItemForIncomeTypeId});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(582, 124);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(448, 142);
             this.layoutControlGroup2.Text = "Enter Details";
             // 
             // ItemForAmount
@@ -263,7 +246,7 @@ namespace Katswiri.Forms
             this.ItemForAmount.Control = this.AmountTextEdit;
             this.ItemForAmount.Location = new System.Drawing.Point(0, 0);
             this.ItemForAmount.Name = "ItemForAmount";
-            this.ItemForAmount.Size = new System.Drawing.Size(582, 49);
+            this.ItemForAmount.Size = new System.Drawing.Size(448, 49);
             this.ItemForAmount.Text = "Amount";
             this.ItemForAmount.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForAmount.TextSize = new System.Drawing.Size(79, 16);
@@ -273,7 +256,7 @@ namespace Katswiri.Forms
             this.ItemForIncomeTypeId.Control = this.IncomeTypeId;
             this.ItemForIncomeTypeId.Location = new System.Drawing.Point(0, 49);
             this.ItemForIncomeTypeId.Name = "ItemForIncomeTypeId";
-            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(582, 75);
+            this.ItemForIncomeTypeId.Size = new System.Drawing.Size(448, 93);
             this.ItemForIncomeTypeId.Text = "Income Type";
             this.ItemForIncomeTypeId.TextLocation = DevExpress.Utils.Locations.Top;
             this.ItemForIncomeTypeId.TextSize = new System.Drawing.Size(79, 16);
@@ -286,7 +269,7 @@ namespace Katswiri.Forms
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(626, 424);
+            this.gridControl1.Size = new System.Drawing.Size(492, 424);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -301,7 +284,7 @@ namespace Katswiri.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 882);
+            this.ClientSize = new System.Drawing.Size(492, 882);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
@@ -351,8 +334,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.LookUpEdit IncomeTypeId;
-        private DevExpress.XtraBars.BarButtonItem btnRefresh;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem ItemForAmount;
