@@ -89,18 +89,6 @@ namespace Katswiri
             this.ribbonPageGroup15 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup16 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup23 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup18 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup20 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup25 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup26 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup27 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage7 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup28 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup29 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -172,8 +160,6 @@ namespace Katswiri
             this.ribbonPage1,
             this.ribbonPage2,
             this.ribbonPage4,
-            this.ribbonPage6,
-            this.ribbonPage3,
             this.ribbonPage7});
             this.ribbon.QuickToolbarItemLinks.Add(this.logout);
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
@@ -596,85 +582,13 @@ namespace Katswiri
             this.ribbonPageGroup23.ItemLinks.Add(this.barButtonItem28);
             this.ribbonPageGroup23.Name = "ribbonPageGroup23";
             // 
-            // ribbonPage6
-            // 
-            this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup10,
-            this.ribbonPageGroup11,
-            this.ribbonPageGroup12,
-            this.ribbonPageGroup6,
-            this.ribbonPageGroup9,
-            this.ribbonPageGroup18});
-            this.ribbonPage6.Name = "ribbonPage6";
-            this.ribbonPage6.Text = "Reports";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.barButtonItem11);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.barButtonItem12);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // ribbonPageGroup12
-            // 
-            this.ribbonPageGroup12.ItemLinks.Add(this.barButtonItem13);
-            this.ribbonPageGroup12.Name = "ribbonPageGroup12";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem22);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonItem23);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            // 
-            // ribbonPageGroup18
-            // 
-            this.ribbonPageGroup18.ItemLinks.Add(this.barButtonItem31);
-            this.ribbonPageGroup18.Name = "ribbonPageGroup18";
-            // 
-            // ribbonPage3
-            // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup20,
-            this.ribbonPageGroup25,
-            this.ribbonPageGroup26,
-            this.ribbonPageGroup27});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Restaurant";
-            // 
-            // ribbonPageGroup20
-            // 
-            this.ribbonPageGroup20.ItemLinks.Add(this.barButtonItem33);
-            this.ribbonPageGroup20.Name = "ribbonPageGroup20";
-            // 
-            // ribbonPageGroup25
-            // 
-            this.ribbonPageGroup25.ItemLinks.Add(this.barButtonItem34);
-            this.ribbonPageGroup25.Name = "ribbonPageGroup25";
-            // 
-            // ribbonPageGroup26
-            // 
-            this.ribbonPageGroup26.ItemLinks.Add(this.barButtonItem35);
-            this.ribbonPageGroup26.Name = "ribbonPageGroup26";
-            // 
-            // ribbonPageGroup27
-            // 
-            this.ribbonPageGroup27.ItemLinks.Add(this.barButtonItem36);
-            this.ribbonPageGroup27.Name = "ribbonPageGroup27";
-            // 
             // ribbonPage7
             // 
             this.ribbonPage7.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup28,
             this.ribbonPageGroup29});
             this.ribbonPage7.Name = "ribbonPage7";
-            this.ribbonPage7.Text = "Bar";
+            this.ribbonPage7.Text = "Make Sales";
             // 
             // ribbonPageGroup28
             // 
@@ -773,10 +687,6 @@ namespace Katswiri
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup11;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
@@ -799,25 +709,17 @@ namespace Katswiri
         private DevExpress.XtraBars.BarButtonItem barButtonItem26;
         private DevExpress.XtraBars.BarButtonItem barButtonItem22;
         private DevExpress.XtraBars.BarButtonItem barButtonItem23;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem27;
         private DevExpress.XtraBars.BarButtonItem barButtonItem28;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup23;
         private DevExpress.XtraBars.BarButtonItem barButtonItem30;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem31;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup18;
         private DevExpress.XtraBars.BarButtonItem barButtonItem33;
         private DevExpress.XtraBars.BarButtonItem barButtonItem34;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup20;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup25;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem35;
         private DevExpress.XtraBars.BarButtonItem barButtonItem36;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup26;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup27;
         private DevExpress.XtraBars.BarButtonItem barButtonItem37;
         private DevExpress.XtraBars.BarButtonItem barButtonItem38;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage7;
