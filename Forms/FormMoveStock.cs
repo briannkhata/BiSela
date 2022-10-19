@@ -47,14 +47,23 @@ namespace Katswiri.Forms
             }
         }
 
+        private void loadDestination()
+        {
+            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
+            textEditDestination.Properties.DataSource = store;
+            textEditDestination.Properties.ValueMember = "Value";
+            textEditDestination.Properties.DisplayMember = "Value";
+            textEditDestination.Properties.NullText = "Move To";
+        }
         private void loadTo()
         {
-          
-            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
-            textEditTo.Properties.DataSource = store;
-            textEditTo.Properties.ValueMember = "Value";
-            textEditTo.Properties.DisplayMember = "Value";
-            textEditTo.Properties.NullText = "Move To";
+            using (db = new BEntities())
+            {
+                textEditTo.Properties.DataSource = db.vwBranches.ToList();
+                textEditTo.Properties.ValueMember = "BranchId";
+                textEditTo.Properties.DisplayMember = "BranchName";
+                textEditTo.Properties.NullText = "Receive To";
+            }
         }
 
         public void loadBranhces()
