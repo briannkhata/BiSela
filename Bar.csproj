@@ -684,6 +684,7 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\deletetable1.svg" />
     <None Include="Resources\snapdeletelist1.svg" />
     <None Include="Resources\saveas5.svg" />
     <None Include="Resources\floatingobjectbringtofront.svg" />

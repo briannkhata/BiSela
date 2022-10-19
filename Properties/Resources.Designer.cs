@@ -223,6 +223,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage deletetable1 {
+            get {
+                object obj = ResourceManager.GetObject("deletetable1", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage deletetablerows {
             get {
                 object obj = ResourceManager.GetObject("deletetablerows", resourceCulture);

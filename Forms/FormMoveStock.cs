@@ -67,98 +67,16 @@ namespace Katswiri.Forms
 
         public void loadBranhces()
         {
-            using (db = new BEntities())
-            {
-                textEditFrom.Properties.DataSource = db.vwBranches.ToList();
-                textEditFrom.Properties.ValueMember = "BranchId";
-                textEditFrom.Properties.DisplayMember = "BranchName";
-                textEditFrom.Properties.NullText = "Receive From";
-            }
+            //using (db = new BEntities())
+            //{
+            //    textEditFrom.Properties.DataSource = db.vwBranches.ToList();
+            //    textEditFrom.Properties.ValueMember = "BranchId";
+            //    textEditFrom.Properties.DisplayMember = "BranchName";
+            //    textEditFrom.Properties.NullText = "Receive From";
+            //}
         }
 
-
-
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            refreshData();
-        }
-
-        public void refreshData()
-        {
-            try
-            {
-                using (db = new BEntities())
-                {
-                    var from = textEditFrom.Text;
-                    var to = textEditTo.Text;
-                    var comment = textEditComment.Text;
-                    var destination = textEditDestination.Text;
-
-
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                    {
-                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                        stock = new Stock()
-                        {
-                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
-                            SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
-                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
-                            Comment = comment + " : by " + LoginInfo.UserId,
-                            ShopId = db.Shops.SingleOrDefault().ShopId,
-                        };
-
-                        if (destination == "Shop")
-                        {
-                            stock.Shop -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        }
-
-                        if (destination == "Stores")
-                        {
-                            stock.Stores -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        }
-
-                        if (destination == "Kitchen")
-                        {
-                            stock.Kitchen -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        }
-
-                        db.Stocks.Add(stock);
-                        db.SaveChanges();
-
-                      }
-                    XtraMessageBox.Show("Products moved/recived successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
-        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        //    try
-        //    {
-        //        var selectedRows = gridView1.GetSelectedRows();
-        //        var row = ((vwUpdateStock)gridView1.GetRow(selectedRows[0]));
-        //        using (var db = new BEntities())
-        //        {
-        //            var stock = db.Stocks.Find(row.StockId);
-        //            db.Stocks.Remove(stock);
-        //            db.SaveChanges();
-        //        }
-        //        loadData();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
-       }
-
+            
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
@@ -171,7 +89,7 @@ namespace Katswiri.Forms
                         Boolean Found = false;
 
                         double qty = 0;
-                        double selu = 0;
+                        //double selu = 0;
                         if (dataGridView1.Rows.Count > 0)
                         {
                             foreach (DataGridViewRow row in this.dataGridView1.Rows)
@@ -180,11 +98,11 @@ namespace Katswiri.Forms
                                 {
                                     var code = row.Cells[0].Value.ToString();
                                     qty = Convert.ToDouble(row.Cells[2].Value) + 1;
-                                    selu = Convert.ToDouble(row.Cells[3].Value);
+                                    //selu = Convert.ToDouble(row.Cells[3].Value);
 
                                     row.Cells[2].Value = qty.ToString("##,##0.00");
-                                    row.Cells[3].Value = selu.ToString("##,##0.00");
-                                    row.Cells[4].Value = DateTime.Now;
+                                    //row.Cells[3].Value = selu.ToString("##,##0.00");
+                                    //row.Cells[4].Value = DateTime.Now;
                                     Found = true;
                                 }
                             }
@@ -193,10 +111,10 @@ namespace Katswiri.Forms
                                 string ProductId = product.ProductId.ToString();
                                 string ProductCode = product.ProductCode.ToString();
                                 string ProductName = product.ProductName.ToString();
-                                DateTime expiry = DateTime.Now;
+                               //DateTime expiry = DateTime.Now;
                                 double Qty = 1;
-                                double SellingPrice = 0.00;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry);
+                                //double SellingPrice = 0.00;
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
                             }
                         }
                         else
@@ -204,10 +122,10 @@ namespace Katswiri.Forms
                             string ProductId = product.ProductId.ToString();
                             string ProductCode = product.ProductCode.ToString();
                             string ProductName = product.ProductName.ToString();
-                            DateTime expiry = DateTime.Now;
+                            //DateTime expiry = DateTime.Now;
                             double Qty = 1;
-                            double SellingPrice = 0.00;
-                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry);
+                            //double SellingPrice = 0.00;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
                         }
                     }
                 }
@@ -227,12 +145,12 @@ namespace Katswiri.Forms
                 if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
                 {
                     double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
-                    double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+                    ///double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
 
-                    DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
+                    //DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
                     dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
-                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = sp.ToString("##,##0.00");
-                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = expiry;
+                    //dataGridView1.Rows[e.RowIndex].Cells[3].Value = sp.ToString("##,##0.00");
+                    //dataGridView1.Rows[e.RowIndex].Cells[4].Value = expiry;
                 }
             }
         }
@@ -255,6 +173,72 @@ namespace Katswiri.Forms
                 Rectangle rectangle = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
                 dateTimePicker.Size = new Size(rectangle.Width, rectangle.Height);
                 dateTimePicker.Location = new Point(rectangle.X, rectangle.Y);
+            }
+        }
+
+        private void barButtonItem3_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                using (db = new BEntities())
+                {
+                    var from = db.Shops.FirstOrDefault().ShopId;
+                    var to = textEditTo.Text;
+                    var comment = textEditComment.Text;
+                    var destination = textEditDestination.Text;
+
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                        var ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId;
+
+                        stock = new Stock()
+                        {
+                            ProductId = ProductId,
+                            SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                            Comment = comment + " : by " + LoginInfo.UserId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
+                        };
+
+                        double oldShop = (double)db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().ProductId;
+                        double oldStores = (double)db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().ProductId;
+                        double oldKitchen = (double)db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().ProductId;
+
+                        if (destination == "Shop")
+                        {
+                            stock.Shop = oldShop - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        if (destination == "Stores")
+                        {
+                            stock.Stores = oldStores - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        if (destination == "Kitchen")
+                        {
+                            stock.Kitchen = oldKitchen - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        db.Stocks.Add(stock);
+                        db.SaveChanges();
+
+                    }
+                    XtraMessageBox.Show("Products moved/recived successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }
