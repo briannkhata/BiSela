@@ -19,33 +19,16 @@ namespace Katswiri.Forms
     {
         BEntities db;
         Stock stock;
+        DateTimePicker dateTimePicker = new DateTimePicker();
+
         public FormMoveStock()
         {
             InitializeComponent();
-            loadData();
             loadTo();
             loadBranhces();
             autoCompleteSearch();
             loadDestination();
-            //gridView1.Columns["ProductId"].Visible = false;
-            //gridView1.Columns["ShopId"].Visible = false;
-            //gridView1.Columns["StockId"].Visible = false;
-            //gridView1.Columns["SellingPrice"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            //gridView1.Columns["SellingPrice"].DisplayFormat.FormatString = "c2";
 
-            //gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.ReadOnly = true;
-            //gridView1.Columns.ColumnByFieldName("ProductName").OptionsColumn.AllowEdit = false;
-
-            //gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
-            //gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
-        }
-
-        public void loadData()
-        {
-            //using (db = new BEntities())
-            //{
-            //    gridControl1.DataSource = db.vwUpdateStocks.ToList();
-            //}
         }
 
         private void autoCompleteSearch()
@@ -93,6 +76,8 @@ namespace Katswiri.Forms
             }
         }
 
+
+
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             refreshData();
@@ -100,38 +85,57 @@ namespace Katswiri.Forms
 
         public void refreshData()
         {
-            //try
-            //{
-            //    var selectedRows = gridView1.GetSelectedRows();
-            //    var row = ((vwUpdateStock)gridView1.GetRow(selectedRows[0]));
-            //    using (var db = new BEntities())
-            //    {
-            //        if (row.StockId != -1)
-            //        {
-            //            stock = new Stock()
-            //            {
-            //                StockId = row.StockId,
-            //                Shop = row.Shop,
-            //                Stores = row.Stores - row.Shop,
-            //                ProductId = row.ProductId,
-            //                SellingPrice = row.SellingPrice,
-            //                ExpiryDate = row.ExpiryDate,
-            //                Comment = textEditComment.Text,
-            //                ShopId = row.ShopId,
-            //            };
-            //            db.Stocks.Add(stock);
-            //            db.SaveChanges();
-            //        }
-            //        XtraMessageBox.Show("Stock Moving Successfull", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        loadData();
-            //        return;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            try
+            {
+                using (db = new BEntities())
+                {
+                    var from = textEditFrom.Text;
+                    var to = textEditTo.Text;
+                    var comment = textEditComment.Text;
+                    var destination = textEditDestination.Text;
+
+
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                        stock = new Stock()
+                        {
+                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
+                            SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
+                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                            Comment = comment + " : by " + LoginInfo.UserId,
+                            ShopId = db.Shops.SingleOrDefault().ShopId,
+                        };
+
+                        if (destination == "Shop")
+                        {
+                            stock.Shop -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        if (destination == "Stores")
+                        {
+                            stock.Stores -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        if (destination == "Kitchen")
+                        {
+                            stock.Kitchen -= Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                        }
+
+                        db.Stocks.Add(stock);
+                        db.SaveChanges();
+
+                      }
+                    XtraMessageBox.Show("Products moved/recived successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
@@ -154,5 +158,104 @@ namespace Katswiri.Forms
         //        return;
         //    }
        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
+            {
+                try
+                {
+                    using (var db = new BEntities())
+                    {
+                        var product = db.Products.Where(p => p.ProductCode == textBox1.Text).FirstOrDefault();
+                        Boolean Found = false;
+
+                        double qty = 0;
+                        double selu = 0;
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
+                                {
+                                    var code = row.Cells[0].Value.ToString();
+                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
+                                    selu = Convert.ToDouble(row.Cells[3].Value);
+
+                                    row.Cells[2].Value = qty.ToString("##,##0.00");
+                                    row.Cells[3].Value = selu.ToString("##,##0.00");
+                                    row.Cells[4].Value = DateTime.Now;
+                                    Found = true;
+                                }
+                            }
+                            if (!Found)
+                            {
+                                string ProductId = product.ProductId.ToString();
+                                string ProductCode = product.ProductCode.ToString();
+                                string ProductName = product.ProductName.ToString();
+                                DateTime expiry = DateTime.Now;
+                                double Qty = 1;
+                                double SellingPrice = 0.00;
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry);
+                            }
+                        }
+                        else
+                        {
+                            string ProductId = product.ProductId.ToString();
+                            string ProductCode = product.ProductCode.ToString();
+                            string ProductName = product.ProductName.ToString();
+                            DateTime expiry = DateTime.Now;
+                            double Qty = 1;
+                            double SellingPrice = 0.00;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            textBox1.Text = string.Empty;
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
+                {
+                    double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
+                    double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
+
+                    DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
+                    dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
+                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = sp.ToString("##,##0.00");
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = expiry;
+                }
+            }
+        }
+        public void datedateTimePicker_textchanged(object sender, EventArgs e)
+        {
+            dataGridView1.CurrentCell.Value = dateTimePicker.Text.ToString();
+        }
+
+        public void dateTimePicker_closeup(object sender, EventArgs e)
+        {
+            dateTimePicker.Visible = false;
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                dataGridView1.Controls.Add(dateTimePicker);
+                dateTimePicker.Format = DateTimePickerFormat.Custom;
+                dateTimePicker.CustomFormat = "dd/MM/yyy";
+                Rectangle rectangle = dataGridView1.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                dateTimePicker.Size = new Size(rectangle.Width, rectangle.Height);
+                dateTimePicker.Location = new Point(rectangle.X, rectangle.Y);
+            }
+        }
     }
 }

@@ -39,6 +39,7 @@ namespace Katswiri.Forms
             this.textEditComment = new DevExpress.XtraEditors.TextEdit();
             this.textEditTo = new DevExpress.XtraEditors.LookUpEdit();
             this.textEditFrom = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEditDestination = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -46,7 +47,6 @@ namespace Katswiri.Forms
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditDestination = new DevExpress.XtraEditors.LookUpEdit();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -54,12 +54,14 @@ namespace Katswiri.Forms
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -67,7 +69,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,6 +167,18 @@ namespace Katswiri.Forms
             this.textEditFrom.StyleController = this.dataLayoutControl1;
             this.textEditFrom.TabIndex = 4;
             // 
+            // textEditDestination
+            // 
+            this.textEditDestination.Location = new System.Drawing.Point(813, 77);
+            this.textEditDestination.MenuManager = this.ribbon;
+            this.textEditDestination.Name = "textEditDestination";
+            this.textEditDestination.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEditDestination.Properties.NullText = "";
+            this.textEditDestination.Size = new System.Drawing.Size(375, 26);
+            this.textEditDestination.StyleController = this.dataLayoutControl1;
+            this.textEditDestination.TabIndex = 7;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -173,7 +186,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1212, 189);
+            this.Root.Size = new System.Drawing.Size(1212, 229);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
@@ -194,7 +207,7 @@ namespace Katswiri.Forms
             this.layoutControlItem4});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1168, 111);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1168, 151);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem1
@@ -237,34 +250,23 @@ namespace Katswiri.Forms
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(68, 16);
             // 
-            // textEditDestination
-            // 
-            this.textEditDestination.Location = new System.Drawing.Point(813, 77);
-            this.textEditDestination.MenuManager = this.ribbon;
-            this.textEditDestination.Name = "textEditDestination";
-            this.textEditDestination.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEditDestination.Properties.NullText = "";
-            this.textEditDestination.Size = new System.Drawing.Size(375, 26);
-            this.textEditDestination.StyleController = this.dataLayoutControl1;
-            this.textEditDestination.TabIndex = 7;
-            // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(132, 507);
+            this.textBox1.Location = new System.Drawing.Point(170, 504);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1068, 24);
+            this.textBox1.Size = new System.Drawing.Size(1030, 24);
             this.textBox1.TabIndex = 15;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(13, 506);
+            this.label1.Location = new System.Drawing.Point(13, 503);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 23);
+            this.label1.Size = new System.Drawing.Size(134, 23);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Code";
+            this.label1.Text = "Product Code";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dataGridView1
@@ -278,7 +280,8 @@ namespace Katswiri.Forms
             this.ProductCode,
             this.ProductName,
             this.Qty,
-            this.SellingPrice});
+            this.SellingPrice,
+            this.ExpiryDate});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 551);
             this.dataGridView1.Name = "dataGridView1";
@@ -288,6 +291,8 @@ namespace Katswiri.Forms
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(1212, 297);
             this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // ProductCode
             // 
@@ -313,6 +318,12 @@ namespace Katswiri.Forms
             this.SellingPrice.MinimumWidth = 6;
             this.SellingPrice.Name = "SellingPrice";
             // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.HeaderText = "ExpiryDate";
+            this.ExpiryDate.MinimumWidth = 6;
+            this.ExpiryDate.Name = "ExpiryDate";
+            // 
             // FormMoveStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -335,6 +346,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -342,7 +354,6 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -376,5 +387,6 @@ namespace Katswiri.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
     }
 }
