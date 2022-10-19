@@ -24,10 +24,10 @@ namespace Katswiri.Forms
         public FormMoveStock()
         {
             InitializeComponent();
-            loadTo();
+            loadFrom();
             loadBranhces();
             autoCompleteSearch();
-            loadDestination();
+            loadFrom1();
 
         }
 
@@ -46,22 +46,30 @@ namespace Katswiri.Forms
             }
         }
 
-        private void loadDestination()
+        private void loadFrom1()
         {
             Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
-            textEditDestination.Properties.DataSource = store;
-            textEditDestination.Properties.ValueMember = "Value";
-            textEditDestination.Properties.DisplayMember = "Value";
-            textEditDestination.Properties.NullText = "Move To";
+            textEditTo.Properties.DataSource = store;
+            textEditTo.Properties.ValueMember = "Value";
+            textEditTo.Properties.DisplayMember = "Value";
+            textEditTo.Properties.NullText = "Move To";
+
+
+            textEditFrom1.Properties.DataSource = store;
+            textEditFrom1.Properties.ValueMember = "Value";
+            textEditFrom1.Properties.DisplayMember = "Value";
+            textEditFrom1.Properties.NullText = "From with the shop";
         }
-        private void loadTo()
+
+       
+        private void loadFrom()
         {
             using (db = new BEntities())
             {
-                textEditTo.Properties.DataSource = db.vwBranches.ToList();
-                textEditTo.Properties.ValueMember = "BranchId";
-                textEditTo.Properties.DisplayMember = "BranchName";
-                textEditTo.Properties.NullText = "Receive To";
+                textEditFrom.Properties.DataSource = db.vwBranches.ToList();
+                textEditFrom.Properties.ValueMember = "BranchId";
+                textEditFrom.Properties.DisplayMember = "BranchName";
+                textEditFrom.Properties.NullText = "From other shop";
             }
         }
 
@@ -76,67 +84,7 @@ namespace Katswiri.Forms
             //}
         }
 
-            
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
-            {
-                try
-                {
-                    using (var db = new BEntities())
-                    {
-                        var product = db.Products.Where(p => p.ProductCode == textBox1.Text).FirstOrDefault();
-                        Boolean Found = false;
-
-                        double qty = 0;
-                        //double selu = 0;
-                        if (dataGridView1.Rows.Count > 0)
-                        {
-                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
-                            {
-                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
-                                {
-                                    var code = row.Cells[0].Value.ToString();
-                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
-                                    //selu = Convert.ToDouble(row.Cells[3].Value);
-
-                                    row.Cells[2].Value = qty.ToString("##,##0.00");
-                                    //row.Cells[3].Value = selu.ToString("##,##0.00");
-                                    //row.Cells[4].Value = DateTime.Now;
-                                    Found = true;
-                                }
-                            }
-                            if (!Found)
-                            {
-                                string ProductId = product.ProductId.ToString();
-                                string ProductCode = product.ProductCode.ToString();
-                                string ProductName = product.ProductName.ToString();
-                               //DateTime expiry = DateTime.Now;
-                                double Qty = 1;
-                                //double SellingPrice = 0.00;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
-                            }
-                        }
-                        else
-                        {
-                            string ProductId = product.ProductId.ToString();
-                            string ProductCode = product.ProductCode.ToString();
-                            string ProductName = product.ProductName.ToString();
-                            //DateTime expiry = DateTime.Now;
-                            double Qty = 1;
-                            //double SellingPrice = 0.00;
-                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            textBox1.Text = string.Empty;
-        }
+      
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -145,12 +93,7 @@ namespace Katswiri.Forms
                 if (e.RowIndex != -1 && (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 4))
                 {
                     double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
-                    ///double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
-
-                    //DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
                     dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
-                    //dataGridView1.Rows[e.RowIndex].Cells[3].Value = sp.ToString("##,##0.00");
-                    //dataGridView1.Rows[e.RowIndex].Cells[4].Value = expiry;
                 }
             }
         }
@@ -203,9 +146,9 @@ namespace Katswiri.Forms
                 using (db = new BEntities())
                 {
                     var from = db.Shops.FirstOrDefault().ShopId;
-                    var to = textEditTo.Text;
+                    var to = textEditFrom.Text;
                     var comment = textEditComment.Text;
-                    var destination = textEditDestination.Text;
+                    var destination = textEditTo.Text;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -259,6 +202,58 @@ namespace Katswiri.Forms
             {
                 dataGridView1.Rows.Clear();
             }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
+            {
+                try
+                {
+                    using (var db = new BEntities())
+                    {
+                        var product = db.Products.Where(p => p.ProductCode == textBox1.Text).FirstOrDefault();
+                        Boolean Found = false;
+
+                        double qty = 0;
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            foreach (DataGridViewRow row in this.dataGridView1.Rows)
+                            {
+                                if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
+                                {
+                                    var code = row.Cells[0].Value.ToString();
+                                    qty = Convert.ToDouble(row.Cells[2].Value) + 1;
+                                    row.Cells[2].Value = qty.ToString("##,##0.00");
+                                     Found = true;
+                                }
+                            }
+                            if (!Found)
+                            {
+                                string ProductId = product.ProductId.ToString();
+                                string ProductCode = product.ProductCode.ToString();
+                                string ProductName = product.ProductName.ToString();
+                                double Qty = 1;
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
+                            }
+                        }
+                        else
+                        {
+                            string ProductId = product.ProductId.ToString();
+                            string ProductCode = product.ProductCode.ToString();
+                            string ProductName = product.ProductName.ToString();
+                            double Qty = 1;
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"));
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            textBox1.Text = string.Empty;
         }
     }
 }

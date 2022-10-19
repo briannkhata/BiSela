@@ -38,17 +38,22 @@ namespace Katswiri.Forms
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textEditComment = new DevExpress.XtraEditors.TextEdit();
+            this.textEditFrom = new DevExpress.XtraEditors.LookUpEdit();
             this.textEditTo = new DevExpress.XtraEditors.LookUpEdit();
-            this.textEditDestination = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEditFrom1 = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.tabbedControlGroup2 = new DevExpress.XtraLayout.TabbedControlGroup();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,14 +62,20 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,16 +145,26 @@ namespace Katswiri.Forms
             // 
             // dataLayoutControl1
             // 
+            this.dataLayoutControl1.Controls.Add(this.textBox1);
             this.dataLayoutControl1.Controls.Add(this.textEditComment);
+            this.dataLayoutControl1.Controls.Add(this.textEditFrom);
             this.dataLayoutControl1.Controls.Add(this.textEditTo);
-            this.dataLayoutControl1.Controls.Add(this.textEditDestination);
+            this.dataLayoutControl1.Controls.Add(this.textEditFrom1);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1212, 229);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1212, 317);
             this.dataLayoutControl1.TabIndex = 13;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(36, 202);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1140, 25);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // textEditComment
             // 
@@ -154,29 +175,40 @@ namespace Katswiri.Forms
             this.textEditComment.StyleController = this.dataLayoutControl1;
             this.textEditComment.TabIndex = 6;
             // 
+            // textEditFrom
+            // 
+            this.textEditFrom.Location = new System.Drawing.Point(24, 77);
+            this.textEditFrom.MenuManager = this.ribbon;
+            this.textEditFrom.Name = "textEditFrom";
+            this.textEditFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEditFrom.Properties.NullText = "";
+            this.textEditFrom.Size = new System.Drawing.Size(379, 26);
+            this.textEditFrom.StyleController = this.dataLayoutControl1;
+            this.textEditFrom.TabIndex = 5;
+            // 
             // textEditTo
             // 
-            this.textEditTo.Location = new System.Drawing.Point(24, 77);
+            this.textEditTo.Location = new System.Drawing.Point(765, 77);
             this.textEditTo.MenuManager = this.ribbon;
             this.textEditTo.Name = "textEditTo";
             this.textEditTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textEditTo.Properties.NullText = "";
-            this.textEditTo.Size = new System.Drawing.Size(517, 26);
+            this.textEditTo.Size = new System.Drawing.Size(423, 26);
             this.textEditTo.StyleController = this.dataLayoutControl1;
-            this.textEditTo.TabIndex = 5;
+            this.textEditTo.TabIndex = 7;
             // 
-            // textEditDestination
+            // textEditFrom1
             // 
-            this.textEditDestination.Location = new System.Drawing.Point(545, 77);
-            this.textEditDestination.MenuManager = this.ribbon;
-            this.textEditDestination.Name = "textEditDestination";
-            this.textEditDestination.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEditFrom1.Location = new System.Drawing.Point(407, 77);
+            this.textEditFrom1.Name = "textEditFrom1";
+            this.textEditFrom1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEditDestination.Properties.NullText = "";
-            this.textEditDestination.Size = new System.Drawing.Size(643, 26);
-            this.textEditDestination.StyleController = this.dataLayoutControl1;
-            this.textEditDestination.TabIndex = 7;
+            this.textEditFrom1.Properties.NullText = "";
+            this.textEditFrom1.Size = new System.Drawing.Size(354, 26);
+            this.textEditFrom1.StyleController = this.dataLayoutControl1;
+            this.textEditFrom1.TabIndex = 5;
             // 
             // Root
             // 
@@ -185,7 +217,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1212, 229);
+            this.Root.Size = new System.Drawing.Size(1212, 317);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
@@ -193,7 +225,7 @@ namespace Katswiri.Forms
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1192, 209);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1192, 297);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             // 
@@ -202,60 +234,97 @@ namespace Katswiri.Forms
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem4,
+            this.layoutControlItem1,
+            this.tabbedControlGroup2});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1168, 151);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1168, 239);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.textEditTo;
+            this.layoutControlItem2.Control = this.textEditFrom;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(521, 49);
-            this.layoutControlItem2.Text = "Move To";
+            this.layoutControlItem2.Size = new System.Drawing.Size(383, 49);
+            this.layoutControlItem2.Text = "Move From";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(67, 16);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(105, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.textEditComment;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 49);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1168, 102);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1168, 49);
             this.layoutControlItem3.Text = "Comment";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(67, 16);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(105, 16);
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.textEditDestination;
-            this.layoutControlItem4.Location = new System.Drawing.Point(521, 0);
+            this.layoutControlItem4.Control = this.textEditTo;
+            this.layoutControlItem4.Location = new System.Drawing.Point(741, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(647, 49);
-            this.layoutControlItem4.Text = "Destination";
+            this.layoutControlItem4.Size = new System.Drawing.Size(427, 49);
+            this.layoutControlItem4.Text = "To";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(67, 16);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(105, 16);
             // 
-            // textBox1
+            // layoutControlItem1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(170, 504);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1030, 24);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.layoutControlItem1.Control = this.textEditFrom1;
+            this.layoutControlItem1.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem1.CustomizationFormText = "Move From";
+            this.layoutControlItem1.Location = new System.Drawing.Point(383, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.OptionsPrint.AppearanceItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem1.OptionsPrint.AppearanceItem.Options.UseFont = true;
+            this.layoutControlItem1.OptionsPrint.AppearanceItemControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem1.OptionsPrint.AppearanceItemControl.Options.UseFont = true;
+            this.layoutControlItem1.OptionsPrint.AppearanceItemText.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.layoutControlItem1.OptionsPrint.AppearanceItemText.Options.UseFont = true;
+            this.layoutControlItem1.Size = new System.Drawing.Size(358, 49);
+            this.layoutControlItem1.Text = "From Within Shop";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(105, 16);
             // 
-            // label1
+            // tabbedControlGroup2
             // 
-            this.label1.Location = new System.Drawing.Point(13, 503);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 23);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Product Code";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tabbedControlGroup2.Location = new System.Drawing.Point(0, 98);
+            this.tabbedControlGroup2.Name = "tabbedControlGroup2";
+            this.tabbedControlGroup2.SelectedTabPage = this.layoutControlGroup2;
+            this.tabbedControlGroup2.Size = new System.Drawing.Size(1168, 141);
+            this.tabbedControlGroup2.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup2});
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem5,
+            this.emptySpaceItem1});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1144, 83);
+            this.layoutControlGroup2.Text = "Product Code";
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.textBox1;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(1144, 29);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 29);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1144, 54);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // dataGridView1
             // 
@@ -269,13 +338,13 @@ namespace Katswiri.Forms
             this.ProductName,
             this.Qty});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 551);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 587);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(1212, 297);
+            this.dataGridView1.Size = new System.Drawing.Size(1212, 326);
             this.dataGridView1.TabIndex = 17;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -303,10 +372,8 @@ namespace Katswiri.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1212, 848);
+            this.ClientSize = new System.Drawing.Size(1212, 913);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -318,14 +385,20 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDestination.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -345,11 +418,9 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.LookUpEdit textEditFrom;
         private DevExpress.XtraEditors.LookUpEdit textEditTo;
-        private DevExpress.XtraEditors.LookUpEdit textEditDestination;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
@@ -358,5 +429,12 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraEditors.LookUpEdit textEditFrom1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup2;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private System.Windows.Forms.TextBox textBox1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
     }
 }

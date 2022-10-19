@@ -42,7 +42,7 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 AutoCompleteStringCollection autoText = new AutoCompleteStringCollection();
-                foreach (Product product in db.Products.ToList())
+                foreach (vwStock product in db.vwStocks.ToList())
                 {
                     autoText.Add(product.ProductCode);
                 }
@@ -66,15 +66,17 @@ namespace Katswiri.Forms
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                        int ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId;
                         stock = new Stock()
                         {
-                            ProductId = db.Products.Where(x => x.ProductCode == code).FirstOrDefault().ProductId,
-                            //SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
+                            ProductId = ProductId,
+                            SellingPrice = db.Stocks.Where(x=>x.ProductId == ProductId).FirstOrDefault().SellingPrice,
+                            OrderPrice = db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().OrderPrice,
+                            ShopId = db.Shops.FirstOrDefault().ShopId,
                             ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
                             Comment = Comment + " - " + LoginInfo.UserName,
                         };
                        
-
                         if (RCT == "Shop")
                         {
                             stock = new Stock()
@@ -96,7 +98,6 @@ namespace Katswiri.Forms
                                 Stores = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString())
                             };
                         }
-                        //db.Entry(stock).State = EntityState.Modified;
                         db.Stocks.Add(stock);
                         db.SaveChanges();
                     }
@@ -148,7 +149,7 @@ namespace Katswiri.Forms
             {
                 using (db = new BEntities())
                 {
-                    var products = db.Products.Where(x => x.Deleted == 0).ToList();
+                    var products = db.vwStocks.ToList();
                     foreach (var item in products)
                     {
                         double Qty = 1;
