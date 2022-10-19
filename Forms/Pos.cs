@@ -700,7 +700,6 @@ namespace Katswiri.Forms
                     SizeF totalWidth = ev.Graphics.MeasureString(dt.Rows[i][3].ToString(), normalFont);
                     //SizeF totalWidth = ev.Graphics.MeasureString(dt.Rows[i][3].ToString(), normalFont);
 
-
                     ev.Graphics.DrawString(dt.Rows[i][0].ToString(), normalFont, Brushes.Black, 10, height, new StringFormat());
                     ev.Graphics.DrawString(dt.Rows[i][1].ToString(), normalFont, Brushes.Black, 140 + (50 - qtyWidth.Width), height, new StringFormat());
                     ev.Graphics.DrawString(dt.Rows[i][2].ToString(), normalFont, Brushes.Black, 220 + (50 - priceWidth.Width), height, new StringFormat());
@@ -743,7 +742,7 @@ namespace Katswiri.Forms
                 ev.Graphics.DrawString(line, normalFont, Brushes.Black, 10, height, new StringFormat());
                 height += 40;
 
-                ev.Graphics.DrawString("!!! THANK YOU !!!", headingFont, Brushes.Black, 130, height, new StringFormat());
+                ev.Graphics.DrawString("!!!"+ motto +"!!!", headingFont, Brushes.Black, 130, height, new StringFormat());
                 ev.HasMorePages = false;
             }
         }
@@ -820,7 +819,6 @@ namespace Katswiri.Forms
                 }
                 else if (SaleType == "Return")
                 {
-
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
@@ -899,7 +897,6 @@ namespace Katswiri.Forms
                     labelBill.Text = Convert.ToDouble(sale.Balance).ToString("##,##00.00");
                     textBoxTendered.Text = "0.00";
                 }
-
             }
         }
 

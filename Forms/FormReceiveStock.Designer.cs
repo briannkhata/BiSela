@@ -40,14 +40,6 @@ namespace Katswiri.Forms
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.textEditPO = new DevExpress.XtraEditors.TextEdit();
             this.textEditSup = new DevExpress.XtraEditors.TextEdit();
@@ -65,6 +57,14 @@ namespace Katswiri.Forms
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.textBoxAuto = new System.Windows.Forms.TextBox();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -184,8 +184,8 @@ namespace Katswiri.Forms
             this.OrderPrice,
             this.Vat,
             this.SellingPrice,
-            this.ExpiryDate,
-            this.TotalCost});
+            this.TotalCost,
+            this.ExpiryDate});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -198,57 +198,6 @@ namespace Katswiri.Forms
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // ProductCode
-            // 
-            this.ProductCode.HeaderText = "Product Code";
-            this.ProductCode.MinimumWidth = 6;
-            this.ProductCode.Name = "ProductCode";
-            this.ProductCode.ReadOnly = true;
-            // 
-            // ProductName
-            // 
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.MinimumWidth = 6;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // Qty
-            // 
-            this.Qty.HeaderText = "Qty";
-            this.Qty.MinimumWidth = 6;
-            this.Qty.Name = "Qty";
-            // 
-            // OrderPrice
-            // 
-            this.OrderPrice.HeaderText = "OrderPrice";
-            this.OrderPrice.MinimumWidth = 6;
-            this.OrderPrice.Name = "OrderPrice";
-            // 
-            // Vat
-            // 
-            this.Vat.HeaderText = "Vat";
-            this.Vat.MinimumWidth = 6;
-            this.Vat.Name = "Vat";
-            // 
-            // SellingPrice
-            // 
-            this.SellingPrice.HeaderText = "SellingPrice";
-            this.SellingPrice.MinimumWidth = 6;
-            this.SellingPrice.Name = "SellingPrice";
-            // 
-            // ExpiryDate
-            // 
-            this.ExpiryDate.HeaderText = "ExpiryDate";
-            this.ExpiryDate.MinimumWidth = 6;
-            this.ExpiryDate.Name = "ExpiryDate";
-            // 
-            // TotalCost
-            // 
-            this.TotalCost.HeaderText = "TotalCost";
-            this.TotalCost.MinimumWidth = 6;
-            this.TotalCost.Name = "TotalCost";
-            this.TotalCost.ReadOnly = true;
             // 
             // dataLayoutControl1
             // 
@@ -434,6 +383,57 @@ namespace Katswiri.Forms
             this.textBoxAuto.TabIndex = 11;
             this.textBoxAuto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAuto_KeyDown);
             // 
+            // ProductCode
+            // 
+            this.ProductCode.HeaderText = "Product Code";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // Qty
+            // 
+            this.Qty.HeaderText = "Qty";
+            this.Qty.MinimumWidth = 6;
+            this.Qty.Name = "Qty";
+            // 
+            // OrderPrice
+            // 
+            this.OrderPrice.HeaderText = "OrderPrice";
+            this.OrderPrice.MinimumWidth = 6;
+            this.OrderPrice.Name = "OrderPrice";
+            // 
+            // Vat
+            // 
+            this.Vat.HeaderText = "Vat";
+            this.Vat.MinimumWidth = 6;
+            this.Vat.Name = "Vat";
+            // 
+            // SellingPrice
+            // 
+            this.SellingPrice.HeaderText = "SellingPrice";
+            this.SellingPrice.MinimumWidth = 6;
+            this.SellingPrice.Name = "SellingPrice";
+            // 
+            // TotalCost
+            // 
+            this.TotalCost.HeaderText = "TotalCost";
+            this.TotalCost.MinimumWidth = 6;
+            this.TotalCost.Name = "TotalCost";
+            this.TotalCost.ReadOnly = true;
+            // 
+            // ExpiryDate
+            // 
+            this.ExpiryDate.HeaderText = "ExpiryDate";
+            this.ExpiryDate.MinimumWidth = 6;
+            this.ExpiryDate.Name = "ExpiryDate";
+            // 
             // FormReceiveStock
             // 
             this.Appearance.Options.UseFont = true;
@@ -504,14 +504,14 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+        private System.Windows.Forms.TextBox textBoxAuto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vat;
         private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalCost;
-        private System.Windows.Forms.TextBox textBoxAuto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
     }
 }

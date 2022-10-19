@@ -27,9 +27,6 @@ namespace Katswiri.Forms
             InitializeComponent();
             autoCompleteSearch();
             loadTo();
-            //loadBranhces();
-
-
         }
 
         private void autoCompleteSearch()
@@ -47,16 +44,7 @@ namespace Katswiri.Forms
             }
         }
         
-        //public void loadBranhces()
-        //{
-        //    using(db = new BEntities())
-        //    {
-        //        textEditFrom.Properties.DataSource = db.vwBranches.ToList();
-        //        textEditFrom.Properties.ValueMember = "BranchId";
-        //        textEditFrom.Properties.DisplayMember = "BranchName";
-        //        textEditFrom.Properties.NullText = "Receive From";
-        //    }
-        //}
+        
 
         private void loadTo()
         {
@@ -79,25 +67,25 @@ namespace Katswiri.Forms
                 else
                 {
                     XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
         public void datedateTimePicker_textchanged(object sender, EventArgs e)
         {
-            //datagridview1.currentCell.Value = datetimepicker.text.Tostring();
+            dataGridView1.CurrentCell.Value = dateTimePicker.Text.ToString();
         }
 
         public void dateTimePicker_closeup(object sender, EventArgs e)
         {
-            //datetimepicker.visible = false;
+            dateTimePicker.Visible = false;
         }
-
-      
         public void clearReceivingCart()
         {
            if(dataGridView1.Rows.Count > 1)
@@ -117,6 +105,7 @@ namespace Katswiri.Forms
                     string PO = textEditPO.Text;
                     DateTime DR = dateEditRD.DateTime;
                     string Sup = textEditSup.Text;
+                    string Comment = textEditComment.Text;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -131,6 +120,7 @@ namespace Katswiri.Forms
                         Supplier = Sup,
                         ReceivingDate = DR,
                         PurchasingOrder = PO,
+                        Comment = Comment,
                         UserId = LoginInfo.UserId,
                     };
                     db.Receivings.Add(receiving);
@@ -145,8 +135,9 @@ namespace Katswiri.Forms
                             Qty = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()),
                             OrderPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
                             SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
-                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
+                            Vat = Double.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString()),
                             TotalPrice = Double.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()),
+                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[7].Value.ToString()),
                             UserId = LoginInfo.UserId,
                             ReceivingId = receiving.Id,
                         };
@@ -164,7 +155,7 @@ namespace Katswiri.Forms
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice,
-                                Comment = "New Receiving Batch",
+                                Comment = Comment,
                             };
                         }
                         else if (RCT == "Kitchen")
@@ -177,7 +168,7 @@ namespace Katswiri.Forms
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice,
-                                Comment = "New Receiving Batch",
+                                Comment = Comment,
 
                             };
                         } 
@@ -191,20 +182,21 @@ namespace Katswiri.Forms
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice,
-                                Comment = "New Receiving Batch",
-
+                                Comment = Comment,
                             };
                         }
                         db.Stocks.Add(stock);
                         db.SaveChanges();
                     }
-                    XtraMessageBox.Show("Products Received successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Products Received successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                     
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -223,25 +215,18 @@ namespace Katswiri.Forms
                         double qty = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Qty"].Value);
                         double sp = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["SellingPrice"].Value);
                         double order = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["OrderPrice"].Value);
+                        double vat = Convert.ToDouble(dataGridView1.Rows[e.RowIndex].Cells["Vat"].Value);
+
                         DateTime expiry = (DateTime)dataGridView1.Rows[e.RowIndex].Cells["ExpiryDate"].Value;
                         double toto = order * qty;
                         dataGridView1.Rows[e.RowIndex].Cells[2].Value = qty.ToString("##,##0.00");
                         dataGridView1.Rows[e.RowIndex].Cells[3].Value = order.ToString("##,##0.00");
-                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = sp.ToString("##,##0.00");
-                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = expiry;
+                        dataGridView1.Rows[e.RowIndex].Cells[4].Value = vat.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[5].Value = sp.ToString("##,##0.00");
                         dataGridView1.Rows[e.RowIndex].Cells[6].Value = toto.ToString("##,##0.00");
+                        dataGridView1.Rows[e.RowIndex].Cells[7].Value = expiry;
                     }
                 }
-        }
-
-        private void DPTextchange(object sender,EventArgs e)
-        {
-            dataGridView1.CurrentCell.Value = dateTimePicker.Text.ToString();
-        }
-
-        private void DPClose(object sender, EventArgs e)
-        {
-            dateTimePicker.Visible = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -267,13 +252,13 @@ namespace Katswiri.Forms
                     using (var db = new BEntities())
                     {
                         var product = db.Products.Where(p => p.ProductCode == textBoxAuto.Text).FirstOrDefault();
-                        //double UnitPrice = (double)db.Stocks?.Where(x => x.ProductId == product.ProductId).FirstOrDefault().SellingPrice;
                         Boolean Found = false;
 
                         double qty = 0;
                         double toto = 0;
                         double selu = 0;
                         double order = 0;
+                        double vat = 0;
                         if (dataGridView1.Rows.Count > 0)
                         {
                             foreach (DataGridViewRow row in this.dataGridView1.Rows)
@@ -281,15 +266,18 @@ namespace Katswiri.Forms
                                 if (row.Cells[0].Value.ToString() == product.ProductCode && row.Cells[1].Value.ToString() == product.ProductName.ToString())
                                 {
                                     var code = row.Cells[0].Value.ToString();
-                                    selu = Convert.ToDouble(row.Cells[4].Value);
                                     qty = Convert.ToDouble(row.Cells[2].Value) + 1;
                                     order = Convert.ToDouble(row.Cells[3].Value);
+                                    vat = Convert.ToDouble(row.Cells[4].Value);
+                                    selu = Convert.ToDouble(row.Cells[5].Value);
+
                                     toto = order * qty;
                                     row.Cells[2].Value = qty.ToString("##,##0.00");
                                     row.Cells[3].Value = order.ToString("##,##0.00");
-                                    row.Cells[4].Value = selu.ToString("##,##0.00");
-                                    row.Cells[5].Value = DateTime.Now;
+                                    row.Cells[4].Value = vat.ToString("##,##0.00");
+                                    row.Cells[5].Value = selu.ToString("##,##0.00");
                                     row.Cells[6].Value = toto.ToString("##,##0.00");
+                                    row.Cells[7].Value = DateTime.Now;
                                     Found = true;
                                 }
                             }
@@ -302,8 +290,9 @@ namespace Katswiri.Forms
                                 double Qty = 1;
                                 double Order = 0.00;
                                 double Total = 0.00;
+                                double Vat = 0.00;
                                 double SellingPrice = 0.00;
-                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
+                                dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), Vat.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), Total.ToString("##,##0.00"), expiry);
                             }
                         }
                         else
@@ -311,18 +300,20 @@ namespace Katswiri.Forms
                             string ProductId = product.ProductId.ToString();
                             string ProductCode = product.ProductCode.ToString();
                             string ProductName = product.ProductName.ToString();
-                            double Total = 0.00;
-                            double Order = 0.00;
                             DateTime expiry = DateTime.Now;
                             double Qty = 1;
+                            double Order = 0.00;
+                            double Total = 0.00;
+                            double Vat = 0.00;
                             double SellingPrice = 0.00;
-                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), expiry, Total.ToString("##,##0.00"));
+                            dataGridView1.Rows.Add(ProductCode, ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), Vat.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), Total.ToString("##,##0.00"), expiry);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             textBoxAuto.Text = string.Empty;

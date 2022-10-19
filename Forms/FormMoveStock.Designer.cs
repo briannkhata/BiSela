@@ -37,19 +37,30 @@ namespace Katswiri.Forms
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.searchLookUpEditFrom = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.searchLookUpEditTo = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.textEditComment = new DevExpress.XtraEditors.TextEdit();
+            this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.textEditTo = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEditFrom = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFrom.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditTo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
+            this.dataLayoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -65,7 +76,7 @@ namespace Katswiri.Forms
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbon.Size = new System.Drawing.Size(1156, 232);
+            this.ribbon.Size = new System.Drawing.Size(1212, 232);
             // 
             // barButtonItem1
             // 
@@ -102,12 +113,11 @@ namespace Katswiri.Forms
             // 
             // gridControl1
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 232);
+            this.gridControl1.Location = new System.Drawing.Point(6, 483);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.ribbon;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1156, 565);
+            this.gridControl1.Size = new System.Drawing.Size(1200, 381);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -117,72 +127,119 @@ namespace Katswiri.Forms
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // searchLookUpEditFrom
+            // dataLayoutControl1
             // 
-            this.searchLookUpEditFrom.Location = new System.Drawing.Point(561, 129);
-            this.searchLookUpEditFrom.MenuManager = this.ribbon;
-            this.searchLookUpEditFrom.Name = "searchLookUpEditFrom";
-            this.searchLookUpEditFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dataLayoutControl1.Controls.Add(this.textEditComment);
+            this.dataLayoutControl1.Controls.Add(this.textEditTo);
+            this.dataLayoutControl1.Controls.Add(this.textEditFrom);
+            this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
+            this.dataLayoutControl1.Name = "dataLayoutControl1";
+            this.dataLayoutControl1.Root = this.Root;
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1212, 224);
+            this.dataLayoutControl1.TabIndex = 13;
+            this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.tabbedControlGroup1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(1212, 179);
+            this.Root.TextVisible = false;
+            // 
+            // textEditComment
+            // 
+            this.textEditComment.Location = new System.Drawing.Point(24, 126);
+            this.textEditComment.MenuManager = this.ribbon;
+            this.textEditComment.Name = "textEditComment";
+            this.textEditComment.Size = new System.Drawing.Size(1164, 26);
+            this.textEditComment.StyleController = this.dataLayoutControl1;
+            this.textEditComment.TabIndex = 6;
+            // 
+            // tabbedControlGroup1
+            // 
+            this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.tabbedControlGroup1.Name = "tabbedControlGroup1";
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1192, 204);
+            this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem3});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1168, 101);
+            this.layoutControlGroup1.Text = "Enter Details";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.textEditFrom;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(583, 49);
+            this.layoutControlItem1.Text = "Move From";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(68, 16);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.textEditTo;
+            this.layoutControlItem2.Location = new System.Drawing.Point(583, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(585, 49);
+            this.layoutControlItem2.Text = "Move To";
+            this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(68, 16);
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.textEditComment;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1168, 97);
+            this.layoutControlItem3.Text = "Comment";
+            this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(68, 16);
+            // 
+            // textEditTo
+            // 
+            this.textEditTo.Location = new System.Drawing.Point(607, 77);
+            this.textEditTo.MenuManager = this.ribbon;
+            this.textEditTo.Name = "textEditTo";
+            this.textEditTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditFrom.Properties.PopupView = this.searchLookUpEdit1View;
-            this.searchLookUpEditFrom.Size = new System.Drawing.Size(221, 26);
-            this.searchLookUpEditFrom.TabIndex = 8;
+            this.textEditTo.Properties.NullText = "";
+            this.textEditTo.Size = new System.Drawing.Size(581, 26);
+            this.textEditTo.StyleController = this.dataLayoutControl1;
+            this.textEditTo.TabIndex = 5;
             // 
-            // searchLookUpEdit1View
+            // textEditFrom
             // 
-            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
-            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // searchLookUpEditTo
-            // 
-            this.searchLookUpEditTo.Location = new System.Drawing.Point(561, 173);
-            this.searchLookUpEditTo.MenuManager = this.ribbon;
-            this.searchLookUpEditTo.Name = "searchLookUpEditTo";
-            this.searchLookUpEditTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.textEditFrom.Location = new System.Drawing.Point(24, 77);
+            this.textEditFrom.MenuManager = this.ribbon;
+            this.textEditFrom.Name = "textEditFrom";
+            this.textEditFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.searchLookUpEditTo.Properties.PopupView = this.gridView2;
-            this.searchLookUpEditTo.Size = new System.Drawing.Size(221, 26);
-            this.searchLookUpEditTo.TabIndex = 9;
-            // 
-            // gridView2
-            // 
-            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(403, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 23);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Move From";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(435, 178);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "To";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.textEditFrom.Properties.NullText = "";
+            this.textEditFrom.Size = new System.Drawing.Size(579, 26);
+            this.textEditFrom.StyleController = this.dataLayoutControl1;
+            this.textEditFrom.TabIndex = 4;
             // 
             // FormMoveStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1156, 797);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.searchLookUpEditTo);
-            this.Controls.Add(this.searchLookUpEditFrom);
+            this.ClientSize = new System.Drawing.Size(1212, 874);
+            this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.ribbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -193,10 +250,17 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditFrom.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEditTo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
+            this.dataLayoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,11 +276,15 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditFrom;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
-        private DevExpress.XtraEditors.SearchLookUpEdit searchLookUpEditTo;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraEditors.TextEdit textEditComment;
+        private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+        private DevExpress.XtraEditors.LookUpEdit textEditTo;
+        private DevExpress.XtraEditors.LookUpEdit textEditFrom;
     }
 }

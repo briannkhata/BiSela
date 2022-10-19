@@ -23,5 +23,6 @@ namespace Katswiri.Data
         public Nullable<double> TotalPrice { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<int> ReceivingId { get; set; }
+        public Nullable<double> Vat { get; set; }
     }
 }

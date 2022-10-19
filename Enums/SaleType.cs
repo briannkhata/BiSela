@@ -12,6 +12,7 @@ namespace Katswiri.Enums
         Return,
         Free,
         Credit,
-        Damage
+        Damage,
+        LayBy
     }
 }

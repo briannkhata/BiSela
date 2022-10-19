@@ -24,7 +24,8 @@ namespace Katswiri.Forms
             InitializeComponent();
             loadData();
             loadTo();
-            loadFrom();
+            loadBranhces();
+
             gridView1.Columns["ProductId"].Visible = false;
             gridView1.Columns["ShopId"].Visible = false;
             gridView1.Columns["StockId"].Visible = false;
@@ -49,21 +50,22 @@ namespace Katswiri.Forms
         private void loadTo()
         {
           
-                Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
-                searchLookUpEditTo.Properties.DataSource = store;
-                searchLookUpEditTo.Properties.ValueMember = "Value";
-                searchLookUpEditTo.Properties.DisplayMember = "Value";
-                searchLookUpEditTo.Properties.NullText = "Move To";
+            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
+            textEditTo.Properties.DataSource = store;
+            textEditTo.Properties.ValueMember = "Value";
+            textEditTo.Properties.DisplayMember = "Value";
+            textEditTo.Properties.NullText = "Move To";
         }
 
-        private void loadFrom()
+        public void loadBranhces()
         {
-
-            Dictionary<int, string> store = Enum.GetValues(typeof(Store)).Cast<Store>().ToDictionary(x => (int)x, x => x.ToString());
-            searchLookUpEditFrom.Properties.DataSource = store;
-            searchLookUpEditFrom.Properties.ValueMember = "Value";
-            searchLookUpEditFrom.Properties.DisplayMember = "Value";
-            searchLookUpEditFrom.Properties.NullText = "Move From";
+            using (db = new BEntities())
+            {
+                textEditFrom.Properties.DataSource = db.vwBranches.ToList();
+                textEditFrom.Properties.ValueMember = "BranchId";
+                textEditFrom.Properties.DisplayMember = "BranchName";
+                textEditFrom.Properties.NullText = "Receive From";
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -89,20 +91,21 @@ namespace Katswiri.Forms
                             ProductId = row.ProductId,
                             SellingPrice = row.SellingPrice,
                             ExpiryDate = row.ExpiryDate,
-                            Comment = "Moved From " +searchLookUpEditFrom.EditValue + "To" + searchLookUpEditTo.EditValue,
+                            Comment = textEditComment.Text,
                             ShopId = row.ShopId,
                         };
                         db.Stocks.Add(stock);
-                        //db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                     XtraMessageBox.Show("Stock Moving Successfull", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadData();
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -123,6 +126,7 @@ namespace Katswiri.Forms
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

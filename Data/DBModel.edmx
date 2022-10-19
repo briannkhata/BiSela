@@ -181,6 +181,7 @@ warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a prima
           <Property Name="TotalPrice" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="ReceivingId" Type="int" />
+          <Property Name="Vat" Type="float" />
         </EntityType>
         <EntityType Name="Receivings">
           <Key>
@@ -195,6 +196,8 @@ warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a prima
           <Property Name="PurchasingOrder" Type="varchar(max)" />
           <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="DeliveryNote" Type="varchar(max)" />
+          <Property Name="From" Type="int" />
+          <Property Name="Comment" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SaleDetails">
           <Key>
@@ -1153,6 +1156,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="TotalPrice" Type="Double" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="ReceivingId" Type="Int32" />
+          <Property Name="Vat" Type="Double" />
         </EntityType>
         <EntityType Name="Receiving">
           <Key>
@@ -1167,6 +1171,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="From" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SaleDetail">
           <Key>
@@ -1936,6 +1942,7 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="ReceivingDetails">
             <EntityTypeMapping TypeName="BModel.ReceivingDetail">
               <MappingFragment StoreEntitySet="ReceivingDetails">
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1951,6 +1958,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="Receivings">
             <EntityTypeMapping TypeName="BModel.Receiving">
               <MappingFragment StoreEntitySet="Receivings">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="From" ColumnName="From" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
