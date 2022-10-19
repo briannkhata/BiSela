@@ -67,7 +67,6 @@ namespace Katswiri.Forms
                 else
                 {
                     XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
                 }
             }
             catch (Exception ex)

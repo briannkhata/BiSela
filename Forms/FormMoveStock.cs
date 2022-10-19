@@ -178,7 +178,22 @@ namespace Katswiri.Forms
 
         private void barButtonItem3_ItemClick_1(object sender, ItemClickEventArgs e)
         {
-
+            try
+            {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+                }
+                else
+                {
+                    XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -192,7 +207,6 @@ namespace Katswiri.Forms
                     var comment = textEditComment.Text;
                     var destination = textEditDestination.Text;
 
-
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         var code = dataGridView1.Rows[i].Cells[0].Value.ToString();
@@ -201,8 +215,6 @@ namespace Katswiri.Forms
                         stock = new Stock()
                         {
                             ProductId = ProductId,
-                            SellingPrice = Double.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()),
-                            ExpiryDate = DateTime.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString()),
                             Comment = comment + " : by " + LoginInfo.UserId,
                             ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
@@ -225,8 +237,7 @@ namespace Katswiri.Forms
                         {
                             stock.Kitchen = oldKitchen - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
                         }
-
-                        db.Stocks.Add(stock);
+                        db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
 
                     }
@@ -239,6 +250,14 @@ namespace Katswiri.Forms
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (dataGridView1.Rows.Count > 1)
+            {
+                dataGridView1.Rows.Clear();
             }
         }
     }
