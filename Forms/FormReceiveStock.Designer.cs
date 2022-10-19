@@ -36,16 +36,18 @@ namespace Katswiri.Forms
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.textBoxAuto = new System.Windows.Forms.TextBox();
             this.textEditPO = new DevExpress.XtraEditors.TextEdit();
             this.textEditSup = new DevExpress.XtraEditors.TextEdit();
             this.dateEditRD = new DevExpress.XtraEditors.DateEdit();
             this.textEditTo = new DevExpress.XtraEditors.LookUpEdit();
             this.textEditComment = new DevExpress.XtraEditors.TextEdit();
+            this.textEditFrom = new DevExpress.XtraEditors.LookUpEdit();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -56,7 +58,8 @@ namespace Katswiri.Forms
             this.tabbedControlGroup2 = new DevExpress.XtraLayout.TabbedControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textBoxAuto = new System.Windows.Forms.TextBox();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,8 +69,6 @@ namespace Katswiri.Forms
             this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpiryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPO.Properties)).BeginInit();
@@ -76,6 +77,7 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
@@ -86,6 +88,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -93,7 +97,8 @@ namespace Katswiri.Forms
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
-            this.ribbonPageGroup4});
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Tools";
             // 
@@ -104,7 +109,7 @@ namespace Katswiri.Forms
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Save Items";
+            this.barButtonItem1.Caption = "Receive";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.saveas1;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -117,9 +122,9 @@ namespace Katswiri.Forms
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "Delete Row";
+            this.barButtonItem2.Caption = "Delete";
             this.barButtonItem2.Id = 2;
-            this.barButtonItem2.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.deletedatasource;
+            this.barButtonItem2.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.snapdeletelist2;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -130,11 +135,24 @@ namespace Katswiri.Forms
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "Clear Grid";
+            this.barButtonItem4.Caption = "Clear";
             this.barButtonItem4.Id = 4;
-            this.barButtonItem4.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.clearrules;
+            this.barButtonItem4.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.clearformatting1;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem5);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Receive All";
+            this.barButtonItem5.Id = 5;
+            this.barButtonItem5.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.shipmentreceived1;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -152,52 +170,14 @@ namespace Katswiri.Forms
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
-            this.barButtonItem4});
+            this.barButtonItem4,
+            this.barButtonItem5});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 5;
+            this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbon.Size = new System.Drawing.Size(1269, 232);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(9, 525);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1249, 274);
-            this.panel1.TabIndex = 5;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProductCode,
-            this.ProductName,
-            this.Qty,
-            this.OrderPrice,
-            this.Vat,
-            this.SellingPrice,
-            this.TotalCost,
-            this.ExpiryDate});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1249, 274);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // dataLayoutControl1
             // 
@@ -207,6 +187,7 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.Controls.Add(this.dateEditRD);
             this.dataLayoutControl1.Controls.Add(this.textEditTo);
             this.dataLayoutControl1.Controls.Add(this.textEditComment);
+            this.dataLayoutControl1.Controls.Add(this.textEditFrom);
             this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataLayoutControl1.Location = new System.Drawing.Point(0, 232);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -218,9 +199,18 @@ namespace Katswiri.Forms
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.dataLayoutControl1.OptionsPrint.AppearanceGroupCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.dataLayoutControl1.Root = this.Root;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(1269, 287);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(1269, 305);
             this.dataLayoutControl1.TabIndex = 9;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
+            // 
+            // textBoxAuto
+            // 
+            this.textBoxAuto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAuto.Location = new System.Drawing.Point(42, 205);
+            this.textBoxAuto.Name = "textBoxAuto";
+            this.textBoxAuto.Size = new System.Drawing.Size(1177, 32);
+            this.textBoxAuto.TabIndex = 11;
+            this.textBoxAuto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAuto_KeyDown);
             // 
             // textEditPO
             // 
@@ -268,12 +258,24 @@ namespace Katswiri.Forms
             // 
             // textEditComment
             // 
-            this.textEditComment.Location = new System.Drawing.Point(24, 126);
+            this.textEditComment.Location = new System.Drawing.Point(427, 126);
             this.textEditComment.MenuManager = this.ribbon;
             this.textEditComment.Name = "textEditComment";
-            this.textEditComment.Size = new System.Drawing.Size(1221, 26);
+            this.textEditComment.Size = new System.Drawing.Size(818, 26);
             this.textEditComment.StyleController = this.dataLayoutControl1;
             this.textEditComment.TabIndex = 10;
+            // 
+            // textEditFrom
+            // 
+            this.textEditFrom.Location = new System.Drawing.Point(24, 126);
+            this.textEditFrom.MenuManager = this.ribbon;
+            this.textEditFrom.Name = "textEditFrom";
+            this.textEditFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEditFrom.Properties.NullText = "";
+            this.textEditFrom.Size = new System.Drawing.Size(399, 26);
+            this.textEditFrom.StyleController = this.dataLayoutControl1;
+            this.textEditFrom.TabIndex = 12;
             // 
             // Root
             // 
@@ -282,7 +284,7 @@ namespace Katswiri.Forms
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1269, 287);
+            this.Root.Size = new System.Drawing.Size(1269, 305);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
@@ -290,7 +292,7 @@ namespace Katswiri.Forms
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1249, 267);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1249, 285);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1});
             // 
@@ -302,10 +304,11 @@ namespace Katswiri.Forms
             this.layoutControlItem2,
             this.layoutControlItem4,
             this.tabbedControlGroup2,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1225, 209);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1225, 227);
             this.layoutControlGroup1.Text = "Enter Details";
             // 
             // layoutControlItem3
@@ -321,9 +324,9 @@ namespace Katswiri.Forms
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.textEditComment;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem6.Location = new System.Drawing.Point(403, 49);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1225, 49);
+            this.layoutControlItem6.Size = new System.Drawing.Size(822, 49);
             this.layoutControlItem6.Text = "Comment";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(104, 16);
@@ -353,7 +356,7 @@ namespace Katswiri.Forms
             this.tabbedControlGroup2.Location = new System.Drawing.Point(0, 98);
             this.tabbedControlGroup2.Name = "tabbedControlGroup2";
             this.tabbedControlGroup2.SelectedTabPage = this.layoutControlGroup2;
-            this.tabbedControlGroup2.Size = new System.Drawing.Size(1225, 111);
+            this.tabbedControlGroup2.Size = new System.Drawing.Size(1225, 129);
             this.tabbedControlGroup2.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             // 
@@ -361,7 +364,7 @@ namespace Katswiri.Forms
             // 
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1201, 53);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1201, 71);
             this.layoutControlGroup2.Text = "Search Item By Item Code";
             // 
             // layoutControlItem5
@@ -374,14 +377,46 @@ namespace Katswiri.Forms
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(104, 16);
             // 
-            // textBoxAuto
+            // layoutControlItem1
             // 
-            this.textBoxAuto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAuto.Location = new System.Drawing.Point(42, 205);
-            this.textBoxAuto.Name = "textBoxAuto";
-            this.textBoxAuto.Size = new System.Drawing.Size(1177, 38);
-            this.textBoxAuto.TabIndex = 11;
-            this.textBoxAuto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAuto_KeyDown);
+            this.layoutControlItem1.Control = this.textEditFrom;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 49);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(403, 49);
+            this.layoutControlItem1.Text = "Receive From";
+            this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(104, 16);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dataGridView1.ColumnHeadersHeight = 29;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductCode,
+            this.ProductName,
+            this.Qty,
+            this.OrderPrice,
+            this.Vat,
+            this.SellingPrice,
+            this.TotalCost,
+            this.ExpiryDate});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 543);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1269, 230);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // ProductCode
             // 
@@ -439,9 +474,9 @@ namespace Katswiri.Forms
             this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1269, 808);
+            this.ClientSize = new System.Drawing.Size(1269, 773);
             this.Controls.Add(this.dataLayoutControl1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.ribbon);
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
@@ -451,16 +486,16 @@ namespace Katswiri.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Receive Stock";
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
+            this.dataLayoutControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPO.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditRD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditComment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditFrom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
@@ -471,6 +506,8 @@ namespace Katswiri.Forms
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,7 +520,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -492,7 +528,6 @@ namespace Katswiri.Forms
         private DevExpress.XtraEditors.TextEdit textEditSup;
         private DevExpress.XtraEditors.DateEdit dateEditRD;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        public System.Windows.Forms.DataGridView dataGridView1;
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
@@ -505,6 +540,9 @@ namespace Katswiri.Forms
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private System.Windows.Forms.TextBox textBoxAuto;
+        private DevExpress.XtraEditors.LookUpEdit textEditFrom;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qty;
@@ -513,5 +551,7 @@ namespace Katswiri.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn SellingPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpiryDate;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }

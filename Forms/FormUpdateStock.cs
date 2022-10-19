@@ -74,26 +74,21 @@ namespace Katswiri.Forms
                         db.SaveChanges();
                     }
                     XtraMessageBox.Show("Stock Updating Successfull", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    reloadData();
+                    return;
                 }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            reloadData();
-        }
-
-        private void reloadData()
-        {
-            using (db = new BEntities())
+            if (dataGridView1.Rows.Count > 1)
             {
-                gridControl1.DataSource = null;
-                gridControl1.DataSource = db.vwUpdateStocks.ToList();
+                dataGridView1.Rows.Clear();
             }
         }
 
@@ -101,19 +96,42 @@ namespace Katswiri.Forms
         {
             try
             {
-                var selectedRows = gridView1.GetSelectedRows();
-                var row = ((vwUpdateStock)gridView1.GetRow(selectedRows[0]));
-                using (var db = new BEntities())
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    var stock = db.Stocks.Find(row.StockId);
-                    db.Stocks.Remove(stock);
-                    db.SaveChanges();
+                    dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
                 }
-                loadData();
+                else
+                {
+                    XtraMessageBox.Show("There are no data to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            try
+            {
+                using (db = new BEntities())
+                {
+                    var products = db.Products.Where(x => x.Deleted == 0).ToList();
+                    foreach (var item in products)
+                    {
+                        double Qty = 1;
+                        DateTime expiry = DateTime.Now;
+                        dataGridView1.Rows.Add(item.ProductCode, item.ProductName, Qty.ToString("##,##0.00"), expiry);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
     }

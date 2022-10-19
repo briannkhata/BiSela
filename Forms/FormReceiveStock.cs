@@ -26,6 +26,7 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             autoCompleteSearch();
+            loadBranhces();
             loadTo();
         }
 
@@ -43,8 +44,17 @@ namespace Katswiri.Forms
                 textBoxAuto.AutoCompleteCustomSource = autoText;
             }
         }
-        
-        
+
+        public void loadBranhces()
+        {
+            using (db = new BEntities())
+            {
+                textEditFrom.Properties.DataSource = db.vwBranches.ToList();
+                textEditFrom.Properties.ValueMember = "BranchId";
+                textEditFrom.Properties.DisplayMember = "BranchName";
+                textEditFrom.Properties.NullText = "Receive From";
+            }
+        }
 
         private void loadTo()
         {
@@ -105,6 +115,7 @@ namespace Katswiri.Forms
                     DateTime DR = dateEditRD.DateTime;
                     string Sup = textEditSup.Text;
                     string Comment = textEditComment.Text;
+                    var from = textEditFrom.EditValue;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -120,6 +131,7 @@ namespace Katswiri.Forms
                         ReceivingDate = DR,
                         PurchasingOrder = PO,
                         Comment = Comment,
+                        From = (int?)from,
                         UserId = LoginInfo.UserId,
                     };
                     db.Receivings.Add(receiving);
@@ -168,7 +180,6 @@ namespace Katswiri.Forms
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice,
                                 Comment = Comment,
-
                             };
                         } 
                         else if (RCT == "Stores")
@@ -230,7 +241,7 @@ namespace Katswiri.Forms
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 7)
             {
                 dataGridView1.Controls.Add(dateTimePicker);
                 dateTimePicker.Format = DateTimePickerFormat.Custom;
@@ -316,6 +327,32 @@ namespace Katswiri.Forms
                 }
             }
             textBoxAuto.Text = string.Empty;
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                using (db = new BEntities())
+                {
+                    var products = db.Products.Where(x => x.Deleted == 0).ToList();
+                    foreach (var item in products)
+                    {
+                        double Qty = 1;
+                        double Order = 0.00;
+                        double Total = 0.00;
+                        double Vat = 0.00;
+                        double SellingPrice = 0.00;
+                        DateTime expiry = DateTime.Now;
+                        dataGridView1.Rows.Add(item.ProductCode, item.ProductName, Qty.ToString("##,##0.00"), Order.ToString("##,##0.00"), Vat.ToString("##,##0.00"), SellingPrice.ToString("##,##0.00"), Total.ToString("##,##0.00"), expiry);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }

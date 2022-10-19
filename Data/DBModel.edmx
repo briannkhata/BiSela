@@ -58,7 +58,7 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.FoodBills' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.FoodBills' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FoodBills">
           <Key>
             <PropertyRef Name="SaleId" />
@@ -80,7 +80,7 @@ warning 6002: The table/view 'bisela.dbo.FoodBills' does not have a primary key 
           <Property Name="Balance" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.FoodBillsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FoodBillsDetails">
           <Key>
             <PropertyRef Name="Id" />
@@ -314,7 +314,7 @@ warning 6002: The table/view 'bisela.dbo.FoodBillsDetails' does not have a prima
           <Property Name="Gender" Type="varchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwBranches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwBranches' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwBranches">
           <Key>
             <PropertyRef Name="BranchId" />
@@ -324,7 +324,7 @@ warning 6002: The table/view 'bisela.dbo.vwBranches' does not have a primary key
           <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwBrands' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwBrands' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwBrands">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -336,7 +336,7 @@ warning 6002: The table/view 'bisela.dbo.vwBrands' does not have a primary key d
           <Property Name="BrandDescription" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwCategories">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -346,7 +346,7 @@ warning 6002: The table/view 'bisela.dbo.vwCategories' does not have a primary k
           <Property Name="CategoryName" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwCustomer">
           <Key>
             <PropertyRef Name="UserId" />
@@ -359,7 +359,7 @@ warning 6002: The table/view 'bisela.dbo.vwCustomer' does not have a primary key
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwExpenses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwExpenses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwExpenses">
           <Key>
             <PropertyRef Name="ExpenseTypeName" />
@@ -373,7 +373,7 @@ warning 6002: The table/view 'bisela.dbo.vwExpenses' does not have a primary key
           <Property Name="ExpenseTypeId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwExpenseTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwExpenseTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwExpenseTypes">
           <Key>
             <PropertyRef Name="ExpenseTypeName" />
@@ -383,7 +383,7 @@ warning 6002: The table/view 'bisela.dbo.vwExpenseTypes' does not have a primary
           <Property Name="ExpenseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwFoodMenus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwFoodMenus' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwFoodMenus">
           <Key>
             <PropertyRef Name="FoodMenuId" />
@@ -393,7 +393,7 @@ warning 6002: The table/view 'bisela.dbo.vwFoodMenus' does not have a primary ke
           <Property Name="UnitPrice" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwIncomes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwIncomes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwIncomes">
           <Key>
             <PropertyRef Name="Amount" />
@@ -406,7 +406,7 @@ warning 6002: The table/view 'bisela.dbo.vwIncomes' does not have a primary key 
           <Property Name="IncomeTypeId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwIncomTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwIncomTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwIncomTypes">
           <Key>
             <PropertyRef Name="IncomeTypeId" />
@@ -415,7 +415,7 @@ warning 6002: The table/view 'bisela.dbo.vwIncomTypes' does not have a primary k
           <Property Name="IncomeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwOrderCustomer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwOrderCustomer">
           <Key>
             <PropertyRef Name="Name" />
@@ -436,7 +436,7 @@ warning 6002: The table/view 'bisela.dbo.vwOrderCustomer' does not have a primar
           <Property Name="Waiter" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwPaymentTypes">
           <Key>
             <PropertyRef Name="PaymentTypeName" />
@@ -448,7 +448,7 @@ warning 6002: The table/view 'bisela.dbo.vwPaymentTypes' does not have a primary
           <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwProducts">
           <Key>
             <PropertyRef Name="ProductName" />
@@ -479,7 +479,7 @@ warning 6002: The table/view 'bisela.dbo.vwProducts' does not have a primary key
           <Property Name="Description" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwReceivingCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwReceivingCart">
           <Key>
             <PropertyRef Name="ProductName" />
@@ -496,7 +496,7 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingCart' does not have a primar
           <Property Name="ProductId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwReceivingReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwReceivingReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwReceivingReport">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -521,7 +521,7 @@ warning 6002: The table/view 'bisela.dbo.vwReceivingReport' does not have a prim
           <Property Name="DeliveryNote" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwSalesReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwSalesReport">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -534,6 +534,8 @@ warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary 
             <PropertyRef Name="TaxValue" />
             <PropertyRef Name="SoldPrice" />
             <PropertyRef Name="DateSold" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Expr1" />
           </Key>
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -550,9 +552,11 @@ warning 6002: The table/view 'bisela.dbo.vwSalesReport' does not have a primary 
           <Property Name="PaymentTypeId" Type="int" />
           <Property Name="SoldBy" Type="int" />
           <Property Name="ShopId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwShifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwShifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwShifts">
           <Key>
             
@@ -566,7 +570,7 @@ warning 6002: The table/view 'bisela.dbo.vwShifts' does not have a primary key d
           <Property Name="CloseDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwShops' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwShops">
           <Key>
             <PropertyRef Name="ShopId" />
@@ -582,7 +586,7 @@ warning 6002: The table/view 'bisela.dbo.vwShops' does not have a primary key de
           <Property Name="ExpiryAlert" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwSReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwSReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwSReport">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -601,7 +605,7 @@ warning 6002: The table/view 'bisela.dbo.vwSReport' does not have a primary key 
           <Property Name="SellingPrice" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwStockReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwStockReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwStockReport">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -621,7 +625,7 @@ warning 6002: The table/view 'bisela.dbo.vwStockReport' does not have a primary 
           <Property Name="SellingPrice" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwStocks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwStocks">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -642,7 +646,7 @@ warning 6002: The table/view 'bisela.dbo.vwStocks' does not have a primary key d
           <Property Name="Stores" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwUnits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwUnits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwUnits">
           <Key>
             <PropertyRef Name="UnitName" />
@@ -654,7 +658,7 @@ warning 6002: The table/view 'bisela.dbo.vwUnits' does not have a primary key de
           <Property Name="Qty" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwUpdateStock' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwUpdateStock' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwUpdateStock">
           <Key>
             <PropertyRef Name="ProductCode" />
@@ -673,7 +677,7 @@ warning 6002: The table/view 'bisela.dbo.vwUpdateStock' does not have a primary 
           <Property Name="StockId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwUsers">
           <Key>
             <PropertyRef Name="Name" />
@@ -969,7 +973,9 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
     [vwSalesReport].[SaleType] AS [SaleType], 
     [vwSalesReport].[PaymentTypeId] AS [PaymentTypeId], 
     [vwSalesReport].[SoldBy] AS [SoldBy], 
-    [vwSalesReport].[ShopId] AS [ShopId]
+    [vwSalesReport].[ShopId] AS [ShopId], 
+    [vwSalesReport].[UserId] AS [UserId], 
+    [vwSalesReport].[Expr1] AS [Expr1]
     FROM [dbo].[vwSalesReport] AS [vwSalesReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwShifts" EntityType="Self.vwShifts" store:Type="Views" store:Schema="dbo">
@@ -1377,6 +1383,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
             <PropertyRef Name="TaxValue" />
             <PropertyRef Name="SoldPrice" />
             <PropertyRef Name="DateSold" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Expr1" />
           </Key>
           <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1393,6 +1401,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <Property Name="PaymentTypeId" Type="Int32" />
           <Property Name="SoldBy" Type="Int32" />
           <Property Name="ShopId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="vwSReport">
           <Key>
@@ -2163,6 +2173,8 @@ warning 6002: The table/view 'bisela.dbo.vwUsers' does not have a primary key de
           <EntitySetMapping Name="vwSalesReports">
             <EntityTypeMapping TypeName="BModel.vwSalesReport">
               <MappingFragment StoreEntitySet="vwSalesReport">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

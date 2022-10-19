@@ -173,6 +173,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage clearformatting1 {
+            get {
+                object obj = ResourceManager.GetObject("clearformatting1", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage clearrules {
             get {
                 object obj = ResourceManager.GetObject("clearrules", resourceCulture);
@@ -533,6 +543,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage shipmentreceived1 {
+            get {
+                object obj = ResourceManager.GetObject("shipmentreceived1", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage snapdeletelist {
             get {
                 object obj = ResourceManager.GetObject("snapdeletelist", resourceCulture);
@@ -546,6 +566,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage snapdeletelist1 {
             get {
                 object obj = ResourceManager.GetObject("snapdeletelist1", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage snapdeletelist2 {
+            get {
+                object obj = ResourceManager.GetObject("snapdeletelist2", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
@@ -576,6 +606,16 @@ namespace Katswiri.Properties {
         internal static DevExpress.Utils.Svg.SvgImage updatedataextract {
             get {
                 object obj = ResourceManager.GetObject("updatedataextract", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage updatetableofcontents {
+            get {
+                object obj = ResourceManager.GetObject("updatetableofcontents", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

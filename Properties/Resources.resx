@@ -133,6 +133,9 @@
   <data name="addcolumn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addcolumn.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="shipmentreceived1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shipmentreceived1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="managequeries2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\managequeries2.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -187,14 +190,14 @@
   <data name="saveas5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveas5.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="clearformatting1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clearformatting1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="del" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\del.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="saveas2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveas2.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="automaticupdates" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\automaticupdates.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="deletetablerows" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deletetablerows.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -223,6 +226,12 @@
   <data name="business_money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business_money.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="snapdeletelist1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\snapdeletelist1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="payment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\payment.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="folderpanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folderpanel.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -235,14 +244,14 @@
   <data name="filter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="payment" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\payment.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="automaticupdates" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\automaticupdates.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="actions_addcircled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\actions_addcircled.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="employeetasklist" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\employeetasklist.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="snapdeletelist2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\snapdeletelist2.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="shipmentreceived" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shipmentreceived.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -259,8 +268,8 @@
   <data name="addparagraphtotableofcontents" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addparagraphtotableofcontents.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="snapdeletelist1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\snapdeletelist1.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="employeetasklist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employeetasklist.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="productorderdetail-21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\productorderdetail-21.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -273,5 +282,8 @@
   </data>
   <data name="clearformatting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clearformatting.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="updatetableofcontents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\updatetableofcontents.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2, Version=19.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>
