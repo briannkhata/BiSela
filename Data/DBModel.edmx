@@ -436,6 +436,19 @@ warning 6002: The table/view 'bar.dbo.vwOrderCustomer' does not have a primary k
           <Property Name="Waiter" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'bar.dbo.vwPayments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPayments">
+          <Key>
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="SaleId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'bar.dbo.vwPaymentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwPaymentTypes">
           <Key>
@@ -519,6 +532,9 @@ warning 6002: The table/view 'bar.dbo.vwReceivingReport' does not have a primary
           <Property Name="PurchasingOrder" Type="varchar(max)" />
           <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="DeliveryNote" Type="varchar(max)" />
+          <Property Name="From" Type="int" />
+          <Property Name="Comment" Type="varchar(max)" />
+          <Property Name="Vat" Type="float" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bar.dbo.vwSalesReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -612,6 +628,8 @@ warning 6002: The table/view 'bar.dbo.vwStockReport' does not have a primary key
             <PropertyRef Name="ProductName" />
             <PropertyRef Name="BrandName" />
             <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Qty" />
           </Key>
           <Property Name="ProductCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -623,6 +641,9 @@ warning 6002: The table/view 'bar.dbo.vwStockReport' does not have a primary key
           <Property Name="Stores" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="SellingPrice" Type="float" />
+          <Property Name="Kitchen" Type="float" />
+          <Property Name="UnitName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Qty" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bar.dbo.vwStocks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -671,10 +692,12 @@ warning 6002: The table/view 'bar.dbo.vwUpdateStock' does not have a primary key
           <Property Name="Stores" Type="float" />
           <Property Name="Kitchen" Type="float" />
           <Property Name="SellingPrice" Type="float" />
+          <Property Name="OrderPrice" Type="float" />
           <Property Name="ExpiryDate" Type="datetime" />
           <Property Name="ShopId" Type="int" />
           <Property Name="ProductId" Type="int" />
           <Property Name="StockId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -902,6 +925,15 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
     [vwOrderCustomer].[Waiter] AS [Waiter]
     FROM [dbo].[vwOrderCustomer] AS [vwOrderCustomer]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vwPayments" EntityType="Self.vwPayments" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPayments].[PaymentTypeName] AS [PaymentTypeName], 
+    [vwPayments].[Description] AS [Description], 
+    [vwPayments].[Amount] AS [Amount], 
+    [vwPayments].[PaymentDate] AS [PaymentDate], 
+    [vwPayments].[SaleId] AS [SaleId]
+    FROM [dbo].[vwPayments] AS [vwPayments]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vwPaymentTypes" EntityType="Self.vwPaymentTypes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vwPaymentTypes].[PaymentTypeName] AS [PaymentTypeName], 
@@ -954,7 +986,10 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
     [vwReceivingReport].[Supplier] AS [Supplier], 
     [vwReceivingReport].[PurchasingOrder] AS [PurchasingOrder], 
     [vwReceivingReport].[DeliveryDate] AS [DeliveryDate], 
-    [vwReceivingReport].[DeliveryNote] AS [DeliveryNote]
+    [vwReceivingReport].[DeliveryNote] AS [DeliveryNote], 
+    [vwReceivingReport].[From] AS [From], 
+    [vwReceivingReport].[Comment] AS [Comment], 
+    [vwReceivingReport].[Vat] AS [Vat]
     FROM [dbo].[vwReceivingReport] AS [vwReceivingReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwSalesReport" EntityType="Self.vwSalesReport" store:Type="Views" store:Schema="dbo">
@@ -1024,7 +1059,10 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
     [vwStockReport].[Shop] AS [Shop], 
     [vwStockReport].[Stores] AS [Stores], 
     [vwStockReport].[ExpiryDate] AS [ExpiryDate], 
-    [vwStockReport].[SellingPrice] AS [SellingPrice]
+    [vwStockReport].[SellingPrice] AS [SellingPrice], 
+    [vwStockReport].[Kitchen] AS [Kitchen], 
+    [vwStockReport].[UnitName] AS [UnitName], 
+    [vwStockReport].[Qty] AS [Qty]
     FROM [dbo].[vwStockReport] AS [vwStockReport]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwStocks" EntityType="Self.vwStocks" store:Type="Views" store:Schema="dbo">
@@ -1056,10 +1094,12 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
     [vwUpdateStock].[Stores] AS [Stores], 
     [vwUpdateStock].[Kitchen] AS [Kitchen], 
     [vwUpdateStock].[SellingPrice] AS [SellingPrice], 
+    [vwUpdateStock].[OrderPrice] AS [OrderPrice], 
     [vwUpdateStock].[ExpiryDate] AS [ExpiryDate], 
     [vwUpdateStock].[ShopId] AS [ShopId], 
     [vwUpdateStock].[ProductId] AS [ProductId], 
-    [vwUpdateStock].[StockId] AS [StockId]
+    [vwUpdateStock].[StockId] AS [StockId], 
+    [vwUpdateStock].[Comment] AS [Comment]
     FROM [dbo].[vwUpdateStock] AS [vwUpdateStock]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwUsers" EntityType="Self.vwUsers" store:Type="Views" store:Schema="dbo">
@@ -1370,6 +1410,9 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <Property Name="PurchasingOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryNote" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="From" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Vat" Type="Double" />
         </EntityType>
         <EntityType Name="vwSalesReport">
           <Key>
@@ -1427,6 +1470,8 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
             <PropertyRef Name="ProductName" />
             <PropertyRef Name="BrandName" />
             <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Qty" />
           </Key>
           <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -1438,6 +1483,9 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <Property Name="Stores" Type="Double" />
           <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
           <Property Name="SellingPrice" Type="Double" />
+          <Property Name="Kitchen" Type="Double" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Qty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vwStock">
           <Key>
@@ -1540,6 +1588,7 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <EntitySet Name="Units" EntityType="BModel.Unit" />
           <EntitySet Name="Branches" EntityType="BModel.Branch" />
           <EntitySet Name="vwBranches" EntityType="BModel.vwBranch" />
+          <EntitySet Name="vwPayments" EntityType="BModel.vwPayment" />
           </EntityContainer>
         <EntityType Name="BillPayment">
           <Key>
@@ -1842,6 +1891,8 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <Property Name="ShopId" Type="Int32" />
           <Property Name="ProductId" Type="Int32" />
           <Property Name="StockId" Type="Int32" Nullable="false" />
+          <Property Name="OrderPrice" Type="Double" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -1895,6 +1946,17 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           </Key>
           <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwPayment">
+          <Key>
+            <PropertyRef Name="PaymentTypeName" />
+            <PropertyRef Name="Description" />
+          </Key>
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="SaleId" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2154,6 +2216,9 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <EntitySetMapping Name="vwReceivingReports">
             <EntityTypeMapping TypeName="BModel.vwReceivingReport">
               <MappingFragment StoreEntitySet="vwReceivingReport">
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="From" ColumnName="From" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
@@ -2211,6 +2276,9 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <EntitySetMapping Name="vwStockReports">
             <EntityTypeMapping TypeName="BModel.vwStockReport">
               <MappingFragment StoreEntitySet="vwStockReport">
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="Kitchen" ColumnName="Kitchen" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -2446,6 +2514,8 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
           <EntitySetMapping Name="vwUpdateStocks">
             <EntityTypeMapping TypeName="BModel.vwUpdateStock">
               <MappingFragment StoreEntitySet="vwUpdateStock">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
                 <ScalarProperty Name="StockId" ColumnName="StockId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
@@ -2513,6 +2583,17 @@ warning 6002: The table/view 'bar.dbo.vwUsers' does not have a primary key defin
               <MappingFragment StoreEntitySet="vwBranches">
                 <ScalarProperty Name="BranchName" ColumnName="BranchName" />
                 <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPayments">
+            <EntityTypeMapping TypeName="BModel.vwPayment">
+              <MappingFragment StoreEntitySet="vwPayments">
+                <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -24,6 +24,7 @@ namespace Katswiri.Forms
             InitializeComponent();
             loadCustomers();
             loadWaiters();
+
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -45,7 +46,6 @@ namespace Katswiri.Forms
                             Email = "shop@yahoo.com",
                             ShopId = db.Shops.SingleOrDefault().ShopId,
                         };
-
                         db.Users.Add(user);
                         db.SaveChanges();
                         int UserId = user.UserId;
@@ -79,6 +79,7 @@ namespace Katswiri.Forms
                 lookUpEditCustomer2.Properties.DataSource = db.vwCustomers.Where(x=>x.UserType == "Customer").ToList();
                 lookUpEditCustomer2.Properties.ValueMember = "UserId";
                 lookUpEditCustomer2.Properties.DisplayMember = "Name";
+                lookUpEditCustomer2.EditValue = db.vwCustomers.Where(x => x.UserType == "Customer" && x.Name == "WalkIn").SingleOrDefault().UserId;
             }
         }
 
@@ -89,6 +90,7 @@ namespace Katswiri.Forms
                 lookUpEditWaiter.Properties.DataSource = db.vwCustomers.Where(x => x.UserType == "Waiter").ToList();
                 lookUpEditWaiter.Properties.ValueMember = "UserId";
                 lookUpEditWaiter.Properties.DisplayMember = "Name";
+                lookUpEditWaiter.EditValue = db.vwCustomers.Where(x => x.UserType == "Waiter").FirstOrDefault().UserId;
             }
         }
         private bool formValid()
@@ -105,11 +107,11 @@ namespace Katswiri.Forms
                 textEditPhone.ErrorText = "Required";
             }
 
-            if (String.IsNullOrEmpty((string)lookUpEditWaiter.EditValue))
-            {
-                result = false;
-                lookUpEditWaiter.ErrorText = "Required";
-            }
+            //if (String.IsNullOrEmpty((string)lookUpEditWaiter.EditValue))
+            //{
+            //    result = false;
+            //    lookUpEditWaiter.ErrorText = "Required";
+            //}
 
             return result;
         }
@@ -122,7 +124,6 @@ namespace Katswiri.Forms
                 result = false;
                 lookUpEditWaiter.ErrorText = "Required";
             }
-
             return result;
         }
 
@@ -157,14 +158,12 @@ namespace Katswiri.Forms
             Pos pos = new Pos();
             using (db = new BEntities())
             {
-
                 pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
                 pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
                 pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
                 pos.lookUpEditCustomer.EditValue = (int)lookUpEditCustomer2.EditValue;
                 pos.lookUpEditCustomer.Properties.NullText = "Customer";
                 pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == (int)lookUpEditCustomer2.EditValue).Max(x => x.SaleId).ToString();
-
                 sale = new Sale()
                 {
                     Customer = (int)lookUpEditCustomer2.EditValue,

@@ -498,11 +498,7 @@ namespace Katswiri
             }
         }
 
-        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            FormFilterReport formFilterReport = new FormFilterReport();
-            formFilterReport.ShowDialog();
-        }
+      
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {

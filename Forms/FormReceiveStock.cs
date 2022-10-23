@@ -162,7 +162,7 @@ namespace Katswiri.Forms
                             {
                                 ProductId = receivingDetail.ProductId,
                                 ShopId = db.Shops.SingleOrDefault().ShopId,
-                                Stores = receivingDetail.Qty,
+                                Shop = receivingDetail.Qty,
                                 SellingPrice = receivingDetail.SellingPrice,
                                 ExpiryDate = receivingDetail.ExpiryDate,
                                 OrderPrice = receivingDetail.OrderPrice,

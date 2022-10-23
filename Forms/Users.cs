@@ -31,7 +31,7 @@ namespace Katswiri.Forms
         {
             using (db = new BEntities())
             {
-                gridControl1.DataSource = db.vwUsers.ToList();
+                gridControl1.DataSource = db.vwUsers.Where(x=>x.UserType !="Administrator").ToList();
                 gridView1.Columns["UserId"].Visible = false;
                 gridView1.Columns["ShopId"].Visible = false;
                 gridView1.OptionsBehavior.Editable = false;
@@ -57,7 +57,6 @@ namespace Katswiri.Forms
             textEditGender.Properties.ValueMember = "Value";
             textEditGender.Properties.DisplayMember = "Value";
         }
-
       
         private void clearFields()
         {
@@ -91,7 +90,6 @@ namespace Katswiri.Forms
                 textEditGender.ErrorText = "Required";
             }
           
-          
             if (String.IsNullOrEmpty(PhoneTextEdit.Text))
             {
                 result = false;
@@ -123,16 +121,19 @@ namespace Katswiri.Forms
             {
                 if (formValid())
                 {
-                    user.Name = NameTextEdit.Text;
-                    user.Gender = textEditGender.EditValue.ToString();
-                    user.UserName = UserNameTextEdit.Text;
-                    user.UserType = (string)comboBoxEditUserType.EditValue;
-                    user.PassWord = UserNameTextEdit.Text;
-                    user.Email = EmailTextEdit.Text;
-                    user.Phone = PhoneTextEdit.Text;
-                    user.ShopId = db.Shops.SingleOrDefault().ShopId;
+              
                     using (db = new BEntities())
                     {
+                        user.Name = NameTextEdit.Text;
+                        user.Gender = textEditGender.EditValue.ToString();
+                        user.UserName = UserNameTextEdit.Text;
+                        user.UserType = (string)comboBoxEditUserType.EditValue;
+                        user.PassWord = UserNameTextEdit.Text;
+                        user.Email = EmailTextEdit.Text;
+                        user.Phone = PhoneTextEdit.Text;
+                        user.ShopId = db.Shops.SingleOrDefault().ShopId;
+
+
                         if (UserId > 0)
                             db.Entry(user).State = EntityState.Modified;
                         else
@@ -144,7 +145,6 @@ namespace Katswiri.Forms
                         loadUsers();
                     }
                     XtraMessageBox.Show("User Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
                 }
             }
             catch (Exception ex)

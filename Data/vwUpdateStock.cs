@@ -24,5 +24,7 @@ namespace Katswiri.Data
         public Nullable<int> ShopId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public int StockId { get; set; }
+        public Nullable<double> OrderPrice { get; set; }
+        public string Comment { get; set; }
     }
 }

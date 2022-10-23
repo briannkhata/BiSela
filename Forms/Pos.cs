@@ -527,8 +527,9 @@ namespace Katswiri.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            FormOrders formOrders = new FormOrders();
-            formOrders.ShowDialog();
+            FormPayments formPayments = new FormPayments();
+            formPayments.ShowDialog();
+
         }
 
         private void buttonVoid_Click(object sender, EventArgs e)

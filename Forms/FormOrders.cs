@@ -34,7 +34,6 @@ namespace Katswiri.Forms
                 lookUpEditCus.Properties.ValueMember = "UserId";
                 lookUpEditCus.Properties.DisplayMember = "Name";
                 lookUpEditCus.Properties.NullText = "Select Customer";
-
             }
         }
 
@@ -54,7 +53,6 @@ namespace Katswiri.Forms
                 gridControl1.DataSource = null;
                 gridControl1.DataSource = db.vwOrderCustomers.Where(x=>x.Customer == customer).ToList();
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,7 +72,6 @@ namespace Katswiri.Forms
             {
                 if (row.SaleId != -1)
                 {
-
                     var oku = db.SaleDetails.Where(x => x.SaleId == row.SaleId).ToList();
                     foreach (var item in oku)
                     {

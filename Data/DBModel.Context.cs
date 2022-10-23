@@ -72,5 +72,6 @@ namespace Katswiri.Data
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<vwBranch> vwBranches { get; set; }
+        public virtual DbSet<vwPayment> vwPayments { get; set; }
     }
 }

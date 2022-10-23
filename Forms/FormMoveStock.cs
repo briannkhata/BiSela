@@ -52,24 +52,22 @@ namespace Katswiri.Forms
             textEditTo.Properties.DataSource = store;
             textEditTo.Properties.ValueMember = "Value";
             textEditTo.Properties.DisplayMember = "Value";
-            textEditTo.Properties.NullText = "Move To";
+            textEditTo.Properties.NullText = "";
 
-
-            textEditFrom1.Properties.DataSource = store;
-            textEditFrom1.Properties.ValueMember = "Value";
-            textEditFrom1.Properties.DisplayMember = "Value";
-            textEditFrom1.Properties.NullText = "From with the shop";
+            textEditFrom.Properties.DataSource = store;
+            textEditFrom.Properties.ValueMember = "Value";
+            textEditFrom.Properties.DisplayMember = "Value";
+            textEditFrom.Properties.NullText = "From";
         }
 
-       
-        private void loadFrom()
+         private void loadFrom()
         {
             using (db = new BEntities())
             {
-                textEditFrom.Properties.DataSource = db.vwBranches.ToList();
-                textEditFrom.Properties.ValueMember = "BranchId";
-                textEditFrom.Properties.DisplayMember = "BranchName";
-                textEditFrom.Properties.NullText = "From other shop";
+                textEditTo1.Properties.DataSource = db.vwBranches.ToList();
+                textEditTo1.Properties.ValueMember = "BranchId";
+                textEditTo1.Properties.DisplayMember = "BranchName";
+                textEditTo1.Properties.NullText = "";
             }
         }
 
@@ -145,10 +143,11 @@ namespace Katswiri.Forms
             {
                 using (db = new BEntities())
                 {
-                    var from = db.Shops.FirstOrDefault().ShopId;
-                    var to = textEditFrom.Text;
+                    //var from = db.Shops.FirstOrDefault().ShopId;
+                    var from = textEditFrom.Text;
+                    var To = textEditTo.Text;
+                    var To1 = textEditTo1.Text;
                     var comment = textEditComment.Text;
-                    var destination = textEditTo.Text;
 
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
@@ -166,20 +165,28 @@ namespace Katswiri.Forms
                         double oldStores = (double)db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().ProductId;
                         double oldKitchen = (double)db.Stocks.Where(x => x.ProductId == ProductId).FirstOrDefault().ProductId;
 
-                        if (destination == "Shop")
+                        if (To != "")
                         {
-                            stock.Shop = oldShop - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                            if (To == "Shop")
+                            {
+                                stock.Shop = Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                            }
+                        }
+                        else
+                        {
+
                         }
 
-                        if (destination == "Stores")
+                        if(from == "Stores")
                         {
                             stock.Stores = oldStores - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
                         }
 
-                        if (destination == "Kitchen")
+                        if (from == "Kitchen")
                         {
                             stock.Kitchen = oldKitchen - Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
                         }
+
                         db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
 
