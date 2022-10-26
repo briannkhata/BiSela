@@ -148,21 +148,26 @@ namespace Katswiri.Forms
 
         public void calculate_money()
         {
-             double total = 0;
-             double vat = 0;
-             double discount = 0;
-             int i;
-             for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
-             {
-                 total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
-                 vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
-                 discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
-             }
-             labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
-             labelTax.Text = vat.ToString("##,##0.00");
-             labelBill.Text = total.ToString("##,##0.00");
-             labelDiscount.Text = discount.ToString("##,##0.00");
-             labelBalance.Text = (total - discount).ToString("##,##0.00");
+            using(db = new BEntities())
+            {
+                double total = 0;
+                double vat = 0;
+                double discount = 0;
+                int i;
+                for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
+                {
+                    total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
+                    vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
+                    discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                }
+                int seluaidi = Convert.ToInt32(labelSaleId.Text);
+                double paid = (double)db.BillPayments.Where(x => x.SaleId == seluaidi).Sum(x => x.Amount);
+                labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
+                labelTax.Text = vat.ToString("##,##0.00");
+                labelBill.Text = (total - paid - discount).ToString("##,##0.00");
+                labelDiscount.Text = discount.ToString("##,##0.00");
+                labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
+            }
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
@@ -307,7 +312,6 @@ namespace Katswiri.Forms
             }
         }
 
-   
         private void loadSaleTypes()
         {
             using (db = new BEntities())
