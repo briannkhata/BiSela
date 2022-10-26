@@ -29,7 +29,7 @@ namespace Katswiri.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lookUpEditSaleType = new DevExpress.XtraEditors.LookUpEdit();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEditPaymentType = new DevExpress.XtraEditors.LookUpEdit();
@@ -144,7 +144,6 @@ namespace Katswiri.Forms
             // 
             // lookUpEditCustomer
             // 
-            this.lookUpEditCustomer.Enabled = false;
             this.lookUpEditCustomer.Location = new System.Drawing.Point(794, 14);
             this.lookUpEditCustomer.Name = "lookUpEditCustomer";
             this.lookUpEditCustomer.Properties.Appearance.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,7 +230,7 @@ namespace Katswiri.Forms
             // 
             // labelSaleId
             // 
-            this.labelSaleId.ForeColor = System.Drawing.Color.Transparent;
+            this.labelSaleId.ForeColor = System.Drawing.Color.DarkRed;
             this.labelSaleId.Location = new System.Drawing.Point(387, 140);
             this.labelSaleId.Name = "labelSaleId";
             this.labelSaleId.Size = new System.Drawing.Size(77, 23);
@@ -461,12 +460,12 @@ namespace Katswiri.Forms
             // Qty
             // 
             this.Qty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Qty.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Qty.DefaultCellStyle = dataGridViewCellStyle2;
             this.Qty.HeaderText = "Qty";
             this.Qty.MinimumWidth = 6;
             this.Qty.Name = "Qty";
@@ -524,7 +523,7 @@ namespace Katswiri.Forms
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.Appearance.Options.UseFont = true;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1538, 808);

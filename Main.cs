@@ -190,10 +190,10 @@ namespace Katswiri
             //ShowHome();
             using (db = new BEntities()) 
             {
-                UsersReport userReport = new UsersReport();
+                //UsersReport userReport = new UsersReport();
                 //userReport.DataSource = db.Stocks.ToList();
-                ReportPrintTool printTool = new ReportPrintTool(userReport);
-                printTool.ShowPreviewDialog();
+                //ReportPrintTool printTool = new ReportPrintTool(userReport);
+                //printTool.ShowPreviewDialog();
 
                 //XtraReport report = new XtraReport();
                 //report.DataSource = db.Stocks.ToList();

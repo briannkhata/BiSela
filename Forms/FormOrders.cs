@@ -65,7 +65,6 @@ namespace Katswiri.Forms
 
         private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
-
             var selectedRows = gridView1.GetSelectedRows();
             var row = ((vwOrderCustomer)gridView1.GetRow(selectedRows[0]));
             using (db = new BEntities())
@@ -97,7 +96,7 @@ namespace Katswiri.Forms
                     pos.labelBalance.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Balance).ToString("##,##0.00");
                     pos.labelBill.Text = Convert.ToDouble(db.Sales.Where(x => x.SaleId == row.SaleId).FirstOrDefault().Bill).ToString("##,##0.00");
 
-                    int cus = (int)db.Sales.Where(x => x.SaleId == row.SaleId).SingleOrDefault().Customer;
+                    var cus = db.Sales.Where(x => x.SaleId == row.SaleId).SingleOrDefault().Customer;
                     var saletype = db.Sales.Where(x => x.SaleId == row.SaleId).SingleOrDefault().SaleType;
 
                     pos.lookUpEditCustomer.Properties.ValueMember = "UserId";

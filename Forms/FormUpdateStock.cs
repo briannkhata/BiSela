@@ -39,6 +39,9 @@ namespace Katswiri.Forms
 
             gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.ReadOnly = true;
             gridView1.Columns.ColumnByFieldName("ProductCode").OptionsColumn.AllowEdit = false;
+
+            gridView1.Columns.ColumnByFieldName("OrderPrice").OptionsColumn.ReadOnly = true;
+            gridView1.Columns.ColumnByFieldName("OrderPrice").OptionsColumn.AllowEdit = false;
         }
 
         public void loadData()
@@ -80,7 +83,7 @@ namespace Katswiri.Forms
                         db.Entry(stock).State = EntityState.Modified;
                         db.SaveChanges();
                     }
-                    XtraMessageBox.Show("Stock Updating Successfull", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Stock Updating Successfull", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reloadData();
                 }
             }

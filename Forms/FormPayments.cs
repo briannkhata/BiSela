@@ -19,20 +19,22 @@ namespace Katswiri.Forms
         {
             InitializeComponent();
             loadPayments();
-        }
+        } 
 
         private void loadPayments()
         {
-            Pos pos = new Pos();
-            int saleId = short.Parse(pos.labelSaleId.Text.ToString());
-            using (db = new BEntities())
-            {
-                gridControl1.DataSource = db.vwPayments.Where(x => x.SaleId == saleId).ToList();
-                gridView1.OptionsBehavior.Editable = false;
-                gridView1.OptionsView.ShowIndicator = false;
-                gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
-               
-            }
+            //Pos pos = new Pos();
+            //var saleId = pos.labelSaleId.Text.ToString();
+
+            //int saleId2 = short.Parse(saleId);
+            
+            //using (db = new BEntities())
+            //{
+            //    gridControl1.DataSource = db.vwPayments.Where(x => x.SaleId == saleId2).ToList();
+            //    gridView1.OptionsBehavior.Editable = false;
+            //    gridView1.OptionsView.ShowIndicator = false;
+            //    gridControl1.EmbeddedNavigator.Buttons.Append.Visible = false;
+            //}
         }
     }
 }

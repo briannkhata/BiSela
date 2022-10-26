@@ -20,11 +20,11 @@ namespace Katswiri.Data
         public Nullable<double> Stores { get; set; }
         public Nullable<double> Kitchen { get; set; }
         public Nullable<double> SellingPrice { get; set; }
+        public Nullable<double> OrderPrice { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
         public Nullable<int> ShopId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public int StockId { get; set; }
-        public Nullable<double> OrderPrice { get; set; }
         public string Comment { get; set; }
     }
 }

@@ -19,10 +19,12 @@ namespace Katswiri.Forms
         Shift shift = new Shift();
         BEntities db;
         int ShiftId;
+
         public ShiftForm()
         {
             InitializeComponent();
             loadShifts();
+            textEditClosing.Enabled = false;
         }
 
         private void loadShifts()
@@ -63,11 +65,7 @@ namespace Katswiri.Forms
                 {
                     using (db = new BEntities())
                     {
-                        shift.OpenBalance = Double.Parse(textEditOpening.Text);
                         shift.ShopId = db.Shops.SingleOrDefault().ShopId;
-                        shift.OpenDate = DateTime.Now;
-                        shift.CloseDate = DateTime.Now;
-
                         if (ShiftId > 0)
                         {
                             var update = db.Shifts.Where(x => x.ShiftId == ShiftId).FirstOrDefault();
@@ -77,11 +75,13 @@ namespace Katswiri.Forms
                         }
                         else
                         {
+                            shift.OpenDate = DateTime.Now;
+                            shift.CloseDate = (DateTime?)System.Data.SqlTypes.SqlDateTime.Null;
+                            shift.OpenBalance = Double.Parse(textEditOpening.Text);
                             db.Shifts.Add(shift);
                         }
                         db.SaveChanges();
                         loadShifts();
-
                     }
                     XtraMessageBox.Show("Shift Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -141,6 +141,7 @@ namespace Katswiri.Forms
                 }
             }
             btnSave.Caption = "Close Shift";
+            textEditClosing.Enabled = true;
             btnDelete.Enabled = true;
         }
     }

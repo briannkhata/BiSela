@@ -83,6 +83,16 @@ namespace Katswiri.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage actions_arrow5upright {
+            get {
+                object obj = ResourceManager.GetObject("actions_arrow5upright", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage addcalculatedfield {
             get {
                 object obj = ResourceManager.GetObject("addcalculatedfield", resourceCulture);

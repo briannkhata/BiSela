@@ -20,6 +20,6 @@ namespace Katswiri.Data
         public Nullable<System.DateTime> OpenDate { get; set; }
         public int ShopId { get; set; }
         public int Deleted { get; set; }
-        public System.DateTime CloseDate { get; set; }
+        public Nullable<System.DateTime> CloseDate { get; set; }
     }
 }

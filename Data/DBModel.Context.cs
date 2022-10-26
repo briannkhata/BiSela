@@ -66,12 +66,12 @@ namespace Katswiri.Data
         public virtual DbSet<Ingredient> Ingredients { get; set; }
         public virtual DbSet<vwFoodMenu> vwFoodMenus { get; set; }
         public virtual DbSet<vwUser> vwUsers { get; set; }
-        public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<vwShop> vwShops { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<vwBranch> vwBranches { get; set; }
         public virtual DbSet<vwPayment> vwPayments { get; set; }
+        public virtual DbSet<vwUpdateStock> vwUpdateStocks { get; set; }
     }
 }

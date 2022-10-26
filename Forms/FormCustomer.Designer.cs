@@ -147,7 +147,7 @@ namespace Katswiri.Forms
             this.tabbedControlGroup2,
             this.tabbedControlGroup3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(536, 474);
+            this.Root.Size = new System.Drawing.Size(536, 506);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
@@ -205,7 +205,7 @@ namespace Katswiri.Forms
             this.simpleSeparator1});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(492, 133);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(492, 165);
             this.layoutControlGroup3.Text = "Old";
             // 
             // layoutControlItem3
@@ -231,7 +231,7 @@ namespace Katswiri.Forms
             this.simpleSeparator1.AllowHotTrack = false;
             this.simpleSeparator1.Location = new System.Drawing.Point(0, 49);
             this.simpleSeparator1.Name = "simpleSeparator1";
-            this.simpleSeparator1.Size = new System.Drawing.Size(492, 84);
+            this.simpleSeparator1.Size = new System.Drawing.Size(492, 116);
             // 
             // tabbedControlGroup3
             // 
@@ -316,9 +316,9 @@ namespace Katswiri.Forms
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Save";
+            this.barButtonItem1.Caption = "Continue";
             this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.saveas;
+            this.barButtonItem1.ImageOptions.SvgImage = global::Katswiri.Properties.Resources.actions_arrow5upright;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 

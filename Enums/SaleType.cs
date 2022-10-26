@@ -13,6 +13,7 @@ namespace Katswiri.Enums
         Free,
         Credit,
         Damage,
-        LayBy
+        LayBy,
+        Installment
     }
 }
