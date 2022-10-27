@@ -113,7 +113,7 @@ namespace Katswiri.Forms
                     {
                         pos.textBoxTendered.Enabled = false;
                     }
-
+                    pos.calculate_money();
                     pos.buttonRemove.Enabled = false;
                     pos.buttonVoid.Enabled = false;
                     pos.dateEditDateSold.DateTime = (DateTime)row.DateSold;

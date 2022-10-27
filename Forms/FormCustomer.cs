@@ -73,6 +73,7 @@ namespace Katswiri.Forms
                 if (lookUpEditCustomer2.EditValue != null)
                 {
                     setParams3();
+                 
                 }
             }
             catch (Exception ex)
@@ -104,30 +105,7 @@ namespace Katswiri.Forms
                 lookUpEditWaiter.EditValue = db.vwUsers.Where(x => x.UserType == "Waiter").Max(x => x.UserId);
             }
         }
-        private bool formValid()
-        {
-            var result = true;
-            if (String.IsNullOrEmpty(textEditName.Text))
-            {
-                result = false;
-                textEditName.ErrorText = "Required";
-            }
-            if (String.IsNullOrEmpty(textEditPhone.Text))
-            {
-                result = false;
-                textEditPhone.ErrorText = "Required";
-            }
-
-            //if (String.IsNullOrEmpty((string)lookUpEditWaiter.EditValue))
-            //{
-            //    result = false;
-            //    lookUpEditWaiter.ErrorText = "Required";
-            //}
-
-            return result;
-        }
-
-       
+      
 
         private void lookUpEditCustomer2_EditValueChanged(object sender, EventArgs e)
         {
@@ -158,12 +136,6 @@ namespace Katswiri.Forms
             using (db = new BEntities())
             {
                 int customerId = db.Users.Where(x => x.UserType == "Customer" && x.Name == "WalkIn").FirstOrDefault().UserId;
-                pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
-                pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
-                pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
-                pos.lookUpEditCustomer.EditValue = customerId;
-                //pos.lookUpEditCustomer.Properties.NullText = "Customer";
-                pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == customerId).Max(x => x.SaleId).ToString();
                 sale = new Sale()
                 {
                     Customer = customerId,
@@ -174,6 +146,14 @@ namespace Katswiri.Forms
                 };
                 db.Sales.Add(sale);
                 db.SaveChanges();
+
+                pos.lookUpEditCustomer.Properties.DataSource = db.Users.Where(x => x.UserType == "Customer").ToList();
+                pos.lookUpEditCustomer.Properties.ValueMember = "UserId";
+                pos.lookUpEditCustomer.Properties.DisplayMember = "Name";
+                pos.lookUpEditCustomer.EditValue = customerId;
+                //pos.lookUpEditCustomer.Properties.NullText = "Customer";
+                pos.labelSaleId.Text = db.Sales.Where(x => x.Customer == customerId).Max(x => x.SaleId).ToString();
+               
             }
             pos.Activate();
             pos.ShowDialog();

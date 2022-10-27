@@ -83,8 +83,8 @@ namespace Katswiri.Forms
             {
                 AutoCompleteStringCollection autoText = new AutoCompleteStringCollection();
                 //foreach (vwStock vwstock in db.vwStocks.OrderByAscending(x=>x.ExpiryDate) as List<vwStock>)
-                //foreach (vwStock vwstock in db.vwStocks.Where(x=>x.Shop > 0).OrderBy(x=>x.ExpiryDate).ToList())
-                foreach (vwStock vwstock in db.vwStocks.Where(x => x.Shop > 0 && x.ExpiryDate > DateTime.Today).OrderBy(x => x.ExpiryDate).ToList())
+                foreach (vwStock vwstock in db.vwStocks.Where(x=>x.Shop > 0).OrderBy(x=>x.ExpiryDate).ToList())
+                //foreach (vwStock vwstock in db.vwStocks.Where(x => x.Shop > 0 && x.ExpiryDate > DateTime.Today).OrderBy(x => x.ExpiryDate).ToList())
                 {
                    autoText.Add(vwstock.ProductCode);
                 }
@@ -142,32 +142,54 @@ namespace Katswiri.Forms
                 labelChange.Text="00.00";
                 textBoxTendered.Clear();
                 labelBalance.Text = "00.00";
-
             }
         }
 
         public void calculate_money()
         {
-            using(db = new BEntities())
+            try
             {
-                double total = 0;
-                double vat = 0;
-                double discount = 0;
-                int i;
-                for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
+                using (db = new BEntities())
                 {
-                    total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
-                    vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
-                    discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                    double total = 0;
+                    double vat = 0;
+                    double discount = 0;
+                    double paid = 0;
+                    int i;
+                    for (i = 0; i <= dataGridView1.Rows.Count - 1; i++)
+                    {
+                        total += Convert.ToDouble(dataGridView1.Rows[i].Cells[6].Value);
+                        vat += Convert.ToDouble(dataGridView1.Rows[i].Cells[5].Value);
+                        discount += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                    }
+                    int seluaidi = Convert.ToInt32(labelSaleId.Text);
+                    var list = db.BillPayments.Where(x => x.SaleId == seluaidi).ToList();
+                    if (list != null)
+                    {
+                        foreach (var item in list)
+                        {
+                            paid += (double)(item.Amount);
+                        }
+                    }
+                    else
+                    {
+                        paid = 0;
+                    }
+                    double total2 = total - paid - discount;
+                    double total3 = total - vat - discount;
+                    labelSubTotal.Text = total3.ToString("##,##0.00");
+                    labelTax.Text = vat.ToString("##,##0.00");
+                    labelBill.Text = total2.ToString("##,##0.00");
+                    labelDiscount.Text = discount.ToString("##,##0.00");
+                    labelBalance.Text = total2.ToString("##,##0.00");
                 }
-                int seluaidi = Convert.ToInt32(labelSaleId.Text);
-                double paid = (double)db.BillPayments.Where(x => x.SaleId == seluaidi).Sum(x => x.Amount);
-                labelSubTotal.Text = (total - vat - discount).ToString("##,##0.00");
-                labelTax.Text = vat.ToString("##,##0.00");
-                labelBill.Text = (total - paid - discount).ToString("##,##0.00");
-                labelDiscount.Text = discount.ToString("##,##0.00");
-                labelBalance.Text = (total - vat - discount).ToString("##,##0.00");
             }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
         }
 
         public void textSearchProduct_KeyDown(object sender, KeyEventArgs e)
@@ -1002,7 +1024,7 @@ namespace Katswiri.Forms
                 {
                     resetCart();
                     double paid = (double)db.BillPayments.Where(x => x.SaleId == sale.SaleId).Sum(x => x.Amount);
-                    sale.Bill = paid + sale.Balance;
+                    //sale.Bill = paid + sale.Balance;
                     db.Entry(sale).State = EntityState.Modified;
                     db.SaveChanges();
                 }
